@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>simple-tree-component quick start</title>
+
+  <link rel="stylesheet" href="dist/simple-tree-component.css">
+
+  <style type="text/css">
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    label > div {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div style="padding:15vw">
+    <div>
+      <label>
+        <div>Tree 1</div>
+        <input class="tree" />
+      </label>
+    </div>
+  </div>
+
+  <script src="./dist/simple-tree-component.js"></script>
+  <script>
+    const simpleTree = window["simple-tree-component"];
+    const stc = simpleTree(".tree", {
+
+    });
+  </script>
+</body>
+</html>
