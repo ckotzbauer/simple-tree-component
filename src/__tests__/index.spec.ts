@@ -1,5 +1,6 @@
 import simpleTree from "../index";
 import { Instance } from "../types/instance";
+import { Options } from "../types/options";
 
 jest.useFakeTimers();
 
@@ -7,16 +8,19 @@ let elem: undefined | HTMLInputElement, stc: Instance;
 const UA = navigator.userAgent;
 let mockAgent: string | undefined;
 
-(navigator as any).__defineGetter__("userAgent", function () {
+(navigator as any).__defineGetter__("userAgent", function() {
     return mockAgent || UA;
 });
 
-/*function createInstance(config?: Options, el?: HTMLElement) {
-    stc = simpleTree(el || elem || document.createElement("input"), config || {}) as Instance;
+function createInstance(config?: Options, el?: HTMLElement) {
+    stc = simpleTree(
+        el || elem || document.createElement("input"),
+        config || {}
+    ) as Instance;
     return stc;
 }
 
-function simulate(eventType: string, onElement: Node, options?: object, type?: any) {
+/*function simulate(eventType: string, onElement: Node, options?: object, type?: any) {
     const eventOptions = Object.assign(options || {}, { bubbles: true });
     const evt = new (type || CustomEvent)(eventType, eventOptions);
     try {
@@ -45,6 +49,26 @@ describe("simpleTree", () => {
     describe("init", () => {
         it("should gracefully handle no elements", () => {
             expect(simpleTree([])).toEqual([]);
+        });
+
+        it("should use default options", () => {
+            const tree = createInstance();
+            expect(tree.options).toEqual(
+                expect.objectContaining({
+                    mode: "view",
+                    searchBar: true,
+                })
+            );
+        });
+
+        it("should overwrite options correctly", () => {
+            const tree = createInstance({ mode: "singleSelectDropdown" });
+            expect(tree.options).toEqual(
+                expect.objectContaining({
+                    mode: "singleSelectDropdown",
+                    searchBar: true,
+                })
+            );
         });
     });
 });
