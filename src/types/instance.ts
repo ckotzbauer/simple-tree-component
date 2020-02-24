@@ -2,6 +2,7 @@ import { Options, BaseOptions } from "./options";
 
 export interface Instance {
     destroy(): void;
+    options: BaseOptions;
 }
 
 export interface SimpleTreeFn {

@@ -1,9 +1,23 @@
 import { Instance } from "./types/instance";
-import { Options } from "./types/options";
+import { Options, defaults } from "./types/options";
+import { SingleSelectDropdown } from "./ui/single-select-dropdown";
+import { MultiSelectDropdown } from "./ui/multi-select-dropdown";
+import { TreeView } from "./ui/tree-view";
 
 export function createSimpleTree(
-    _element: HTMLElement,
-    _instanceConfig?: Options
+    element: HTMLElement,
+    instanceConfig: Options
 ): Instance {
-    return { destroy: () => null };
+    const config = {
+        ...defaults,
+        ...instanceConfig,
+    };
+
+    if (config.mode === "singleSelectDropdown") {
+        return new SingleSelectDropdown(element, config);
+    } else if (config.mode === "multiSelectDropdown") {
+        return new MultiSelectDropdown(element, config);
+    } else {
+        return new TreeView(element, config);
+    }
 }
