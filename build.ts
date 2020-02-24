@@ -1,5 +1,6 @@
 import { readFile, writeFile, copyFile, exists, mkdir } from "fs";
 import { promisify } from "util";
+import { exec as execCommand } from "child_process";
 
 import terser from "terser";
 import chokidar from "chokidar";
@@ -115,7 +116,11 @@ function setupWatchers() {
     watch("./src/style/*.scss", () => {
         buildStyle();
     });
-    watch("./src");
+    watch("./src", (path: string) => {
+        execCommand(`npm run fmt -- ${path}`, {
+            cwd: __dirname,
+        });
+    });
 }
 
 function watch(path: string, cb: (path: string) => void = (_s: string) => _s) {

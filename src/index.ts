@@ -2,7 +2,10 @@ import { Instance, SimpleTreeFn } from "./types/instance";
 import { Options } from "./types/options";
 import { createSimpleTree } from "./factory";
 
-function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | Instance[] {
+function _simpleTree(
+    nodeList: ArrayLike<Node>,
+    config?: Options
+): Instance | Instance[] {
     // static list
     const nodes = Array.prototype.slice
         .call(nodeList)
@@ -27,7 +30,10 @@ function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | In
     return instances.length === 1 ? instances[0] : instances;
 }
 
-const simpleTree = function(selector: ArrayLike<Node> | Node | string, config?: Options) {
+const simpleTree = function(
+    selector: ArrayLike<Node> | Node | string,
+    config?: Options
+) {
     if (typeof selector === "string") {
         return _simpleTree(window.document.querySelectorAll(selector), config);
     } else if (selector instanceof Node) {
