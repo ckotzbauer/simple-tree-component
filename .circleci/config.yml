@@ -21,5 +21,6 @@ jobs:
             - ./node_modules
           key: pkg-cache-{{ checksum "package-lock.json" }}
 
+      - run: npm run build
       - run: npm run test:typecheck
       - run: npm run codecov
