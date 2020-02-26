@@ -7,12 +7,12 @@ function logErr(e: Error | string) {
 
 async function postBuild() {
     try {
-        var pathExists = await promisify(exists)("dist/types");
+        const pathExists = await promisify(exists)("dist/types");
         if (!pathExists) {
             await promisify(mkdir)("dist/types");
         }
 
-        var files = await promisify(readdir)("dist");
+        const files = await promisify(readdir)("dist");
         files.forEach(async fileName => {
             if (fileName.endsWith(".d.ts")) {
                 await promisify(rename)(`dist/${fileName}`, `dist/types/${fileName}`);
