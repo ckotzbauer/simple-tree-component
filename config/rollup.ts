@@ -14,7 +14,6 @@ export const getConfig = (opts?: { dev: boolean }): RollupOptions => ({
         banner: `/* simple-tree-component v${pkg.version}, @license MIT */`,
         ...(opts && opts.dev ? { sourcemap: true } : {}),
     },
-    experimentalOptimizeChunks: true,
     /*onwarn(warning) {
         const ignoredCircular = ["src/types/options.ts", "src/utils/dates.ts"];
 
@@ -30,9 +29,7 @@ export const getConfig = (opts?: { dev: boolean }): RollupOptions => ({
     },*/
 
     plugins: [typescript({ tsconfig: resolve("./src/tsconfig.json") })],
-    watch: {
-        chokidar: false,
-    },
+    watch: {},
 });
 
 export default getConfig();
