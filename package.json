@@ -43,7 +43,7 @@
     "@rollup/plugin-typescript": "4.0.0",
     "@types/autoprefixer": "9.7.2",
     "@types/jest": "25.1.4",
-    "@types/node": "13.9.8",
+    "@types/node": "13.11.0",
     "@types/node-sass": "4.11.0",
     "@typescript-eslint/eslint-plugin": "2.26.0",
     "@typescript-eslint/parser": "2.26.0",
