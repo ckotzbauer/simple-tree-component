@@ -3,6 +3,10 @@ import { TreeNode } from "types/tree-node";
 export class DataService {
     constructor(public nodes: TreeNode[] = []) {}
 
+    public clear(): void {
+        this.nodes = [];
+    }
+
     public getNode(value: string): TreeNode | null {
         return this.getNodeInternal(this.nodes, value);
     }

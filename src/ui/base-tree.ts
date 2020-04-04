@@ -7,4 +7,7 @@ export class BaseTree {
         public config: TreeConfiguration,
         public dataService: DataService
     ) {}
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    public destroy(): void {}
 }
