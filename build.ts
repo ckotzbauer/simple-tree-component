@@ -152,7 +152,7 @@ async function start() {
 
         function exit() {
             watcher.close();
-            watchers.forEach(w => w.close());
+            watchers.forEach((w) => w.close());
         }
 
         interface RollupWatchEvent {
@@ -165,7 +165,7 @@ async function start() {
             write(
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 [e.code, e.input && `${e.input} -> ${e.output!}`, "\n"]
-                    .filter(x => x)
+                    .filter((x) => x)
                     .join(" ")
             );
         }

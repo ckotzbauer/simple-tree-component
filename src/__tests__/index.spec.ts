@@ -8,7 +8,7 @@ let elem: undefined | HTMLInputElement, stc: Instance;
 const UA = navigator.userAgent;
 let mockAgent: string | undefined;
 
-(navigator as any).__defineGetter__("userAgent", function() {
+(navigator as any).__defineGetter__("userAgent", function () {
     return mockAgent || UA;
 });
 
