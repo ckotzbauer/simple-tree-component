@@ -1,6 +1,6 @@
-import { DataService } from "data/data-service";
-import { BaseOptions } from "types/options";
-import { Instance } from "types/instance";
+import { DataService } from "../data/data-service";
+import { BaseOptions } from "../types/options";
+import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 
 export class MultiSelectDropdown implements Instance {

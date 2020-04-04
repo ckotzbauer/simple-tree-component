@@ -1,6 +1,6 @@
 import { TreeConfiguration } from "../types/options";
-import { DataService } from "data/data-service";
-import { TreeNode } from "types/tree-node";
+import { DataService } from "../data/data-service";
+import { TreeNode } from "../types/tree-node";
 
 export class BaseTree {
     constructor(public element: HTMLElement, public config: TreeConfiguration, public dataService: DataService) {
