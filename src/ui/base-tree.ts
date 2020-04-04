@@ -8,35 +8,23 @@ export class BaseTree {
     }
 
     private renderTree(): void {
-        const baseUlElement: HTMLUListElement = document.createElement("ul");
-
-        this.dataService.nodes.forEach((node: TreeNode) => {
-            const listElement: HTMLLIElement = document.createElement("li");
-            listElement.textContent = node.label;
-            baseUlElement.appendChild(listElement);
-
-            if (node.children?.length > 0) {
-                this.renderChildNodes(node.children, listElement);
-            }
-        });
-
         this.element.innerHTML = "";
-        this.element.appendChild(baseUlElement);
+        this.element.appendChild(this.renderUnorderedList(this.dataService.nodes));
     }
 
-    private renderChildNodes(childNodes: TreeNode[], parentListElement: HTMLLIElement): void {
+    private renderUnorderedList(nodes: TreeNode[]): HTMLUListElement {
         const ulElement: HTMLUListElement = document.createElement("ul");
-        childNodes.forEach((childNode: TreeNode) => {
-            const childListElement: HTMLLIElement = document.createElement("li");
-            childListElement.textContent = childNode.label;
-            ulElement.appendChild(childListElement);
+        nodes.forEach((node: TreeNode) => {
+            const liElement: HTMLLIElement = document.createElement("li");
+            liElement.textContent = node.label;
+            ulElement.appendChild(liElement);
 
-            if (childNode.children?.length > 0) {
-                this.renderChildNodes(childNode.children, childListElement);
+            if (node.children?.length > 0) {
+                liElement.appendChild(this.renderUnorderedList(node.children));
             }
         });
 
-        parentListElement.appendChild(ulElement);
+        return ulElement;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
