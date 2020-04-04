@@ -104,9 +104,12 @@ function setupWatchers() {
         buildStyle();
     });
     watch("./src", (path: string) => {
-        execCommand(`npm run fmt -- ${path}`, {
+        execCommand(`npm run format -- ${path}`, {
             cwd: __dirname,
         });
+    });
+    watch("./index.template.html", async () => {
+        await promisify(copyFile)("./index.template.html", "./index.html");
     });
 }
 
@@ -128,10 +131,7 @@ async function start() {
     if (DEV_MODE) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         (rollupConfig.output as rollup.OutputOptions).sourcemap = true;
-        const indexExists = await promisify(exists)("./index.html");
-        if (!indexExists) {
-            await promisify(copyFile)("./index.template.html", "./index.html");
-        }
+        await promisify(copyFile)("./index.template.html", "./index.html");
         const write = (s: string) => process.stdout.write(`rollup: ${s}`);
         const watcher = rollup.watch([getConfig({ dev: true })]);
 
