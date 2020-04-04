@@ -33,7 +33,67 @@
   <script>
     const simpleTree = window["simple-tree-component"];
     const stc = simpleTree(".demo-root-1", {
-
+      nodes: [
+        {
+            label: "Parent 1",
+            value: "p1",
+            disabled: false,
+            selected: false,
+            children: [
+                {
+                    label: "Parent 1 - Child 1",
+                    value: "p1c1",
+                    disabled: false,
+                    selected: false,
+                    children: [],
+                },
+                {
+                    label: "Parent 1 - Child 2",
+                    value: "p1c2",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 1 - Child 2 - Sub Child 1",
+                            value: "p1c2s1",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                        {
+                            label: "Parent 1 - Child 2 - Sub Child 2",
+                            value: "p1c2s2",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            label: "Parent 2",
+            value: "p2",
+            disabled: false,
+            selected: false,
+            children: [
+                {
+                    label: "Parent 2 - Child 1",
+                    value: "p2c1",
+                    disabled: false,
+                    selected: false,
+                    children: [],
+                },
+            ],
+        },
+        {
+            label: "Parent 3",
+            value: "p3",
+            disabled: false,
+            selected: false,
+            children: [],
+        },
+      ]
     });
   </script>
 </body>
