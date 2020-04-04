@@ -1,9 +1,10 @@
-import { Instance } from "../types/instance";
-import { BaseOptions } from "../types/options";
+import { TreeConfiguration } from "../types/options";
+import { DataService } from "data/data-service";
 
-export abstract class BaseTree implements Instance {
-    constructor(protected element: HTMLElement, public options: BaseOptions) {}
-
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    public destroy(): void {}
+export class BaseTree {
+    constructor(
+        public element: HTMLElement,
+        public config: TreeConfiguration,
+        public dataService: DataService
+    ) {}
 }

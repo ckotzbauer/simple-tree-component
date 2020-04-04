@@ -5,9 +5,12 @@ export type ComponentMode =
     | "singleSelectDropdown"
     | "multiSelectDropdown";
 
-export interface BaseOptions {
-    mode: ComponentMode;
+export interface TreeConfiguration {
     searchBar: boolean;
+}
+
+export interface BaseOptions extends TreeConfiguration {
+    mode: ComponentMode;
     nodes: TreeNode[];
 }
 
