@@ -2,14 +2,9 @@ import { Instance, SimpleTreeFn } from "./types/instance";
 import { Options } from "./types/options";
 import { createSimpleTree } from "./factory";
 
-function _simpleTree(
-    nodeList: ArrayLike<Node>,
-    config?: Options
-): Instance | Instance[] {
+function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | Instance[] {
     // static list
-    const nodes = Array.prototype.slice
-        .call(nodeList)
-        .filter((x) => x instanceof HTMLElement) as HTMLElement[];
+    const nodes = Array.prototype.slice.call(nodeList).filter((x) => x instanceof HTMLElement) as HTMLElement[];
 
     const instances: Instance[] = [];
     for (let i = 0; i < nodes.length; i++) {
@@ -30,10 +25,7 @@ function _simpleTree(
     return instances.length === 1 ? instances[0] : instances;
 }
 
-const simpleTree = function (
-    selector: ArrayLike<Node> | Node | string,
-    config?: Options
-) {
+const simpleTree = function (selector: ArrayLike<Node> | Node | string, config?: Options) {
     if (typeof selector === "string") {
         return _simpleTree(window.document.querySelectorAll(selector), config);
     } else if (selector instanceof Node) {

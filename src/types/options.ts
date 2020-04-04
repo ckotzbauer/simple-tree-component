@@ -1,9 +1,6 @@
 import { TreeNode } from "./tree-node";
 
-export type ComponentMode =
-    | "view"
-    | "singleSelectDropdown"
-    | "multiSelectDropdown";
+export type ComponentMode = "view" | "singleSelectDropdown" | "multiSelectDropdown";
 
 export interface TreeConfiguration {
     searchBar: boolean;

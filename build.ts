@@ -58,13 +58,8 @@ async function buildBundleJs() {
 async function buildScripts() {
     try {
         await buildBundleJs();
-        const transpiled = await readFileAsync(
-            "./dist/simple-tree-component.js"
-        );
-        promisify(writeFile)(
-            "./dist/simple-tree-component.min.js",
-            uglify(transpiled)
-        );
+        const transpiled = await readFileAsync("./dist/simple-tree-component.js");
+        promisify(writeFile)("./dist/simple-tree-component.min.js", uglify(transpiled));
     } catch (e) {
         logErr(e);
     }
@@ -78,9 +73,7 @@ async function transpileStyle(src: string, compress = false) {
                 outputStyle: compress ? "compressed" : "expanded",
             },
             (err: Error | undefined, result: Result) =>
-                !err
-                    ? resolve(autoPrefixerProcess(result.css.toString()).css)
-                    : reject(err)
+                !err ? resolve(autoPrefixerProcess(result.css.toString()).css) : reject(err)
         );
     });
 }
@@ -88,14 +81,8 @@ async function transpileStyle(src: string, compress = false) {
 async function buildStyle() {
     try {
         await Promise.all([
-            promisify(writeFile)(
-                "./dist/simple-tree-component.css",
-                await transpileStyle(paths.style)
-            ),
-            promisify(writeFile)(
-                "./dist/simple-tree-component.min.css",
-                await transpileStyle(paths.style, true)
-            ),
+            promisify(writeFile)("./dist/simple-tree-component.css", await transpileStyle(paths.style)),
+            promisify(writeFile)("./dist/simple-tree-component.min.css", await transpileStyle(paths.style, true)),
         ]);
     } catch (e) {
         logErr(e);
@@ -164,9 +151,7 @@ async function start() {
         function logEvent(e: RollupWatchEvent) {
             write(
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                [e.code, e.input && `${e.input} -> ${e.output!}`, "\n"]
-                    .filter((x) => x)
-                    .join(" ")
+                [e.code, e.input && `${e.input} -> ${e.output!}`, "\n"].filter((x) => x).join(" ")
             );
         }
 

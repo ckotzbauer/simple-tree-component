@@ -13,10 +13,7 @@ let mockAgent: string | undefined;
 });
 
 function createInstance(config?: Options, el?: HTMLElement) {
-    stc = simpleTree(
-        el || elem || document.createElement("input"),
-        config || {}
-    ) as Instance;
+    stc = simpleTree(el || elem || document.createElement("input"), config || {}) as Instance;
     return stc;
 }
 

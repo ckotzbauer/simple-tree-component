@@ -17,9 +17,7 @@ export class TreeView implements Instance {
 
     public destroy(): void {
         this.tree.destroy();
-        Array.from(this.element.children).forEach((e: Element) =>
-            this.element.removeChild(e)
-        );
+        Array.from(this.element.children).forEach((e: Element) => this.element.removeChild(e));
 
         this.dataService.clear();
     }

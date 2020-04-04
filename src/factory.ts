@@ -4,10 +4,7 @@ import { SingleSelectDropdown } from "./ui/single-select-dropdown";
 import { MultiSelectDropdown } from "./ui/multi-select-dropdown";
 import { TreeView } from "./ui/tree-view";
 
-export function createSimpleTree(
-    element: HTMLElement,
-    instanceConfig: Options
-): Instance {
+export function createSimpleTree(element: HTMLElement, instanceConfig: Options): Instance {
     const config = {
         ...defaults,
         ...instanceConfig,
