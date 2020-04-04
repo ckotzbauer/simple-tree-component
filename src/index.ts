@@ -9,7 +9,7 @@ function _simpleTree(
     // static list
     const nodes = Array.prototype.slice
         .call(nodeList)
-        .filter(x => x instanceof HTMLElement) as HTMLElement[];
+        .filter((x) => x instanceof HTMLElement) as HTMLElement[];
 
     const instances: Instance[] = [];
     for (let i = 0; i < nodes.length; i++) {
@@ -30,7 +30,7 @@ function _simpleTree(
     return instances.length === 1 ? instances[0] : instances;
 }
 
-const simpleTree = function(
+const simpleTree = function (
     selector: ArrayLike<Node> | Node | string,
     config?: Options
 ) {

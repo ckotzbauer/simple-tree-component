@@ -13,7 +13,7 @@ async function postBuild() {
         }
 
         const files = await promisify(readdir)("dist");
-        files.forEach(async fileName => {
+        files.forEach(async (fileName) => {
             if (fileName.endsWith(".d.ts")) {
                 await promisify(rename)(
                     `dist/${fileName}`,
