@@ -76,9 +76,9 @@ export class BaseTree {
     }
 
     private collapseNode(node: TreeNode, flag: boolean): void {
-        node.children.forEach(c => {
+        node.children.forEach((c) => {
             c.hidden = flag;
-            c.children.forEach(c => this.collapseNode(c, flag));
+            c.children.forEach((c) => this.collapseNode(c, flag));
         });
     }
 

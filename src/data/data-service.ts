@@ -98,7 +98,7 @@ export class DataService {
     private filterNodes(nodes: TreeNode[], searchTerm: string): TreeNode[] {
         const filtered: TreeNode[] = [];
 
-        nodes.forEach(n => {
+        nodes.forEach((n) => {
             n.children = this.filterNodes(n.children, searchTerm);
 
             if (n.label.includes(searchTerm) || n.children.length > 0) {
