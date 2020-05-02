@@ -31,3 +31,14 @@
     max-height: $max-dropdown-height; // TODO: move to tree-ul
     overflow-y: overlay; // TODO: move to tree-ul
 }
+
+.simple-tree-node-arrow {
+    margin-right: 4px;
+
+    font-size: 16px;
+    font-family: arial;    
+    font-weight: bold;  
+
+    cursor: pointer;    
+    user-select: none;
+}

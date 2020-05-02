@@ -4,4 +4,6 @@ export interface TreeNode {
     disabled: boolean;
     selected: boolean;
     children: TreeNode[];
+    collapsed: boolean;
+    hidden: boolean;
 }

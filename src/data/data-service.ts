@@ -1,14 +1,18 @@
 import { TreeNode } from "../types/tree-node";
 
 export class DataService {
-    constructor(public nodes: TreeNode[] = []) {}
+    private allNodes: TreeNode[] = [];
+
+    constructor(public displayedNodes: TreeNode[] = []) {
+        this.allNodes = JSON.parse(JSON.stringify(displayedNodes));
+    }
 
     public clear(): void {
-        this.nodes = [];
+        this.displayedNodes = [];
     }
 
     public getNode(value: string): TreeNode | null {
-        return this.getNodeInternal(this.nodes, value);
+        return this.getNodeInternal(this.displayedNodes, value);
     }
 
     private getNodeInternal(nodes: TreeNode[], value: string): TreeNode | null {
@@ -33,13 +37,13 @@ export class DataService {
         if (this.isTreeNode(parent)) {
             parent.children.push(node);
         } else if (typeof parent === "string") {
-            const parentNode: TreeNode | null = this.getNodeInternal(this.nodes, parent);
+            const parentNode: TreeNode | null = this.getNodeInternal(this.displayedNodes, parent);
 
             if (this.isTreeNode(parentNode)) {
                 parentNode.children.push(node);
             }
         } else {
-            this.nodes.push(node);
+            this.displayedNodes.push(node);
         }
     }
 
@@ -48,12 +52,12 @@ export class DataService {
     }
 
     public deleteNode(value: string): void {
-        const node: TreeNode | undefined = this.nodes.find((node: TreeNode) => node.value === value);
+        const node: TreeNode | undefined = this.displayedNodes.find((node: TreeNode) => node.value === value);
 
         if (node) {
-            this.nodes.splice(this.nodes.indexOf(node), 1);
+            this.displayedNodes.splice(this.displayedNodes.indexOf(node), 1);
         } else {
-            const parent: TreeNode | null = this.getParentForNode(this.nodes, value);
+            const parent: TreeNode | null = this.getParentForNode(this.displayedNodes, value);
 
             if (parent) {
                 const childNode: TreeNode = parent.children.find((node: TreeNode) => node.value === value) as TreeNode;
@@ -76,5 +80,32 @@ export class DataService {
         });
 
         return null;
+    }
+
+    public filter(searchTerm: string, renderCallback: () => void): void {
+        const allNodeCopy: TreeNode[] = JSON.parse(JSON.stringify(this.allNodes));
+        if (searchTerm) {
+            this.displayedNodes = this.filterNodes(allNodeCopy, searchTerm);
+        } else {
+            this.displayedNodes = allNodeCopy;
+        }
+
+        if (renderCallback) {
+            renderCallback();
+        }
+    }
+
+    private filterNodes(nodes: TreeNode[], searchTerm: string): TreeNode[] {
+        const filtered: TreeNode[] = [];
+
+        nodes.forEach(n => {
+            n.children = this.filterNodes(n.children, searchTerm);
+
+            if (n.label.includes(searchTerm) || n.children.length > 0) {
+                filtered.push(n);
+            }
+        });
+
+        return filtered;
     }
 }
