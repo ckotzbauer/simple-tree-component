@@ -1,12 +1,6 @@
-// ------------------------------ DEFAULTS ------------------------------
-$base-size: 0.5rem !default;
-$max-dropdown-height: 25 * $base-size;
-
-// ------------------------------- COLORS -------------------------------
-$black: #000 !default;
-
-// ---------------------------- UI-DEFAULTS -----------------------------
-$base-border: 1px solid $black !default;
+@import "defaults";
+@import "colors";
+@import "ui-defaults";
 
 .simple-tree {
     .simple-tree-single-selectbox {
