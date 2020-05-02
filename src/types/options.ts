@@ -4,6 +4,9 @@ export type ComponentMode = "view" | "singleSelectDropdown" | "multiSelectDropdo
 
 export interface TreeConfiguration {
     searchBar: boolean;
+    css: {
+        dropdownHolder: string;
+    };
 }
 
 export interface BaseOptions extends TreeConfiguration {
@@ -13,8 +16,11 @@ export interface BaseOptions extends TreeConfiguration {
 
 export const defaults: BaseOptions = {
     mode: "view",
-    searchBar: true,
     nodes: [],
+    searchBar: true,
+    css: {
+        dropdownHolder: "",
+    },
 };
 
 export type Options = Partial<BaseOptions>;

@@ -1,8 +1,39 @@
+// ------------------------------ DEFAULTS ------------------------------
+$base-size: 0.5rem !default;
+$max-dropdown-height: 25 * $base-size;
 
-.my-class {
-    color: red;
+// ------------------------------- COLORS -------------------------------
+$black: #000 !default;
 
-    .sub-class {
-        display: block;
+// ---------------------------- UI-DEFAULTS -----------------------------
+$base-border: 1px solid $black !default;
+
+.simple-tree {
+    .simple-tree-single-selectbox {
+        height: 2 * $base-size;
+        border: $base-border;
+        padding: $base-size;
+        cursor: pointer;
+
+        .simple-tree-selected-label {
+            user-select: none;
+        }
     }
+
+    .simple-tree-chevron-up {
+        content: "U";
+        float: right;
+    }
+
+    .simple-tree-chevron-down {
+        content: "D";
+        float: right;
+    }
+}
+
+.simple-tree-dropdown-holder {
+    position: absolute;
+    border: $base-border;
+    max-height: $max-dropdown-height; // TODO: move to tree-ul
+    overflow-y: overlay; // TODO: move to tree-ul
 }

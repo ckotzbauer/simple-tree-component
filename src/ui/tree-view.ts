@@ -3,13 +3,14 @@ import { BaseOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer } from "./utils";
+import classNames from "./class-names";
 
 export class TreeView implements Instance {
     private dataService: DataService;
-    public tree: BaseTree;
+    private tree: BaseTree;
 
     constructor(private element: HTMLElement, public options: BaseOptions) {
-        const container: HTMLElement = createContainer(element);
+        const container: HTMLElement = createContainer(element, classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
         this.tree = new BaseTree(container, options, this.dataService);

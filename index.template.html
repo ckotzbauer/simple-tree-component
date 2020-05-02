@@ -1,100 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>simple-tree-component quick start</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simple-tree-component quick start</title>
 
-  <link rel="stylesheet" href="dist/simple-tree-component.css">
+    <link rel="stylesheet" href="dist/simple-tree-component.css">
 
-  <style type="text/css">
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
-    }
+    <style type="text/css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+        }
 
-    label > div {
-      margin-bottom: 4px;
-    }
-  </style>
+        label>div {
+            margin-bottom: 4px;
+        }
+    </style>
 </head>
-<body>
-  <div style="padding:15vw">
-    <div>
-      <label>
-        <div>Tree 1</div>
-        <div class="demo-root-1"></div>
-      </label>
-    </div>
-  </div>
 
-  <script src="./dist/simple-tree-component.js"></script>
-  <script>
-    const simpleTree = window["simple-tree-component"];
-    const stc = simpleTree(".demo-root-1", {
-      nodes: [
-        {
-            label: "Parent 1",
-            value: "p1",
-            disabled: false,
-            selected: false,
-            children: [
+<body>
+    <div style="padding:15vw">
+        <div>
+            <label>
+                <div>Tree 1</div>
+                <div class="demo-root-1"></div>
+            </label>
+            <label>
+                <div>Tree 2</div>
+                <div class="demo-root-2"></div>
+            </label>
+        </div>
+    </div>
+
+    <script src="./dist/simple-tree-component.js"></script>
+    <script>
+        const simpleTree = window["simple-tree-component"];
+        const stc1 = simpleTree(".demo-root-1", {
+            nodes: [
                 {
-                    label: "Parent 1 - Child 1",
-                    value: "p1c1",
-                    disabled: false,
-                    selected: false,
-                    children: [],
-                },
-                {
-                    label: "Parent 1 - Child 2",
-                    value: "p1c2",
+                    label: "Parent 1",
+                    value: "p1",
                     disabled: false,
                     selected: false,
                     children: [
                         {
-                            label: "Parent 1 - Child 2 - Sub Child 1",
-                            value: "p1c2s1",
+                            label: "Parent 1 - Child 1",
+                            value: "p1c1",
                             disabled: false,
                             selected: false,
                             children: [],
                         },
                         {
-                            label: "Parent 1 - Child 2 - Sub Child 2",
-                            value: "p1c2s2",
+                            label: "Parent 1 - Child 2",
+                            value: "p1c2",
+                            disabled: false,
+                            selected: false,
+                            children: [
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 1",
+                                    value: "p1c2s1",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 2",
+                                    value: "p1c2s2",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 2",
+                    value: "p2",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 2 - Child 1",
+                            value: "p2c1",
                             disabled: false,
                             selected: false,
                             children: [],
                         },
                     ],
                 },
-            ],
-        },
-        {
-            label: "Parent 2",
-            value: "p2",
-            disabled: false,
-            selected: false,
-            children: [
                 {
-                    label: "Parent 2 - Child 1",
-                    value: "p2c1",
+                    label: "Parent 3",
+                    value: "p3",
                     disabled: false,
                     selected: false,
                     children: [],
                 },
-            ],
-        },
-        {
-            label: "Parent 3",
-            value: "p3",
-            disabled: false,
-            selected: false,
-            children: [],
-        },
-      ]
-    });
-  </script>
+            ]
+        });
+
+        const stc2 = simpleTree(".demo-root-2", {
+            mode: "singleSelectDropdown",
+            nodes: [
+                {
+                    label: "Parent 1",
+                    value: "p1",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 1 - Child 1",
+                            value: "p1c1",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                        {
+                            label: "Parent 1 - Child 2",
+                            value: "p1c2",
+                            disabled: false,
+                            selected: false,
+                            children: [
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 1",
+                                    value: "p1c2s1",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 2",
+                                    value: "p1c2s2",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 2",
+                    value: "p2",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 2 - Child 1",
+                            value: "p2c1",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 3",
+                    value: "p3",
+                    disabled: false,
+                    selected: false,
+                    children: [],
+                },
+            ]
+        });
+    </script>
 </body>
+
 </html>
