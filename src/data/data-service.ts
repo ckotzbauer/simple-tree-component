@@ -85,7 +85,7 @@ export class DataService {
     public filter(searchTerm: string, renderCallback: () => void): void {
         const allNodeCopy: TreeNode[] = JSON.parse(JSON.stringify(this.allNodes));
         if (searchTerm) {
-            this.displayedNodes = this.filterNodes(allNodeCopy, searchTerm);
+            this.displayedNodes = this.filterNodes(allNodeCopy, searchTerm.toLowerCase());
         } else {
             this.displayedNodes = allNodeCopy;
         }
@@ -101,7 +101,7 @@ export class DataService {
         nodes.forEach((n) => {
             n.children = this.filterNodes(n.children, searchTerm);
 
-            if (n.label.includes(searchTerm) || n.children.length > 0) {
+            if (n.label.toLowerCase().includes(searchTerm) || n.children.length > 0) {
                 filtered.push(n);
             }
         });
