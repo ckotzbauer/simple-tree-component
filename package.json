@@ -60,7 +60,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.7.6",
     "terser": "4.6.13",
-    "ts-jest": "25.4.0",
+    "ts-jest": "25.5.1",
     "ts-node": "8.9.1",
     "tslib": "1.11.1",
     "typescript": "3.8.3"
