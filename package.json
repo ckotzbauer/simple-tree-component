@@ -4,7 +4,7 @@
   "description": "A simple to use ui-tree javascript component.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-chris/simple-tree-component.git"
+    "url": "git+https://github.com/ckotzbauer/simple-tree-component.git"
   },
   "keywords": [
     "js",
@@ -17,9 +17,9 @@
   "author": "Christian Kotzbauer <christian.kotzbauer@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/code-chris/simple-tree-component/issues"
+    "url": "https://github.com/ckotzbauer/simple-tree-component/issues"
   },
-  "homepage": "https://github.com/code-chris/simple-tree-component#readme",
+  "homepage": "https://github.com/ckotzbauer/simple-tree-component#readme",
   "files": [
     "dist",
     "CHANGELOG.md"

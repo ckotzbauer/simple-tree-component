@@ -20,7 +20,7 @@ If you'd like to see a certain feature in simple-tree-component, file an issue f
 3. Then, `npm start` to launch the dev environment.
 4. `src/index.ts` is the entry point, `index.html` is where you can experiment with options.
 5. Make desired changes and push. (See commit message guidelines)
-6. Go to https://github.com/code-chris/simple-tree-component/compare?expand=1
+6. Go to https://github.com/ckotzbauer/simple-tree-component/compare?expand=1
 
 ### Commit message guidelines
 
