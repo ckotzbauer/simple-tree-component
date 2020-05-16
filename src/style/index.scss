@@ -3,11 +3,15 @@
 @import "ui-defaults";
 
 .simple-tree {
-    .simple-tree-single-selectbox {
+    @mixin base-select-container() {
         height: 2 * $base-size;
         border: $base-border;
         padding: $base-size;
         cursor: pointer;
+    }
+
+    .simple-tree-single-selectbox {
+        @include base-select-container();
 
         .simple-tree-selected-label {
             user-select: none;
@@ -16,6 +20,10 @@
         .simple-tree-selected-label-watermark {
             color: $grey;
         }
+    }
+
+    .simple-tree-multi-selectbox {
+        @include base-select-container();
     }
 
     .simple-tree-chevron-up {
@@ -34,6 +42,7 @@
     border: $base-border;
     max-height: $max-dropdown-height; // TODO: move to tree-ul
     overflow-y: overlay; // TODO: move to tree-ul
+    background-color: $white;
 }
 
 .simple-tree-node-arrow {

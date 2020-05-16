@@ -32,6 +32,10 @@
                 <div>Tree 2</div>
                 <div class="demo-root-2"></div>
             </label>
+            <label>
+                <div>Tree 3</div>
+                <div class="demo-root-3"></div>
+            </label>
         </div>
     </div>
 
@@ -103,6 +107,70 @@
         });
 
         const stc2 = simpleTree(".demo-root-2", "singleSelectDropdown", {
+            nodes: [
+                {
+                    label: "Parent 1",
+                    value: "p1",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 1 - Child 1",
+                            value: "p1c1",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                        {
+                            label: "Parent 1 - Child 2",
+                            value: "p1c2",
+                            disabled: false,
+                            selected: false,
+                            children: [
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 1",
+                                    value: "p1c2s1",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                                {
+                                    label: "Parent 1 - Child 2 - Sub Child 2",
+                                    value: "p1c2s2",
+                                    disabled: false,
+                                    selected: false,
+                                    children: [],
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 2",
+                    value: "p2",
+                    disabled: false,
+                    selected: false,
+                    children: [
+                        {
+                            label: "Parent 2 - Child 1",
+                            value: "p2c1",
+                            disabled: false,
+                            selected: false,
+                            children: [],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 3",
+                    value: "p3",
+                    disabled: false,
+                    selected: false,
+                    children: [],
+                },
+            ]
+        });
+
+        const stc3 = simpleTree(".demo-root-3", "multiSelectDropdown", {
             nodes: [
                 {
                     label: "Parent 1",
