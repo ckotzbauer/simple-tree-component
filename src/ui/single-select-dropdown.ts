@@ -4,6 +4,7 @@ import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer, createDropdownContainer } from "./utils";
 import classNames from "./class-names";
+import { calculateOverlayPlacement } from "./overlay-placement";
 
 export class SingleSelectDropdown implements Instance {
     private dataService: DataService;
@@ -58,12 +59,14 @@ export class SingleSelectDropdown implements Instance {
 
     private openDropdown(): void {
         this.dropdownHolder.style.display = "inherit";
-        this.dropdownHolder.style.top = `${this.selectContainer.offsetTop + this.selectContainer.offsetHeight}px`;
-        this.dropdownHolder.style.left = `${this.selectContainer.offsetLeft}px`;
-        this.dropdownHolder.style.width = `${this.selectContainer.offsetWidth}px`;
+        calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
     }
 
     private closeDropdown(): void {
         this.dropdownHolder.style.display = "none";
+        this.dropdownHolder.style.top = ``;
+        this.dropdownHolder.style.left = ``;
+        this.dropdownHolder.style.width = ``;
+        this.dropdownHolder.style.height = ``;
     }
 }
