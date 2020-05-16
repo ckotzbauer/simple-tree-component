@@ -36,9 +36,19 @@
     margin-right: 4px;
 
     font-size: 16px;
-    font-family: arial;    
-    font-weight: bold;  
+    font-family: arial;
+    font-weight: bold;
 
-    cursor: pointer;    
+    cursor: pointer;
     user-select: none;
+}
+
+.simple-tree-node-text {
+    &.simple-tree-node-bold {
+        font-weight: bold;
+    }
+}
+
+.simple-tree-node-container-root {
+    list-style: none;
 }

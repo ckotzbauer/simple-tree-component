@@ -13,12 +13,17 @@ export interface BaseOptions extends TreeConfiguration {
     nodes: TreeNode[];
 }
 
-export const defaults: BaseOptions = {
+export interface InternalOptions extends BaseOptions {
+    highlightSelected: boolean;
+}
+
+export const defaults: InternalOptions = {
     nodes: [],
     searchBar: true,
     css: {
         dropdownHolder: "",
     },
+    highlightSelected: false,
 };
 
 export type Options = Partial<BaseOptions>;

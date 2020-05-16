@@ -1,11 +1,11 @@
 import { DataService } from "../data/data-service";
-import { BaseOptions } from "../types/options";
+import { InternalOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer, createDropdownContainer } from "./utils";
-import classNames from "./class-names";
 import { calculateOverlayPlacement } from "./overlay-placement";
 import { TreeNode } from "types/tree-node";
+import constants from "./ui-constants";
 
 export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private dataService: DataService;
@@ -18,8 +18,8 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private selectedLabel!: HTMLElement;
     private arrowElement!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: BaseOptions) {
-        const container: HTMLElement = createContainer(element, classNames.SimpleTree);
+    constructor(private element: HTMLElement, public options: InternalOptions) {
+        const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
 
@@ -36,16 +36,16 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     }
 
     private renderSelectField(container: HTMLElement): void {
-        this.selectContainer = createContainer(container, classNames.SimpleTreeSingleSelectBox);
+        this.selectContainer = createContainer(container, constants.classNames.SimpleTreeSingleSelectBox);
         this.selectContainer.onclick = () => this.toggleDropdown();
 
         this.selectedLabel = document.createElement("span");
-        this.selectedLabel.classList.add(classNames.SimpleTreeSelectedLabel);
+        this.selectedLabel.classList.add(constants.classNames.SimpleTreeSelectedLabel);
         this.selectedLabel.innerText = "hallo";
         this.selectContainer.appendChild(this.selectedLabel);
 
         this.arrowElement = document.createElement("i");
-        this.arrowElement.classList.add(classNames.SimpleTreeChevronDown);
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
         this.selectContainer.appendChild(this.arrowElement);
     }
 

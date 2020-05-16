@@ -1,5 +1,5 @@
 import { DataService } from "../data/data-service";
-import { BaseOptions } from "../types/options";
+import { InternalOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { TreeNode } from "../types/tree-node";
@@ -9,7 +9,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     public tree: BaseTree;
     public selected!: TreeNode[];
 
-    constructor(element: HTMLElement, public options: BaseOptions) {
+    constructor(element: HTMLElement, public options: InternalOptions) {
         this.dataService = new DataService(options.nodes);
         this.tree = new BaseTree(element, options, this.dataService);
     }

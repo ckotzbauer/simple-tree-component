@@ -1,18 +1,18 @@
 import { DataService } from "../data/data-service";
-import { BaseOptions } from "../types/options";
+import { InternalOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer } from "./utils";
-import classNames from "./class-names";
 import { TreeNode } from "types/tree-node";
+import constants from "./ui-constants";
 
 export class TreeView implements Instance<"view"> {
     private dataService: DataService;
     private tree: BaseTree;
     public selected!: TreeNode | TreeNode[];
 
-    constructor(private element: HTMLElement, public options: BaseOptions) {
-        const container: HTMLElement = createContainer(element, classNames.SimpleTree);
+    constructor(private element: HTMLElement, public options: InternalOptions) {
+        const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
         this.tree = new BaseTree(container, options, this.dataService);

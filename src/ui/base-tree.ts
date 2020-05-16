@@ -1,11 +1,48 @@
-import { TreeConfiguration } from "../types/options";
+import { InternalOptions } from "../types/options";
 import { DataService } from "../data/data-service";
 import { TreeNode } from "../types/tree-node";
+import constants from "./ui-constants";
 
 export class BaseTree {
-    constructor(public element: HTMLElement, public config: TreeConfiguration, public dataService: DataService) {
+    private value: TreeNode | null = null;
+
+    constructor(public element: HTMLElement, public config: InternalOptions, public dataService: DataService) {
         this.createBasicHtml();
         this.renderTree();
+    }
+
+    public get selectedNode(): TreeNode | null {
+        return this.value;
+    }
+
+    private getNodeId(node: TreeNode): string {
+        return constants.nodeIdPrefix + node.value;
+    }
+
+    private selectNode(node: TreeNode): void {
+        if (this.value) {
+            this.value.selected = false;
+            if (this.config.highlightSelected) {
+                this.element
+                    .querySelector(`#${this.getNodeId(this.value)}`)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
+                    ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
+            }
+        }
+
+        if (node !== this.value) {
+            this.value = node;
+            this.value.selected = true;
+            if (this.config.highlightSelected) {
+                this.element
+                    .querySelector(`#${this.getNodeId(this.value)}`)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
+                    ?.classList.add(constants.classNames.SimpleTreeNodeBold);
+            }
+        } else {
+            this.value.selected = false;
+            this.value = null;
+        }
     }
 
     private createBasicHtml(): void {
@@ -19,12 +56,12 @@ export class BaseTree {
         this.element.appendChild(textInput);
 
         const nodeContainer = document.createElement("div");
-        nodeContainer.classList.add("simple-tree-node-container");
+        nodeContainer.classList.add(constants.classNames.SimpleTreeNodeContainer);
         this.element.appendChild(nodeContainer);
     }
 
     private renderTree(): void {
-        const nodeContainer = this.element.querySelector("div.simple-tree-node-container");
+        const nodeContainer = this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
 
         if (nodeContainer) {
             nodeContainer.innerHTML = "";
@@ -36,18 +73,29 @@ export class BaseTree {
 
     private renderUnorderedList(nodes: TreeNode[]): HTMLUListElement {
         const ulElement: HTMLUListElement = document.createElement("ul");
-        ulElement.style.listStyle = "none";
+        ulElement.classList.add(constants.classNames.SimpleTreeNodeContainerRoot);
+
         nodes.forEach((node: TreeNode) => {
             const hasChildren = node.children?.length > 0;
             const liElement: HTMLLIElement = document.createElement("li");
+            liElement.id = this.getNodeId(node);
 
             if (hasChildren) {
                 this.addArrowSpan(liElement, node);
             }
 
             const textSpanElement = document.createElement("span");
-            textSpanElement.classList.add("simple-tree-node-text");
+
+            textSpanElement.classList.add(constants.classNames.SimpleTreeNodeText);
+            if (this.config.highlightSelected && node.selected) {
+                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeBold);
+            }
+
             textSpanElement.textContent = node.label;
+            textSpanElement.addEventListener("click", () => {
+                this.selectNode(node);
+            });
+
             liElement.appendChild(textSpanElement);
 
             ulElement.appendChild(liElement);
@@ -62,7 +110,7 @@ export class BaseTree {
 
     private addArrowSpan(liElement: HTMLLIElement, node: TreeNode): void {
         const arrowSpan = document.createElement("span");
-        arrowSpan.classList.add("simple-tree-node-arrow");
+        arrowSpan.classList.add(constants.classNames.SimpleTreeNodeArrow);
         arrowSpan.textContent = node.collapsed ? ">" : "v";
 
         arrowSpan.addEventListener("click", () => {
