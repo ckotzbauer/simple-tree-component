@@ -4,9 +4,11 @@ export type ComponentMode = "view" | "singleSelectDropdown" | "multiSelectDropdo
 
 export interface TreeConfiguration {
     searchBar: boolean;
+    watermark: string;
     css: {
         dropdownHolder: string;
     };
+    templateSelectedText: (node: TreeNode) => string;
 }
 
 export interface BaseOptions extends TreeConfiguration {
@@ -16,9 +18,11 @@ export interface BaseOptions extends TreeConfiguration {
 export const defaults: BaseOptions = {
     nodes: [],
     searchBar: true,
+    watermark: "Please select a value...",
     css: {
         dropdownHolder: "",
     },
+    templateSelectedText: (node: TreeNode) => node.label,
 };
 
 export type Options = Partial<BaseOptions>;

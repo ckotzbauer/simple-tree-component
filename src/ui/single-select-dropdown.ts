@@ -41,8 +41,12 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
         this.selectedLabel = document.createElement("span");
         this.selectedLabel.classList.add(classNames.SimpleTreeSelectedLabel);
-        this.selectedLabel.innerText = "hallo";
+        this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
         this.selectContainer.appendChild(this.selectedLabel);
+
+        if (!this.selected) {
+            this.selectedLabel.classList.add(classNames.SimpleTreeSelectedLabelWatermark);
+        }
 
         this.arrowElement = document.createElement("i");
         this.arrowElement.classList.add(classNames.SimpleTreeChevronDown);

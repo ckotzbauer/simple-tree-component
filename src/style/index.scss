@@ -12,6 +12,10 @@
         .simple-tree-selected-label {
             user-select: none;
         }
+
+        .simple-tree-selected-label-watermark {
+            color: $grey;
+        }
     }
 
     .simple-tree-chevron-up {
@@ -36,9 +40,9 @@
     margin-right: 4px;
 
     font-size: 16px;
-    font-family: arial;    
-    font-weight: bold;  
+    font-family: arial;
+    font-weight: bold;
 
-    cursor: pointer;    
+    cursor: pointer;
     user-select: none;
 }
