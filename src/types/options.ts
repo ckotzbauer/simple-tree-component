@@ -15,7 +15,11 @@ export interface BaseOptions extends TreeConfiguration {
     nodes: TreeNode[];
 }
 
-export const defaults: BaseOptions = {
+export interface InternalOptions extends BaseOptions {
+    highlightSelected: boolean;
+}
+
+export const defaults: InternalOptions = {
     nodes: [],
     searchBar: true,
     watermark: "Please select a value...",
@@ -23,6 +27,7 @@ export const defaults: BaseOptions = {
         dropdownHolder: "",
     },
     templateSelectedText: (node: TreeNode) => node.label,
+    highlightSelected: false,
 };
 
 export type Options = Partial<BaseOptions>;

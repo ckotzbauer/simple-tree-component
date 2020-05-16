@@ -55,3 +55,13 @@
     cursor: pointer;
     user-select: none;
 }
+
+.simple-tree-node-text {
+    &.simple-tree-node-bold {
+        font-weight: bold;
+    }
+}
+
+.simple-tree-node-container-root {
+    list-style: none;
+}

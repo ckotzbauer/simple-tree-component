@@ -1,10 +1,10 @@
 import { DataService } from "../data/data-service";
-import { BaseOptions } from "../types/options";
+import { InternalOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { TreeNode } from "../types/tree-node";
 import { createContainer, createDropdownContainer } from "./utils";
-import classNames from "./class-names";
+import constants from "./ui-constants";
 import { calculateOverlayPlacement } from "./overlay-placement";
 
 export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
@@ -16,8 +16,8 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: BaseOptions) {
-        const container: HTMLElement = createContainer(element, classNames.SimpleTree);
+    constructor(private element: HTMLElement, public options: InternalOptions) {
+        const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
 
@@ -34,7 +34,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     }
 
     private renderSelectField(container: HTMLElement): void {
-        this.selectContainer = createContainer(container, classNames.SimpleTreeMultiSelectBox);
+        this.selectContainer = createContainer(container, constants.classNames.SimpleTreeMultiSelectBox);
         this.selectContainer.onclick = () => this.toggleDropdown();
     }
 

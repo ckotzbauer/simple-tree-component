@@ -19,6 +19,7 @@ export function createSimpleTree<K extends keyof TreeModeNameMap>(
     } else if (mode === "multiSelectDropdown") {
         return new MultiSelectDropdown(element, config) as any;
     } else {
+        config.highlightSelected = true;
         return new TreeView(element, config) as any;
     }
 }
