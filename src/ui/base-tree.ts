@@ -4,45 +4,36 @@ import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 
 export class BaseTree {
-    private value: TreeNode | null = null;
-
-    constructor(public element: HTMLElement, public config: InternalOptions, public dataService: DataService) {
+    constructor(
+        public element: HTMLElement,
+        public config: InternalOptions,
+        public dataService: DataService,
+        private nodeSelectedCallback: (node: TreeNode) => void
+    ) {
         this.createBasicHtml();
         this.renderTree();
     }
 
-    public get selectedNode(): TreeNode | null {
-        return this.value;
-    }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    public destroy(): void {}
 
-    private getNodeId(node: TreeNode): string {
-        return constants.nodeIdPrefix + node.value;
-    }
-
-    private selectNode(node: TreeNode): void {
-        if (this.value) {
-            this.value.selected = false;
-            if (this.config.highlightSelected) {
-                this.element
-                    .querySelector(`#${this.getNodeId(this.value)}`)
-                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
-                    ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
-            }
+    private onNodeSelect(node: TreeNode): void {
+        if (this.config.highlightSelected) {
+            this.setHighlighting(node);
         }
 
-        if (node !== this.value) {
-            this.value = node;
-            this.value.selected = true;
-            if (this.config.highlightSelected) {
-                this.element
-                    .querySelector(`#${this.getNodeId(this.value)}`)
-                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
-                    ?.classList.add(constants.classNames.SimpleTreeNodeBold);
-            }
-        } else {
-            this.value.selected = false;
-            this.value = null;
-        }
+        this.nodeSelectedCallback(node);
+    }
+
+    private setHighlighting(node: TreeNode): void {
+        this.element
+            .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)
+            ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
+
+        this.element
+            .querySelector(`#${this.getNodeId(node)}`)
+            ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
+            ?.classList.add(constants.classNames.SimpleTreeNodeBold);
     }
 
     private createBasicHtml(): void {
@@ -93,7 +84,7 @@ export class BaseTree {
 
             textSpanElement.textContent = node.label;
             textSpanElement.addEventListener("click", () => {
-                this.selectNode(node);
+                this.onNodeSelect(node);
             });
 
             liElement.appendChild(textSpanElement);
@@ -130,6 +121,7 @@ export class BaseTree {
         });
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    public destroy(): void {}
+    private getNodeId(node: TreeNode): string {
+        return constants.nodeIdPrefix + node.value;
+    }
 }

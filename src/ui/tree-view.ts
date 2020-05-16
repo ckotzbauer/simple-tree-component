@@ -15,7 +15,7 @@ export class TreeView implements Instance<"view"> {
         const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
-        this.tree = new BaseTree(container, options, this.dataService);
+        this.tree = new BaseTree(container, options, this.dataService, this.nodeSelected.bind(this));
     }
 
     public destroy(): void {
@@ -24,4 +24,7 @@ export class TreeView implements Instance<"view"> {
 
         this.dataService.clear();
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    private nodeSelected(_node: TreeNode): void {}
 }

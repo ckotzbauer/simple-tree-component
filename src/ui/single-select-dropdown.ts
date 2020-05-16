@@ -24,7 +24,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dataService = new DataService(options.nodes);
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
-        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService);
+        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.nodeSelected.bind(this));
         this.renderSelectField(container);
     }
 
@@ -34,6 +34,9 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
         this.dataService.clear();
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+    private nodeSelected(_node: TreeNode): void {}
 
     private renderSelectField(container: HTMLElement): void {
         this.selectContainer = createContainer(container, constants.classNames.SimpleTreeSingleSelectBox);
