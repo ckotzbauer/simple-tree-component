@@ -1,47 +1,10 @@
+import { initialize, beforeEachTest, createInstance } from "../test-utils";
 import simpleTree from "../index";
-import { Instance } from "../types/instance";
-import { Options } from "../types/options";
 
-jest.useFakeTimers();
-
-let elem: undefined | HTMLInputElement, stc: Instance;
-const UA = navigator.userAgent;
-let mockAgent: string | undefined;
-
-(navigator as any).__defineGetter__("userAgent", function () {
-    return mockAgent || UA;
-});
-
-function createInstance(config?: Options, el?: HTMLElement) {
-    stc = simpleTree(el || elem || document.createElement("input"), config || {}) as Instance;
-    return stc;
-}
-
-/*function simulate(eventType: string, onElement: Node, options?: object, type?: any) {
-    const eventOptions = Object.assign(options || {}, { bubbles: true });
-    const evt = new (type || CustomEvent)(eventType, eventOptions);
-    try {
-        Object.assign(evt, eventOptions);
-    } catch (e) { }
-
-    onElement.dispatchEvent(evt);
-}*/
-
-function beforeEachTest() {
-    mockAgent = undefined;
-    jest.runAllTimers();
-    (document.activeElement as HTMLElement).blur();
-
-    stc && stc.destroy && stc.destroy();
-
-    if (elem === undefined) {
-        elem = document.createElement("input");
-        document.body.appendChild(elem);
-    }
-}
+const ctx = initialize();
 
 describe("simpleTree", () => {
-    beforeEach(beforeEachTest);
+    beforeEach(() => beforeEachTest(ctx));
 
     describe("init", () => {
         it("should gracefully handle no elements", () => {
@@ -49,7 +12,7 @@ describe("simpleTree", () => {
         });
 
         it("should use default options", () => {
-            const tree = createInstance();
+            const tree = createInstance(ctx);
             expect(tree.options).toEqual(
                 expect.objectContaining({
                     mode: "view",
@@ -59,7 +22,7 @@ describe("simpleTree", () => {
         });
 
         it("should overwrite options correctly", () => {
-            const tree = createInstance({ mode: "singleSelectDropdown" });
+            const tree = createInstance(ctx, { mode: "singleSelectDropdown" });
             expect(tree.options).toEqual(
                 expect.objectContaining({
                     mode: "singleSelectDropdown",
