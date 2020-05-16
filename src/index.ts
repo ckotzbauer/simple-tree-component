@@ -1,12 +1,16 @@
-import { Instance, SimpleTreeFn } from "./types/instance";
-import { Options } from "./types/options";
+import { Instance, SimpleTreeFn, TreeModeNameMap } from "./types/instance";
+import { Options, ComponentMode } from "./types/options";
 import { createSimpleTree } from "./factory";
 
-function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | Instance[] {
+function _simpleTree<K extends keyof TreeModeNameMap>(
+    nodeList: ArrayLike<Node>,
+    mode: K,
+    config?: Options
+): Instance<K> | Instance<K>[] {
     // static list
     const nodes = Array.prototype.slice.call(nodeList).filter((x) => x instanceof HTMLElement) as HTMLElement[];
 
-    const instances: Instance[] = [];
+    const instances: Instance<K>[] = [];
     for (let i = 0; i < nodes.length; i++) {
         const node: any = nodes[i];
         try {
@@ -15,7 +19,7 @@ function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | In
                 node._simpleTree = undefined;
             }
 
-            node._simpleTree = createSimpleTree(node, config || {});
+            node._simpleTree = createSimpleTree(node, mode, config || {});
             instances.push(node._simpleTree);
         } catch (e) {
             console.error(e);
@@ -25,13 +29,13 @@ function _simpleTree(nodeList: ArrayLike<Node>, config?: Options): Instance | In
     return instances.length === 1 ? instances[0] : instances;
 }
 
-const simpleTree = function (selector: ArrayLike<Node> | Node | string, config?: Options) {
+const simpleTree = function (selector: ArrayLike<Node> | Node | string, mode: ComponentMode, config?: Options) {
     if (typeof selector === "string") {
-        return _simpleTree(window.document.querySelectorAll(selector), config);
+        return _simpleTree(window.document.querySelectorAll(selector), mode, config);
     } else if (selector instanceof Node) {
-        return _simpleTree([selector], config);
+        return _simpleTree([selector], mode, config);
     } else {
-        return _simpleTree(selector, config);
+        return _simpleTree(selector, mode, config);
     }
 } as SimpleTreeFn;
 

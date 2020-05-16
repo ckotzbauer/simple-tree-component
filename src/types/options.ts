@@ -10,12 +10,10 @@ export interface TreeConfiguration {
 }
 
 export interface BaseOptions extends TreeConfiguration {
-    mode: ComponentMode;
     nodes: TreeNode[];
 }
 
 export const defaults: BaseOptions = {
-    mode: "view",
     nodes: [],
     searchBar: true,
     css: {

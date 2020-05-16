@@ -5,11 +5,13 @@ import { BaseTree } from "./base-tree";
 import { createContainer, createDropdownContainer } from "./utils";
 import classNames from "./class-names";
 import { calculateOverlayPlacement } from "./overlay-placement";
+import { TreeNode } from "types/tree-node";
 
-export class SingleSelectDropdown implements Instance {
+export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
     private dropdownOpen = false;
+    public selected!: TreeNode;
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;

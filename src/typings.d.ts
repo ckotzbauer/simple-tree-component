@@ -5,7 +5,7 @@ import { Options as _Options } from "./types/options";
 declare const simpleTree: SimpleTreeFn;
 
 declare namespace simpleTree {
-    export type Instance = _Instance;
+    export type Instance = _Instance<"singleSelectDropdown" | "multiSelectDropdown" | "view">;
 
     export namespace Options {
         export type Options = _Options;

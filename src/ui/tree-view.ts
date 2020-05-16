@@ -4,10 +4,12 @@ import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer } from "./utils";
 import classNames from "./class-names";
+import { TreeNode } from "types/tree-node";
 
-export class TreeView implements Instance {
+export class TreeView implements Instance<"view"> {
     private dataService: DataService;
     private tree: BaseTree;
+    public selected!: TreeNode | TreeNode[];
 
     constructor(private element: HTMLElement, public options: BaseOptions) {
         const container: HTMLElement = createContainer(element, classNames.SimpleTree);

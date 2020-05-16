@@ -1,20 +1,24 @@
-import { Instance } from "./types/instance";
+import { Instance, TreeModeNameMap } from "./types/instance";
 import { Options, defaults } from "./types/options";
 import { SingleSelectDropdown } from "./ui/single-select-dropdown";
 import { MultiSelectDropdown } from "./ui/multi-select-dropdown";
 import { TreeView } from "./ui/tree-view";
 
-export function createSimpleTree(element: HTMLElement, instanceConfig: Options): Instance {
+export function createSimpleTree<K extends keyof TreeModeNameMap>(
+    element: HTMLElement,
+    mode: K,
+    instanceConfig: Options
+): Instance<K> {
     const config = {
         ...defaults,
         ...instanceConfig,
     };
 
-    if (config.mode === "singleSelectDropdown") {
-        return new SingleSelectDropdown(element, config);
-    } else if (config.mode === "multiSelectDropdown") {
-        return new MultiSelectDropdown(element, config);
+    if (mode === "singleSelectDropdown") {
+        return new SingleSelectDropdown(element, config) as any;
+    } else if (mode === "multiSelectDropdown") {
+        return new MultiSelectDropdown(element, config) as any;
     } else {
-        return new TreeView(element, config);
+        return new TreeView(element, config) as any;
     }
 }

@@ -1,10 +1,10 @@
 import simpleTree from "./index";
-import { Instance } from "./types/instance";
+import { Instance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
 
-export interface Context {
+export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;
-    stc: Instance | undefined;
+    stc: Instance<K> | undefined;
     UA: string;
     mockAgent: string | undefined;
 }
@@ -19,10 +19,10 @@ export function simulate(eventType: string, onElement: Node, options?: object, t
     onElement.dispatchEvent(evt);
 }
 
-export function initialize() {
+export function initialize<K extends keyof TreeModeNameMap>() {
     jest.useFakeTimers();
 
-    const ctx: Context = {
+    const ctx: Context<K> = {
         elem: undefined,
         UA: navigator.userAgent,
         stc: undefined,
@@ -36,7 +36,7 @@ export function initialize() {
     return ctx;
 }
 
-export function beforeEachTest(ctx: Context) {
+export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>) {
     ctx.mockAgent = undefined;
     jest.runAllTimers();
     (document.activeElement as HTMLElement).blur();
@@ -49,7 +49,7 @@ export function beforeEachTest(ctx: Context) {
     }
 }
 
-export function createInstance(ctx: Context, config?: Options, el?: HTMLElement) {
-    ctx.stc = simpleTree(el || ctx.elem || document.createElement("input"), config || {}) as Instance;
+export function createInstance<K extends keyof TreeModeNameMap>(ctx: Context<K>, mode: K, config?: Options, el?: HTMLElement) {
+    ctx.stc = simpleTree<K>(el || ctx.elem || document.createElement("input"), mode, config || {}) as Instance<K>;
     return ctx.stc;
 }

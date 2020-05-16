@@ -1,17 +1,17 @@
 import { Options } from "./options";
-import { Instance } from "./instance";
+import { Instance, TreeModeNameMap } from "./instance";
 
 declare global {
     interface HTMLElement {
-        simpleTree: (config?: Options) => Instance;
-        _simpleTree?: Instance;
+        simpleTree: <K extends keyof TreeModeNameMap>(mode: K, config?: Options) => Instance<K>;
+        _simpleTree?: Instance<any>;
     }
 
     interface NodeList {
-        simpleTree: (config?: Options) => Instance | Instance[];
+        simpleTree: <K extends keyof TreeModeNameMap>(mode: K, config?: Options) => Instance<K> | Instance<K>[];
     }
 
     interface HTMLCollection {
-        simpleTree: (config?: Options) => Instance | Instance[];
+        simpleTree: <K extends keyof TreeModeNameMap>(mode: K, config?: Options) => Instance<K> | Instance<K>[];
     }
 }

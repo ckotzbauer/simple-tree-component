@@ -38,7 +38,7 @@
     <script src="./dist/simple-tree-component.js"></script>
     <script>
         const simpleTree = window["simple-tree-component"];
-        const stc1 = simpleTree(".demo-root-1", {
+        const stc1 = simpleTree(".demo-root-1", "view", {
             nodes: [
                 {
                     label: "Parent 1",
@@ -102,8 +102,7 @@
             ]
         });
 
-        const stc2 = simpleTree(".demo-root-2", {
-            mode: "singleSelectDropdown",
+        const stc2 = simpleTree(".demo-root-2", "singleSelectDropdown", {
             nodes: [
                 {
                     label: "Parent 1",
