@@ -87,7 +87,7 @@ export class BaseTree {
 
             textSpanElement.classList.add(constants.classNames.SimpleTreeNodeText);
             if (this.config.highlightSelected && this.highlightedNode === node.value) {
-                this.setHighlighting(node);
+                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeBold);
             }
 
             textSpanElement.textContent = node.label;
