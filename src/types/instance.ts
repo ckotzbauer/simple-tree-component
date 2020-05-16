@@ -8,9 +8,10 @@ export interface TreeModeNameMap {
 }
 
 export interface Instance<K extends keyof TreeModeNameMap> {
-    destroy(): void;
     options: BaseOptions;
     selected: TreeModeNameMap[K];
+    destroy(): void;
+    setSelected(value: TreeModeNameMap[K]): void;
 }
 
 export interface SimpleTreeFn {

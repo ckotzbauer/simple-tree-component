@@ -25,6 +25,12 @@ export class TreeView implements Instance<"view"> {
         this.dataService.clear();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    private nodeSelected(_node: TreeNode): void {}
+    private nodeSelected(node: TreeNode): void {
+        this.selected = node;
+    }
+
+    public setSelected(value: TreeNode | TreeNode[]): void {
+        this.selected = value;
+        this.tree.setHighlighting(value as TreeNode); // TODO:
+    }
 }

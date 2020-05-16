@@ -35,8 +35,14 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dataService.clear();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-    private nodeSelected(_node: TreeNode): void {}
+    private nodeSelected(node: TreeNode): void {
+        this.selected = node;
+    }
+
+    public setSelected(value: TreeNode): void {
+        this.selected = value;
+        this.tree.setHighlighting(value);
+    }
 
     private renderSelectField(container: HTMLElement): void {
         this.selectContainer = createContainer(container, constants.classNames.SimpleTreeSingleSelectBox);

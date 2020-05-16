@@ -27,7 +27,7 @@ export class BaseTree {
         this.nodeSelectedCallback(node);
     }
 
-    private setHighlighting(node: TreeNode): void {
+    public setHighlighting(node: TreeNode): void {
         this.element
             .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)
             ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
