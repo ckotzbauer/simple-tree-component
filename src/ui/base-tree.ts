@@ -4,6 +4,8 @@ import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 
 export class BaseTree {
+    private highlightedNode: string | null = null;
+
     constructor(
         public element: HTMLElement,
         public config: InternalOptions,
@@ -30,10 +32,16 @@ export class BaseTree {
             .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)
             ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
 
-        this.element
-            .querySelector(`#${this.getNodeId(node)}`)
-            ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
-            ?.classList.add(constants.classNames.SimpleTreeNodeBold);
+        if (this.highlightedNode !== node.value) {
+            this.element
+                .querySelector(`#${this.getNodeId(node)}`)
+                ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
+                ?.classList.add(constants.classNames.SimpleTreeNodeBold);
+
+            this.highlightedNode = node.value;
+        } else {
+            this.highlightedNode = null;
+        }
     }
 
     private createBasicHtml(): void {
@@ -78,8 +86,8 @@ export class BaseTree {
             const textSpanElement = document.createElement("span");
 
             textSpanElement.classList.add(constants.classNames.SimpleTreeNodeText);
-            if (this.config.highlightSelected && node.selected) {
-                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeBold);
+            if (this.config.highlightSelected && this.highlightedNode === node.value) {
+                this.setHighlighting(node);
             }
 
             textSpanElement.textContent = node.label;
