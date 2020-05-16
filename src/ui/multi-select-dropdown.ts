@@ -11,7 +11,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
     private dropdownOpen = false;
-    public selected!: TreeNode[];
+    public selected: TreeNode[] = [];
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
@@ -33,14 +33,17 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         this.dataService.clear();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    private nodeSelected(_node: TreeNode): void {
-        // TODO: this.selected = node;
+    private nodeSelected(node: TreeNode): void {
+        const index = this.selected.findIndex((s) => s.value === node.value);
+        if (index !== -1) {
+            this.selected.slice(this.selected.indexOf(node), 1);
+        } else {
+            this.selected.push(node);
+        }
     }
 
     public setSelected(value: TreeNode[]): void {
         this.selected = value;
-        // TODO: this.tree.setHighlighting(value);
     }
 
     private renderSelectField(container: HTMLElement): void {
