@@ -1,10 +1,22 @@
 import constants from "./ui-constants";
 
-export function createContainer(element: HTMLElement, ...cssClasses: string[]): HTMLElement {
-    const container: HTMLElement = document.createElement("div");
+function createInternalContainer(element: HTMLElement, type: string, ...cssClasses: string[]): HTMLElement {
+    const container: HTMLElement = document.createElement(type);
     container.classList.add(...cssClasses.filter((s) => s));
     element.appendChild(container);
     return container;
+}
+
+export function createContainer(element: HTMLElement, ...cssClasses: string[]): HTMLElement {
+    return createInternalContainer(element, "div", ...cssClasses);
+}
+
+export function createUnorderedList(element: HTMLElement, ...cssClasses: string[]): HTMLElement {
+    return createInternalContainer(element, "ul", ...cssClasses);
+}
+
+export function createListItem(element: HTMLElement, ...cssClasses: string[]): HTMLElement {
+    return createInternalContainer(element, "li", ...cssClasses);
 }
 
 export function createDropdownContainer(customCssClass: string): HTMLElement {

@@ -3,7 +3,7 @@ import { InternalOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { TreeNode } from "../types/tree-node";
-import { createContainer, createDropdownContainer } from "./utils";
+import { createContainer, createDropdownContainer, createUnorderedList, createListItem } from "./utils";
 import constants from "./ui-constants";
 import { calculateOverlayPlacement } from "./overlay-placement";
 
@@ -15,6 +15,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
+    private pillboxContainer!: HTMLElement;
 
     constructor(private element: HTMLElement, public options: InternalOptions) {
         const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
@@ -36,21 +37,38 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private nodeSelected(node: TreeNode): void {
         const index = this.selected.findIndex((s) => s.value === node.value);
         if (index !== -1) {
-            this.selected.slice(this.selected.indexOf(node), 1);
+            this.selected.splice(index, 1);
         } else {
             this.selected.push(node);
         }
 
+        this.renderPillboxes();
         this.closeDropdown();
     }
 
     public setSelected(value: TreeNode[]): void {
         this.selected = value;
+        this.renderPillboxes();
     }
 
     private renderSelectField(container: HTMLElement): void {
         this.selectContainer = createContainer(container, constants.classNames.SimpleTreeMultiSelectBox);
         this.selectContainer.onclick = () => this.toggleDropdown();
+
+        this.pillboxContainer = createUnorderedList(this.selectContainer, constants.classNames.SimpleTreePillboxHolder);
+        this.renderPillboxes();
+    }
+
+    private renderPillboxes(): void {
+        this.pillboxContainer.innerHTML = "";
+        this.selected.forEach((item: TreeNode) => {
+            const listItem = createListItem(this.pillboxContainer, "");
+            listItem.innerText = this.options.templateSelectedText(item);
+            const arrow: HTMLElement = document.createElement("span");
+            arrow.innerText = "X";
+            arrow.addEventListener("click", () => this.nodeSelected(item));
+            listItem.appendChild(arrow);
+        });
     }
 
     private toggleDropdown(): void {
