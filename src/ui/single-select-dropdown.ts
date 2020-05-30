@@ -80,6 +80,8 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dropdownHolder.style.display = "inherit";
         this.tree.renderContent();
         calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
+        this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
     }
 
     private closeDropdown(): void {
@@ -88,5 +90,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dropdownHolder.style.left = ``;
         this.dropdownHolder.style.width = ``;
         this.dropdownHolder.style.height = ``;
+        this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
     }
 }

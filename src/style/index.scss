@@ -12,6 +12,7 @@
     .simple-tree-single-selectbox {
         @include base-select-container();
         padding: $base-size;
+        padding-right: $base-size * 3;
         height: $base-size * 2;
 
         .simple-tree-selected-label {
@@ -26,6 +27,7 @@
     .simple-tree-multi-selectbox {
         @include base-select-container();
         padding-bottom: $base-size * 0.5;
+        padding-right: $base-size * 3;
         min-height: $base-size * 3.5;
 
         .simple-tree-pillbox-holder {
@@ -50,15 +52,22 @@
                 }
             }
         }
+
+        .simple-tree-chevron-up,
+        .simple-tree-chevron-down {
+            margin-top: $base-size;
+        }
     }
 
     .simple-tree-chevron-up {
         content: "U";
+        margin-right: $base-size * -2;
         float: right;
     }
 
     .simple-tree-chevron-down {
-        content: "D";
+        @include generate-chevron-down($base-size * 1.5, $black);
+        margin-right: $base-size * -2;
         float: right;
     }
 }

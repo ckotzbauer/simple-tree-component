@@ -16,6 +16,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
     private pillboxContainer!: HTMLElement;
+    private arrowElement!: HTMLElement;
 
     constructor(private element: HTMLElement, public options: InternalOptions) {
         const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
@@ -57,6 +58,10 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
 
         this.pillboxContainer = createUnorderedList(this.selectContainer, constants.classNames.SimpleTreePillboxHolder);
         this.renderPillboxes();
+
+        this.arrowElement = document.createElement("i");
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
+        this.selectContainer.appendChild(this.arrowElement);
     }
 
     private renderPillboxes(): void {
@@ -85,6 +90,8 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         this.dropdownHolder.style.display = "inherit";
         this.tree.renderContent();
         calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
+        this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
     }
 
     private closeDropdown(): void {
@@ -93,5 +100,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         this.dropdownHolder.style.left = ``;
         this.dropdownHolder.style.width = ``;
         this.dropdownHolder.style.height = ``;
+        this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
+        this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
     }
 }
