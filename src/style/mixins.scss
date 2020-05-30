@@ -22,9 +22,9 @@
     width: 0rem;
 }
 
-@mixin generate-cross($size, $color) {
-    width: $size;
-    height: $size;
+@mixin generate-cross($width, $color) {
+    width: $width;
+    height: $width;
     position: relative;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg); /* Safari and Chrome */
@@ -39,15 +39,15 @@
 
     &:before {
         left: 50%;
-        width: 30%;
-        margin-left: -15%;
+        width: 20%;
+        margin-left: -10%;
         height: 100%;
     }
 
     &:after {
         top: 50%;
-        height: 30%;
-        margin-top: -15%;
+        height: 20%;
+        margin-top: -10%;
         width: 100%;
     }
 }
