@@ -1,0 +1,21 @@
+@mixin generate-chevron-down($width, $color) {
+    border-left: $width * 0.5 solid transparent;
+    border-right: $width * 0.5 solid transparent;
+    border-top: $width solid $color;
+    height: 0rem;
+    width: 0rem;
+}
+
+@mixin generate-chevron-right($width, $color) {
+    border-top: $width * 0.5 solid transparent;
+    border-left: $width solid $color;
+    border-bottom: $width * 0.5 solid transparent;
+    height: 0rem;
+    width: 0rem;
+}
+
+@mixin text-overflow() {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
