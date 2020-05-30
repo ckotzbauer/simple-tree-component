@@ -4,7 +4,6 @@
 
 .simple-tree {
     @mixin base-select-container() {
-        height: 2 * $base-size;
         border: $base-border;
         cursor: pointer;
     }
@@ -12,6 +11,7 @@
     .simple-tree-single-selectbox {
         @include base-select-container();
         padding: $base-size;
+        height: $base-size * 2;
 
         .simple-tree-selected-label {
             user-select: none;
@@ -24,20 +24,22 @@
 
     .simple-tree-multi-selectbox {
         @include base-select-container();
-        padding-top: $base-size * 0.5;
-        padding-bottom: $base-size * 1.5;
+        padding-bottom: $base-size * 0.5;
+        min-height: $base-size * 3.5;
 
         .simple-tree-pillbox-holder {
             list-style: none;
             display: inline-block;
             padding: 0;
             margin: 0;
+            min-height: $base-size * 3;
 
             li {
                 display: inline-block;
                 border: $base-border;
                 padding: $base-size / 4;
                 margin-left: $base-size * 0.5;
+                margin-top: $base-size * 0.5;
                 cursor: default;
 
                 span {
