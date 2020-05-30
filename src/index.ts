@@ -2,6 +2,7 @@ import { Instance, SimpleTreeFn, TreeModeNameMap } from "./types/instance";
 import { Options, ComponentMode } from "./types/options";
 import { createSimpleTree } from "./factory";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 function _simpleTree<K extends keyof TreeModeNameMap>(
     nodeList: ArrayLike<Node>,
     mode: K,

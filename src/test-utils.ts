@@ -9,7 +9,8 @@ export interface Context<K extends keyof TreeModeNameMap> {
     mockAgent: string | undefined;
 }
 
-export function simulate(eventType: string, onElement: Node, options?: object, type?: any) {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function simulate(eventType: string, onElement: Node, options?: unknown, type?: any): void {
     const eventOptions = Object.assign(options || {}, { bubbles: true });
     const evt = new (type || CustomEvent)(eventType, eventOptions);
     try {
@@ -19,7 +20,7 @@ export function simulate(eventType: string, onElement: Node, options?: object, t
     onElement.dispatchEvent(evt);
 }
 
-export function initialize<K extends keyof TreeModeNameMap>() {
+export function initialize<K extends keyof TreeModeNameMap>(): Context<K> {
     jest.useFakeTimers();
 
     const ctx: Context<K> = {
@@ -36,7 +37,7 @@ export function initialize<K extends keyof TreeModeNameMap>() {
     return ctx;
 }
 
-export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>) {
+export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>): void {
     ctx.mockAgent = undefined;
     jest.runAllTimers();
     (document.activeElement as HTMLElement).blur();
@@ -49,7 +50,12 @@ export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>)
     }
 }
 
-export function createInstance<K extends keyof TreeModeNameMap>(ctx: Context<K>, mode: K, config?: Options, el?: HTMLElement) {
+export function createInstance<K extends keyof TreeModeNameMap>(
+    ctx: Context<K>,
+    mode: K,
+    config?: Options,
+    el?: HTMLElement
+): Instance<K> {
     ctx.stc = simpleTree<K>(el || ctx.elem || document.createElement("input"), mode, config || {}) as Instance<K>;
     return ctx.stc;
 }

@@ -13,6 +13,7 @@ import rollupConfig, { getConfig } from "./config/rollup";
 import * as pkg from "./package.json";
 const version = `/* simple-tree-component v${pkg.version},, @license MIT */`;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const DEV_MODE = process.argv.indexOf("--dev") > -1;
 
 const paths = {
@@ -113,7 +114,7 @@ function setupWatchers() {
     });
 }
 
-function watch(path: string, cb: (path: string) => void = (_s: string) => _s) {
+function watch(path: string, cb: (path: string) => void = (s: string) => s) {
     watchers.push(
         chokidar
             .watch(path, {
