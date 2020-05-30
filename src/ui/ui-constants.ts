@@ -16,6 +16,11 @@ export default {
         SimpleTreeNodeBold: "simple-tree-node-bold",
         SimpleTreeNodeSelectable: "simple-tree-node-selectable",
         SimpleTreeNodeArrow: "simple-tree-node-arrow",
+        SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
+        SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
+        SimpleTreeNodeChevronClickable: "simple-tree-node-chevron-clickable",
+        SimpleTreeNodeChevronDown: "simple-tree-node-chevron-down",
+        SimpleTreeNodeChevronRight: "simple-tree-node-chevron-right",
     },
     nodeIdPrefix: "simple-tree-node",
 };

@@ -50,6 +50,7 @@ export class BaseTree {
     private createBasicHtml(): void {
         const textInput: HTMLInputElement = document.createElement("input");
         textInput.type = "text";
+        textInput.autofocus = false;
 
         textInput.addEventListener("input", (e: Event) => {
             this.dataService.filter((e.target as HTMLInputElement).value, this.renderTree.bind(this));
@@ -82,25 +83,31 @@ export class BaseTree {
             const liElement: HTMLLIElement = document.createElement("li");
             liElement.id = this.getNodeId(node);
 
-            if (hasChildren) {
-                this.addArrowSpan(liElement, node);
-            }
+            const lineWrapperDiv = document.createElement("div");
+            lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
 
-            const textSpanElement = document.createElement("span");
+            const textDivElement = document.createElement("div");
 
-            textSpanElement.classList.add(constants.classNames.SimpleTreeNodeText);
+            // if (hasChildren) {
+            this.addChevronDiv(lineWrapperDiv, node, hasChildren);
+            // } else {
+            //    textDivElement.classList.add("no-chevron");
+            // }
+
+            textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
             if (this.config.highlightSelected && this.highlightedNode === node.value) {
-                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeBold);
+                textDivElement.classList.add(constants.classNames.SimpleTreeNodeBold);
             }
 
-            textSpanElement.textContent = node.label;
+            textDivElement.textContent = node.label;
 
             if (node.selectable) {
-                textSpanElement.addEventListener("click", () => this.onNodeSelect(node));
-                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
+                textDivElement.addEventListener("click", () => this.onNodeSelect(node));
+                textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }
 
-            liElement.appendChild(textSpanElement);
+            lineWrapperDiv.appendChild(textDivElement);
+            liElement.appendChild(lineWrapperDiv);
 
             ulElement.appendChild(liElement);
 
@@ -112,19 +119,31 @@ export class BaseTree {
         return ulElement;
     }
 
-    private addArrowSpan(liElement: HTMLLIElement, node: TreeNode): void {
-        const arrowSpan = document.createElement("span");
-        arrowSpan.classList.add(constants.classNames.SimpleTreeNodeArrow);
-        arrowSpan.textContent = node.collapsed ? ">" : "v";
+    private addChevronDiv(divElement: HTMLDivElement, node: TreeNode, hasChildren: boolean): void {
+        const chevronDivContainer = document.createElement("div");
+        chevronDivContainer.classList.add(constants.classNames.SimpleTreeNodeChevronContainer);
 
-        arrowSpan.addEventListener("click", () => {
-            const flag = !node.collapsed;
-            node.collapsed = flag;
-            this.collapseNode(node, flag);
-            this.renderTree();
-        });
+        if (hasChildren) {
+            const chevronDiv = document.createElement("div");
+            if (node.collapsed) {
+                chevronDiv.classList.add(constants.classNames.SimpleTreeNodeChevronRight);
+            } else {
+                chevronDiv.classList.add(constants.classNames.SimpleTreeNodeChevronDown);
+            }
 
-        liElement.appendChild(arrowSpan);
+            chevronDivContainer.appendChild(chevronDiv);
+
+            chevronDivContainer.addEventListener("click", () => {
+                const flag = !node.collapsed;
+                node.collapsed = flag;
+                this.collapseNode(node, flag);
+                this.renderTree();
+            });
+
+            chevronDivContainer.classList.add(constants.classNames.SimpleTreeNodeChevronClickable);
+        }
+
+        divElement.appendChild(chevronDivContainer);
     }
 
     private collapseNode(node: TreeNode, flag: boolean): void {

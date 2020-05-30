@@ -1,6 +1,7 @@
 @import "defaults";
 @import "colors";
 @import "ui-defaults";
+@import "mixins";
 
 .simple-tree {
     @mixin base-select-container() {
@@ -70,20 +71,43 @@
     background-color: $white;
 }
 
-.simple-tree-node-arrow {
-    margin-right: 4px;
+.simple-tree-node-container {
+    .simple-tree-node-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    font-size: 16px;
-    font-family: arial;
-    font-weight: bold;
+        .simple-tree-node-chevron-container {
+            display: inline-block;
+            width: $base-size * 1.5;
+            height: $base-size * 1.5;
+            margin-right: $base-size * 0.5;
 
-    cursor: pointer;
-    user-select: none;
-}
+            user-select: none;
 
-.simple-tree-node-text {
-    &.simple-tree-node-bold {
-        font-weight: bold;
+            &.simple-tree-node-chevron-clickable {
+                cursor: pointer;
+            }
+
+            .simple-tree-node-chevron-right {
+                @include generate-chevron-right($base-size * 1.5, $black);
+            }
+
+            .simple-tree-node-chevron-down {
+                @include generate-chevron-down($base-size * 1.5, $black);
+            }
+        }
+
+        .simple-tree-node-text {
+            display: inline-block;
+            width: calc(100% - #{$base-size * 2});
+
+            @include text-overflow();
+
+            &.simple-tree-node-bold {
+                font-weight: bold;
+            }
+        }
     }
 
     &.simple-tree-node-selectable {
