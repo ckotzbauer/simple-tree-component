@@ -1,10 +1,23 @@
-import { TreeNode } from "../types/tree-node";
+import { TreeNode, defaults } from "../types/tree-node";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
 
     constructor(public displayedNodes: TreeNode[] = []) {
+        this.displayedNodes = this.normalizeNodes(displayedNodes);
         this.allNodes = JSON.parse(JSON.stringify(displayedNodes));
+    }
+
+    private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
+        return nodes.map((node: TreeNode) => {
+            const n: TreeNode = {
+                ...defaults,
+                ...node,
+            };
+
+            n.children = this.normalizeNodes(n.children);
+            return n;
+        });
     }
 
     public clear(): void {

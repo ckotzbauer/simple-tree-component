@@ -6,7 +6,19 @@ export interface TreeNode {
 
     disabled: boolean;
     selected: boolean;
+    selectable: boolean;
     children: TreeNode[];
     collapsed: boolean;
     hidden: boolean;
 }
+
+export const defaults: TreeNode = {
+    label: "",
+    value: "",
+    disabled: false,
+    selected: false,
+    selectable: true,
+    children: [],
+    collapsed: false,
+    hidden: false,
+};

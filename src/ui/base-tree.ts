@@ -94,9 +94,11 @@ export class BaseTree {
             }
 
             textSpanElement.textContent = node.label;
-            textSpanElement.addEventListener("click", () => {
-                this.onNodeSelect(node);
-            });
+
+            if (node.selectable) {
+                textSpanElement.addEventListener("click", () => this.onNodeSelect(node));
+                textSpanElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
+            }
 
             liElement.appendChild(textSpanElement);
 
