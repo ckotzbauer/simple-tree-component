@@ -89,9 +89,9 @@
 
         .simple-tree-node-chevron-container {
             display: inline-block;
-            width: $base-size * 1.5;
-            height: $base-size * 1.5;
-            margin-right: $base-size * 0.5;
+            width: $base-size * 1;
+            height: $base-size * 1;
+            margin-right: $base-size * 0.75;
 
             user-select: none;
 
@@ -100,17 +100,17 @@
             }
 
             .simple-tree-node-chevron-right {
-                @include generate-chevron-right($base-size * 1.5, $black);
+                @include generate-chevron-right($base-size * 1, $black);
             }
 
             .simple-tree-node-chevron-down {
-                @include generate-chevron-down($base-size * 1.5, $black);
+                @include generate-chevron-down($base-size * 1, $black);
             }
         }
 
         .simple-tree-node-text {
             display: inline-block;
-            width: calc(100% - #{$base-size * 2});
+            width: calc(100% - #{$base-size * 1.5});
 
             @include text-overflow();
 
