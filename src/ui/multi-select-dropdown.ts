@@ -69,10 +69,12 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         this.selected.forEach((item: TreeNode) => {
             const listItem = createListItem(this.pillboxContainer, "");
             listItem.innerText = this.options.templateSelectedText(item);
+
+            const arrowHolder: HTMLElement = createContainer(listItem);
             const arrow: HTMLElement = document.createElement("span");
-            arrow.innerText = "X";
+            arrow.classList.add(constants.classNames.SimpleTreePillboxCross);
             arrow.addEventListener("click", () => this.nodeSelected(item));
-            listItem.appendChild(arrow);
+            arrowHolder.appendChild(arrow);
         });
     }
 

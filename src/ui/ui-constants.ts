@@ -5,6 +5,7 @@ export default {
         SimpleTreeSingleSelectBox: "simple-tree-single-selectbox",
         SimpleTreeMultiSelectBox: "simple-tree-multi-selectbox",
         SimpleTreePillboxHolder: "simple-tree-pillbox-holder",
+        SimpleTreePillboxCross: "simple-tree-pillbox-cross",
         SimpleTreeSelectedLabel: "simple-tree-selected-label",
         SimpleTreeSelectedLabelWatermark: "simple-tree-selected-label-watermark",
         SimpleTreeChevronUp: "simple-tree-chevron-up",
