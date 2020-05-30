@@ -1,3 +1,11 @@
+@mixin generate-chevron-up($width, $color) {
+    border-left: $width * 0.5 solid transparent;
+    border-right: $width * 0.5 solid transparent;
+    border-bottom: $width solid $color;
+    height: 0rem;
+    width: 0rem;
+}
+
 @mixin generate-chevron-down($width, $color) {
     border-left: $width * 0.5 solid transparent;
     border-right: $width * 0.5 solid transparent;
