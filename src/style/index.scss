@@ -47,7 +47,8 @@
 
                 .simple-tree-pillbox-cross {
                     @include generate-cross($base-size * 1.5, $black);
-                    //margin-left: $base-size * 0.5;
+                    margin-left: $base-size * 0.5;
+                    display: inline-block;
                     cursor: pointer;
                 }
             }

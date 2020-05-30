@@ -70,11 +70,8 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
             const listItem = createListItem(this.pillboxContainer, "");
             listItem.innerText = this.options.templateSelectedText(item);
 
-            const arrowHolder: HTMLElement = createContainer(listItem);
-            const arrow: HTMLElement = document.createElement("span");
-            arrow.classList.add(constants.classNames.SimpleTreePillboxCross);
+            const arrow: HTMLElement = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
             arrow.addEventListener("click", () => this.nodeSelected(item));
-            arrowHolder.appendChild(arrow);
         });
     }
 
