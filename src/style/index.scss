@@ -117,11 +117,11 @@
             &.simple-tree-node-bold {
                 font-weight: bold;
             }
-        }
-    }
 
-    &.simple-tree-node-selectable {
-        cursor: pointer;
+            &.simple-tree-node-selectable {
+                cursor: pointer;
+            }
+        }
     }
 }
 
