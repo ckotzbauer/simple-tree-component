@@ -40,6 +40,8 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         } else {
             this.selected.push(node);
         }
+
+        this.closeDropdown();
     }
 
     public setSelected(value: TreeNode[]): void {

@@ -37,10 +37,13 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
     private nodeSelected(node: TreeNode): void {
         this.selected = node;
+        this.updateSelectedLabel();
+        this.closeDropdown();
     }
 
     public setSelected(value: TreeNode): void {
         this.selected = value;
+        this.updateSelectedLabel();
         this.tree.setHighlighting(value);
     }
 
@@ -50,16 +53,17 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
         this.selectedLabel = document.createElement("span");
         this.selectedLabel.classList.add(constants.classNames.SimpleTreeSelectedLabel);
-        this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
         this.selectContainer.appendChild(this.selectedLabel);
-
-        if (!this.selected) {
-            this.selectedLabel.classList.add(constants.classNames.SimpleTreeSelectedLabelWatermark);
-        }
+        this.updateSelectedLabel();
 
         this.arrowElement = document.createElement("i");
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
         this.selectContainer.appendChild(this.arrowElement);
+    }
+
+    private updateSelectedLabel(): void {
+        this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
+        this.selectedLabel.classList.toggle(constants.classNames.SimpleTreeSelectedLabelWatermark, !this.selected);
     }
 
     private toggleDropdown(): void {
