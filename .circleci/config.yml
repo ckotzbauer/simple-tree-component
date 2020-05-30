@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node
 
     working_directory: ~/repo
@@ -24,3 +23,4 @@ jobs:
       - run: npm run build
       - run: npm run test:typecheck
       - run: npm run codecov
+      - run: npm run lint
