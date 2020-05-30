@@ -74,6 +74,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
     private openDropdown(): void {
         this.dropdownHolder.style.display = "inherit";
+        this.tree.renderContent();
         calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
     }
 

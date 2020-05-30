@@ -11,10 +11,7 @@ export class BaseTree {
         public config: InternalOptions,
         public dataService: DataService,
         private nodeSelectedCallback: (node: TreeNode) => void
-    ) {
-        this.createBasicHtml();
-        this.renderTree();
-    }
+    ) {}
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     public destroy(): void {}
@@ -42,6 +39,12 @@ export class BaseTree {
         } else {
             this.highlightedNode = null;
         }
+    }
+
+    public renderContent(): void {
+        this.element.innerHTML = "";
+        this.createBasicHtml();
+        this.renderTree();
     }
 
     private createBasicHtml(): void {

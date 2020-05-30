@@ -16,6 +16,7 @@ export class TreeView implements Instance<"view"> {
 
         this.dataService = new DataService(options.nodes);
         this.tree = new BaseTree(container, options, this.dataService, this.nodeSelected.bind(this));
+        this.tree.renderContent();
     }
 
     public destroy(): void {

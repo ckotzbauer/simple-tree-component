@@ -63,6 +63,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
 
     private openDropdown(): void {
         this.dropdownHolder.style.display = "inherit";
+        this.tree.renderContent();
         calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
     }
 
