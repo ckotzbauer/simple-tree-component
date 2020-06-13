@@ -11,7 +11,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
     private dropdownOpen = false;
-    public selected: TreeNode[] = [];
+    private selected: TreeNode[] = [];
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
@@ -28,12 +28,25 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         this.renderSelectField(container);
     }
 
+    /////////////////////////////// PUBLIC API ///////////////////////////////
+
     public destroy(): void {
         this.tree.destroy();
         Array.from(this.element.children).forEach((e: Element) => this.element.removeChild(e));
 
         this.dataService.clear();
     }
+
+    public setSelected(value: TreeNode[]): void {
+        this.selected = value;
+        this.renderPillboxes();
+    }
+
+    public getSelected(): TreeNode[] {
+        return this.selected;
+    }
+
+    //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
         const index = this.selected.findIndex((s) => s.value === node.value);
@@ -45,11 +58,6 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
 
         this.renderPillboxes();
         this.closeDropdown();
-    }
-
-    public setSelected(value: TreeNode[]): void {
-        this.selected = value;
-        this.renderPillboxes();
     }
 
     private renderSelectField(container: HTMLElement): void {

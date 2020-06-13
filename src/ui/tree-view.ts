@@ -9,7 +9,7 @@ import constants from "./ui-constants";
 export class TreeView implements Instance<"view"> {
     private dataService: DataService;
     private tree: BaseTree;
-    public selected!: TreeNode | TreeNode[];
+    private selected!: TreeNode | TreeNode[];
 
     constructor(private element: HTMLElement, public options: InternalOptions) {
         const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
@@ -19,6 +19,8 @@ export class TreeView implements Instance<"view"> {
         this.tree.renderContent();
     }
 
+    /////////////////////////////// PUBLIC API ///////////////////////////////
+
     public destroy(): void {
         this.tree.destroy();
         Array.from(this.element.children).forEach((e: Element) => this.element.removeChild(e));
@@ -26,12 +28,17 @@ export class TreeView implements Instance<"view"> {
         this.dataService.clear();
     }
 
-    private nodeSelected(node: TreeNode): void {
-        this.selected = node;
-    }
-
     public setSelected(value: TreeNode | TreeNode[]): void {
         this.selected = value;
-        this.tree.setHighlighting(value as TreeNode); // TODO:
+    }
+
+    public getSelected(): TreeNode | TreeNode[] {
+        return this.selected;
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+
+    private nodeSelected(node: TreeNode): void {
+        this.selected = node;
     }
 }

@@ -11,7 +11,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
     private dropdownOpen = false;
-    public selected!: TreeNode;
+    private selected!: TreeNode;
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
@@ -28,6 +28,8 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.renderSelectField(container);
     }
 
+    /////////////////////////////// PUBLIC API ///////////////////////////////
+
     public destroy(): void {
         this.tree.destroy();
         Array.from(this.element.children).forEach((e: Element) => this.element.removeChild(e));
@@ -35,16 +37,22 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dataService.clear();
     }
 
-    private nodeSelected(node: TreeNode): void {
-        this.selected = node;
-        this.updateSelectedLabel();
-        this.closeDropdown();
-    }
-
     public setSelected(value: TreeNode): void {
         this.selected = value;
         this.updateSelectedLabel();
         this.tree.setHighlighting(value);
+    }
+
+    public getSelected(): TreeNode {
+        return this.selected;
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+
+    private nodeSelected(node: TreeNode): void {
+        this.selected = node;
+        this.updateSelectedLabel();
+        this.closeDropdown();
     }
 
     private renderSelectField(container: HTMLElement): void {
