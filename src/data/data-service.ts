@@ -1,4 +1,5 @@
 import { TreeNode, defaults } from "../types/tree-node";
+import { isDuplicateNodeValue, isTreeNodeValid } from "validation/validation";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
@@ -47,6 +48,10 @@ export class DataService {
     }
 
     public addNode(node: TreeNode, parent: TreeNode | string | null = null): void {
+        if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
+            throw new Error("node value is invalid or node with value already exists!");
+        }
+
         if (this.isTreeNode(parent)) {
             parent.children.push(node);
         } else if (typeof parent === "string") {
