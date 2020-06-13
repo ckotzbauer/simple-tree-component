@@ -66,15 +66,13 @@ export function createTreeNode(label: string, value: string | null | undefined, 
     };
 }
 
-export function countTreeNodes(treeNodes: TreeNode[]) {
-    const count = 0;
-    countNodes(treeNodes, count);
-    return count;
-}
+export function countTreeNodes(treeNodes: TreeNode[]): number {
+    let count = 0;
 
-function countNodes(treeNodes: TreeNode[], count: number): void {
     treeNodes.forEach((node: TreeNode) => {
         count++;
-        countNodes(node.children, count);
+        count += countTreeNodes(node.children);
     });
+
+    return count;
 }
