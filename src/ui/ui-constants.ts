@@ -1,6 +1,7 @@
 export default {
     classNames: {
         SimpleTree: "simple-tree",
+        SimpleTreeReadOnly: "simple-tree-readonly",
         SimpleTreeDropdownHolder: "simple-tree-dropdown-holder",
         SimpleTreeSingleSelectBox: "simple-tree-single-selectbox",
         SimpleTreeMultiSelectBox: "simple-tree-multi-selectbox",

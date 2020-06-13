@@ -9,6 +9,31 @@
         cursor: pointer;
     }
 
+    &.simple-tree-readonly {
+        background-color: $lightgrey;
+
+        .simple-tree-single-selectbox,
+        .simple-tree-multi-selectbox {
+            cursor: default;
+        }
+
+        .simple-tree-multi-selectbox {
+            .simple-tree-pillbox-holder {
+                .simple-tree-pillbox-cross {
+                    cursor: default;
+                }
+            }
+        }
+
+        .simple-tree-node-container {
+            .simple-tree-node-wrapper {
+                .simple-tree-node-selectable {
+                    cursor: default;
+                }
+            }
+        }
+    }
+
     .simple-tree-single-selectbox {
         @include base-select-container();
         padding: $base-size;

@@ -9,13 +9,16 @@ import constants from "./ui-constants";
 export class TreeView implements Instance<"view"> {
     private dataService: DataService;
     private tree: BaseTree;
+    private readOnly = false;
     private selected!: TreeNode | TreeNode[];
 
+    private rootContainer!: HTMLElement;
+
     constructor(private element: HTMLElement, public options: InternalOptions) {
-        const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
+        this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
-        this.tree = new BaseTree(container, options, this.dataService, this.nodeSelected.bind(this));
+        this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
         this.tree.renderContent();
     }
 
@@ -34,6 +37,12 @@ export class TreeView implements Instance<"view"> {
 
     public getSelected(): TreeNode | TreeNode[] {
         return this.selected;
+    }
+
+    public setReadOnly(readOnly: boolean): void {
+        this.readOnly = readOnly;
+        this.tree.readOnly = readOnly;
+        this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
     }
 
     public showEmphasizeIcon(): void {

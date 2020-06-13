@@ -10,6 +10,7 @@ export class BaseTree {
         public element: HTMLElement,
         public config: InternalOptions,
         public dataService: DataService,
+        public readOnly: boolean,
         private nodeSelectedCallback: (node: TreeNode) => void
     ) {}
 
@@ -102,7 +103,7 @@ export class BaseTree {
             textDivElement.textContent = node.label;
 
             if (node.selectable) {
-                textDivElement.addEventListener("click", () => this.onNodeSelect(node));
+                textDivElement.addEventListener("click", () => !this.readOnly && this.onNodeSelect(node));
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }
 

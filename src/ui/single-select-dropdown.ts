@@ -10,10 +10,12 @@ import constants from "./ui-constants";
 export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
-    private dropdownOpen = false;
     private selected!: TreeNode;
+    private readOnly = false;
     private emphasisCssClass!: string | null;
+    private dropdownOpen = false;
 
+    private rootContainer!: HTMLElement;
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
     private selectedLabel!: HTMLElement;
@@ -21,13 +23,13 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private emphasizeElement!: HTMLElement | null;
 
     constructor(private element: HTMLElement, public options: InternalOptions) {
-        const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
+        this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
-        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.nodeSelected.bind(this));
-        this.renderSelectField(container);
+        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
+        this.renderSelectField(this.rootContainer);
     }
 
     /////////////////////////////// PUBLIC API ///////////////////////////////
@@ -47,6 +49,16 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
     public getSelected(): TreeNode {
         return this.selected;
+    }
+
+    public setReadOnly(readOnly: boolean): void {
+        this.readOnly = readOnly;
+        this.tree.readOnly = readOnly;
+        this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
+
+        if (readOnly && this.dropdownOpen) {
+            this.closeDropdown();
+        }
     }
 
     public showEmphasizeIcon(cssClass: string): void {
@@ -80,7 +92,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
     private renderSelectField(container: HTMLElement): void {
         this.selectContainer = createContainer(container, constants.classNames.SimpleTreeSingleSelectBox);
-        this.selectContainer.onclick = () => this.toggleDropdown();
+        this.selectContainer.onclick = () => !this.readOnly && this.toggleDropdown();
 
         this.selectedLabel = document.createElement("span");
         this.selectedLabel.classList.add(constants.classNames.SimpleTreeSelectedLabel);
@@ -106,21 +118,24 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     }
 
     private toggleDropdown(): void {
-        this.dropdownOpen = !this.dropdownOpen;
-
         if (this.dropdownOpen) {
-            this.openDropdown();
-        } else {
             this.closeDropdown();
+        } else {
+            this.openDropdown();
         }
     }
 
     private openDropdown(): void {
+        if (this.readOnly) {
+            return;
+        }
+
         this.dropdownHolder.style.display = "inherit";
         this.tree.renderContent();
         calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
+        this.dropdownOpen = true;
     }
 
     private closeDropdown(): void {
@@ -131,5 +146,6 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.dropdownHolder.style.height = ``;
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
+        this.dropdownOpen = false;
     }
 }
