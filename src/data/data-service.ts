@@ -48,7 +48,7 @@ export class DataService {
     }
 
     public addNode(node: TreeNode, parent: TreeNode | string | null = null): void {
-        if (isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
+        if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
             throw new Error("node value is invalid or node with value already exists!");
         }
 
