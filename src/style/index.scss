@@ -22,6 +22,20 @@
         .simple-tree-selected-label-watermark {
             color: $grey;
         }
+
+        &.simple-tree-emphasized {
+            padding-right: $base-size * 6;
+
+            .simple-tree-emphasize-icon {
+                float: right;
+                margin-right: $base-size * -2;
+            }
+
+            .simple-tree-chevron-up,
+            .simple-tree-chevron-down {
+                margin-right: $base-size * -5;
+            }
+        }
     }
 
     .simple-tree-multi-selectbox {

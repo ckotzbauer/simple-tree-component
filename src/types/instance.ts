@@ -12,6 +12,8 @@ export interface Instance<K extends keyof TreeModeNameMap> {
     destroy(): void;
     getSelected(): TreeModeNameMap[K];
     setSelected(value: TreeModeNameMap[K]): void;
+    showEmphasizeIcon(cssClass: string): void;
+    hideEmphasizeIcon(): void;
 }
 
 export interface SimpleTreeFn {

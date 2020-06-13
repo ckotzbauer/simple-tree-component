@@ -10,6 +10,8 @@ export default {
         SimpleTreeSelectedLabelWatermark: "simple-tree-selected-label-watermark",
         SimpleTreeChevronUp: "simple-tree-chevron-up",
         SimpleTreeChevronDown: "simple-tree-chevron-down",
+        SimpleTreeEmphasize: "simple-tree-emphasize-icon",
+        SimpleTreeEmphasized: "simple-tree-emphasized",
         // Node classes
         SimpleTreeNodeContainer: "simple-tree-node-container",
         SimpleTreeNodeContainerRoot: "simple-tree-node-container-root",

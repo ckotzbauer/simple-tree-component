@@ -12,11 +12,13 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private tree: BaseTree;
     private dropdownOpen = false;
     private selected!: TreeNode;
+    private emphasisCssClass!: string | null;
 
     private dropdownHolder!: HTMLElement;
     private selectContainer!: HTMLElement;
     private selectedLabel!: HTMLElement;
     private arrowElement!: HTMLElement;
+    private emphasizeElement!: HTMLElement | null;
 
     constructor(private element: HTMLElement, public options: InternalOptions) {
         const container: HTMLElement = createContainer(element, constants.classNames.SimpleTree);
@@ -39,7 +41,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
 
     public setSelected(value: TreeNode): void {
         this.selected = value;
-        this.updateSelectedLabel();
+        this.updateUiOnSelection();
         this.tree.setHighlighting(value);
     }
 
@@ -47,11 +49,32 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         return this.selected;
     }
 
+    public showEmphasizeIcon(cssClass: string): void {
+        this.emphasisCssClass = cssClass;
+
+        if (this.selected && this.emphasisCssClass) {
+            this.selectContainer.classList.add(constants.classNames.SimpleTreeEmphasized);
+            this.emphasizeElement = document.createElement("i");
+            this.emphasizeElement.classList.add(constants.classNames.SimpleTreeEmphasize, cssClass);
+            this.selectContainer.appendChild(this.emphasizeElement);
+        }
+    }
+
+    public hideEmphasizeIcon(): void {
+        this.emphasisCssClass = null;
+
+        if (this.emphasizeElement) {
+            this.selectContainer.classList.remove(constants.classNames.SimpleTreeEmphasized);
+            this.selectContainer.removeChild(this.emphasizeElement);
+            this.emphasizeElement = null;
+        }
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
         this.selected = node;
-        this.updateSelectedLabel();
+        this.updateUiOnSelection();
         this.closeDropdown();
     }
 
@@ -62,16 +85,24 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.selectedLabel = document.createElement("span");
         this.selectedLabel.classList.add(constants.classNames.SimpleTreeSelectedLabel);
         this.selectContainer.appendChild(this.selectedLabel);
-        this.updateSelectedLabel();
+        this.updateUiOnSelection();
 
         this.arrowElement = document.createElement("i");
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
         this.selectContainer.appendChild(this.arrowElement);
     }
 
-    private updateSelectedLabel(): void {
+    private updateUiOnSelection(): void {
         this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
         this.selectedLabel.classList.toggle(constants.classNames.SimpleTreeSelectedLabelWatermark, !this.selected);
+
+        if (this.emphasisCssClass && this.selected) {
+            this.showEmphasizeIcon(this.emphasisCssClass);
+        } else if (!this.selected) {
+            const css = this.emphasisCssClass;
+            this.hideEmphasizeIcon();
+            this.emphasisCssClass = css; // restore the class here
+        }
     }
 
     private toggleDropdown(): void {

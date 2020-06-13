@@ -46,6 +46,14 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         return this.selected;
     }
 
+    public showEmphasizeIcon(): void {
+        throw new Error("Feature not supported in multi-select-mode!");
+    }
+
+    public hideEmphasizeIcon(): void {
+        throw new Error("Feature not supported in multi-select-mode!");
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {

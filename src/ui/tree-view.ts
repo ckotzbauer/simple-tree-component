@@ -36,6 +36,14 @@ export class TreeView implements Instance<"view"> {
         return this.selected;
     }
 
+    public showEmphasizeIcon(): void {
+        throw new Error("Feature not supported in tree-mode!");
+    }
+
+    public hideEmphasizeIcon(): void {
+        throw new Error("Feature not supported in tree-mode!");
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
