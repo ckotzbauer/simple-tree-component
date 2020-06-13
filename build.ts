@@ -1,7 +1,8 @@
-import { readFile, writeFile, copyFile, exists, mkdir } from "fs";
+import { readFile, writeFile, copyFile, mkdir, existsSync } from "fs";
 import { promisify } from "util";
 import { exec as execCommand } from "child_process";
 
+import { ncp } from "ncp";
 import terser from "terser";
 import chokidar from "chokidar";
 import sass, { Result } from "node-sass";
@@ -92,12 +93,16 @@ async function buildStyle() {
 
 async function ensureDistFolder() {
     try {
-        if (!(await promisify(exists)("./dist"))) {
+        if (!existsSync("./dist")) {
             await promisify(mkdir)("./dist");
         }
     } catch (e) {
         logErr(e);
     }
+}
+
+async function copySass() {
+    await promisify(ncp)("./src/style", "./dist/scss");
 }
 
 function setupWatchers() {
@@ -169,6 +174,7 @@ async function start() {
     ensureDistFolder();
     buildScripts();
     buildStyle();
+    copySass();
 }
 
 start();
