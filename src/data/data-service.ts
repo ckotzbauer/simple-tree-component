@@ -22,15 +22,21 @@ export class DataService {
     }
 
     public clear(): void {
+        this.allNodes = [];
         this.displayedNodes = [];
     }
 
+    // Currently only used for testing. Maybe see if tests can be refactored with rendering/event logic
+    public getAllNodes(): TreeNode[] {
+        return this.allNodes;
+    }
+
     public getNode(value: string): TreeNode | null {
-        return this.getNodeInternal(this.displayedNodes, value);
+        return this.getNodeInternal(this.allNodes, value);
     }
 
     private getNodeInternal(nodes: TreeNode[], value: string): TreeNode | null {
-        nodes.forEach((node: TreeNode) => {
+        for (const node of nodes) {
             if (node.value === value) {
                 return node;
             }
@@ -42,7 +48,7 @@ export class DataService {
                     return result;
                 }
             }
-        });
+        }
 
         return null;
     }
@@ -52,16 +58,16 @@ export class DataService {
             throw new Error("node value is invalid or node with value already exists!");
         }
 
-        if (this.isTreeNode(parent)) {
+        if (parent && this.isTreeNode(parent)) {
             parent.children.push(node);
         } else if (typeof parent === "string") {
-            const parentNode: TreeNode | null = this.getNodeInternal(this.displayedNodes, parent);
+            const parentNode: TreeNode | null = this.getNodeInternal(this.allNodes, parent);
 
             if (this.isTreeNode(parentNode)) {
                 parentNode.children.push(node);
             }
         } else {
-            this.displayedNodes.push(node);
+            this.allNodes.push(node);
         }
     }
 
@@ -70,12 +76,12 @@ export class DataService {
     }
 
     public deleteNode(value: string): void {
-        const node: TreeNode | undefined = this.displayedNodes.find((node: TreeNode) => node.value === value);
+        const node: TreeNode | undefined = this.allNodes.find((node: TreeNode) => node.value === value);
 
         if (node) {
-            this.displayedNodes.splice(this.displayedNodes.indexOf(node), 1);
+            this.allNodes.splice(this.allNodes.indexOf(node), 1);
         } else {
-            const parent: TreeNode | null = this.getParentForNode(this.displayedNodes, value);
+            const parent: TreeNode | null = this.getParentForNode(this.allNodes, value);
 
             if (parent) {
                 const childNode: TreeNode = parent.children.find((node: TreeNode) => node.value === value) as TreeNode;
@@ -85,7 +91,7 @@ export class DataService {
     }
 
     private getParentForNode(nodes: TreeNode[], value: string): TreeNode | null {
-        nodes.forEach((node: TreeNode) => {
+        for (const node of nodes) {
             if (node.children.some((n: TreeNode) => n.value === value)) {
                 return node;
             }
@@ -95,7 +101,7 @@ export class DataService {
             if (parent) {
                 return parent;
             }
-        });
+        }
 
         return null;
     }

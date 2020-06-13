@@ -65,3 +65,16 @@ export function createTreeNode(label: string, value: string | null | undefined, 
         hidden: false,
     };
 }
+
+export function countTreeNodes(treeNodes: TreeNode[]) {
+    const count = 0;
+    countNodes(treeNodes, count);
+    return count;
+}
+
+function countNodes(treeNodes: TreeNode[], count: number): void {
+    treeNodes.forEach((node: TreeNode) => {
+        count++;
+        countNodes(node.children, count);
+    });
+}
