@@ -6,8 +6,6 @@ import { TreeNode } from "types/tree-node";
 export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;
     stc: Instance<K> | undefined;
-    UA: string;
-    mockAgent: string | undefined;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -26,20 +24,13 @@ export function initialize<K extends keyof TreeModeNameMap>(): Context<K> {
 
     const ctx: Context<K> = {
         elem: undefined,
-        UA: navigator.userAgent,
         stc: undefined,
-        mockAgent: undefined,
     };
-
-    (navigator as any).__defineGetter__("userAgent", function () {
-        return ctx.mockAgent || ctx.UA;
-    });
 
     return ctx;
 }
 
 export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>): void {
-    ctx.mockAgent = undefined;
     jest.runAllTimers();
     (document.activeElement as HTMLElement).blur();
 
@@ -55,9 +46,10 @@ export function createInstance<K extends keyof TreeModeNameMap>(
     ctx: Context<K>,
     mode: K,
     config?: Options<K>,
-    el?: HTMLElement
+    el?: HTMLInputElement
 ): Instance<K> {
-    ctx.stc = simpleTree<K>(el || ctx.elem || document.createElement("input"), mode, config || {}) as Instance<K>;
+    ctx.elem = el || ctx.elem || document.createElement("input");
+    ctx.stc = simpleTree<K>(ctx.elem, mode, config || {}) as Instance<K>;
     return ctx.stc;
 }
 
