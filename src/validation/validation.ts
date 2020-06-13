@@ -1,4 +1,4 @@
-import { TreeNode } from "types/tree-node";
+import { TreeNode } from "../types/tree-node";
 
 export function validateTreeNodes(treeNodes: TreeNode[]): ValidationResult {
     if (treeNodes === null || treeNodes === undefined) {

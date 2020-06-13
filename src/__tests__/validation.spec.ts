@@ -1,6 +1,6 @@
 import { createTreeNode } from "../test-utils";
-import { ValidationResult, validateTreeNodes } from "validation/validation";
-import { TreeNode } from "types/tree-node";
+import { ValidationResult, validateTreeNodes } from "../validation/validation";
+import { TreeNode } from "../types/tree-node";
 
 describe("simpleTree", () => {
     describe("validation", () => {
