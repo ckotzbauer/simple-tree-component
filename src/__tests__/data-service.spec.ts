@@ -56,9 +56,34 @@ describe("simpleTree", () => {
         });
 
         it("deleteNode - should not remove anything if no node was found", () => {
-            const nodeCount = countTreeNodes(dataService.getAllNodes());
+            const nodeCountBefore = countTreeNodes(dataService.getAllNodes());
             dataService.deleteNode("parent4");
-            expect(nodeCount).toEqual(countTreeNodes(dataService.getAllNodes()));
+            expect(nodeCountBefore).toEqual(countTreeNodes(dataService.getAllNodes()));
+        });
+
+        it("filter - should filter nodes case insensitive based on given search term", () => {
+            // Filters out Parent 3
+            dataService.filter("child", () => null);
+            expect(dataService.displayedNodes.length).toEqual(2);
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(7);
+
+            // Only find results within tree of Parent 2
+            dataService.filter("sub", () => null);
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
+            expect(dataService.displayedNodes.length).toEqual(1);
+            expect(dataService.displayedNodes[0].value).toEqual("parent2");
+            expect(dataService.displayedNodes[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
+
+            // All visible
+            dataService.filter("parent", () => null);
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
+
+            // Don't filter
+            dataService.filter("", () => null);
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
         });
     });
 });
