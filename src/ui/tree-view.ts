@@ -14,7 +14,7 @@ export class TreeView implements Instance<"view"> {
 
     private rootContainer!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: InternalOptions) {
+    constructor(private element: HTMLElement, public options: InternalOptions<"view">) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
@@ -57,5 +57,9 @@ export class TreeView implements Instance<"view"> {
 
     private nodeSelected(node: TreeNode): void {
         this.selected = node;
+
+        if (this.options.events.onSelectionChanged) {
+            this.options.events.onSelectionChanged(this.selected);
+        }
     }
 }

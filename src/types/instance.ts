@@ -8,7 +8,7 @@ export interface TreeModeNameMap {
 }
 
 export interface Instance<K extends keyof TreeModeNameMap> {
-    options: BaseOptions;
+    options: BaseOptions<K>;
     destroy(): void;
     getSelected(): TreeModeNameMap[K];
     setSelected(value: TreeModeNameMap[K]): void;
@@ -18,8 +18,8 @@ export interface Instance<K extends keyof TreeModeNameMap> {
 }
 
 export interface SimpleTreeFn {
-    <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options): Instance<K>;
-    <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, config?: Options): Instance<K>[];
-    <K extends keyof TreeModeNameMap>(selector: string, config?: Options): Instance<K> | Instance<K>[];
-    defaultConfig: Partial<BaseOptions>;
+    <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options<K>): Instance<K>;
+    <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, config?: Options<K>): Instance<K>[];
+    <K extends keyof TreeModeNameMap>(selector: string, config?: Options<K>): Instance<K> | Instance<K>[];
+    defaultConfig: Partial<BaseOptions<any>>;
 }

@@ -22,7 +22,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private arrowElement!: HTMLElement;
     private emphasizeElement!: HTMLElement | null;
 
-    constructor(private element: HTMLElement, public options: InternalOptions) {
+    constructor(private element: HTMLElement, public options: InternalOptions<"singleSelectDropdown">) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
@@ -88,6 +88,10 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.selected = node;
         this.updateUiOnSelection();
         this.closeDropdown();
+
+        if (this.options.events.onSelectionChanged) {
+            this.options.events.onSelectionChanged(this.selected);
+        }
     }
 
     private renderSelectField(container: HTMLElement): void {
