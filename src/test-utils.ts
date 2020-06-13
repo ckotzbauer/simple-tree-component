@@ -1,6 +1,7 @@
 import simpleTree from "./index";
 import { Instance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
+import { TreeNode } from "types/tree-node";
 
 export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;
@@ -58,4 +59,17 @@ export function createInstance<K extends keyof TreeModeNameMap>(
 ): Instance<K> {
     ctx.stc = simpleTree<K>(el || ctx.elem || document.createElement("input"), mode, config || {}) as Instance<K>;
     return ctx.stc;
+}
+
+export function createTreeNode(label: string, value: string | null | undefined, children: TreeNode[] = []): TreeNode {
+    return {
+        label: label,
+        value: value as string,
+        disabled: false,
+        selected: false,
+        selectable: true,
+        children: children,
+        collapsed: false,
+        hidden: false,
+    };
 }
