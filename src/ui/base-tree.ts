@@ -2,6 +2,7 @@ import { InternalOptions } from "../types/options";
 import { DataService } from "../data/data-service";
 import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
+import { EventManager } from "../event/event";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
@@ -10,8 +11,8 @@ export class BaseTree {
         public element: HTMLElement,
         public config: InternalOptions,
         public dataService: DataService,
-        public readOnly: boolean,
-        private nodeSelectedCallback: (node: TreeNode) => void
+        private eventManager: EventManager,
+        public readOnly: boolean
     ) {}
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -22,7 +23,7 @@ export class BaseTree {
             this.setHighlighting(node);
         }
 
-        this.nodeSelectedCallback(node);
+        this.eventManager.publish(constants.events.NodeSelected, node);
     }
 
     public setHighlighting(node: TreeNode): void {
@@ -54,7 +55,8 @@ export class BaseTree {
         textInput.autofocus = false;
 
         textInput.addEventListener("input", (e: Event) => {
-            this.dataService.filter((e.target as HTMLInputElement).value, this.renderTree.bind(this));
+            this.dataService.filter((e.target as HTMLInputElement).value);
+            this.renderTree();
         });
 
         this.element.appendChild(textInput);

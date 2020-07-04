@@ -63,12 +63,12 @@ describe("simpleTree", () => {
 
         it("filter - should filter nodes case insensitive based on given search term", () => {
             // Filters out Parent 3
-            dataService.filter("child", () => null);
+            dataService.filter("child");
             expect(dataService.displayedNodes.length).toEqual(2);
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(7);
 
             // Only find results within tree of Parent 2
-            dataService.filter("sub", () => null);
+            dataService.filter("sub");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
             expect(dataService.displayedNodes.length).toEqual(1);
             expect(dataService.displayedNodes[0].value).toEqual("parent2");
@@ -78,11 +78,11 @@ describe("simpleTree", () => {
             expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
 
             // All visible
-            dataService.filter("parent", () => null);
+            dataService.filter("parent");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
 
             // Don't filter
-            dataService.filter("", () => null);
+            dataService.filter("");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
         });
     });

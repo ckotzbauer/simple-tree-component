@@ -28,6 +28,7 @@ export default {
     },
     events: {
         SelectionChanged: "selectionChanged",
+        NodeSelected: "nodeSelected",
     },
     nodeIdPrefix: "simple-tree-node",
 };

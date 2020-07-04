@@ -24,7 +24,8 @@ export class TreeView implements Instance<"view"> {
         this.dataService = new DataService(options.nodes);
         this.eventManager = new EventManager();
 
-        this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
+        this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
+        this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
         this.tree.renderContent();
     }
 

@@ -33,7 +33,8 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         this.eventManager = new EventManager();
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
-        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
+        this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
+        this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
         this.renderSelectField(this.rootContainer);
     }
 

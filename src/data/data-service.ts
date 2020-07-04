@@ -106,16 +106,12 @@ export class DataService {
         return null;
     }
 
-    public filter(searchTerm: string, renderCallback: () => void): void {
+    public filter(searchTerm: string): void {
         const allNodeCopy: TreeNode[] = JSON.parse(JSON.stringify(this.allNodes));
         if (searchTerm) {
             this.displayedNodes = this.filterNodes(allNodeCopy, searchTerm.toLowerCase());
         } else {
             this.displayedNodes = allNodeCopy;
-        }
-
-        if (renderCallback) {
-            renderCallback();
         }
     }
 
