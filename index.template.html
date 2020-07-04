@@ -38,6 +38,10 @@
                 <div>Tree 3</div>
                 <div class="demo-root-3"></div>
             </label>
+            <label>
+                <div>Tree 4</div>
+                <div class="demo-root-4"></div>
+            </label>
         </div>
     </div>
 
@@ -88,11 +92,12 @@
             ]
         });
 
-        const stc2 = simpleTree(".demo-root-2", "singleSelectDropdown", {
+        const stc2 = simpleTree(".demo-root-2", "view", {
             nodes: [
                 {
                     label: "Parent 4",
                     value: "p4",
+                    selectable: false,
                     children: [
                         {
                             label: "Parent 4 - Child 1",
@@ -109,7 +114,6 @@
                                 {
                                     label: "Parent 4 - Child 2 - Sub Child 2",
                                     value: "p4c2s2",
-                                    selectable: false
                                 },
                             ],
                         },
@@ -129,12 +133,11 @@
                     label: "Parent 6",
                     value: "p6",
                 },
-            ]
+            ],
+            treeViewCheckboxes: true
         });
 
-        stc2.showEmphasizeIcon("icofont-star");
-
-        const stc3 = simpleTree(".demo-root-3", "multiSelectDropdown", {
+        const stc3 = simpleTree(".demo-root-3", "singleSelectDropdown", {
             nodes: [
                 {
                     label: "Parent 7",
@@ -155,6 +158,7 @@
                                 {
                                     label: "Parent 7 - Child 2 - Sub Child 2",
                                     value: "p7c2s2",
+                                    selectable: false
                                 },
                             ],
                         },
@@ -173,6 +177,51 @@
                 {
                     label: "Parent 9",
                     value: "p9",
+                },
+            ]
+        });
+
+        stc3.showEmphasizeIcon("icofont-star");
+
+        const stc4 = simpleTree(".demo-root-4", "multiSelectDropdown", {
+            nodes: [
+                {
+                    label: "Parent 10",
+                    value: "p10",
+                    children: [
+                        {
+                            label: "Parent 10 - Child 1",
+                            value: "p10c1",
+                        },
+                        {
+                            label: "Parent 10 - Child 2",
+                            value: "p10c2",
+                            children: [
+                                {
+                                    label: "Parent 10 - Child 2 - Sub Child 1",
+                                    value: "p10c2s1",
+                                },
+                                {
+                                    label: "Parent 10 - Child 2 - Sub Child 2",
+                                    value: "p10c2s2",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 11",
+                    value: "p11",
+                    children: [
+                        {
+                            label: "Parent 11 - Child 1",
+                            value: "p11c1",
+                        },
+                    ],
+                },
+                {
+                    label: "Parent 12",
+                    value: "p12",
                     selectable: false,
                 },
             ]

@@ -1,5 +1,5 @@
 import { Instance, TreeModeNameMap } from "./types/instance";
-import { Options, defaults, InternalOptions } from "./types/options";
+import { Options, defaults, BaseOptions } from "./types/options";
 import { SingleSelectDropdown } from "./ui/single-select-dropdown";
 import { MultiSelectDropdown } from "./ui/multi-select-dropdown";
 import { TreeView } from "./ui/tree-view";
@@ -9,17 +9,16 @@ export function createSimpleTree<K extends keyof TreeModeNameMap>(
     mode: K,
     instanceConfig: Options
 ): Instance<K> {
-    const config: InternalOptions = {
+    const config: BaseOptions = {
         ...defaults,
         ...instanceConfig,
     };
 
     if (mode === "singleSelectDropdown") {
-        return new SingleSelectDropdown(element, config as InternalOptions) as any;
+        return new SingleSelectDropdown(element, config as BaseOptions) as any;
     } else if (mode === "multiSelectDropdown") {
-        return new MultiSelectDropdown(element, config as InternalOptions) as any;
+        return new MultiSelectDropdown(element, config as BaseOptions) as any;
     } else {
-        config.highlightSelected = true;
-        return new TreeView(element, config as InternalOptions) as any;
+        return new TreeView(element, config as BaseOptions) as any;
     }
 }
