@@ -6,10 +6,14 @@ import { TreeNode } from "../types/tree-node";
 import { createContainer, createDropdownContainer, createUnorderedList, createListItem } from "./utils";
 import constants from "./ui-constants";
 import { calculateOverlayPlacement } from "./overlay-placement";
+import { EventManager } from "../event/event";
+import { Subscription } from "../types/subscription";
 
 export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
+    private eventManager: EventManager;
+
     private readOnly = false;
     private selected: TreeNode[] = [];
     private dropdownOpen = false;
@@ -20,10 +24,11 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private pillboxContainer!: HTMLElement;
     private arrowElement!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: InternalOptions<"multiSelectDropdown">) {
+    constructor(private element: HTMLElement, public options: InternalOptions) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
+        this.eventManager = new EventManager();
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
@@ -66,6 +71,14 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
         throw new Error("Feature not supported in multi-select-mode!");
     }
 
+    public subscribe(event: string, handler: (d: any, e: string) => void): Subscription {
+        return this.eventManager.subscribe(event, handler);
+    }
+
+    public subscribeOnce(event: string, handler: (d: any, e: string) => void): Subscription {
+        return this.eventManager.subscribeOnce(event, handler);
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
@@ -78,10 +91,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
 
         this.renderPillboxes();
         this.closeDropdown();
-
-        if (this.options.events.onSelectionChanged) {
-            this.options.events.onSelectionChanged(this.selected);
-        }
+        this.eventManager.publish(constants.events.SelectionChanged, this.selected);
     }
 
     private renderSelectField(container: HTMLElement): void {

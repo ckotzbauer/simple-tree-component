@@ -6,10 +6,14 @@ import { createContainer, createDropdownContainer } from "./utils";
 import { calculateOverlayPlacement } from "./overlay-placement";
 import { TreeNode } from "types/tree-node";
 import constants from "./ui-constants";
+import { EventManager } from "../event/event";
+import { Subscription } from "../types/subscription";
 
 export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private dataService: DataService;
     private tree: BaseTree;
+    private eventManager: EventManager;
+
     private selected!: TreeNode;
     private readOnly = false;
     private emphasisCssClass!: string | null;
@@ -22,10 +26,11 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private arrowElement!: HTMLElement;
     private emphasizeElement!: HTMLElement | null;
 
-    constructor(private element: HTMLElement, public options: InternalOptions<"singleSelectDropdown">) {
+    constructor(private element: HTMLElement, public options: InternalOptions) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
+        this.eventManager = new EventManager();
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.readOnly, this.nodeSelected.bind(this));
@@ -82,16 +87,21 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
         }
     }
 
+    public subscribe(event: string, handler: (d: any, e: string) => void): Subscription {
+        return this.eventManager.subscribe(event, handler);
+    }
+
+    public subscribeOnce(event: string, handler: (d: any, e: string) => void): Subscription {
+        return this.eventManager.subscribeOnce(event, handler);
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
         this.selected = node;
         this.updateUiOnSelection();
         this.closeDropdown();
-
-        if (this.options.events.onSelectionChanged) {
-            this.options.events.onSelectionChanged(this.selected);
-        }
+        this.eventManager.publish(constants.events.SelectionChanged, this.selected);
     }
 
     private renderSelectField(container: HTMLElement): void {

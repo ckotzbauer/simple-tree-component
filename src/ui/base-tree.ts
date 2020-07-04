@@ -8,7 +8,7 @@ export class BaseTree {
 
     constructor(
         public element: HTMLElement,
-        public config: InternalOptions<any>,
+        public config: InternalOptions,
         public dataService: DataService,
         public readOnly: boolean,
         private nodeSelectedCallback: (node: TreeNode) => void

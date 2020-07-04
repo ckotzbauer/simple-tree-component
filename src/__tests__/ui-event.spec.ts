@@ -18,12 +18,10 @@ describe("simpleTree", () => {
 
             const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
-                events: {
-                    onSelectionChanged: (s: TreeNode) => {
-                        called = true;
-                        selectedNode = s;
-                    },
-                },
+            });
+            tree.subscribe("selectionChanged", (s: TreeNode) => {
+                called = true;
+                selectedNode = s;
             });
 
             // open dropdown
@@ -47,12 +45,10 @@ describe("simpleTree", () => {
 
             const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
-                events: {
-                    onSelectionChanged: (s: TreeNode[]) => {
-                        called = true;
-                        selectedNodes = s;
-                    },
-                },
+            });
+            tree.subscribe("selectionChanged", (s: TreeNode[]) => {
+                called = true;
+                selectedNodes = s;
             });
 
             // open dropdown

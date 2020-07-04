@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-types */
-export interface Subscription {
-    dispose(): void;
-}
+import { Subscription } from "../types/subscription";
 
 export class EventManager {
-    public eventLookup: { [event: string]: Function[] } = {};
+    public eventLookup: { [event: string]: ((d: unknown, e: string) => void)[] } = {};
 
     public publish(event: string, data?: unknown): void {
         let subscribers;
@@ -29,9 +26,9 @@ export class EventManager {
         }
     }
 
-    public subscribe(event: string, callback: Function): Subscription {
+    public subscribe(event: string, callback: (d: unknown, e: string) => void): Subscription {
         const handler = callback;
-        let subscribers: Function[] = [];
+        let subscribers: ((d: unknown, e: string) => void)[] = [];
 
         if (!event) {
             throw new Error("Event channel/type was invalid.");
@@ -50,8 +47,8 @@ export class EventManager {
         };
     }
 
-    public subscribeOnce(event: string, callback: Function): Subscription {
-        const sub = this.subscribe(event, (a: unknown, b: unknown) => {
+    public subscribeOnce(event: string, callback: (d: unknown, e: string) => void): Subscription {
+        const sub = this.subscribe(event, (a: unknown, b: string) => {
             sub.dispose();
             return callback(a, b);
         });

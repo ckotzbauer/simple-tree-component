@@ -26,5 +26,8 @@ export default {
         SimpleTreeNodeChevronDown: "simple-tree-node-chevron-down",
         SimpleTreeNodeChevronRight: "simple-tree-node-chevron-right",
     },
+    events: {
+        SelectionChanged: "selectionChanged",
+    },
     nodeIdPrefix: "simple-tree-node",
 };

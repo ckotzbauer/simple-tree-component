@@ -7,19 +7,19 @@ import { TreeView } from "./ui/tree-view";
 export function createSimpleTree<K extends keyof TreeModeNameMap>(
     element: HTMLElement,
     mode: K,
-    instanceConfig: Options<K>
+    instanceConfig: Options
 ): Instance<K> {
-    const config: InternalOptions<K> = {
+    const config: InternalOptions = {
         ...defaults,
         ...instanceConfig,
     };
 
     if (mode === "singleSelectDropdown") {
-        return new SingleSelectDropdown(element, config as InternalOptions<"singleSelectDropdown">) as any;
+        return new SingleSelectDropdown(element, config as InternalOptions) as any;
     } else if (mode === "multiSelectDropdown") {
-        return new MultiSelectDropdown(element, config as InternalOptions<"multiSelectDropdown">) as any;
+        return new MultiSelectDropdown(element, config as InternalOptions) as any;
     } else {
         config.highlightSelected = true;
-        return new TreeView(element, config as InternalOptions<"view">) as any;
+        return new TreeView(element, config as InternalOptions) as any;
     }
 }

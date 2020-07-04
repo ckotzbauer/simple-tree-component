@@ -6,7 +6,7 @@ import { createSimpleTree } from "./factory";
 function _simpleTree<K extends keyof TreeModeNameMap>(
     nodeList: ArrayLike<Node>,
     mode: K,
-    config?: Options<K>
+    config?: Options
 ): Instance<K> | Instance<K>[] {
     // static list
     const nodes = Array.prototype.slice.call(nodeList).filter((x) => x instanceof HTMLElement) as HTMLElement[];
@@ -30,7 +30,7 @@ function _simpleTree<K extends keyof TreeModeNameMap>(
     return instances.length === 1 ? instances[0] : instances;
 }
 
-const simpleTree = function (selector: ArrayLike<Node> | Node | string, mode: ComponentMode, config?: Options<any>) {
+const simpleTree = function (selector: ArrayLike<Node> | Node | string, mode: ComponentMode, config?: Options) {
     if (typeof selector === "string") {
         return _simpleTree(window.document.querySelectorAll(selector), mode, config);
     } else if (selector instanceof Node) {

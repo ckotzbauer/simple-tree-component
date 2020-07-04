@@ -45,7 +45,7 @@ export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>)
 export function createInstance<K extends keyof TreeModeNameMap>(
     ctx: Context<K>,
     mode: K,
-    config?: Options<K>,
+    config?: Options,
     el?: HTMLInputElement
 ): Instance<K> {
     ctx.elem = el || ctx.elem || document.createElement("input");
