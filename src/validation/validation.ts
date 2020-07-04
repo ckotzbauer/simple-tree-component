@@ -35,7 +35,7 @@ function getTreeNodeValues(treeNodes: TreeNode[], values: string[], errors: Vali
     });
 }
 
-export function isTreeNodeValid(treeNode: TreeNode) {
+export function isTreeNodeValid(treeNode: TreeNode): boolean {
     return !!treeNode && !!treeNode.value;
 }
 
