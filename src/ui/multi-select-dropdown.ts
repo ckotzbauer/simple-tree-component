@@ -1,5 +1,5 @@
 import { DataService } from "../data/data-service";
-import { InternalOptions } from "../types/options";
+import { BaseOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { TreeNode } from "../types/tree-node";
@@ -24,7 +24,7 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private pillboxContainer!: HTMLElement;
     private arrowElement!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: InternalOptions) {
+    constructor(private element: HTMLElement, public options: BaseOptions) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
@@ -85,8 +85,10 @@ export class MultiSelectDropdown implements Instance<"multiSelectDropdown"> {
     private nodeSelected(node: TreeNode): void {
         const index = this.selected.findIndex((s) => s.value === node.value);
         if (index !== -1) {
+            node.selected = false;
             this.selected.splice(index, 1);
         } else {
+            node.selected = true;
             this.selected.push(node);
         }
 

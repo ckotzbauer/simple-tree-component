@@ -9,17 +9,14 @@ export interface TreeConfiguration {
         dropdownHolder: string;
     };
     templateSelectedText: (node: TreeNode) => string;
+    treeViewCheckboxes: boolean;
 }
 
 export interface BaseOptions extends TreeConfiguration {
     nodes: TreeNode[];
 }
 
-export interface InternalOptions extends BaseOptions {
-    highlightSelected: boolean;
-}
-
-export const defaults: InternalOptions = {
+export const defaults: BaseOptions = {
     nodes: [],
     searchBar: true,
     watermark: "Please select a value...",
@@ -27,7 +24,7 @@ export const defaults: InternalOptions = {
         dropdownHolder: "",
     },
     templateSelectedText: (node: TreeNode) => node.label,
-    highlightSelected: false,
+    treeViewCheckboxes: false,
 };
 
 export type Options = Partial<BaseOptions>;

@@ -1,5 +1,5 @@
 import { DataService } from "../data/data-service";
-import { InternalOptions } from "../types/options";
+import { BaseOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer } from "./utils";
@@ -18,7 +18,11 @@ export class TreeView implements Instance<"view"> {
 
     private rootContainer!: HTMLElement;
 
-    constructor(private element: HTMLElement, public options: InternalOptions) {
+    constructor(private element: HTMLElement, public options: BaseOptions) {
+        if (options.treeViewCheckboxes) {
+            this.selected = [];
+        }
+
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
@@ -71,7 +75,22 @@ export class TreeView implements Instance<"view"> {
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
-        this.selected = node;
-        this.eventManager.publish(constants.events.SelectionChanged, this.selected);
+        if (this.options.treeViewCheckboxes) {
+            if (node.selected) {
+                (this.selected as TreeNode[]).push(node);
+            } else {
+                (this.selected as TreeNode[]).splice((this.selected as TreeNode[]).indexOf(node), 1);
+            }
+        } else {
+            if (this.selected && this.selected !== node) {
+                (this.selected as TreeNode).selected = false;
+            }
+
+            node.selected = !node.selected;
+            this.selected = node;
+            this.tree.setHighlighting(node);
+
+            this.eventManager.publish(constants.events.SelectionChanged, this.selected);
+        }
     }
 }

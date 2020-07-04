@@ -1,4 +1,4 @@
-import { InternalOptions } from "../types/options";
+import { BaseOptions } from "../types/options";
 import { DataService } from "../data/data-service";
 import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
@@ -9,7 +9,7 @@ export class BaseTree {
 
     constructor(
         public element: HTMLElement,
-        public config: InternalOptions,
+        public config: BaseOptions,
         public dataService: DataService,
         private eventManager: EventManager,
         public readOnly: boolean
@@ -17,14 +17,6 @@ export class BaseTree {
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     public destroy(): void {}
-
-    private onNodeSelect(node: TreeNode): void {
-        if (this.config.highlightSelected) {
-            this.setHighlighting(node);
-        }
-
-        this.eventManager.publish(constants.events.NodeSelected, node);
-    }
 
     public setHighlighting(node: TreeNode): void {
         this.element
@@ -90,22 +82,36 @@ export class BaseTree {
             lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
 
             const textDivElement = document.createElement("div");
-
-            // if (hasChildren) {
-            this.addChevronDiv(lineWrapperDiv, node, hasChildren);
-            // } else {
-            //    textDivElement.classList.add("no-chevron");
-            // }
-
             textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
-            if (this.config.highlightSelected && this.highlightedNode === node.value) {
+
+            this.addChevronDiv(lineWrapperDiv, node, hasChildren);
+
+            if (this.config.treeViewCheckboxes) {
+                const checkboxElement = document.createElement("input");
+                checkboxElement.type = "checkbox";
+                checkboxElement.checked = node.selected;
+
+                if (this.readOnly || !node.selectable) {
+                    checkboxElement.disabled = true;
+                } else {
+                    checkboxElement.addEventListener("input", (e: Event) => {
+                        node.selected = (e.target as HTMLInputElement).checked;
+                        this.eventManager.publish(constants.events.NodeSelected, node);
+                    });
+                }
+
+                lineWrapperDiv.appendChild(checkboxElement);
+            } else if (node.selected) {
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeBold);
             }
 
             textDivElement.textContent = node.label;
 
-            if (node.selectable) {
-                textDivElement.addEventListener("click", () => !this.readOnly && this.onNodeSelect(node));
+            if (!this.config.treeViewCheckboxes && node.selectable) {
+                textDivElement.addEventListener(
+                    "click",
+                    () => !this.readOnly && this.eventManager.publish(constants.events.NodeSelected, node)
+                );
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }
 

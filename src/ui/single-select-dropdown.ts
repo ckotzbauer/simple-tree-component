@@ -1,5 +1,5 @@
 import { DataService } from "../data/data-service";
-import { InternalOptions } from "../types/options";
+import { BaseOptions } from "../types/options";
 import { Instance } from "../types/instance";
 import { BaseTree } from "./base-tree";
 import { createContainer, createDropdownContainer } from "./utils";
@@ -26,7 +26,7 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     private arrowElement!: HTMLElement;
     private emphasizeElement!: HTMLElement | null;
 
-    constructor(private element: HTMLElement, public options: InternalOptions) {
+    constructor(private element: HTMLElement, public options: BaseOptions) {
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.dataService = new DataService(options.nodes);
@@ -99,7 +99,13 @@ export class SingleSelectDropdown implements Instance<"singleSelectDropdown"> {
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
+        if (this.selected && this.selected !== node) {
+            (this.selected as TreeNode).selected = false;
+        }
+
+        node.selected = !node.selected;
         this.selected = node;
+        this.tree.setHighlighting(node);
         this.updateUiOnSelection();
         this.closeDropdown();
         this.eventManager.publish(constants.events.SelectionChanged, this.selected);
