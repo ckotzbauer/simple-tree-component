@@ -89,8 +89,8 @@ export class TreeView implements Instance<"view"> {
             node.selected = !node.selected;
             this.selected = node;
             this.tree.setHighlighting(node);
-
-            this.eventManager.publish(constants.events.SelectionChanged, this.selected);
         }
+
+        this.eventManager.publish(constants.events.SelectionChanged, this.selected);
     }
 }
