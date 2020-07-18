@@ -1,4 +1,4 @@
-import { EventManager } from "../event/event";
+import { EventManager } from "../event/event-manager";
 
 describe("simpleTree", () => {
     describe("event", () => {

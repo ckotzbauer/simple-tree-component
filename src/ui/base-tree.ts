@@ -2,7 +2,7 @@ import { BaseOptions } from "../types/options";
 import { DataService } from "../data/data-service";
 import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
-import { EventManager } from "../event/event";
+import { EventManager } from "../event/event-manager";
 
 export class BaseTree {
     private highlightedNode: string | null = null;

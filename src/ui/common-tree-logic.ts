@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Instance, TreeModeNameMap } from "../types/instance";
-import { EventManager } from "../event/event";
+import { EventManager } from "../event/event-manager";
 import { Subscription } from "../types/subscription";
 import { DataService } from "../data/data-service";
 import constants from "./ui-constants";
