@@ -147,6 +147,28 @@
             }
         }
 
+        .simple-tree-node-checkbox {
+            width: $base-size * 1.5;
+            height: $base-size * 1.5;
+            border: 1px solid $black;
+            margin-right: $base-size;
+            background-color: $white; // TODO
+            cursor: pointer;
+
+            &.simple-tree-node-checkbox-disabled {
+                border-color: $grey;
+                cursor: default;
+            }
+
+            &.simple-tree-node-checkbox-selected {
+                background-color: $black; // TODO
+            }
+
+            &.simple-tree-node-checkbox-disabled &.simple-tree-node-checkbox-selected {
+                background-color: $lightgrey; // TODO
+            }
+        }
+
         .simple-tree-node-text {
             display: inline-block;
             width: calc(100% - #{$base-size * 1.5});

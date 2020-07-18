@@ -25,6 +25,9 @@ export default {
         SimpleTreeNodeChevronClickable: "simple-tree-node-chevron-clickable",
         SimpleTreeNodeChevronDown: "simple-tree-node-chevron-down",
         SimpleTreeNodeChevronRight: "simple-tree-node-chevron-right",
+        SimpleTreeNodeCheckbox: "simple-tree-node-checkbox",
+        SimpleTreeNodeCheckboxDisabled: "simple-tree-node-checkbox-disabled",
+        SimpleTreeNodeCheckboxSelected: "simple-tree-node-checkbox-selected",
     },
     events: {
         SelectionChanged: "selectionChanged",

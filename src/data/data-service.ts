@@ -1,5 +1,6 @@
 import { TreeNode, defaults } from "../types/tree-node";
-import { isDuplicateNodeValue, isTreeNodeValid } from "validation/validation";
+import { isDuplicateNodeValue, isTreeNodeValid } from "../validation/validation";
+import constants from "../ui/ui-constants";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
@@ -92,11 +93,14 @@ export class DataService {
 
     private getParentForNode(nodes: TreeNode[], value: string): TreeNode | null {
         for (const node of nodes) {
-            if (node.children.some((n: TreeNode) => n.value === value)) {
+            if (node.children && node.children.some((n: TreeNode) => n.value === value)) {
                 return node;
             }
 
-            const parent: TreeNode | null = this.getParentForNode(node.children, value);
+            let parent: TreeNode | null = null;
+            if (node.children) {
+                parent = this.getParentForNode(node.children, value);
+            }
 
             if (parent) {
                 return parent;
@@ -127,5 +131,56 @@ export class DataService {
         });
 
         return filtered;
+    }
+
+    public toggleSelected(nodeContainer: Element, nodeValue: string): void {
+        const node = this.getNode(nodeValue);
+
+        if (!node) {
+            console.error(`node '${nodeValue}' to toggle not found!`);
+            return;
+        }
+
+        const selected = !node.selected;
+
+        this.toggleNode(nodeContainer, node, selected);
+        this.toggleParent(nodeContainer, node);
+    }
+
+    private toggleNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): void {
+        const nodeCheckboxDiv: HTMLDivElement | null = nodeContainer.querySelector(
+            `#${this.getNodeId(node)} .${constants.classNames.SimpleTreeNodeCheckbox}`
+        );
+
+        if (!nodeCheckboxDiv) {
+            console.error("checkbox div not found!");
+            return;
+        }
+
+        node.selected = selected;
+
+        if (node.selected && !nodeCheckboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+            nodeCheckboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
+        } else if (!node.selected && nodeCheckboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+            nodeCheckboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
+        }
+
+        if (toggleChildren && node.children?.length > 0) {
+            node.children.forEach((child: TreeNode) => this.toggleNode(nodeContainer, child, selected));
+        }
+    }
+
+    private toggleParent(nodeContainer: Element, node: TreeNode): void {
+        const parentNode = this.getParentForNode(this.allNodes, node.value);
+
+        if (parentNode && parentNode.children?.length > 0) {
+            const selected = parentNode.children.every((node: TreeNode) => node.selected === true);
+            this.toggleNode(nodeContainer, parentNode, selected, false);
+            this.toggleParent(nodeContainer, parentNode);
+        }
+    }
+
+    public getNodeId(node: TreeNode): string {
+        return constants.nodeIdPrefix + node.value;
     }
 }

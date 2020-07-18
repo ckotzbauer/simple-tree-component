@@ -58,14 +58,22 @@ export class BaseTree {
         this.element.appendChild(nodeContainer);
     }
 
+    private getNodeContainer(): Element | null {
+        const container = this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
+
+        if (!container) {
+            console.error("node container not found!");
+        }
+
+        return container;
+    }
+
     private renderTree(): void {
-        const nodeContainer = this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
+        const nodeContainer = this.getNodeContainer();
 
         if (nodeContainer) {
             nodeContainer.innerHTML = "";
             nodeContainer.appendChild(this.renderUnorderedList(this.dataService.displayedNodes));
-        } else {
-            console.error("node container not found!");
         }
     }
 
@@ -87,17 +95,17 @@ export class BaseTree {
             this.addChevronDiv(lineWrapperDiv, node, hasChildren);
 
             if (this.config.treeViewCheckboxes) {
-                const checkboxElement = document.createElement("input");
-                checkboxElement.type = "checkbox";
-                checkboxElement.checked = node.selected;
+                const checkboxElement = document.createElement("div");
+                checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckbox);
 
                 if (this.readOnly || !node.selectable) {
-                    checkboxElement.disabled = true;
+                    checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                 } else {
-                    checkboxElement.addEventListener("input", (e: Event) => {
-                        node.selected = (e.target as HTMLInputElement).checked;
-                        this.eventManager.publish(constants.events.NodeSelected, node);
-                    });
+                    checkboxElement.addEventListener("click", () => this.toggleSelected(node));
+                }
+
+                if (node.selected) {
+                    checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
                 }
 
                 lineWrapperDiv.appendChild(checkboxElement);
@@ -126,6 +134,17 @@ export class BaseTree {
         });
 
         return ulElement;
+    }
+
+    private toggleSelected(node: TreeNode): void {
+        const nodeContainer = this.getNodeContainer();
+
+        if (!nodeContainer) {
+            return;
+        }
+
+        this.dataService.toggleSelected(nodeContainer, node.value);
+        this.eventManager.publish(constants.events.NodeSelected, node);
     }
 
     private addChevronDiv(divElement: HTMLDivElement, node: TreeNode, hasChildren: boolean): void {
