@@ -8,6 +8,15 @@ describe("simpleTree", () => {
     beforeEach(() => init());
 
     describe("data service", () => {
+        it("getNode - should return a copy of the node", () => {
+            const node = dataService.getNode("parent1");
+            expect(node).not.toBeNull();
+            (node as TreeNode).label = "Parent 1 Update";
+
+            const nodeAgain = dataService.getNode("parent1");
+            expect((node as TreeNode).label).not.toEqual((nodeAgain as TreeNode).label);
+        });
+
         it("addNode - should add node to top layer if no parent is given", () => {
             const treeNode = createTreeNode("Parent 4", "parent4");
             dataService.addNode(treeNode);
@@ -62,14 +71,16 @@ describe("simpleTree", () => {
         });
 
         it("updateNodeLabel - should update the label of the specified node", () => {
-            const node = dataService.getNode("parent2Child1");
+            let node = dataService.getNode("parent2Child1");
             expect(node?.label).toEqual("Parent 2 Child 1");
 
             expect(node).not.toBeNull();
-            dataService.updateNodeLabel(node as TreeNode, "Parent 2 Child 1 Updated");
+            dataService.updateNodeLabel("parent2Child1", "Parent 2 Child 1 Updated");
+            node = dataService.getNode("parent2Child1");
             expect(node?.label).toEqual("Parent 2 Child 1 Updated");
 
             dataService.updateNodeLabel("parent2Child1", "Parent 2 Child 1");
+            node = dataService.getNode("parent2Child1")
             expect(node?.label).toEqual("Parent 2 Child 1");
         });
 
