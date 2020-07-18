@@ -25,7 +25,7 @@ export class TreeView implements Instance<"view"> {
 
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
-        this.dataService = new DataService(options.nodes);
+        this.dataService = new DataService(options.nodes, options.checkboxRecursiveSelect);
         this.eventManager = new EventManager();
 
         this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);

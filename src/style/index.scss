@@ -164,7 +164,7 @@
                 background-color: $black; // TODO
             }
 
-            &.simple-tree-node-checkbox-disabled &.simple-tree-node-checkbox-selected {
+            &.simple-tree-node-checkbox-disabled.simple-tree-node-checkbox-selected {
                 background-color: $lightgrey; // TODO
             }
         }
