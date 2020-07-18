@@ -33,10 +33,10 @@
     "build:types": "tsc -p tsconfig.declarations.json",
     "build:post": "ts-node --transpile-only build-post.ts",
     "format": "prettier --ignore-path .gitignore --trailing-comma es5 --write \"**/*.ts\"",
-    "lint": "eslint --ignore-path .gitignore \"**/*.ts\"",
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern demo/ \"**/*.ts\"",
     "start": "npm run build:build -- --dev",
     "test": "run-s test:typecheck test:unit",
-    "test:typecheck": "tsc --noEmit",
+    "test:typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
     "test:unit": "jest --config config/jest.json",
     "codecov": "npm run test:unit -- --coverage && codecov -f ./coverage/lcov.info"
   },
