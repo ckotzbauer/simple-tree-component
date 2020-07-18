@@ -61,6 +61,18 @@ describe("simpleTree", () => {
             expect(nodeCountBefore).toEqual(countTreeNodes(dataService.getAllNodes()));
         });
 
+        it("updateNodeLabel - should update the label of the specified node", () => {
+            const node = dataService.getNode("parent2Child1");
+            expect(node?.label).toEqual("Parent 2 Child 1");
+
+            expect(node).not.toBeNull();
+            dataService.updateNodeLabel(node as TreeNode, "Parent 2 Child 1 Updated");
+            expect(node?.label).toEqual("Parent 2 Child 1 Updated");
+
+            dataService.updateNodeLabel("parent2Child1", "Parent 2 Child 1");
+            expect(node?.label).toEqual("Parent 2 Child 1");
+        });
+
         it("filter - should filter nodes case insensitive based on given search term", () => {
             // Filters out Parent 3
             dataService.filter("child");
