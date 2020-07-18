@@ -7,19 +7,22 @@ export class DataService {
 
     constructor(public displayedNodes: TreeNode[] = [], private checkboxRecursiveSelect: boolean = false) {
         this.displayedNodes = this.normalizeNodes(displayedNodes);
-        this.allNodes = JSON.parse(JSON.stringify(displayedNodes));
+        this.allNodes = this.normalizeNodes(displayedNodes);
     }
 
     private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
         return nodes.map((node: TreeNode) => {
-            const n: TreeNode = {
-                ...defaults,
-                ...node,
-            };
-
+            const n = this.copyNode(node);
             n.children = this.normalizeNodes(n.children || []);
             return n;
         });
+    }
+
+    private copyNode(node: TreeNode): TreeNode {
+        return {
+            ...defaults,
+            ...node,
+        };
     }
 
     public clear(): void {
@@ -122,11 +125,10 @@ export class DataService {
     }
 
     public filter(searchTerm: string): void {
-        const allNodeCopy: TreeNode[] = JSON.parse(JSON.stringify(this.allNodes));
         if (searchTerm) {
-            this.displayedNodes = this.filterNodes(allNodeCopy, searchTerm.toLowerCase());
+            this.displayedNodes = this.filterNodes(this.allNodes, searchTerm.toLowerCase());
         } else {
-            this.displayedNodes = allNodeCopy;
+            this.displayedNodes = this.normalizeNodes(this.allNodes);
         }
     }
 
@@ -134,10 +136,13 @@ export class DataService {
         const filtered: TreeNode[] = [];
 
         nodes.forEach((n) => {
-            n.children = this.filterNodes(n.children, searchTerm);
+            const childNodes: TreeNode[] = this.filterNodes(n.children, searchTerm);
 
-            if (n.label.toLowerCase().includes(searchTerm) || n.children.length > 0) {
-                filtered.push(n);
+            if (n.label.toLowerCase().includes(searchTerm) || childNodes.length > 0) {
+                const node = this.copyNode(n);
+                node.children = childNodes;
+
+                filtered.push(node as TreeNode);
             }
         });
 
