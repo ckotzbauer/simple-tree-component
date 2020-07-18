@@ -10,6 +10,7 @@ export interface TreeNode {
     children: TreeNode[];
     collapsed: boolean;
     hidden: boolean;
+    uid: string;
 }
 
 export const defaults: TreeNode = {
@@ -21,4 +22,5 @@ export const defaults: TreeNode = {
     children: [],
     collapsed: false,
     hidden: false,
+    uid: "",
 };

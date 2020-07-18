@@ -63,6 +63,7 @@ export function createTreeNode(label: string, value: string | null | undefined, 
         children: children,
         collapsed: false,
         hidden: false,
+        uid: "",
     };
 }
 

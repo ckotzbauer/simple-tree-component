@@ -80,7 +80,7 @@ describe("simpleTree", () => {
             expect(node?.label).toEqual("Parent 2 Child 1 Updated");
 
             dataService.updateNodeLabel("parent2Child1", "Parent 2 Child 1");
-            node = dataService.getNode("parent2Child1")
+            node = dataService.getNode("parent2Child1");
             expect(node?.label).toEqual("Parent 2 Child 1");
         });
 

@@ -30,7 +30,7 @@ describe("simpleTree", () => {
             simulate(
                 "click",
                 Array.from(
-                    document.getElementById(`${constants.nodeIdPrefix}node2`)?.firstChild?.childNodes as any
+                    document.getElementById(`${tree.getNode("node2")?.uid}`)?.firstChild?.childNodes as any
                 )[1] as HTMLElement
             );
 
@@ -57,7 +57,7 @@ describe("simpleTree", () => {
             simulate(
                 "click",
                 Array.from(
-                    document.getElementById(`${constants.nodeIdPrefix}node2`)?.firstChild?.childNodes as any
+                    document.getElementById(`${tree.getNode("node2")?.uid}`)?.firstChild?.childNodes as any
                 )[1] as HTMLElement
             );
 
@@ -69,7 +69,7 @@ describe("simpleTree", () => {
             simulate(
                 "click",
                 Array.from(
-                    document.getElementById(`${constants.nodeIdPrefix}node3`)?.firstChild?.childNodes as any
+                    document.getElementById(`${tree.getNode("node3")?.uid}`)?.firstChild?.childNodes as any
                 )[1] as HTMLElement
             );
 

@@ -13,6 +13,7 @@ export class DataService {
     private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
         return nodes.map((node: TreeNode) => {
             const n = this.copyNode(node);
+            n.uid = this.generateUid(node.value);
             n.children = this.normalizeNodes(n.children || []);
             return n;
         });
@@ -169,9 +170,9 @@ export class DataService {
     }
 
     private toggleNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): void {
-        const nodeCheckboxDiv: HTMLDivElement | null = nodeContainer.querySelector(
-            `#${this.getNodeId(node)} .${constants.classNames.SimpleTreeNodeCheckbox}`
-        );
+        const nodeCheckboxDiv: HTMLDivElement | null | undefined = document
+            .getElementById(node.uid)
+            ?.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
 
         if (!nodeCheckboxDiv) {
             console.error("checkbox div not found!");
@@ -201,7 +202,14 @@ export class DataService {
         }
     }
 
-    public getNodeId(node: TreeNode): string {
-        return constants.nodeIdPrefix + node.value;
+    private generateUid(value: string): string {
+        let hash = 0;
+        for (let i = 0; i < value.length; i++) {
+            const chr = value.charCodeAt(i);
+            hash = (hash << 5) - hash + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+
+        return `${hash}`;
     }
 }

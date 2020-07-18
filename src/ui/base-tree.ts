@@ -24,8 +24,8 @@ export class BaseTree {
             ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
 
         if (this.highlightedNode !== node.value) {
-            this.element
-                .querySelector(`#${this.getNodeId(node)}`)
+            document
+                .getElementById(node.uid)
                 ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
                 ?.classList.add(constants.classNames.SimpleTreeNodeBold);
 
@@ -84,7 +84,7 @@ export class BaseTree {
         nodes.forEach((node: TreeNode) => {
             const hasChildren = node.children?.length > 0;
             const liElement: HTMLLIElement = document.createElement("li");
-            liElement.id = this.getNodeId(node);
+            liElement.id = node.uid;
 
             const lineWrapperDiv = document.createElement("div");
             lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
@@ -179,9 +179,5 @@ export class BaseTree {
             c.hidden = flag;
             c.children.forEach((c) => this.collapseNode(c, flag));
         });
-    }
-
-    private getNodeId(node: TreeNode): string {
-        return constants.nodeIdPrefix + node.value;
     }
 }
