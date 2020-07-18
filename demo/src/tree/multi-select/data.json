@@ -1,0 +1,31 @@
+[
+  {
+    "value": "Root1",
+    "label": "Root #1",
+    "selectable": false,
+    "children": [
+      {
+        "value": "Child1",
+        "label": "Child #1"
+      },
+      {
+        "value": "Child2",
+        "label": "Child #2"
+      },
+      {
+        "value": "Child3",
+        "label": "Child #3"
+      }
+    ]
+  },
+  {
+    "value": "Root2",
+    "label": "Root #2",
+    "children": [
+      {
+        "value": "Child4",
+        "label": "Child #4"
+      }
+    ]
+  }
+]
