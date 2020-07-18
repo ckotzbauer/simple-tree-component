@@ -1,7 +1,7 @@
 import simpleTree from "./index";
 import { Instance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
-import { TreeNode } from "types/tree-node";
+import { TreeNode } from "./types/tree-node";
 
 export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;

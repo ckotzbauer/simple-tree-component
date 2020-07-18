@@ -1,7 +1,7 @@
 import { BaseOptions } from "../types/options";
 import { BaseTree } from "./base-tree";
 import { createContainer } from "./utils";
-import { TreeNode } from "types/tree-node";
+import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { CommonTreeLogic } from "./common-tree-logic";
 

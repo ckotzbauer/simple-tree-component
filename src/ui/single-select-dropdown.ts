@@ -1,7 +1,7 @@
 import { BaseOptions } from "../types/options";
 import { BaseTree } from "./base-tree";
 import { createContainer, createDropdownContainer } from "./utils";
-import { TreeNode } from "types/tree-node";
+import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { CommonDropdownTreeLogic } from "./common-dropdown-tree-logic";
 
