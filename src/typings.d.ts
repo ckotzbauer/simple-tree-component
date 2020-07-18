@@ -1,15 +1,12 @@
 import { SimpleTreeFn } from "./types/instance";
-import { Instance as _Instance } from "./types/instance";
-import { Options as _Options } from "./types/options";
+import { Instance } from "./types/instance";
 
 declare const simpleTree: SimpleTreeFn;
 
-declare namespace simpleTree {
-    export type Instance = _Instance<"singleSelectDropdown" | "multiSelectDropdown" | "view">;
-
-    export namespace Options {
-        export type Options = _Options;
-    }
-}
-
 export default simpleTree;
+export type SimpleTree = Instance<"singleSelectDropdown" | "multiSelectDropdown" | "view">;
+export { Options, BaseOptions, TreeConfiguration } from "./types/options";
+export { TreeNode } from "./types/tree-node";
+export * from "./types/rects";
+export * from "./types/subscription";
+export * from "./ui/overlay-placement";

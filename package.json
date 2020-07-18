@@ -14,6 +14,8 @@
     "input",
     "ui"
   ],
+  "main": "dist/simple-tree-component.js",
+  "typings": "dist/typings.d.ts",
   "author": "Christian Kotzbauer <christian.kotzbauer@gmail.com>",
   "license": "MIT",
   "bugs": {
