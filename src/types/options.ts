@@ -10,6 +10,7 @@ export interface TreeConfiguration {
     };
     templateSelectedText: (node: TreeNode) => string;
     treeViewCheckboxes: boolean;
+    checkboxRecursiveSelect: boolean;
 }
 
 export interface BaseOptions extends TreeConfiguration {
@@ -25,6 +26,7 @@ export const defaults: BaseOptions = {
     },
     templateSelectedText: (node: TreeNode) => node.label,
     treeViewCheckboxes: false,
+    checkboxRecursiveSelect: false,
 };
 
 export type Options = Partial<BaseOptions>;
