@@ -16,7 +16,7 @@ export class DataService {
                 ...node,
             };
 
-            n.children = this.normalizeNodes(n.children);
+            n.children = this.normalizeNodes(n.children || []);
             return n;
         });
     }
