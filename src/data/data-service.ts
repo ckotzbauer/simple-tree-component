@@ -36,7 +36,13 @@ export class DataService {
     }
 
     public getNode(value: string): TreeNode | null {
-        return this.getNodeInternal(this.allNodes, value);
+        const nodeToReturn = this.getNodeInternal(this.allNodes, value);
+
+        if (nodeToReturn) {
+            return this.copyNode(nodeToReturn);
+        }
+
+        return null;
     }
 
     private getNodeInternal(nodes: TreeNode[], value: string): TreeNode | null {
@@ -142,7 +148,7 @@ export class DataService {
                 const node = this.copyNode(n);
                 node.children = childNodes;
 
-                filtered.push(node as TreeNode);
+                filtered.push(node);
             }
         });
 
