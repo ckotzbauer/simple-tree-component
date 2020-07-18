@@ -91,6 +91,17 @@ export class DataService {
         }
     }
 
+    public updateNodeLabel(value: TreeNode | string, newLabel: string): void {
+        if (this.isTreeNode(value)) {
+            value.label = newLabel;
+        } else {
+            const node = this.getNode(value);
+            if (node) {
+                node.label = newLabel;
+            }
+        }
+    }
+
     private getParentForNode(nodes: TreeNode[], value: string): TreeNode | null {
         for (const node of nodes) {
             if (node.children && node.children.some((n: TreeNode) => n.value === value)) {
