@@ -100,14 +100,10 @@ export class DataService {
         }
     }
 
-    public updateNodeLabel(value: TreeNode | string, newLabel: string): void {
-        if (this.isTreeNode(value)) {
-            value.label = newLabel;
-        } else {
-            const node = this.getNode(value);
-            if (node) {
-                node.label = newLabel;
-            }
+    public updateNodeLabel(value: string, newLabel: string): void {
+        const node = this.getNodeInternal(this.allNodes, value);
+        if (node) {
+            node.label = newLabel;
         }
     }
 
@@ -156,7 +152,7 @@ export class DataService {
     }
 
     public toggleSelected(nodeContainer: Element, nodeValue: string): void {
-        const node = this.getNode(nodeValue);
+        const node = this.getNodeInternal(this.allNodes, nodeValue);
 
         if (!node) {
             console.error(`node '${nodeValue}' to toggle not found!`);
