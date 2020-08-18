@@ -63,7 +63,7 @@
     "prettier": "2.0.5",
     "rimraf": "3.0.2",
     "rollup": "2.26.3",
-    "terser": "5.1.0",
+    "terser": "5.2.0",
     "ts-jest": "26.2.0",
     "ts-node": "8.10.2",
     "tslib": "2.0.1",
