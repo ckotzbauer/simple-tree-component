@@ -22,8 +22,22 @@ describe("simpleTree", () => {
                 ],
             });
 
-            expect(tree.getSelected().value).toEqual("node3");
+            expect(tree.getSelected()?.value).toEqual("node3");
             multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
+        });
+
+        it("should handle null on setSelected api-call correctly.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+            });
+
+            const node2 = tree.getNode("node2");
+            expect(node2).not.toBeNull();
+            tree.setSelected(node2 as TreeNode);
+
+            tree.setSelected(null);
+            expect(tree.getSelected()).toBeNull();
+            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBeFalsy());
         });
 
         it("item should be selected on setSelected api-call.", () => {
@@ -34,13 +48,13 @@ describe("simpleTree", () => {
             const node2 = tree.getNode("node2");
             expect(node2).not.toBeNull();
             tree.setSelected(node2 as TreeNode);
-            expect(tree.getSelected().value).toEqual("node2");
+            expect(tree.getSelected()?.value).toEqual("node2");
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             const node1 = tree.getNode("node1");
             expect(node1).not.toBeNull();
             tree.setSelected(node1 as TreeNode);
-            expect(tree.getSelected().value).toEqual("node1");
+            expect(tree.getSelected()?.value).toEqual("node1");
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
 
@@ -51,12 +65,12 @@ describe("simpleTree", () => {
 
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node2"));
-            expect(tree.getSelected().value).toEqual("node2");
+            expect(tree.getSelected()?.value).toEqual("node2");
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node1"));
-            expect(tree.getSelected().value).toEqual("node1");
+            expect(tree.getSelected()?.value).toEqual("node1");
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
     });

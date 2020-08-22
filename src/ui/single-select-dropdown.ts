@@ -26,7 +26,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
 
     public setSelected(value: TreeNode): void {
         super.setSelected(value);
-        this.dataService.setSelected(value);
+        this.dataService.setSelected(value || []);
         this.updateUiOnSelection();
         this.tree.setHighlighting(value);
     }

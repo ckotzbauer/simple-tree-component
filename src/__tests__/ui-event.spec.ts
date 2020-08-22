@@ -14,12 +14,12 @@ describe("simpleTree", () => {
     describe("event", () => {
         it("should be thrown if a single item is selected", () => {
             let called = false;
-            let selectedNode!: TreeNode;
+            let selectedNode!: TreeNode | null;
 
             const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
-            tree.subscribe("selectionChanged", (s: TreeNode) => {
+            tree.subscribe("selectionChanged", (s: TreeNode | null) => {
                 called = true;
                 selectedNode = s;
             });
@@ -27,7 +27,7 @@ describe("simpleTree", () => {
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node2"));
 
-            expect(tree.getSelected().value).toEqual("node2");
+            expect(tree.getSelected()?.value).toEqual("node2");
             expect(called).toBeTruthy();
             expect(selectedNode?.value).toEqual("node2");
         });

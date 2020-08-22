@@ -23,13 +23,13 @@ export class BaseTree {
             .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)
             ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
 
-        if (this.highlightedNode !== node.value) {
+        if (this.highlightedNode !== node?.value) {
             document
-                .getElementById(node.uid)
+                .getElementById(node?.uid)
                 ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
                 ?.classList.add(constants.classNames.SimpleTreeNodeBold);
 
-            this.highlightedNode = node.value;
+            this.highlightedNode = node?.value;
         } else {
             this.highlightedNode = null;
         }

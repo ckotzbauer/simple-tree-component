@@ -3,7 +3,7 @@ import { TreeNode } from "./tree-node";
 import { Subscription } from "../types/subscription";
 
 export interface TreeModeNameMap {
-    singleSelectDropdown: TreeNode;
+    singleSelectDropdown: TreeNode | null;
     multiSelectDropdown: TreeNode[];
     view: TreeNode | TreeNode[];
 }
