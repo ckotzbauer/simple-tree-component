@@ -14,10 +14,6 @@ export interface Context<K extends keyof TreeModeNameMap> {
 export function simulate(eventType: string, onElement: Node, options?: unknown, type?: any): void {
     const eventOptions = Object.assign(options || {}, { bubbles: true });
     const evt = new (type || CustomEvent)(eventType, eventOptions);
-    try {
-        Object.assign(evt, eventOptions);
-    } catch (e) {}
-
     onElement.dispatchEvent(evt);
 }
 
