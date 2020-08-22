@@ -12,6 +12,7 @@ export interface Instance<K extends keyof TreeModeNameMap> {
     options: BaseOptions;
     destroy(): void;
     getNode(value: string): TreeNode | null;
+    moveNode(value: TreeNode | string, direction: "up" | "down"): void;
     getSelected(): TreeModeNameMap[K];
     setSelected(value: TreeModeNameMap[K]): void;
     setReadOnly(readOnly: boolean): void;

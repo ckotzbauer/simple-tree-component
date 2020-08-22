@@ -41,6 +41,11 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         throw new Error("Feature not supported in this mode!");
     }
 
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    public moveNode(_value: TreeNode | string, _direction: "up" | "down"): void {
+        throw new Error("Feature not supported in this mode!");
+    }
+
     public setSelected(value: TreeModeNameMap[K]): void {
         this.selected = value;
     }

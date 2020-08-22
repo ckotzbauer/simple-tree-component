@@ -33,6 +33,11 @@ export class TreeView extends CommonTreeLogic<"view"> {
         }
     }
 
+    public moveNode(value: TreeNode | string, direction: "up" | "down"): void {
+        this.dataService.moveNode(value, direction);
+        this.tree.renderContent();
+    }
+
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
