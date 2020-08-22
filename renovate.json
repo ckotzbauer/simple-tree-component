@@ -6,5 +6,8 @@
   "labels": [
     "dependencies"
   ],
-  "ignorePaths": ["demo"]
+  "ignorePaths": ["demo"],
+  "reviewers": [
+    "ckotzbauer"
+  ]
 }
