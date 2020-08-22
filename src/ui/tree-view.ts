@@ -8,17 +8,32 @@ import { CommonTreeLogic } from "./common-tree-logic";
 export class TreeView extends CommonTreeLogic<"view"> {
     constructor(element: HTMLElement, options: BaseOptions) {
         super(element, options);
+        this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         if (options.treeViewCheckboxes) {
-            this.selected = [];
+            this.selected = this.dataService.getSelected();
+        } else {
+            this.selected = this.dataService.getSelected()[0] || null;
         }
-
-        this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
 
         this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
         this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
         this.tree.renderContent();
     }
+
+    /////////////////////////////// PUBLIC API ///////////////////////////////
+
+    public setSelected(value: TreeNode | TreeNode[]): void {
+        super.setSelected(value);
+
+        if (this.options.treeViewCheckboxes) {
+            this.dataService.setSelected(...(value as TreeNode[]));
+        } else {
+            this.dataService.setSelected(value as TreeNode);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
         if (this.options.treeViewCheckboxes) {
@@ -27,13 +42,11 @@ export class TreeView extends CommonTreeLogic<"view"> {
             } else {
                 (this.selected as TreeNode[]).splice((this.selected as TreeNode[]).indexOf(node), 1);
             }
-        } else {
-            if (this.selected && this.selected !== node) {
-                (this.selected as TreeNode).selected = false;
-            }
 
-            node.selected = !node.selected;
+            this.dataService.setSelected(...(this.selected as TreeNode[]));
+        } else {
             this.selected = node;
+            this.dataService.setSelected(node);
             this.tree.setHighlighting(node);
         }
 

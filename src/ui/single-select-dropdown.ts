@@ -14,6 +14,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     constructor(element: HTMLElement, options: BaseOptions) {
         super(element, options);
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
+        this.selected = this.dataService.getSelected()[0] || null;
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
@@ -25,6 +26,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
 
     public setSelected(value: TreeNode): void {
         super.setSelected(value);
+        this.dataService.setSelected(value);
         this.updateUiOnSelection();
         this.tree.setHighlighting(value);
     }
@@ -61,12 +63,8 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
-        if (this.selected && this.selected !== node) {
-            (this.selected as TreeNode).selected = false;
-        }
-
-        node.selected = !node.selected;
         this.selected = node;
+        this.dataService.setSelected(node);
         this.tree.setHighlighting(node);
         this.updateUiOnSelection();
         this.closeDropdown();

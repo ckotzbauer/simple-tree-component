@@ -11,7 +11,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
     constructor(element: HTMLElement, options: BaseOptions) {
         super(element, options);
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
-        this.selected = [];
+        this.selected = this.dataService.getSelected();
 
         this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
@@ -23,6 +23,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
 
     public setSelected(value: TreeNode[]): void {
         super.setSelected(value);
+        this.dataService.setSelected(...value);
         this.renderPillboxes();
     }
 
@@ -46,6 +47,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
             this.selected.push(node);
         }
 
+        this.dataService.setSelected(...this.selected);
         this.renderPillboxes();
         this.closeDropdown();
         this.eventManager.publish(constants.events.SelectionChanged, this.selected);

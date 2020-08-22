@@ -152,6 +152,18 @@ export class DataService {
         return filtered;
     }
 
+    public setSelected(...nodes: TreeNode[]): void {
+        const values = nodes.map((n) => n.value);
+
+        this.allNodes.forEach((n) => {
+            n.selected = nodes.length > 0 && values.indexOf(n.value) !== -1;
+        });
+    }
+
+    public getSelected(): TreeNode[] {
+        return this.allNodes.filter((n) => n.selected).map(this.copyNode);
+    }
+
     public toggleSelected(nodeContainer: Element, nodeValue: string): void {
         const node = this.getNodeInternal(this.allNodes, nodeValue);
 
