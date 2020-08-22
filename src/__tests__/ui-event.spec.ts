@@ -1,4 +1,4 @@
-import { initialize, beforeEachTest, createInstance, createTreeNode, simulate } from "../test-utils";
+import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdown, clickTreeNode } from "../test-utils";
 import constants from "../ui/ui-constants";
 import { TreeNode } from "../types/tree-node";
 
@@ -24,15 +24,8 @@ describe("simpleTree", () => {
                 selectedNode = s;
             });
 
-            // open dropdown
-            simulate("click", singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeSingleSelectBox}`) as HTMLElement);
-            // click second item
-            simulate(
-                "click",
-                Array.from(
-                    document.getElementById(`${tree.getNode("node2")?.uid}`)?.firstChild?.childNodes as any
-                )[1] as HTMLElement
-            );
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            clickTreeNode(tree.getNode("node2"));
 
             expect(tree.getSelected().value).toEqual("node2");
             expect(called).toBeTruthy();
@@ -51,27 +44,14 @@ describe("simpleTree", () => {
                 selectedNodes = s;
             });
 
-            // open dropdown
-            simulate("click", multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeMultiSelectBox}`) as HTMLElement);
-            // click second item
-            simulate(
-                "click",
-                Array.from(
-                    document.getElementById(`${tree.getNode("node2")?.uid}`)?.firstChild?.childNodes as any
-                )[1] as HTMLElement
-            );
+            openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
+            clickTreeNode(tree.getNode("node2"));
 
             expect(tree.getSelected().map((s) => s.value)).toContain("node2");
             expect(called).toBeTruthy();
             expect(selectedNodes.map((s) => s.value)).toContain("node2");
 
-            // click third item
-            simulate(
-                "click",
-                Array.from(
-                    document.getElementById(`${tree.getNode("node3")?.uid}`)?.firstChild?.childNodes as any
-                )[1] as HTMLElement
-            );
+            clickTreeNode(tree.getNode("node3"));
 
             expect(tree.getSelected().map((s) => s.value)).toContain("node2");
             expect(tree.getSelected().map((s) => s.value)).toContain("node3");
