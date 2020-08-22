@@ -45,6 +45,12 @@ describe("simpleTree", () => {
             expect(dataService.getNode("parent3")?.children[0]).toEqual(treeNode);
         });
 
+        it("addNode - should not allow adding duplicate node", () => {
+            const treeNode = createTreeNode("Parent 3", "parent3");
+            expect(() => dataService.addNode(treeNode)).toThrowError();
+            expect(dataService.getAllNodes().length).toEqual(3);
+        });
+
         it("deleteNode - should remove specified root node from tree", () => {
             dataService.deleteNode("parent3");
             expect(dataService.getNode("parent3")).toBeNull();
@@ -107,6 +113,70 @@ describe("simpleTree", () => {
             // Don't filter
             dataService.filter("");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
+        });
+
+        it("moveNode - should not crash for null value", () => {
+            expect(() => dataService.moveNode(null as any, "up")).not.toThrowError();
+        });
+
+        it("moveNode - should not move anything if node is the only one in list", () => {
+            let node = dataService.getAllNodes()[1].children[1].children[0];
+            expect(dataService.getAllNodes()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
+
+            dataService.moveNode(node, "up");
+
+            node = dataService.getAllNodes()[1].children[1].children[0];
+            expect(dataService.getAllNodes()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
+        });
+
+        it("moveNode - should switch nodes and also move child nodes", () => {
+            let firstNode = dataService.getAllNodes()[0];
+            let secondNode = dataService.getAllNodes()[1];
+            expect(firstNode.value).toEqual("parent1");
+            expect(firstNode.children.length).toEqual(2);
+            expect(secondNode.value).toEqual("parent2");
+            expect(secondNode.children.length).toEqual(2);
+            expect(secondNode.children[1].children.length).toEqual(1);
+
+            dataService.moveNode(firstNode, "down");
+
+            firstNode = dataService.getAllNodes()[0];
+            secondNode = dataService.getAllNodes()[1];
+            expect(firstNode.value).toEqual("parent2");
+            expect(firstNode.children.length).toEqual(2);
+            expect(firstNode.children[1].children.length).toEqual(1);
+            expect(secondNode.value).toEqual("parent1");
+            expect(secondNode.children.length).toEqual(2);
+        });
+
+        it("moveNode - should not move nodes on end of list", () => {
+            let firstNode = dataService.getAllNodes()[0].children[0];
+            let secondNode = dataService.getAllNodes()[0].children[1];
+            expect(firstNode.value).toEqual("parent1Child1");
+            expect(secondNode.value).toEqual("parent1Child2");
+
+            dataService.moveNode(firstNode, "up");
+
+            firstNode = dataService.getAllNodes()[0].children[0];
+            secondNode = dataService.getAllNodes()[0].children[1];
+            expect(firstNode.value).toEqual("parent1Child1");
+            expect(secondNode.value).toEqual("parent1Child2");
+
+            dataService.moveNode(secondNode, "down");
+
+            firstNode = dataService.getAllNodes()[0].children[0];
+            secondNode = dataService.getAllNodes()[0].children[1];
+            expect(firstNode.value).toEqual("parent1Child1");
+            expect(secondNode.value).toEqual("parent1Child2");
+        });
+
+        it("moveNode - should not move anything if node is unknown", () => {
+            dataService.moveNode("parent4", "up");
+
+            const nodeList = dataService.getAllNodes();
+            expect(nodeList[0].value).toEqual("parent1");
+            expect(nodeList[1].value).toEqual("parent2");
+            expect(nodeList[2].value).toEqual("parent3");
         });
     });
 });

@@ -82,6 +82,28 @@ export class DataService {
         }
     }
 
+    public moveNode(node: TreeNode | string, direction: "up" | "down"): void {
+        if (!node) {
+            return;
+        }
+
+        const nodeValue = this.isTreeNode(node) ? node.value : node;
+        const nodeList: TreeNode[] | undefined = this.allNodes.some((n) => n.value === nodeValue)
+            ? this.allNodes
+            : this.getParentForNode(this.allNodes, nodeValue)?.children || this.allNodes;
+        const nodeIndex: number = nodeList.findIndex((n: TreeNode) => n.value === nodeValue);
+
+        if (direction === "up" && nodeIndex > 0) {
+            const tempNode: TreeNode = nodeList[nodeIndex];
+            nodeList[nodeIndex] = nodeList[nodeIndex - 1];
+            nodeList[nodeIndex - 1] = tempNode;
+        } else if (direction === "down" && nodeIndex < nodeList.length - 1) {
+            const tempNode: TreeNode = nodeList[nodeIndex];
+            nodeList[nodeIndex] = nodeList[nodeIndex + 1];
+            nodeList[nodeIndex + 1] = tempNode;
+        }
+    }
+
     private isTreeNode(value: TreeNode | string | null): value is TreeNode {
         return (value as TreeNode).children !== undefined;
     }
