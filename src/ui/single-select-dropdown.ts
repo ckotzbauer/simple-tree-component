@@ -25,8 +25,8 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public setSelected(value: TreeNode): void {
-        super.setSelected(value);
         this.dataService.setSelected(value || []);
+        super.setSelected(this.dataService.getSelected()[0] || null);
         this.updateUiOnSelection();
         this.tree.setHighlighting(value);
     }
@@ -63,8 +63,8 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
-        this.selected = node;
         this.dataService.setSelected(node);
+        this.selected = this.dataService.getSelected()[0] || null;
         this.tree.setHighlighting(node);
         this.updateUiOnSelection();
         this.closeDropdown();

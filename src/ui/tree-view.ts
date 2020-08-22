@@ -24,12 +24,12 @@ export class TreeView extends CommonTreeLogic<"view"> {
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public setSelected(value: TreeNode | TreeNode[]): void {
-        super.setSelected(value);
-
         if (this.options.treeViewCheckboxes) {
             this.dataService.setSelected(...(value as TreeNode[]));
+            super.setSelected(this.dataService.getSelected());
         } else {
             this.dataService.setSelected(value as TreeNode);
+            super.setSelected(this.dataService.getSelected()[0] || []);
         }
     }
 
@@ -44,9 +44,10 @@ export class TreeView extends CommonTreeLogic<"view"> {
             }
 
             this.dataService.setSelected(...(this.selected as TreeNode[]));
+            this.selected = this.dataService.getSelected();
         } else {
-            this.selected = node;
             this.dataService.setSelected(node);
+            this.selected = this.dataService.getSelected()[0] || null;
             this.tree.setHighlighting(node);
         }
 

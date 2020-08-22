@@ -90,3 +90,8 @@ export function countTreeNodes(treeNodes: TreeNode[]): number {
 
     return count;
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function expectObjectsInArray(array: any[], ...o: object[]): void {
+    expect(array).toEqual(expect.arrayContaining(o.map((x) => expect.objectContaining(x))));
+}

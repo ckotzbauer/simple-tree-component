@@ -22,8 +22,8 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public setSelected(value: TreeNode[]): void {
-        super.setSelected(value);
         this.dataService.setSelected(...value);
+        super.setSelected(this.dataService.getSelected());
         this.renderPillboxes();
     }
 
@@ -48,6 +48,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
         }
 
         this.dataService.setSelected(...this.selected);
+        this.selected = this.dataService.getSelected();
         this.renderPillboxes();
         this.closeDropdown();
         this.eventManager.publish(constants.events.SelectionChanged, this.selected);
