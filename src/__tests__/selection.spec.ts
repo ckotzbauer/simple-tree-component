@@ -18,6 +18,7 @@ describe("simpleTree", () => {
     beforeEach(() => {
         beforeEachTest(singleCtx);
         beforeEachTest(multiCtx);
+        beforeEachTest(treeOnlyCtx);
     });
 
     describe("singleSelection", () => {
@@ -225,22 +226,22 @@ describe("simpleTree", () => {
             treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
         });
 
-        /*it("items should be selected or unselected when clicked (single-mode).", () => {
+        it("items should be selected or unselected when clicked (single-mode).", () => {
             const tree = createInstance<"view">(treeOnlyCtx, "view", {
-                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+                nodes: [createTreeNode("node4", "node4"), createTreeNode("node5", "node5"), createTreeNode("node6", "node6")],
             });
 
-            clickTreeNode(tree.getNode("node2"));
-            expect((tree.getSelected() as TreeNode).value).toEqual("node2");
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            clickTreeNode(tree.getNode("node4"));
+            expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node4" }));
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
 
-            clickTreeNode(tree.getNode("node1"));
-            expect((tree.getSelected() as TreeNode).value).toEqual("node1");
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            clickTreeNode(tree.getNode("node5"));
+            expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node5" }));
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node5"));
 
-            clickTreeNode(tree.getNode("node1"));
+            clickTreeNode(tree.getNode("node5"));
             expect(tree.getSelected()).toBeNull();
             treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBeFalsy());
-        });*/
+        });
     });
 });

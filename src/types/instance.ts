@@ -5,7 +5,7 @@ import { Subscription } from "../types/subscription";
 export interface TreeModeNameMap {
     singleSelectDropdown: TreeNode | null;
     multiSelectDropdown: TreeNode[];
-    view: TreeNode | TreeNode[];
+    view: TreeNode | TreeNode[] | null;
 }
 
 export interface Instance<K extends keyof TreeModeNameMap> {
