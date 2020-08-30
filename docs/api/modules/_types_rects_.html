@@ -1,0 +1,251 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>&quot;types/rects&quot; | Simple Tree Component - v0.0.1</title>
+	<meta name="description" content="Documentation for Simple Tree Component - v0.0.1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Simple Tree Component - v0.0.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_types_rects_.html">&quot;types/rects&quot;</a>
+				</li>
+			</ul>
+			<h1>Module &quot;types/rects&quot;</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_types_rects_.rect.html" class="tsd-kind-icon">Rect</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_types_rects_.html#calculate" class="tsd-kind-icon">calculate</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_types_rects_.html#calculateoverlayplacement" class="tsd-kind-icon">calculate<wbr>Overlay<wbr>Placement</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="calculate" class="tsd-anchor"></a>
+					<h3>calculate</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">calculate<span class="tsd-signature-symbol">(</span>elementRect<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_rects_.rect.html" class="tsd-signature-type">Rect</a>, availableHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, overlayHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, maxOverlayHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_rects_.rect.html" class="tsd-signature-type">Rect</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ckotzbauer/simple-tree-component/blob/53b915d/src/types/rects.ts#L39">types/rects.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculates a rectangle to display a overlay-flyout relative to the position of the given <code>elementRect</code>.
+									The following strategy is used (in order):</p>
+									<ol>
+										<li>The overlay can be placed with its <code>overlayHeight</code> below of the <code>elementRect</code> without exceeding the <code>availableHeight</code>.</li>
+										<li>The overlay can be placed with its <code>overlayHeight</code> above of the <code>elementRect</code> with a top greater <code>0</code>.</li>
+										<li>The overlay is placed below of the <code>elementRect</code> with a reduced height to fit into <code>availableHeight</code>.</li>
+									</ol>
+								</div>
+								<p>It is assumed, that the width of the overlay is the same as of the <code>elementRect</code>.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>elementRect: <a href="../interfaces/_types_rects_.rect.html" class="tsd-signature-type">Rect</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The rectangle of the element this calculation belongs to.
+										(e.g. rectangle of the selectbox for which the position of the flyout should be calculated.)</p>
+									</div>
+								</li>
+								<li>
+									<h5>availableHeight: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Full height of the surrounding container (e.g. window height)</p>
+									</div>
+								</li>
+								<li>
+									<h5>overlayHeight: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The height of the overlay which should be positioned.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> maxOverlayHeight: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The maximum height of the overlay. Defaults to <code>200</code>.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_rects_.rect.html" class="tsd-signature-type">Rect</a></h4>
+							<p>The calculated rectangle of the overlay position.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="calculateoverlayplacement" class="tsd-anchor"></a>
+					<h3>calculate<wbr>Overlay<wbr>Placement</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Overlay<wbr>Placement<span class="tsd-signature-symbol">(</span>overlay<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, maxHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ckotzbauer/simple-tree-component/blob/53b915d/src/types/rects.ts#L54">types/rects.ts:54</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculates the position of the <code>overlay</code> relative to the <code>element</code> and sets the values accordingly.
+									See the docs of the <code>calculate</code> function for more details.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>overlay: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The HTML element of the overlay, which should be placed correctly.</p>
+									</div>
+								</li>
+								<li>
+									<h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The HTML element to which the <code>overlay</code> belongs.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> maxHeight: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The maximum height of the overlay. Defaults to <code>200</code>.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_types_instance_.html">&quot;types/instance&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_types_options_.html">&quot;types/options&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_types_rects_.html">&quot;types/rects&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_types_subscription_.html">&quot;types/subscription&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_types_tree_node_.html">&quot;types/tree-<wbr>node&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_types_rects_.rect.html" class="tsd-kind-icon">Rect</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_types_rects_.html#calculate" class="tsd-kind-icon">calculate</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_types_rects_.html#calculateoverlayplacement" class="tsd-kind-icon">calculate<wbr>Overlay<wbr>Placement</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
