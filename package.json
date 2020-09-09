@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@code-chris/changelog-generator": "1.0.0",
-    "@rollup/plugin-typescript": "5.0.2",
+    "@rollup/plugin-typescript": "6.0.0",
     "@types/autoprefixer": "9.7.2",
     "@types/jest": "26.0.13",
     "@types/ncp": "2.0.4",
