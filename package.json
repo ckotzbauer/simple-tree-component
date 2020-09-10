@@ -46,7 +46,7 @@
     "@types/autoprefixer": "9.7.2",
     "@types/jest": "26.0.13",
     "@types/ncp": "2.0.4",
-    "@types/node": "13.13.17",
+    "@types/node": "13.13.18",
     "@types/node-sass": "4.11.1",
     "@typescript-eslint/eslint-plugin": "4.1.0",
     "@typescript-eslint/parser": "4.1.0",
