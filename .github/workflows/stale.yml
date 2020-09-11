@@ -12,8 +12,8 @@ jobs:
         stale-issue-message: 'This issue is stale because it has been open 90 days with no activity. Remove stale label with `/remove-lifecycle stale` or comment or this will be closed in 5 days.'
         stale-pr-message: 'This pull request is stale because it has been open 90 days with no activity. Remove stale label with `/remove-lifecycle stale` or comment or this will be closed in 5 days.'
         stale-issue-label: 'lifecycle/stale'
-        exempt-issue-labels: 'work-in-progress'
+        exempt-issue-labels: 'work-in-progress,lifecycle/frozen'
         stale-pr-label: 'lifecycle/stale'
-        exempt-pr-labels: 'work-in-progress'
+        exempt-pr-labels: 'work-in-progress,lifecycle/frozen'
         days-before-stale: 90
         days-before-close: 5
