@@ -190,7 +190,11 @@ export class DataService {
 
     public setSelected(...nodes: TreeNode[]): void {
         if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
-            this.setSelectedRecursiveCheckboxes(nodes);
+            this.clearSelection(this.allNodes);
+            this.setSelectedRecursiveCheckboxes(
+                this.allNodes,
+                nodes.map((n) => n.value)
+            );
         } else {
             const values = nodes.map((n) => n.value);
             this.setSelectedInternal(this.allNodes, nodes, values);
@@ -207,11 +211,16 @@ export class DataService {
         });
     }
 
-    public setSelectedRecursiveCheckboxes(nodes: TreeNode[]): void {
-        this.clearSelection(this.allNodes);
+    public setSelectedRecursiveCheckboxes(nodes: TreeNode[], selectedValues: string[]): void {
         nodes.forEach((n) => {
-            this.toggleCheckboxNode(n, true);
-            this.toggleCheckboxParent(n);
+            if (selectedValues.includes(n.value)) {
+                this.toggleCheckboxNode(n, true);
+                this.toggleCheckboxParent(n);
+            }
+
+            if (n.children && n.children.length > 0) {
+                this.setSelectedRecursiveCheckboxes(n.children, selectedValues);
+            }
         });
     }
 
