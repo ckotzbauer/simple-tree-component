@@ -186,7 +186,7 @@ export class DataService {
         return this.allNodes.filter((n) => n.selected).map(this.copyNode);
     }
 
-    public toggleSelected(nodeContainer: Element, nodeValue: string): void {
+    public toggleCheckboxSelected(nodeContainer: Element, nodeValue: string): void {
         const node = this.getNodeInternal(this.allNodes, nodeValue);
 
         if (!node) {
@@ -196,14 +196,14 @@ export class DataService {
 
         const selected = !node.selected;
 
-        this.toggleNode(nodeContainer, node, selected);
+        this.toggleCheckboxNode(nodeContainer, node, selected);
 
         if (this.checkboxRecursiveSelect) {
-            this.toggleParent(nodeContainer, node);
+            this.toggleCheckboxParent(nodeContainer, node);
         }
     }
 
-    private toggleNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): void {
+    private toggleCheckboxNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): void {
         const nodeCheckboxDiv: HTMLDivElement | null | undefined = document
             .getElementById(node.uid)
             ?.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
@@ -222,17 +222,17 @@ export class DataService {
         }
 
         if (this.checkboxRecursiveSelect && toggleChildren && node.children?.length > 0) {
-            node.children.forEach((child: TreeNode) => this.toggleNode(nodeContainer, child, selected));
+            node.children.forEach((child: TreeNode) => this.toggleCheckboxNode(nodeContainer, child, selected));
         }
     }
 
-    private toggleParent(nodeContainer: Element, node: TreeNode): void {
+    private toggleCheckboxParent(nodeContainer: Element, node: TreeNode): void {
         const parentNode = this.getParentForNode(this.allNodes, node.value);
 
         if (parentNode && parentNode.children?.length > 0) {
             const selected = parentNode.children.every((node: TreeNode) => node.selected === true);
-            this.toggleNode(nodeContainer, parentNode, selected, false);
-            this.toggleParent(nodeContainer, parentNode);
+            this.toggleCheckboxNode(nodeContainer, parentNode, selected, false);
+            this.toggleCheckboxParent(nodeContainer, parentNode);
         }
     }
 

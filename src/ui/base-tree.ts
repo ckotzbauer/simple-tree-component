@@ -101,7 +101,7 @@ export class BaseTree {
                 if (this.readOnly || !node.selectable) {
                     checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                 } else {
-                    checkboxElement.addEventListener("click", () => this.toggleSelected(node));
+                    checkboxElement.addEventListener("click", () => this.toggleCheckboxSelected(node));
                 }
 
                 if (node.selected) {
@@ -136,14 +136,14 @@ export class BaseTree {
         return ulElement;
     }
 
-    private toggleSelected(node: TreeNode): void {
+    private toggleCheckboxSelected(node: TreeNode): void {
         const nodeContainer = this.getNodeContainer();
 
         if (!nodeContainer) {
             return;
         }
 
-        this.dataService.toggleSelected(nodeContainer, node.value);
+        this.dataService.toggleCheckboxSelected(nodeContainer, node.value);
         this.eventManager.publish(constants.events.NodeSelected, node);
     }
 
