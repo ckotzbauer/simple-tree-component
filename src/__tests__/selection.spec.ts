@@ -64,9 +64,9 @@ describe("simpleTree", () => {
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node2" }));
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
-            const node1 = tree.getNode("node7");
-            expect(node1).not.toBeNull();
-            tree.setSelected(node1 as TreeNode);
+            const node7 = tree.getNode("node7");
+            expect(node7).not.toBeNull();
+            tree.setSelected(node7 as TreeNode);
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node7" }));
             singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node7"));
         });
@@ -242,6 +242,38 @@ describe("simpleTree", () => {
             treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node7"));
         });
 
+        it("item should be selected on setSelected api-call (checkbox-mode, recursive).", () => {
+            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+                nodes: [
+                    createTreeNode("node1", "node1", [createTreeNode("node72", "node72"), createTreeNode("node82", "node82")]),
+                    createTreeNode("node2", "node2"),
+                    createTreeNode("node3", "node3"),
+                ],
+                treeViewCheckboxes: true,
+                checkboxRecursiveSelect: true,
+            });
+
+            const node1 = tree.getNode("node1");
+            expect(node1).not.toBeNull();
+            tree.setSelected([node1 as TreeNode]);
+            expectObjectsInArray(
+                tree.getSelected() as TreeNode[],
+                { selected: true, value: "node1" },
+                { selected: true, value: "node72" },
+                { selected: true, value: "node82" }
+            );
+            treeOnlyCtx.dataService
+                ?.getAllNodes()
+                .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node72" || n.value === "node82"));
+
+            const node2 = tree.getNode("node2");
+            expect(node2).not.toBeNull();
+            tree.setSelected([node2 as TreeNode]);
+            expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node1");
+            expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node2" });
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+        });
+
         it("items should be selected or unselected when clicked (single-mode).", () => {
             const tree = createInstance<"view">(treeOnlyCtx, "view", {
                 nodes: [createTreeNode("node4", "node4"), createTreeNode("node5", "node5"), createTreeNode("node6", "node6")],
@@ -263,28 +295,91 @@ describe("simpleTree", () => {
         it("items should be selected or unselected when clicked (checkbox-mode).", () => {
             const tree = createInstance<"view">(treeOnlyCtx, "view", {
                 nodes: [
-                    createTreeNode("node4", "node4", [createTreeNode("node7", "node7"), createTreeNode("node8", "node8")]),
+                    createTreeNode("node4", "node4", [createTreeNode("node71", "node71"), createTreeNode("node81", "node81")]),
                     createTreeNode("node5", "node5"),
                     createTreeNode("node6", "node6"),
                 ],
                 treeViewCheckboxes: true,
             });
 
-            clickTreeNode(tree.getNode("node7"));
+            clickTreeNode(tree.getNode("node71"));
             clickTreeNode(tree.getNode("node5"));
             expectObjectsInArray(
                 tree.getSelected() as TreeNode[],
-                { selected: true, value: "node7" },
+                { selected: true, value: "node71" },
                 { selected: true, value: "node5" }
             );
             treeOnlyCtx.dataService
                 ?.getAllNodes()
-                .forEach((n) => expect(n.selected).toBe(n.value === "node7" || n.value === "node5"));
+                .forEach((n) => expect(n.selected).toBe(n.value === "node71" || n.value === "node5"));
 
             clickTreeNode(tree.getNode("node5"));
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node5");
-            expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node7" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node7"));
+            expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node71" });
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node71"));
+        });
+
+        it("items should be selected or unselected when clicked (checkbox-mode, recursive) 1.", () => {
+            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+                nodes: [
+                    createTreeNode("node4", "node4", [createTreeNode("node73", "node73"), createTreeNode("node83", "node83")]),
+                    createTreeNode("node5", "node5"),
+                    createTreeNode("node6", "node6"),
+                ],
+                treeViewCheckboxes: true,
+                checkboxRecursiveSelect: true,
+            });
+
+            clickTreeNode(tree.getNode("node4"));
+            clickTreeNode(tree.getNode("node5"));
+            expectObjectsInArray(
+                tree.getSelected() as TreeNode[],
+                { selected: true, value: "node4" },
+                { selected: true, value: "node73" },
+                { selected: true, value: "node83" },
+                { selected: true, value: "node5" }
+            );
+            treeOnlyCtx.dataService
+                ?.getAllNodes()
+                .forEach((n) =>
+                    expect(n.selected).toBe(
+                        n.value === "node4" || n.value === "node7" || n.value === "node83" || n.value === "node5"
+                    )
+                );
+
+            clickTreeNode(tree.getNode("node4"));
+            expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node4");
+            expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node5" });
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node5"));
+        });
+
+        it("items should be selected or unselected when clicked (checkbox-mode, recursive) 2.", () => {
+            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+                nodes: [
+                    createTreeNode("node4", "node4", [createTreeNode("node74", "node74"), createTreeNode("node84", "node84")]),
+                    createTreeNode("node5", "node5"),
+                    createTreeNode("node6", "node6"),
+                ],
+                treeViewCheckboxes: true,
+                checkboxRecursiveSelect: true,
+            });
+
+            clickTreeNode(tree.getNode("node4"));
+            expectObjectsInArray(
+                tree.getSelected() as TreeNode[],
+                { selected: true, value: "node4" },
+                { selected: true, value: "node74" },
+                { selected: true, value: "node84" }
+            );
+            treeOnlyCtx.dataService
+                ?.getAllNodes()
+                .forEach((n) => expect(n.selected).toBe(n.value === "node4" || n.value === "node74" || n.value === "node84"));
+
+            clickTreeNode(tree.getNode("node74"));
+            expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node4");
+            expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node74");
+            expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node84" });
+            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node84"));
         });
     });
 });
