@@ -22,6 +22,6 @@ jobs:
       - name: Type check
         run: npm run test:typecheck
       - name: Test
-        run: npm run codecov
+        run: npm run codecov -- -t ${{ secrets.CODECOV_KEY }}
       - name: Lint
         run: npm run lint
