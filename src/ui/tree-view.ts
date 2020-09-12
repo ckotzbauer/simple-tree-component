@@ -48,7 +48,6 @@ export class TreeView extends CommonTreeLogic<"view"> {
                 (this.selected as TreeNode[]).splice((this.selected as TreeNode[]).indexOf(node), 1);
             }
 
-            this.dataService.setSelected(...(this.selected as TreeNode[]));
             this.selected = this.dataService.getSelected();
         } else {
             if (node?.value === (this.selected as TreeNode)?.value) {
