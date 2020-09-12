@@ -145,7 +145,7 @@ export class BaseTree {
             return;
         }
 
-        const mutatedNode = this.dataService.toggleCheckboxSelected(nodeContainer, node.value);
+        const mutatedNode = this.dataService.toggleCheckboxSelected(node.value);
         this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
     }
 

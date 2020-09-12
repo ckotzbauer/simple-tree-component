@@ -5,7 +5,11 @@ import constants from "../ui/ui-constants";
 export class DataService {
     private allNodes: TreeNode[] = [];
 
-    constructor(public displayedNodes: TreeNode[] = [], private checkboxRecursiveSelect: boolean = false) {
+    constructor(
+        public displayedNodes: TreeNode[] = [],
+        private treeViewCheckboxes: boolean = false,
+        private checkboxRecursiveSelect: boolean = false
+    ) {
         this.displayedNodes = this.normalizeNodes(displayedNodes);
         this.allNodes = this.normalizeNodes(displayedNodes);
     }
@@ -174,16 +178,59 @@ export class DataService {
         return filtered;
     }
 
-    public setSelected(...nodes: TreeNode[]): void {
-        const values = nodes.map((n) => n.value);
+    private clearSelection(nodes: TreeNode[]): void {
+        nodes.forEach((n) => {
+            n.selected = false;
 
-        this.allNodes.forEach((n) => {
-            n.selected = nodes.length > 0 && values.indexOf(n.value) !== -1;
+            if (n.children && n.children.length > 0) {
+                this.clearSelection(n.children);
+            }
+        });
+    }
+
+    public setSelected(...nodes: TreeNode[]): void {
+        if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
+            this.setSelectedRecursiveCheckboxes(nodes);
+        } else {
+            const values = nodes.map((n) => n.value);
+            this.setSelectedInternal(this.allNodes, nodes, values);
+        }
+    }
+
+    public setSelectedInternal(nodes: TreeNode[], selection: TreeNode[], values: string[]): void {
+        nodes.forEach((n) => {
+            n.selected = selection.length > 0 && values.indexOf(n.value) !== -1;
+
+            if (n.children && n.children.length > 0) {
+                this.setSelectedInternal(n.children, selection, values);
+            }
+        });
+    }
+
+    public setSelectedRecursiveCheckboxes(nodes: TreeNode[]): void {
+        this.clearSelection(this.allNodes);
+        nodes.forEach((n) => {
+            this.toggleCheckboxNode(n, true);
+            this.toggleCheckboxParent(n);
         });
     }
 
     public getSelected(): TreeNode[] {
-        return this.allNodes.filter((n) => n.selected).map(this.copyNode);
+        return this.getSelectedInternal(this.allNodes).map(this.copyNode);
+    }
+
+    private getSelectedInternal(nodes: TreeNode[], filtered: TreeNode[] = []): TreeNode[] {
+        nodes.forEach((n) => {
+            if (n.selected) {
+                filtered.push(n);
+            }
+
+            if (n.children && n.children.length > 0) {
+                filtered.push(...this.getSelectedInternal(n.children, filtered));
+            }
+        });
+
+        return filtered;
     }
 
     public toggleNodeSelected(nodeValue: string): TreeNode | null {
@@ -198,7 +245,7 @@ export class DataService {
         return this.copyNode(node);
     }
 
-    public toggleCheckboxSelected(nodeContainer: Element, nodeValue: string): TreeNode | null {
+    public toggleCheckboxSelected(nodeValue: string): TreeNode | null {
         let node = this.getNodeInternal(this.allNodes, nodeValue);
 
         if (!node) {
@@ -208,16 +255,16 @@ export class DataService {
 
         const selected = !node.selected;
 
-        node = this.toggleCheckboxNode(nodeContainer, node, selected);
+        node = this.toggleCheckboxNode(node, selected);
 
         if (this.checkboxRecursiveSelect) {
-            this.toggleCheckboxParent(nodeContainer, node);
+            this.toggleCheckboxParent(node);
         }
 
         return this.copyNode(node);
     }
 
-    private toggleCheckboxNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): TreeNode {
+    private toggleCheckboxNode(node: TreeNode, selected: boolean, toggleChildren = true): TreeNode {
         const nodeCheckboxDiv: HTMLDivElement | null | undefined = document
             .getElementById(node.uid)
             ?.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
@@ -236,19 +283,19 @@ export class DataService {
         }
 
         if (this.checkboxRecursiveSelect && toggleChildren && node.children?.length > 0) {
-            node.children.forEach((child: TreeNode) => this.toggleCheckboxNode(nodeContainer, child, selected));
+            node.children.forEach((child: TreeNode) => this.toggleCheckboxNode(child, selected));
         }
 
         return node;
     }
 
-    private toggleCheckboxParent(nodeContainer: Element, node: TreeNode): void {
+    private toggleCheckboxParent(node: TreeNode): void {
         const parentNode = this.getParentForNode(this.allNodes, node.value);
 
         if (parentNode && parentNode.children?.length > 0) {
             const selected = parentNode.children.every((node: TreeNode) => node.selected === true);
-            this.toggleCheckboxNode(nodeContainer, parentNode, selected, false);
-            this.toggleCheckboxParent(nodeContainer, parentNode);
+            this.toggleCheckboxNode(parentNode, selected, false);
+            this.toggleCheckboxParent(parentNode);
         }
     }
 
