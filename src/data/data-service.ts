@@ -226,7 +226,7 @@ export class DataService {
             }
 
             if (n.children && n.children.length > 0) {
-                filtered.push(...this.getSelectedInternal(n.children, filtered));
+                filtered = this.getSelectedInternal(n.children, filtered);
             }
         });
 
