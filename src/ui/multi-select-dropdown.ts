@@ -38,8 +38,6 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
-        console.log("multi-select");
-
         const index = this.selected.findIndex((s) => s.value === node.value);
         if (index !== -1) {
             node.selected = false;
