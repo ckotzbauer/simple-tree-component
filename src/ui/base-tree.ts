@@ -115,11 +115,8 @@ export class BaseTree {
 
             textDivElement.textContent = node.label;
 
-            if (!this.config.treeViewCheckboxes && node.selectable) {
-                textDivElement.addEventListener(
-                    "click",
-                    () => !this.readOnly && this.eventManager.publish(constants.events.NodeSelected, node)
-                );
+            if (!this.config.treeViewCheckboxes && node.selectable && !this.readOnly) {
+                textDivElement.addEventListener("click", () => this.toggleNodeSelected(node));
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }
 
@@ -134,6 +131,11 @@ export class BaseTree {
         });
 
         return ulElement;
+    }
+
+    private toggleNodeSelected(node: TreeNode): void {
+        const mutatedNode = this.dataService.toggleNodeSelected(node.value);
+        this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
     }
 
     private toggleCheckboxSelected(node: TreeNode): void {

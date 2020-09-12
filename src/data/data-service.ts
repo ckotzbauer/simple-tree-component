@@ -186,11 +186,23 @@ export class DataService {
         return this.allNodes.filter((n) => n.selected).map(this.copyNode);
     }
 
+    public toggleNodeSelected(nodeValue: string): TreeNode | null {
+        const node = this.getNodeInternal(this.allNodes, nodeValue);
+
+        if (!node) {
+            console.error(`node '${nodeValue}' to toggle not found!`);
+            return null;
+        }
+
+        node.selected = !node.selected;
+        return this.copyNode(node);
+    }
+
     public toggleCheckboxSelected(nodeContainer: Element, nodeValue: string): TreeNode | null {
         let node = this.getNodeInternal(this.allNodes, nodeValue);
 
         if (!node) {
-            console.error(`node '${nodeValue}' to toggle not found!`);
+            console.error(`checkbox node '${nodeValue}' to toggle not found!`);
             return null;
         }
 
@@ -202,7 +214,7 @@ export class DataService {
             this.toggleCheckboxParent(nodeContainer, node);
         }
 
-        return node;
+        return this.copyNode(node);
     }
 
     private toggleCheckboxNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): TreeNode {
