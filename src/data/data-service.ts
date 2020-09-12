@@ -186,31 +186,33 @@ export class DataService {
         return this.allNodes.filter((n) => n.selected).map(this.copyNode);
     }
 
-    public toggleSelected(nodeContainer: Element, nodeValue: string): void {
-        const node = this.getNodeInternal(this.allNodes, nodeValue);
+    public toggleSelected(nodeContainer: Element, nodeValue: string): TreeNode | null {
+        let node = this.getNodeInternal(this.allNodes, nodeValue);
 
         if (!node) {
             console.error(`node '${nodeValue}' to toggle not found!`);
-            return;
+            return null;
         }
 
         const selected = !node.selected;
 
-        this.toggleNode(nodeContainer, node, selected);
+        node = this.toggleNode(nodeContainer, node, selected);
 
         if (this.checkboxRecursiveSelect) {
             this.toggleParent(nodeContainer, node);
         }
+
+        return node;
     }
 
-    private toggleNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): void {
+    private toggleNode(nodeContainer: Element, node: TreeNode, selected: boolean, toggleChildren = true): TreeNode {
         const nodeCheckboxDiv: HTMLDivElement | null | undefined = document
             .getElementById(node.uid)
             ?.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
 
         if (!nodeCheckboxDiv) {
             console.error("checkbox div not found!");
-            return;
+            return node;
         }
 
         node.selected = selected;
@@ -224,6 +226,8 @@ export class DataService {
         if (this.checkboxRecursiveSelect && toggleChildren && node.children?.length > 0) {
             node.children.forEach((child: TreeNode) => this.toggleNode(nodeContainer, child, selected));
         }
+
+        return node;
     }
 
     private toggleParent(nodeContainer: Element, node: TreeNode): void {

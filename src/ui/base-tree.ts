@@ -143,8 +143,8 @@ export class BaseTree {
             return;
         }
 
-        this.dataService.toggleSelected(nodeContainer, node.value);
-        this.eventManager.publish(constants.events.NodeSelected, node);
+        const mutatedNode = this.dataService.toggleSelected(nodeContainer, node.value);
+        this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
     }
 
     private addChevronDiv(divElement: HTMLDivElement, node: TreeNode, hasChildren: boolean): void {
