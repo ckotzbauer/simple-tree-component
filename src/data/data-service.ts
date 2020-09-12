@@ -4,12 +4,14 @@ import constants from "../ui/ui-constants";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
+    private treeInstanceId: number;
 
     constructor(
         public displayedNodes: TreeNode[] = [],
         private treeViewCheckboxes: boolean = false,
         private checkboxRecursiveSelect: boolean = false
     ) {
+        this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
         this.displayedNodes = this.normalizeNodes(displayedNodes);
         this.allNodes = this.normalizeNodes(displayedNodes);
     }
@@ -316,6 +318,6 @@ export class DataService {
             hash |= 0; // Convert to 32bit integer
         }
 
-        return `${hash}`;
+        return `${this.treeInstanceId}-${Math.abs(hash)}`;
     }
 }
