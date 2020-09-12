@@ -42,12 +42,6 @@ export class TreeView extends CommonTreeLogic<"view"> {
 
     private nodeSelected(node: TreeNode): void {
         if (this.options.treeViewCheckboxes) {
-            if (node.selected) {
-                (this.selected as TreeNode[]).push(node);
-            } else {
-                (this.selected as TreeNode[]).splice((this.selected as TreeNode[]).indexOf(node), 1);
-            }
-
             this.selected = this.dataService.getSelected();
         } else {
             if (node?.value === (this.selected as TreeNode)?.value) {
