@@ -7,6 +7,7 @@ import terser from "terser";
 import chokidar from "chokidar";
 import sass, { Result } from "node-sass";
 import autoprefixer from "autoprefixer";
+import postcss from "postcss";
 
 import * as rollup from "rollup";
 import rollupConfig, { getConfig } from "./config/rollup";
@@ -74,7 +75,8 @@ async function transpileStyle(src: string, compress = false) {
                 file: src,
                 outputStyle: compress ? "compressed" : "expanded",
             },
-            (err: Error | undefined, result: Result) => (!err ? resolve(autoprefixer(result.css.toString()).css) : reject(err))
+            async (err: Error | undefined, result: Result) =>
+                !err ? resolve((await postcss([autoprefixer]).process(result.css.toString())).css) : reject(err)
         );
     });
 }
