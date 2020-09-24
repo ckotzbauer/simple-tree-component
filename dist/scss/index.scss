@@ -1,0 +1,191 @@
+@import "defaults";
+@import "colors";
+@import "ui-defaults";
+@import "mixins";
+
+.simple-tree {
+    @mixin base-select-container() {
+        border: $base-border;
+        cursor: pointer;
+    }
+
+    &.simple-tree-readonly {
+        background-color: $lightgrey;
+
+        .simple-tree-single-selectbox,
+        .simple-tree-multi-selectbox {
+            cursor: default;
+        }
+
+        .simple-tree-multi-selectbox {
+            .simple-tree-pillbox-holder {
+                .simple-tree-pillbox-cross {
+                    cursor: default;
+                }
+            }
+        }
+
+        .simple-tree-node-container {
+            .simple-tree-node-wrapper {
+                .simple-tree-node-selectable {
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .simple-tree-single-selectbox {
+        @include base-select-container();
+        padding: $base-size;
+        padding-right: $base-size * 3;
+        height: $base-size * 2;
+
+        .simple-tree-selected-label {
+            user-select: none;
+        }
+
+        .simple-tree-selected-label-watermark {
+            color: $grey;
+        }
+
+        &.simple-tree-emphasized {
+            padding-right: $base-size * 6;
+
+            .simple-tree-emphasize-icon {
+                float: right;
+                margin-right: $base-size * -2;
+            }
+
+            .simple-tree-chevron-up,
+            .simple-tree-chevron-down {
+                margin-right: $base-size * -5;
+            }
+        }
+    }
+
+    .simple-tree-multi-selectbox {
+        @include base-select-container();
+        padding-bottom: $base-size * 0.5;
+        padding-right: $base-size * 3;
+        min-height: $base-size * 3.5;
+
+        .simple-tree-pillbox-holder {
+            list-style: none;
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            min-height: $base-size * 3;
+
+            li {
+                display: inline-block;
+                border: $base-border;
+                padding: $base-size / 4;
+                margin-left: $base-size * 0.5;
+                margin-top: $base-size * 0.5;
+                cursor: default;
+
+                .simple-tree-pillbox-cross {
+                    @include generate-cross($base-size * 1.5, $black);
+                    margin-left: $base-size * 0.5;
+                    display: inline-block;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .simple-tree-chevron-up,
+        .simple-tree-chevron-down {
+            margin-top: $base-size;
+        }
+    }
+
+    .simple-tree-chevron-up {
+        @include generate-chevron-up($base-size * 1.5, $black);
+        margin-right: $base-size * -2;
+        float: right;
+    }
+
+    .simple-tree-chevron-down {
+        @include generate-chevron-down($base-size * 1.5, $black);
+        margin-right: $base-size * -2;
+        float: right;
+    }
+}
+
+.simple-tree-dropdown-holder {
+    position: absolute;
+    border: $base-border;
+    max-height: $max-dropdown-height; // TODO: move to tree-ul
+    overflow-y: overlay; // TODO: move to tree-ul
+    background-color: $white;
+}
+
+.simple-tree-node-container {
+    .simple-tree-node-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .simple-tree-node-chevron-container {
+            display: inline-block;
+            width: $base-size * 1;
+            height: $base-size * 1;
+            margin-right: $base-size * 0.75;
+
+            user-select: none;
+
+            &.simple-tree-node-chevron-clickable {
+                cursor: pointer;
+            }
+
+            .simple-tree-node-chevron-right {
+                @include generate-chevron-right($base-size * 1, $black);
+            }
+
+            .simple-tree-node-chevron-down {
+                @include generate-chevron-down($base-size * 1, $black);
+            }
+        }
+
+        .simple-tree-node-checkbox {
+            width: $base-size * 1.5;
+            height: $base-size * 1.5;
+            border: 1px solid $black;
+            margin-right: $base-size;
+            background-color: $white; // TODO
+            cursor: pointer;
+
+            &.simple-tree-node-checkbox-disabled {
+                border-color: $grey;
+                cursor: default;
+            }
+
+            &.simple-tree-node-checkbox-selected {
+                background-color: $black; // TODO
+            }
+
+            &.simple-tree-node-checkbox-disabled.simple-tree-node-checkbox-selected {
+                background-color: $lightgrey; // TODO
+            }
+        }
+
+        .simple-tree-node-text {
+            display: inline-block;
+            width: calc(100% - #{$base-size * 1.5});
+
+            @include text-overflow();
+
+            &.simple-tree-node-bold {
+                font-weight: bold;
+            }
+
+            &.simple-tree-node-selectable {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.simple-tree-node-container-root {
+    list-style: none;
+}
