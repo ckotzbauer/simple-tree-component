@@ -38,7 +38,7 @@ export interface TreeNode {
     collapsed: boolean;
 
     /**
-     * Indicates if this node is visible in the three.
+     * Indicates if this node is visible in the tree.
      */
     hidden: boolean;
 
