@@ -1,4 +1,5 @@
 .idea
 coverage
+docs/out
 node_modules
 /index.html
