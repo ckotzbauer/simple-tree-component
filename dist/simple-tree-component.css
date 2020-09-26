@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.simple-tree.simple-tree-view-only {
+  height: 18.75rem;
+}
+
 .simple-tree.simple-tree-readonly {
   background-color: #d6d6d6;
 }

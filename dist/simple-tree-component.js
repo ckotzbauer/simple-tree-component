@@ -8,6 +8,7 @@
     const defaults = {
         nodes: [],
         searchBar: true,
+        searchBarFocus: false,
         watermark: "Please select a value...",
         css: {
             dropdownHolder: "",
@@ -21,6 +22,7 @@
         classNames: {
             SimpleTree: "simple-tree",
             SimpleTreeReadOnly: "simple-tree-readonly",
+            SimpleTreeViewOnly: "simple-tree-view-only",
             SimpleTreeDropdownHolder: "simple-tree-dropdown-holder",
             SimpleTreeSingleSelectBox: "simple-tree-single-selectbox",
             SimpleTreeMultiSelectBox: "simple-tree-multi-selectbox",
@@ -63,6 +65,7 @@
             this.eventManager = eventManager;
             this.readOnly = readOnly;
             this.highlightedNode = null;
+            this.searchTextInput = null;
         }
         destroy() { }
         setHighlighting(node) {
@@ -87,13 +90,16 @@
             if (this.config.searchBar) {
                 const wrapperDiv = document.createElement("div");
                 wrapperDiv.classList.add(constants.classNames.SimpleTreeInputContainer);
-                const textInput = document.createElement("input");
-                textInput.type = "text";
-                textInput.addEventListener("input", (e) => {
+                this.searchTextInput = document.createElement("input");
+                this.searchTextInput.type = "text";
+                if (this.config.searchBarFocus) {
+                    setTimeout(() => { var _a; return (_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.focus(); }, 0);
+                }
+                this.searchTextInput.addEventListener("input", (e) => {
                     this.dataService.filter(e.target.value);
                     this.renderTree();
                 });
-                wrapperDiv.appendChild(textInput);
+                wrapperDiv.appendChild(this.searchTextInput);
                 this.element.appendChild(wrapperDiv);
             }
             const nodeContainer = document.createElement("div");
@@ -198,6 +204,12 @@
                 c.hidden = flag;
                 c.children.forEach((c) => this.collapseNode(c, flag));
             });
+        }
+        setReadOnly(readOnly) {
+            this.readOnly = readOnly;
+            if (this.searchTextInput) {
+                this.searchTextInput.disabled = readOnly;
+            }
         }
     }
 
@@ -599,7 +611,7 @@
         }
         setReadOnly(readOnly) {
             this.readOnly = readOnly;
-            this.tree.readOnly = readOnly;
+            this.tree.setReadOnly(readOnly);
             this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
         }
         subscribe(event, handler) {
@@ -644,6 +656,8 @@
         constructor(element, options) {
             super(element, options);
             this.dropdownOpen = false;
+            this.boundKeyUp = this.onKeyUp.bind(this);
+            this.boundClick = this.onClick.bind(this);
         }
         toggleDropdown() {
             if (this.dropdownOpen) {
@@ -651,6 +665,17 @@
             }
             else {
                 this.openDropdown();
+            }
+        }
+        onKeyUp(e) {
+            if (e.code === "Escape") {
+                this.closeDropdown();
+            }
+        }
+        onClick(e) {
+            const clickedElement = e.target;
+            if (!this.dropdownHolder.contains(clickedElement)) {
+                this.closeDropdown();
             }
         }
         openDropdown() {
@@ -663,6 +688,8 @@
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
             this.dropdownOpen = true;
+            window.addEventListener("keyup", this.boundKeyUp);
+            window.addEventListener("mouseup", this.boundClick);
         }
         closeDropdown() {
             this.dropdownHolder.style.display = "none";
@@ -673,6 +700,8 @@
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
             this.dropdownOpen = false;
+            window.removeEventListener("keyup", this.boundKeyUp);
+            window.removeEventListener("mouseup", this.boundClick);
         }
     }
 
@@ -808,7 +837,7 @@
     class TreeView extends CommonTreeLogic {
         constructor(element, options) {
             super(element, options);
-            this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
+            this.rootContainer = createContainer(element, constants.classNames.SimpleTree, constants.classNames.SimpleTreeViewOnly);
             if (options.treeViewCheckboxes) {
                 this.selected = this.dataService.getSelected();
             }
