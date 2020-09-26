@@ -49,6 +49,10 @@ export class BaseTree {
             const textInput: HTMLInputElement = document.createElement("input");
             textInput.type = "text";
 
+            if (this.config.searchBarFocus) {
+                setTimeout(() => textInput.focus(), 0);
+            }
+
             textInput.addEventListener("input", (e: Event) => {
                 this.dataService.filter((e.target as HTMLInputElement).value);
                 this.renderTree();

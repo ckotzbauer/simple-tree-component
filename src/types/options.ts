@@ -15,6 +15,11 @@ export interface TreeConfiguration {
     searchBar: boolean;
 
     /**
+     * Determines if the searchbar requests the focus by default. (Default: `false`)
+     */
+    searchBarFocus: boolean;
+
+    /**
      * A watermark text which is displayed if no value is selected.
      * Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
      * (Default: `Please select a value...`)
@@ -72,6 +77,7 @@ export interface BaseOptions extends TreeConfiguration {
 export const defaults: BaseOptions = {
     nodes: [],
     searchBar: true,
+    searchBarFocus: false,
     watermark: "Please select a value...",
     css: {
         dropdownHolder: "",
