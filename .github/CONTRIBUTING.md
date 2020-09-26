@@ -1,4 +1,4 @@
-Hello,
+# Contribution guidelines
 
 Thank you for your interest in contributing to `simple-tree-component`!
 Contributions are welcome from beginners and seasoned developers alike.
@@ -19,8 +19,19 @@ If you'd like to see a certain feature in simple-tree-component, file an issue f
 2. Setup the necessary dependencies by running `npm install`.
 3. Then, `npm start` to launch the dev environment.
 4. `src/index.ts` is the entry point, `index.html` is where you can experiment with options.
-5. Make desired changes and push. (See commit message guidelines)
+5. Make desired changes, write tests and update the docs if needed. (Ensure correct code-style with `npm run format` and `npm run lint`)
+5. Commit and push. (See commit message guidelines)
 6. Go to https://github.com/ckotzbauer/simple-tree-component/compare?expand=1
+
+### Important commands
+
+* `npm start`: Launch the dev environment and watch for changes.
+* `npm run build`: Compiles the whole codebase.
+* `npm run test`: Runs unit-tests.
+* `npm run format`: Runs prettier to apply code-style rules.
+* `npm run lint`: Runs eslint to check code-style.
+* `npm run build:docs`: Builds the documentation (incl. api-docs).
+* `npm run docs:serve`: Starts a webserver to serve the docs.
 
 ### Commit message guidelines
 
