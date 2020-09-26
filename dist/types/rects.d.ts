@@ -4,5 +4,5 @@ export interface Rect {
     width: number;
     height: number;
 }
-export declare function calculate(elementRect: Rect, availableHeight: number, overlayHeight: number, maxOverlayHeight?: number): Rect;
+export declare function calculate(elementRect: Rect, availableHeight: number, overlayHeight: number, borderWith: number, maxOverlayHeight?: number): Rect;
 export declare function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight?: number): void;

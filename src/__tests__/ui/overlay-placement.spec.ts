@@ -16,7 +16,8 @@ describe("overlay-placement", () => {
                     width: 100,
                 },
                 1000,
-                200
+                200,
+                0
             );
 
             expect(rect).toEqual({ top: 795, height: 200, left: 10, width: 100 });
@@ -31,7 +32,8 @@ describe("overlay-placement", () => {
                     width: 100,
                 },
                 1000,
-                200
+                200,
+                0
             );
 
             expect(rect).toEqual({ top: 595, height: 200, left: 10, width: 100 });
@@ -47,6 +49,7 @@ describe("overlay-placement", () => {
                 },
                 250,
                 300,
+                0,
                 200
             );
 

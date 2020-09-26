@@ -33,13 +33,15 @@ export interface Rect {
  * (e.g. rectangle of the selectbox for which the position of the flyout should be calculated.)
  * @param availableHeight Full height of the surrounding container (e.g. window height)
  * @param overlayHeight The height of the overlay which should be positioned.
- * @param maxOverlayHeight The maximum height of the overlay. Defaults to `200`.
+ * @param borderWith The border-width used. It is assumed, that all borders have the same width. Defaults to `0`
+ * @param maxOverlayHeight The maximum height of the overlay. Defaults to `300`.
  * @returns The calculated rectangle of the overlay position.
  */
 export declare function calculate(
     elementRect: Rect,
     availableHeight: number,
     overlayHeight: number,
+    borderWith: number,
     maxOverlayHeight?: number
 ): Rect;
 
@@ -49,6 +51,6 @@ export declare function calculate(
  *
  * @param overlay The HTML element of the overlay, which should be placed correctly.
  * @param element The HTML element to which the `overlay` belongs.
- * @param maxHeight The maximum height of the overlay. Defaults to `200`.
+ * @param maxHeight The maximum height of the overlay. Defaults to `300`.
  */
 export declare function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight?: number): void;
