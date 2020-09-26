@@ -19,6 +19,7 @@ export interface Instance<K extends keyof TreeModeNameMap> {
     subscribe(event: "selectionChanged", handler: (d: TreeModeNameMap[K], e: string) => void): Subscription;
     subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], e: string) => void): Subscription;
 }
+export declare type SimpleTree = Instance<"singleSelectDropdown" | "multiSelectDropdown" | "view">;
 export interface SimpleTreeFn {
     <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options): Instance<K>;
     <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, config?: Options): Instance<K>[];
