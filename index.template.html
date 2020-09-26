@@ -49,6 +49,7 @@
     <script>
         const simpleTree = window["simple-tree-component"];
         const stc1 = simpleTree(".demo-root-1", "view", {
+            searchBar: false,
             nodes: [
                 {
                     label: "Parent 1",
@@ -138,6 +139,7 @@
         });
 
         const stc3 = simpleTree(".demo-root-3", "singleSelectDropdown", {
+            searchBarFocus: true,
             nodes: [
                 {
                     label: "Parent 7",
