@@ -60,7 +60,7 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
 
     public setReadOnly(readOnly: boolean): void {
         this.readOnly = readOnly;
-        this.tree.readOnly = readOnly;
+        this.tree.setReadOnly(readOnly);
         this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
     }
 

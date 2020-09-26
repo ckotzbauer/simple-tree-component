@@ -7,12 +7,14 @@ import { EventManager } from "../event/event-manager";
 export class BaseTree {
     private highlightedNode: string | null = null;
 
+    private searchTextInput: HTMLInputElement | null = null;
+
     constructor(
         public element: HTMLElement,
         public config: BaseOptions,
         public dataService: DataService,
         private eventManager: EventManager,
-        public readOnly: boolean
+        private readOnly: boolean
     ) {}
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -46,19 +48,19 @@ export class BaseTree {
             const wrapperDiv: HTMLDivElement = document.createElement("div");
             wrapperDiv.classList.add(constants.classNames.SimpleTreeInputContainer);
 
-            const textInput: HTMLInputElement = document.createElement("input");
-            textInput.type = "text";
+            this.searchTextInput = document.createElement("input");
+            this.searchTextInput.type = "text";
 
             if (this.config.searchBarFocus) {
-                setTimeout(() => textInput.focus(), 0);
+                setTimeout(() => this.searchTextInput?.focus(), 0);
             }
 
-            textInput.addEventListener("input", (e: Event) => {
+            this.searchTextInput.addEventListener("input", (e: Event) => {
                 this.dataService.filter((e.target as HTMLInputElement).value);
                 this.renderTree();
             });
 
-            wrapperDiv.appendChild(textInput);
+            wrapperDiv.appendChild(this.searchTextInput);
             this.element.appendChild(wrapperDiv);
         }
 
@@ -191,5 +193,13 @@ export class BaseTree {
             c.hidden = flag;
             c.children.forEach((c) => this.collapseNode(c, flag));
         });
+    }
+
+    public setReadOnly(readOnly: boolean): void {
+        this.readOnly = readOnly;
+
+        if (this.searchTextInput) {
+            this.searchTextInput.disabled = readOnly;
+        }
     }
 }
