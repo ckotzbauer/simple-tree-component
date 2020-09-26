@@ -37,7 +37,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
     private onClick(e: MouseEvent): void {
         const clickedElement = e.target as HTMLElement;
 
-        if (!this.dropdownHolder.contains(clickedElement)) {
+        if (!this.dropdownHolder.contains(clickedElement) && !this.selectContainer.contains(clickedElement)) {
             // clicked outside
             this.closeDropdown();
         }
