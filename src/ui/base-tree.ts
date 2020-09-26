@@ -20,14 +20,14 @@ export class BaseTree {
 
     public setHighlighting(node: TreeNode | null): void {
         this.element
-            .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)
-            ?.classList.remove(constants.classNames.SimpleTreeNodeBold);
+            .querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${constants.classNames.SimpleTreeNodeSelected}`)
+            ?.classList.remove(constants.classNames.SimpleTreeNodeSelected);
 
         if (node !== null && this.highlightedNode !== node.value) {
             document
                 .getElementById(node.uid)
-                ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)
-                ?.classList.add(constants.classNames.SimpleTreeNodeBold);
+                ?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)
+                ?.classList.add(constants.classNames.SimpleTreeNodeSelected);
 
             this.highlightedNode = node.value;
         } else {
@@ -42,16 +42,21 @@ export class BaseTree {
     }
 
     private createBasicHtml(): void {
-        const textInput: HTMLInputElement = document.createElement("input");
-        textInput.type = "text";
-        textInput.autofocus = false;
+        if (this.config.searchBar) {
+            const wrapperDiv: HTMLDivElement = document.createElement("div");
+            wrapperDiv.classList.add(constants.classNames.SimpleTreeInputContainer);
 
-        textInput.addEventListener("input", (e: Event) => {
-            this.dataService.filter((e.target as HTMLInputElement).value);
-            this.renderTree();
-        });
+            const textInput: HTMLInputElement = document.createElement("input");
+            textInput.type = "text";
 
-        this.element.appendChild(textInput);
+            textInput.addEventListener("input", (e: Event) => {
+                this.dataService.filter((e.target as HTMLInputElement).value);
+                this.renderTree();
+            });
+
+            wrapperDiv.appendChild(textInput);
+            this.element.appendChild(wrapperDiv);
+        }
 
         const nodeContainer = document.createElement("div");
         nodeContainer.classList.add(constants.classNames.SimpleTreeNodeContainer);
@@ -110,14 +115,14 @@ export class BaseTree {
 
                 lineWrapperDiv.appendChild(checkboxElement);
             } else if (node.selected) {
-                textDivElement.classList.add(constants.classNames.SimpleTreeNodeBold);
+                textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelected);
             }
 
             textDivElement.textContent = node.label;
 
             if (!this.config.treeViewCheckboxes && node.selectable && !this.readOnly) {
-                textDivElement.addEventListener("click", () => this.toggleNodeSelected(node));
-                textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
+                lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
+                lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }
 
             lineWrapperDiv.appendChild(textDivElement);
@@ -163,7 +168,8 @@ export class BaseTree {
 
             chevronDivContainer.appendChild(chevronDiv);
 
-            chevronDivContainer.addEventListener("click", () => {
+            chevronDivContainer.addEventListener("click", (e: MouseEvent) => {
+                e.stopPropagation();
                 const flag = !node.collapsed;
                 node.collapsed = flag;
                 this.collapseNode(node, flag);
