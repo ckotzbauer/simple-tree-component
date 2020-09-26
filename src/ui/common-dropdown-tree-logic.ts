@@ -11,8 +11,11 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
     protected selectContainer!: HTMLElement;
     protected arrowElement!: HTMLElement;
 
+    private boundKeyUp: (e: KeyboardEvent) => void;
+
     constructor(element: Element, options: BaseOptions) {
         super(element, options);
+        this.boundKeyUp = this.onKeyUp.bind(this);
     }
 
     protected toggleDropdown(): void {
@@ -20,6 +23,12 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
             this.closeDropdown();
         } else {
             this.openDropdown();
+        }
+    }
+
+    private onKeyUp(e: KeyboardEvent): void {
+        if (e.code === "Escape") {
+            this.closeDropdown();
         }
     }
 
@@ -34,6 +43,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
         this.dropdownOpen = true;
+        window.addEventListener("keyup", this.boundKeyUp);
     }
 
     protected closeDropdown(): void {
@@ -45,5 +55,6 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
         this.dropdownOpen = false;
+        window.removeEventListener("keyup", this.boundKeyUp);
     }
 }
