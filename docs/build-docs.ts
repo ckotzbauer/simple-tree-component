@@ -17,8 +17,12 @@ const ignoreFiles = ["_sidebar.md"];
     // Merge Sidebar
     const typesSidebar = (await fs.promises.readFile(`${outDir}/_sidebar.md`)).toString();
     const generalSidebar = (await fs.promises.readFile(`${docsDir}/_sidebar.md`)).toString();
-    const fullSidebar = generalSidebar + "\n\n" + typesSidebar.replace(/- \[Summary\]/g, "  - [Summary]");
+    const fullSidebar = generalSidebar + "\n" + typesSidebar.replace(/- \[Summary\]/g, "  - [Summary]");
 
     await fs.promises.writeFile(`${outDir}/_sidebar.md`, fullSidebar);
+
+    // Copy CONTRIBUTING
+    await fs.promises.copyFile(`${path.join(docsDir, "..", ".github")}/CONTRIBUTING.md`, `${outDir}/CONTRIBUTING.md`);
+
     console.log("Documentation copied successfully!");
 })();
