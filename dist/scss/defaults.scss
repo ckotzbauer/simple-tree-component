@@ -1,6 +1,9 @@
 // ------------------------------ DEFAULTS ------------------------------
 $base-size: 0.5rem !default;
+$font-size: $base-size * 2;
 
-$max-dropdown-height: 25 * $base-size;
+$child-left-indent: $base-size * 2.5;
+$max-dropdown-height: 37.5 * $base-size;
 
-$base-border: 1px solid $black !default;
+$base-border: 1px solid $grey !default;
+$base-border-radius: $base-size * 0.5;

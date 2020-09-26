@@ -2,14 +2,31 @@
 @import "defaults";
 @import "mixins";
 
+@mixin simple-tree-input-container() {
+    .simple-tree-input-container {
+        padding: $base-size * 0.5;
+
+        input {
+            width: 100%;
+            height: $base-size * 4;
+            font-size: $font-size;
+            padding: $base-size * 0.5;
+            box-sizing: border-box;
+        }
+    }
+}
+
 .simple-tree {
+    @include simple-tree-input-container();
+    border: $base-border;
+    border-radius: $base-border-radius;
+
     @mixin base-select-container() {
-        border: $base-border;
         cursor: pointer;
     }
 
     &.simple-tree-readonly {
-        background-color: $lightgrey;
+        background-color: $light-grey;
 
         .simple-tree-single-selectbox,
         .simple-tree-multi-selectbox {
@@ -82,9 +99,11 @@
                 margin-left: $base-size * 0.5;
                 margin-top: $base-size * 0.5;
                 cursor: default;
+                border-radius: $base-border-radius;
+                background-color: $light-grey;
 
                 .simple-tree-pillbox-cross {
-                    @include generate-cross($base-size * 1.5, $black);
+                    @include generate-cross($base-size * 1.5, $control-color);
                     margin-left: $base-size * 0.5;
                     display: inline-block;
                     cursor: pointer;
@@ -99,38 +118,55 @@
     }
 
     .simple-tree-chevron-up {
-        @include generate-chevron-up($base-size * 1.5, $black);
+        @include generate-chevron-up($base-size * 1.5, $control-color);
         margin-right: $base-size * -2;
         float: right;
     }
 
     .simple-tree-chevron-down {
-        @include generate-chevron-down($base-size * 1.5, $black);
+        @include generate-chevron-down($base-size * 1.5, $control-color);
         margin-right: $base-size * -2;
         float: right;
     }
 }
 
 .simple-tree-dropdown-holder {
+    @include simple-tree-input-container();
     position: absolute;
     border: $base-border;
-    max-height: $max-dropdown-height; // TODO: move to tree-ul
-    overflow-y: overlay; // TODO: move to tree-ul
+    border-radius: $base-border-radius;
+    max-height: $max-dropdown-height;
     background-color: $white;
 }
 
 .simple-tree-node-container {
+    overflow-y: overlay;
+    height: calc(100% - #{$base-size * 5});
+
     .simple-tree-node-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: $base-size * 0.5;
+
+        &:hover {
+            background-color: $light-blue;
+        }
+
+        &.simple-tree-node-selected {
+            font-weight: bold;
+            background-color: $blue;
+        }
+
+        &.simple-tree-node-selectable {
+            cursor: pointer;
+        }
 
         .simple-tree-node-chevron-container {
             display: inline-block;
             width: $base-size * 1;
             height: $base-size * 1;
             margin-right: $base-size * 0.75;
-
             user-select: none;
 
             &.simple-tree-node-chevron-clickable {
@@ -138,11 +174,11 @@
             }
 
             .simple-tree-node-chevron-right {
-                @include generate-chevron-right($base-size * 1, $black);
+                @include generate-chevron-right($base-size * 1, $control-color);
             }
 
             .simple-tree-node-chevron-down {
-                @include generate-chevron-down($base-size * 1, $black);
+                @include generate-chevron-down($base-size * 1, $control-color);
             }
         }
 
@@ -151,7 +187,7 @@
             height: $base-size * 1.5;
             border: 1px solid $black;
             margin-right: $base-size;
-            background-color: $white; // TODO
+            background-color: $white;
             cursor: pointer;
 
             &.simple-tree-node-checkbox-disabled {
@@ -160,31 +196,24 @@
             }
 
             &.simple-tree-node-checkbox-selected {
-                background-color: $black; // TODO
+                background-color: $control-color;
             }
 
             &.simple-tree-node-checkbox-disabled.simple-tree-node-checkbox-selected {
-                background-color: $lightgrey; // TODO
+                background-color: $light-grey;
             }
         }
 
         .simple-tree-node-text {
+            @include text-overflow();
             display: inline-block;
             width: calc(100% - #{$base-size * 1.5});
-
-            @include text-overflow();
-
-            &.simple-tree-node-bold {
-                font-weight: bold;
-            }
-
-            &.simple-tree-node-selectable {
-                cursor: pointer;
-            }
         }
     }
 }
 
 .simple-tree-node-container-root {
     list-style: none;
+    margin: 0;
+    padding-left: $child-left-indent;
 }

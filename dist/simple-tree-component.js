@@ -24,6 +24,7 @@
             SimpleTreeDropdownHolder: "simple-tree-dropdown-holder",
             SimpleTreeSingleSelectBox: "simple-tree-single-selectbox",
             SimpleTreeMultiSelectBox: "simple-tree-multi-selectbox",
+            SimpleTreeInputContainer: "simple-tree-input-container",
             SimpleTreePillboxHolder: "simple-tree-pillbox-holder",
             SimpleTreePillboxCross: "simple-tree-pillbox-cross",
             SimpleTreeSelectedLabel: "simple-tree-selected-label",
@@ -35,7 +36,7 @@
             SimpleTreeNodeContainer: "simple-tree-node-container",
             SimpleTreeNodeContainerRoot: "simple-tree-node-container-root",
             SimpleTreeNodeText: "simple-tree-node-text",
-            SimpleTreeNodeBold: "simple-tree-node-bold",
+            SimpleTreeNodeSelected: "simple-tree-node-selected",
             SimpleTreeNodeSelectable: "simple-tree-node-selectable",
             SimpleTreeNodeArrow: "simple-tree-node-arrow",
             SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
@@ -67,10 +68,10 @@
         setHighlighting(node) {
             var _a, _b, _c;
             (_a = this.element
-                .querySelector(`.${constants.classNames.SimpleTreeNodeText}.${constants.classNames.SimpleTreeNodeBold}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(constants.classNames.SimpleTreeNodeBold);
+                .querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${constants.classNames.SimpleTreeNodeSelected}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(constants.classNames.SimpleTreeNodeSelected);
             if (node !== null && this.highlightedNode !== node.value) {
                 (_c = (_b = document
-                    .getElementById(node.uid)) === null || _b === void 0 ? void 0 : _b.querySelector(`.${constants.classNames.SimpleTreeNodeText}`)) === null || _c === void 0 ? void 0 : _c.classList.add(constants.classNames.SimpleTreeNodeBold);
+                    .getElementById(node.uid)) === null || _b === void 0 ? void 0 : _b.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)) === null || _c === void 0 ? void 0 : _c.classList.add(constants.classNames.SimpleTreeNodeSelected);
                 this.highlightedNode = node.value;
             }
             else {
@@ -83,14 +84,18 @@
             this.renderTree();
         }
         createBasicHtml() {
-            const textInput = document.createElement("input");
-            textInput.type = "text";
-            textInput.autofocus = false;
-            textInput.addEventListener("input", (e) => {
-                this.dataService.filter(e.target.value);
-                this.renderTree();
-            });
-            this.element.appendChild(textInput);
+            if (this.config.searchBar) {
+                const wrapperDiv = document.createElement("div");
+                wrapperDiv.classList.add(constants.classNames.SimpleTreeInputContainer);
+                const textInput = document.createElement("input");
+                textInput.type = "text";
+                textInput.addEventListener("input", (e) => {
+                    this.dataService.filter(e.target.value);
+                    this.renderTree();
+                });
+                wrapperDiv.appendChild(textInput);
+                this.element.appendChild(wrapperDiv);
+            }
             const nodeContainer = document.createElement("div");
             nodeContainer.classList.add(constants.classNames.SimpleTreeNodeContainer);
             this.element.appendChild(nodeContainer);
@@ -137,12 +142,12 @@
                     lineWrapperDiv.appendChild(checkboxElement);
                 }
                 else if (node.selected) {
-                    textDivElement.classList.add(constants.classNames.SimpleTreeNodeBold);
+                    textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelected);
                 }
                 textDivElement.textContent = node.label;
                 if (!this.config.treeViewCheckboxes && node.selectable && !this.readOnly) {
-                    textDivElement.addEventListener("click", () => this.toggleNodeSelected(node));
-                    textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelectable);
+                    lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
+                    lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelectable);
                 }
                 lineWrapperDiv.appendChild(textDivElement);
                 liElement.appendChild(lineWrapperDiv);
@@ -177,7 +182,8 @@
                     chevronDiv.classList.add(constants.classNames.SimpleTreeNodeChevronDown);
                 }
                 chevronDivContainer.appendChild(chevronDiv);
-                chevronDivContainer.addEventListener("click", () => {
+                chevronDivContainer.addEventListener("click", (e) => {
+                    e.stopPropagation();
                     const flag = !node.collapsed;
                     node.collapsed = flag;
                     this.collapseNode(node, flag);
@@ -604,30 +610,30 @@
         }
     }
 
-    function calculate(elementRect, availableHeight, overlayHeight, maxOverlayHeight = 200) {
-        let top = elementRect.top + elementRect.height;
+    function calculate(elementRect, availableHeight, overlayHeight, borderWith = 0, maxOverlayHeight = 300) {
+        let top = elementRect.top + elementRect.height + borderWith;
         let height = overlayHeight > maxOverlayHeight ? maxOverlayHeight : overlayHeight;
         if (top + height > availableHeight) {
-            top = elementRect.top - height;
+            top = elementRect.top - height - borderWith;
         }
         if (top < 0) {
-            top = elementRect.top + elementRect.height;
+            top = elementRect.top + elementRect.height + borderWith;
             height = availableHeight - top;
         }
         return {
             top,
-            left: elementRect.left,
-            width: elementRect.width,
+            left: elementRect.left - borderWith,
+            width: elementRect.width - borderWith,
             height,
         };
     }
-    function calculateOverlayPlacement(overlay, element, maxHeight = 200) {
+    function calculateOverlayPlacement(overlay, element, maxHeight = 300) {
         const rect = calculate({
             top: element.offsetTop,
             height: element.offsetHeight,
             left: element.offsetLeft,
             width: element.offsetWidth,
-        }, window.innerHeight, overlay.clientHeight, maxHeight);
+        }, window.innerHeight, overlay.clientHeight, parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10), maxHeight);
         overlay.style.top = `${rect.top}px`;
         overlay.style.left = `${rect.left}px`;
         overlay.style.width = `${rect.width}px`;
