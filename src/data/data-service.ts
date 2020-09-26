@@ -180,48 +180,74 @@ export class DataService {
         return filtered;
     }
 
-    private clearSelection(nodes: TreeNode[]): void {
-        nodes.forEach((n) => {
-            n.selected = false;
-
-            if (n.children && n.children.length > 0) {
-                this.clearSelection(n.children);
-            }
-        });
-    }
-
     public setSelected(...nodes: TreeNode[]): void {
+        const values = nodes.map((n) => n.value);
+        this.setSelectedNodes(this.allNodes, values);
+
         if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
-            this.clearSelection(this.allNodes);
-            this.setSelectedRecursiveCheckboxes(
-                this.allNodes,
-                nodes.map((n) => n.value)
-            );
-        } else {
-            const values = nodes.map((n) => n.value);
-            this.setSelectedInternal(this.allNodes, nodes, values);
+            this.cleanRecursiveSelect(this.allNodes);
         }
     }
 
-    public setSelectedInternal(nodes: TreeNode[], selection: TreeNode[], values: string[]): void {
-        nodes.forEach((n) => {
-            n.selected = selection.length > 0 && values.indexOf(n.value) !== -1;
+    private updateCheckboxState(node: TreeNode): void {
+        if (!this.treeViewCheckboxes) {
+            return;
+        }
+
+        const checkboxDiv: HTMLDivElement | null | undefined = document
+            .getElementById(node.uid)
+            ?.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
+
+        if (!checkboxDiv) {
+            console.error("checkbox div not found for node!", node);
+            return;
+        }
+
+        if (checkboxDiv) {
+            if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
+            } else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
+            }
+        }
+    }
+
+    private setSelectedNodes(nodes: TreeNode[], values: string[]): void {
+        nodes.forEach((n: TreeNode) => {
+            n.selected = values.includes(n.value);
+            this.updateCheckboxState(n);
 
             if (n.children && n.children.length > 0) {
-                this.setSelectedInternal(n.children, selection, values);
+                this.setSelectedNodes(n.children, values);
             }
         });
     }
 
-    public setSelectedRecursiveCheckboxes(nodes: TreeNode[], selectedValues: string[]): void {
-        nodes.forEach((n) => {
-            if (selectedValues.includes(n.value)) {
-                this.toggleCheckboxNode(n, true);
-                this.toggleCheckboxParent(n);
+    private cleanRecursiveSelect(nodes: TreeNode[]): boolean {
+        let allNodesSelected = true;
+        nodes.forEach((n: TreeNode) => {
+            if (n.children && n.children.length > 0) {
+                if (n.selected) {
+                    this.checkRecursiveChilds(n.children);
+                } else {
+                    n.selected = this.cleanRecursiveSelect(n.children);
+                    this.updateCheckboxState(n);
+                }
             }
 
+            allNodesSelected = allNodesSelected && n.selected;
+        });
+
+        return allNodesSelected;
+    }
+
+    private checkRecursiveChilds(nodes: TreeNode[]): void {
+        nodes.forEach((n: TreeNode) => {
+            n.selected = true;
+            this.updateCheckboxState(n);
+
             if (n.children && n.children.length > 0) {
-                this.setSelectedRecursiveCheckboxes(n.children, selectedValues);
+                this.checkRecursiveChilds(n.children);
             }
         });
     }

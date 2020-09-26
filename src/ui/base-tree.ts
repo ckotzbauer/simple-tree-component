@@ -150,12 +150,6 @@ export class BaseTree {
     }
 
     private toggleCheckboxSelected(node: TreeNode): void {
-        const nodeContainer = this.getNodeContainer();
-
-        if (!nodeContainer) {
-            return;
-        }
-
         const mutatedNode = this.dataService.toggleCheckboxSelected(node.value);
         this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
     }
