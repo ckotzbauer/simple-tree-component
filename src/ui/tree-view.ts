@@ -8,7 +8,7 @@ import { CommonTreeLogic } from "./common-tree-logic";
 export class TreeView extends CommonTreeLogic<"view"> {
     constructor(element: HTMLElement, options: BaseOptions) {
         super(element, options);
-        this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
+        this.rootContainer = createContainer(element, constants.classNames.SimpleTree, constants.classNames.SimpleTreeViewOnly);
 
         if (options.treeViewCheckboxes) {
             this.selected = this.dataService.getSelected();

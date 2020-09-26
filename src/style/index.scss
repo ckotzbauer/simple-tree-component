@@ -25,6 +25,10 @@
         cursor: pointer;
     }
 
+    &.simple-tree-view-only {
+        height: $view-only-default-height;
+    }
+
     &.simple-tree-readonly {
         background-color: $light-grey;
 
