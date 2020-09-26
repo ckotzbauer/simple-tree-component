@@ -41,7 +41,7 @@ export declare function calculate(
     elementRect: Rect,
     availableHeight: number,
     overlayHeight: number,
-    borderWith: number,
+    borderWith?: number,
     maxOverlayHeight?: number
 ): Rect;
 
