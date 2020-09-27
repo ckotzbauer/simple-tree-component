@@ -8,7 +8,7 @@
   "excludePrivate": true,
   "excludeProtected": true,
   "hideBreadcrumbs": true,
-  "hideProjectTitle": true,
+  "hideProjectName": true,
   "plugins": [
     "typedoc-plugin-markdown"
   ],
