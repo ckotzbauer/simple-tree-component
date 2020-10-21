@@ -169,10 +169,6 @@
             this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
         }
         toggleCheckboxSelected(node) {
-            const nodeContainer = this.getNodeContainer();
-            if (!nodeContainer) {
-                return;
-            }
             const mutatedNode = this.dataService.toggleCheckboxSelected(node.value);
             this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
         }
@@ -465,40 +461,64 @@
             });
             return filtered;
         }
-        clearSelection(nodes) {
-            nodes.forEach((n) => {
-                n.selected = false;
-                if (n.children && n.children.length > 0) {
-                    this.clearSelection(n.children);
-                }
-            });
-        }
         setSelected(...nodes) {
+            const values = nodes.map((n) => n.value);
+            this.setSelectedNodes(this.allNodes, values);
             if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
-                this.clearSelection(this.allNodes);
-                this.setSelectedRecursiveCheckboxes(this.allNodes, nodes.map((n) => n.value));
-            }
-            else {
-                const values = nodes.map((n) => n.value);
-                this.setSelectedInternal(this.allNodes, nodes, values);
+                this.cleanRecursiveSelect(this.allNodes);
             }
         }
-        setSelectedInternal(nodes, selection, values) {
+        updateCheckboxState(node) {
+            var _a;
+            if (!this.treeViewCheckboxes) {
+                return;
+            }
+            const checkboxDiv = (_a = document
+                .getElementById(node.uid)) === null || _a === void 0 ? void 0 : _a.querySelector(`.${constants.classNames.SimpleTreeNodeCheckbox}`);
+            if (!checkboxDiv) {
+                console.error("checkbox div not found for node!", node);
+                return;
+            }
+            if (checkboxDiv) {
+                if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                    checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
+                }
+                else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                    checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
+                }
+            }
+        }
+        setSelectedNodes(nodes, values) {
             nodes.forEach((n) => {
-                n.selected = selection.length > 0 && values.indexOf(n.value) !== -1;
+                n.selected = values.includes(n.value);
+                this.updateCheckboxState(n);
                 if (n.children && n.children.length > 0) {
-                    this.setSelectedInternal(n.children, selection, values);
+                    this.setSelectedNodes(n.children, values);
                 }
             });
         }
-        setSelectedRecursiveCheckboxes(nodes, selectedValues) {
+        cleanRecursiveSelect(nodes) {
+            let allNodesSelected = true;
             nodes.forEach((n) => {
-                if (selectedValues.includes(n.value)) {
-                    this.toggleCheckboxNode(n, true);
-                    this.toggleCheckboxParent(n);
-                }
                 if (n.children && n.children.length > 0) {
-                    this.setSelectedRecursiveCheckboxes(n.children, selectedValues);
+                    if (n.selected) {
+                        this.checkRecursiveChilds(n.children);
+                    }
+                    else {
+                        n.selected = this.cleanRecursiveSelect(n.children);
+                        this.updateCheckboxState(n);
+                    }
+                }
+                allNodesSelected = allNodesSelected && n.selected;
+            });
+            return allNodesSelected;
+        }
+        checkRecursiveChilds(nodes) {
+            nodes.forEach((n) => {
+                n.selected = true;
+                this.updateCheckboxState(n);
+                if (n.children && n.children.length > 0) {
+                    this.checkRecursiveChilds(n.children);
                 }
             });
         }
@@ -674,7 +694,7 @@
         }
         onClick(e) {
             const clickedElement = e.target;
-            if (!this.dropdownHolder.contains(clickedElement)) {
+            if (!this.dropdownHolder.contains(clickedElement) && !this.selectContainer.contains(clickedElement)) {
                 this.closeDropdown();
             }
         }
