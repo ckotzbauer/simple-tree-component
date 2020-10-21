@@ -7,12 +7,19 @@ const ignoreFiles = ["_sidebar.md"];
 (async () => {
     const docsDir = __dirname;
     const outDir = path.join(__dirname, "out");
+    const assetsDir = path.join(__dirname, "assets");
+    const outAssetsDir = path.join(outDir, "assets");
 
     const filesInFolder = await fs.promises.readdir(docsDir);
     const mdFiles = filesInFolder.filter((f) => f.endsWith(".md") && !ignoreFiles.includes(f));
 
+    await fs.promises.mkdir(outAssetsDir);
+
     await Promise.all(files.map((f) => fs.promises.copyFile(`${docsDir}/${f}`, `${outDir}/${f}`)));
     await Promise.all(mdFiles.map((f) => fs.promises.copyFile(`${docsDir}/${f}`, `${outDir}/${f}`)));
+    await Promise.all(
+        (await fs.promises.readdir(assetsDir)).map((f) => fs.promises.copyFile(`${assetsDir}/${f}`, `${outAssetsDir}/${f}`))
+    );
 
     // Merge Sidebar
     const typesSidebar = await generateTypesSidebar(outDir);

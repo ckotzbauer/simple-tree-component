@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="assets/android-chrome-512x512.png" style="max-width: 500px; width: 100%">
+</p>
+
 > A simple to use ui-tree javascript component.
 
 <p align="center">
