@@ -38,8 +38,8 @@ async function readFileAsync(path: string): Promise<string> {
     }
 }
 
-function uglify(src: string) {
-    const minified = terser.minify(src, {
+async function uglify(src: string) {
+    const minified = await terser.minify(src, {
         output: {
             preamble: version,
             comments: false,
@@ -62,7 +62,7 @@ async function buildScripts() {
     try {
         await buildBundleJs();
         const transpiled = await readFileAsync("./dist/simple-tree-component.js");
-        promisify(writeFile)("./dist/simple-tree-component.min.js", uglify(transpiled));
+        promisify(writeFile)("./dist/simple-tree-component.min.js", await uglify(transpiled));
     } catch (e) {
         logErr(e);
     }
