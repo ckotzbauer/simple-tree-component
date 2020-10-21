@@ -20,6 +20,7 @@ npm install simple-tree-component
 ```
 TypeScript definitions are included in the npm package.
 
+You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-component).
 
 [Contributing](https://github.com/ckotzbauer/simple-tree-component/blob/master/.github/CONTRIBUTING.md)
 --------
