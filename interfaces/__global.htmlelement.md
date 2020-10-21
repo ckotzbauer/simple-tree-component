@@ -17,7 +17,7 @@
 
 • `Optional` **\_simpleTree**: [Instance](instance.md)\<any>
 
-*Defined in [types/globals.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/globals.ts#L8)*
+*Defined in [types/globals.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/globals.ts#L8)*
 
 ___
 
@@ -25,4 +25,4 @@ ___
 
 •  **simpleTree**: \<K>(mode: K, config?: [Options](../globals.md#options)) => [Instance](instance.md)\<K>
 
-*Defined in [types/globals.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/globals.ts#L7)*
+*Defined in [types/globals.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/globals.ts#L7)*

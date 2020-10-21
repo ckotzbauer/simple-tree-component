@@ -32,7 +32,7 @@
 
 Ƭ  **Options**: Partial\<[BaseOptions](interfaces/baseoptions.md)>
 
-*Defined in [types/options.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/options.ts#L93)*
+*Defined in [types/options.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/options.ts#L93)*
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
@@ -42,7 +42,7 @@ ___
 
 Ƭ  **SimpleTree**: [Instance](interfaces/instance.md)\<\"singleSelectDropdown\" \| \"multiSelectDropdown\" \| \"view\">
 
-*Defined in [types/instance.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L93)*
+*Defined in [types/instance.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L93)*
 
 ## Functions
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **calculate**(`elementRect`: [Rect](interfaces/rect.md), `availableHeight`: number, `overlayHeight`: number, `borderWith?`: undefined \| number, `maxOverlayHeight?`: undefined \| number): [Rect](interfaces/rect.md)
 
-*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/rects.ts#L40)*
+*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/rects.ts#L40)*
 
 Calculates a rectangle to display a overlay-flyout relative to the position of the given `elementRect`.
 The following strategy is used (in order):
@@ -80,7 +80,7 @@ ___
 
 ▸ **calculateOverlayPlacement**(`overlay`: [HTMLElement](interfaces/__global.htmlelement.md), `element`: [HTMLElement](interfaces/__global.htmlelement.md), `maxHeight?`: undefined \| number): void
 
-*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/rects.ts#L56)*
+*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/rects.ts#L56)*
 
 Calculates the position of the `overlay` relative to the `element` and sets the values accordingly.
 See the docs of the `calculate` function for more details.

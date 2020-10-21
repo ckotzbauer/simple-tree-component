@@ -16,4 +16,4 @@
 
 •  **simpleTree**: \<K>(mode: K, config?: [Options](../globals.md#options)) => [Instance](instance.md)\<K> \| [Instance](instance.md)\<K>[]
 
-*Defined in [types/globals.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/globals.ts#L12)*
+*Defined in [types/globals.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/globals.ts#L12)*

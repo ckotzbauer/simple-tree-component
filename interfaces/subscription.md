@@ -18,7 +18,7 @@ A subscription-object which is issued when `subscribe` or `subscribeOnce` is cal
 
 ▸ **dispose**(): void
 
-*Defined in [types/subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/subscription.ts#L8)*
+*Defined in [types/subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/subscription.ts#L8)*
 
 Ends the subscription. No further events (this subscription was linked to) where emitted.
 

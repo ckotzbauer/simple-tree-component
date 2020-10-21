@@ -37,7 +37,7 @@ Name | Type |
 
 •  **options**: [BaseOptions](baseoptions.md)
 
-*Defined in [types/instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L18)*
+*Defined in [types/instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L18)*
 
 Applied configuration options for the current instance.
 
@@ -47,7 +47,7 @@ Applied configuration options for the current instance.
 
 ▸ **destroy**(): void
 
-*Defined in [types/instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L23)*
+*Defined in [types/instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L23)*
 
 Destroy the current instance and remove all modifications to the dom.
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **getNode**(`value`: string): [TreeNode](treenode.md) \| null
 
-*Defined in [types/instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L31)*
+*Defined in [types/instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L31)*
 
 Returns a tree-node which has the given `value` as value-property.
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **getSelected**(): TreeModeNameMap[K]
 
-*Defined in [types/instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L46)*
+*Defined in [types/instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L46)*
 
 Returns one or multiple selected tree-node objects, depending on the mode.
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **hideEmphasizeIcon**(): void
 
-*Defined in [types/instance.ts:72](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L72)*
+*Defined in [types/instance.ts:72](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L72)*
 
 Only usable in single-mode. Hides the emphasize-icon again.
 
@@ -105,7 +105,7 @@ ___
 
 ▸ **moveNode**(`value`: [TreeNode](treenode.md) \| string, `direction`: \"up\" \| \"down\"): void
 
-*Defined in [types/instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L39)*
+*Defined in [types/instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L39)*
 
 Moves the up or down in the same hierarchy-level.
 
@@ -124,7 +124,7 @@ ___
 
 ▸ **setReadOnly**(`readOnly`: boolean): void
 
-*Defined in [types/instance.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L60)*
+*Defined in [types/instance.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L60)*
 
 Changes the read-only state of the tree.
 
@@ -142,7 +142,7 @@ ___
 
 ▸ **setSelected**(`value`: TreeModeNameMap[K]): void
 
-*Defined in [types/instance.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L53)*
+*Defined in [types/instance.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L53)*
 
 Resets the selection-state of tree-nodes to the given one(s).
 
@@ -160,7 +160,7 @@ ___
 
 ▸ **showEmphasizeIcon**(`cssClass`: string): void
 
-*Defined in [types/instance.ts:67](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L67)*
+*Defined in [types/instance.ts:67](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L67)*
 
 Only usable in single-mode. Shows an icon for a selected tree-node.
 
@@ -178,7 +178,7 @@ ___
 
 ▸ **subscribe**(`event`: \"selectionChanged\", `handler`: (d: TreeModeNameMap[K], e: string) => void): [Subscription](subscription.md)
 
-*Defined in [types/instance.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L81)*
+*Defined in [types/instance.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L81)*
 
 Add a listener to handle "selectionChanged" events.
 
@@ -199,7 +199,7 @@ ___
 
 ▸ **subscribeOnce**(`event`: \"selectionChanged\", `handler`: (d: TreeModeNameMap[K], e: string) => void): [Subscription](subscription.md)
 
-*Defined in [types/instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/466dabf/src/types/instance.ts#L90)*
+*Defined in [types/instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L90)*
 
 Add a listener to handle "selectionChanged" events. When the event is emitted for the first time, the subscription ends automatically.
 
