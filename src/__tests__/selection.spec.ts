@@ -260,7 +260,9 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3", [], true),
                 ],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
 
             expectObjectsInArray(
@@ -319,7 +321,9 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
 
             const node2 = tree.getNode("node2");
@@ -349,7 +353,9 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2", [], false, false),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
 
             const node1 = tree.getNode("node1");
@@ -369,8 +375,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
 
             const node1 = tree.getNode("node1");
@@ -401,8 +409,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
 
             const node11 = tree.getNode("node11");
@@ -444,7 +454,9 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
 
             clickTreeNode(tree.getNode("node4"));
@@ -471,7 +483,9 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2", [], false, false),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
 
             clickTreeNode(tree.getNode("node1"));
@@ -487,8 +501,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
 
             clickTreeNode(tree.getNode("node1"));
@@ -521,8 +537,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
 
             clickTreeNode(tree.getNode("node1"));
@@ -550,8 +568,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
 
             clickTreeNode(tree.getNode("node11"));

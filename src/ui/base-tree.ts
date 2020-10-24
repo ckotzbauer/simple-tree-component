@@ -130,11 +130,11 @@ export class BaseTree {
 
             this.addChevronDiv(lineWrapperDiv, node, hasChildren);
 
-            if (this.config.treeViewCheckboxes) {
+            if (this.config.checkboxes.active) {
                 const checkboxElement = document.createElement("div");
                 checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckbox);
 
-                if (this.readOnly || (!this.config.checkboxRecursiveSelect && !node.selectable)) {
+                if (this.readOnly || (!this.config.checkboxes.recursive && !node.selectable)) {
                     checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                 } else {
                     checkboxElement.addEventListener("click", () => this.toggleCheckboxSelected(node));
@@ -151,7 +151,7 @@ export class BaseTree {
 
             textDivElement.textContent = node.label;
 
-            if (!this.config.treeViewCheckboxes && node.selectable && !this.readOnly) {
+            if (!this.config.checkboxes.active && node.selectable && !this.readOnly) {
                 lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelectable);
             }

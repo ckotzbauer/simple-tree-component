@@ -10,7 +10,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
         super(element, options);
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree, constants.classNames.SimpleTreeViewOnly);
 
-        if (options.treeViewCheckboxes) {
+        if (options.checkboxes.active) {
             this.selected = this.dataService.getSelected();
         } else {
             this.selected = this.dataService.getSelected()[0] || null;
@@ -25,7 +25,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public setSelected(value: TreeNode | TreeNode[]): void {
-        if (this.options.treeViewCheckboxes) {
+        if (this.options.checkboxes.active) {
             this.dataService.setSelected(...(value as TreeNode[]));
             super.setSelected(this.dataService.getSelected());
         } else {
@@ -42,7 +42,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
     //////////////////////////////////////////////////////////////////////////
 
     private nodeSelected(node: TreeNode): void {
-        if (this.options.treeViewCheckboxes) {
+        if (this.options.checkboxes.active) {
             this.selected = this.dataService.getSelected();
         } else {
             if (node?.value === (this.selected as TreeNode)?.value) {

@@ -47,18 +47,22 @@ export interface TreeConfiguration {
     templateSelectedText: (node: TreeNode) => string;
 
     /**
-     * Enable checkboxes in the tree-only-view mode. This also enables multi-selection.
+     * Checkbox settings.
      * Only used in mode `tree`.
-     * (Default: `false`)
      */
-    treeViewCheckboxes: boolean;
+    checkboxes: {
+        /**
+         * Enable checkboxes. This also enables multi-selection.
+         * (Default: `false`)
+         */
+        active: boolean;
 
-    /**
-     * Indicates if the checkbox-value of a parent-node should also change the value of its childs.
-     * Only used in mode `tree`.
-     * (Default: `false`)
-     */
-    checkboxRecursiveSelect: boolean;
+        /**
+         * Indicates if the checkbox-value of a parent-node should also change the value of its childs.
+         * (Default: `false`)
+         */
+        recursive?: boolean;
+    };
 }
 
 /**
@@ -84,8 +88,10 @@ export const defaults: BaseOptions = {
         dropdownHolder: "",
     },
     templateSelectedText: (node: TreeNode) => node.label,
-    treeViewCheckboxes: false,
-    checkboxRecursiveSelect: false,
+    checkboxes: {
+        active: false,
+        recursive: false,
+    },
 };
 
 /**

@@ -8,8 +8,10 @@ export interface TreeConfiguration {
         dropdownHolder: string;
     };
     templateSelectedText: (node: TreeNode) => string;
-    treeViewCheckboxes: boolean;
-    checkboxRecursiveSelect: boolean;
+    checkboxes: {
+        active: boolean;
+        recursive?: boolean;
+    };
 }
 export interface BaseOptions extends TreeConfiguration {
     nodes: TreeNode[];

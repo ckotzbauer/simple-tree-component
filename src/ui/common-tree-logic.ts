@@ -20,7 +20,7 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
 
     constructor(protected element: Element, public options: BaseOptions) {
         this.eventManager = new EventManager();
-        this.dataService = new DataService(options.nodes, options.treeViewCheckboxes, options.checkboxRecursiveSelect);
+        this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
     }
 
     /////////////////////////////// PUBLIC API ///////////////////////////////

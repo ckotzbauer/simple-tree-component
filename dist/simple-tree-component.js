@@ -14,8 +14,10 @@
             dropdownHolder: "",
         },
         templateSelectedText: (node) => node.label,
-        treeViewCheckboxes: false,
-        checkboxRecursiveSelect: false,
+        checkboxes: {
+            active: false,
+            recursive: false,
+        },
     };
 
     var constants = {
@@ -202,10 +204,10 @@
                 const textDivElement = document.createElement("div");
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
                 this.addChevronDiv(lineWrapperDiv, node, hasChildren);
-                if (this.config.treeViewCheckboxes) {
+                if (this.config.checkboxes.active) {
                     const checkboxElement = document.createElement("div");
                     checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckbox);
-                    if (this.readOnly || (!this.config.checkboxRecursiveSelect && !node.selectable)) {
+                    if (this.readOnly || (!this.config.checkboxes.recursive && !node.selectable)) {
                         checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                     }
                     else {
@@ -220,7 +222,7 @@
                     textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelected);
                 }
                 textDivElement.textContent = node.label;
-                if (!this.config.treeViewCheckboxes && node.selectable && !this.readOnly) {
+                if (!this.config.checkboxes.active && node.selectable && !this.readOnly) {
                     lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
                     lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelectable);
                 }
@@ -386,10 +388,10 @@
     }
 
     class DataService {
-        constructor(displayedNodes = [], treeViewCheckboxes = false, checkboxRecursiveSelect = false) {
+        constructor(displayedNodes = [], checkboxesActive = false, checkboxesRecursive = false) {
             this.displayedNodes = displayedNodes;
-            this.treeViewCheckboxes = treeViewCheckboxes;
-            this.checkboxRecursiveSelect = checkboxRecursiveSelect;
+            this.checkboxesActive = checkboxesActive;
+            this.checkboxesRecursive = checkboxesRecursive;
             this.allNodes = [];
             this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
             this.displayedNodes = this.normalizeNodes(displayedNodes);
@@ -548,13 +550,13 @@
         setSelected(...nodes) {
             const values = nodes.map((n) => n.value);
             this.setSelectedNodes(this.allNodes, values);
-            if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
-                this.cleanRecursiveSelect(this.allNodes);
+            if (this.checkboxesActive && this.checkboxesRecursive) {
+                this.cleanRecursiveSelection(this.allNodes);
             }
         }
         updateCheckboxState(node) {
             var _a;
-            if (!this.treeViewCheckboxes) {
+            if (!this.checkboxesActive) {
                 return;
             }
             const checkboxDiv = (_a = document
@@ -574,7 +576,7 @@
         }
         setSelectedNodes(nodes, values) {
             nodes.forEach((n) => {
-                if (this.checkboxRecursiveSelect || n.selectable) {
+                if (this.checkboxesRecursive || n.selectable) {
                     n.selected = values.includes(n.value);
                     this.updateCheckboxState(n);
                 }
@@ -583,7 +585,7 @@
                 }
             });
         }
-        cleanRecursiveSelect(nodes) {
+        cleanRecursiveSelection(nodes) {
             let allNodesSelected = true;
             nodes.forEach((n) => {
                 if (n.children && n.children.length > 0) {
@@ -591,7 +593,7 @@
                         this.checkRecursiveChilds(n.children);
                     }
                     else {
-                        n.selected = this.cleanRecursiveSelect(n.children);
+                        n.selected = this.cleanRecursiveSelection(n.children);
                         this.updateCheckboxState(n);
                     }
                 }
@@ -639,7 +641,7 @@
             }
             const selected = !node.selected;
             node = this.toggleCheckboxNode(node, selected);
-            if (this.checkboxRecursiveSelect) {
+            if (this.checkboxesRecursive) {
                 this.toggleCheckboxParent(node);
             }
             return this.copyNode(node);
@@ -659,7 +661,7 @@
             else if (!node.selected && nodeCheckboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
                 nodeCheckboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
             }
-            if (this.checkboxRecursiveSelect && toggleChildren && ((_b = node.children) === null || _b === void 0 ? void 0 : _b.length) > 0) {
+            if (this.checkboxesRecursive && toggleChildren && ((_b = node.children) === null || _b === void 0 ? void 0 : _b.length) > 0) {
                 node.children.forEach((child) => this.toggleCheckboxNode(child, selected));
             }
             return node;
@@ -690,7 +692,7 @@
             this.options = options;
             this.readOnly = false;
             this.eventManager = new EventManager();
-            this.dataService = new DataService(options.nodes, options.treeViewCheckboxes, options.checkboxRecursiveSelect);
+            this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
         }
         destroy() {
             this.tree.destroy();
@@ -954,7 +956,7 @@
         constructor(element, options) {
             super(element, options);
             this.rootContainer = createContainer(element, constants.classNames.SimpleTree, constants.classNames.SimpleTreeViewOnly);
-            if (options.treeViewCheckboxes) {
+            if (options.checkboxes.active) {
                 this.selected = this.dataService.getSelected();
             }
             else {
@@ -966,7 +968,7 @@
             this.tree.activateKeyListener();
         }
         setSelected(value) {
-            if (this.options.treeViewCheckboxes) {
+            if (this.options.checkboxes.active) {
                 this.dataService.setSelected(...value);
                 super.setSelected(this.dataService.getSelected());
             }
@@ -981,7 +983,7 @@
         }
         nodeSelected(node) {
             var _a;
-            if (this.options.treeViewCheckboxes) {
+            if (this.options.checkboxes.active) {
                 this.selected = this.dataService.getSelected();
             }
             else {

@@ -8,8 +8,8 @@ export class DataService {
 
     constructor(
         public displayedNodes: TreeNode[] = [],
-        private treeViewCheckboxes: boolean = false,
-        private checkboxRecursiveSelect: boolean = false
+        private checkboxesActive: boolean = false,
+        private checkboxesRecursive: boolean = false
     ) {
         this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
         this.displayedNodes = this.normalizeNodes(displayedNodes);
@@ -201,13 +201,13 @@ export class DataService {
         const values = nodes.map((n) => n.value);
         this.setSelectedNodes(this.allNodes, values);
 
-        if (this.treeViewCheckboxes && this.checkboxRecursiveSelect) {
-            this.cleanRecursiveSelect(this.allNodes);
+        if (this.checkboxesActive && this.checkboxesRecursive) {
+            this.cleanRecursiveSelection(this.allNodes);
         }
     }
 
     private updateCheckboxState(node: TreeNode): void {
-        if (!this.treeViewCheckboxes) {
+        if (!this.checkboxesActive) {
             return;
         }
 
@@ -231,7 +231,7 @@ export class DataService {
 
     private setSelectedNodes(nodes: TreeNode[], values: string[]): void {
         nodes.forEach((n: TreeNode) => {
-            if (this.checkboxRecursiveSelect || n.selectable) {
+            if (this.checkboxesRecursive || n.selectable) {
                 n.selected = values.includes(n.value);
                 this.updateCheckboxState(n);
             }
@@ -242,14 +242,14 @@ export class DataService {
         });
     }
 
-    private cleanRecursiveSelect(nodes: TreeNode[]): boolean {
+    private cleanRecursiveSelection(nodes: TreeNode[]): boolean {
         let allNodesSelected = true;
         nodes.forEach((n: TreeNode) => {
             if (n.children && n.children.length > 0) {
                 if (n.selected) {
                     this.checkRecursiveChilds(n.children);
                 } else {
-                    n.selected = this.cleanRecursiveSelect(n.children);
+                    n.selected = this.cleanRecursiveSelection(n.children);
                     this.updateCheckboxState(n);
                 }
             }
@@ -313,7 +313,7 @@ export class DataService {
 
         node = this.toggleCheckboxNode(node, selected);
 
-        if (this.checkboxRecursiveSelect) {
+        if (this.checkboxesRecursive) {
             this.toggleCheckboxParent(node);
         }
 
@@ -338,7 +338,7 @@ export class DataService {
             nodeCheckboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
         }
 
-        if (this.checkboxRecursiveSelect && toggleChildren && node.children?.length > 0) {
+        if (this.checkboxesRecursive && toggleChildren && node.children?.length > 0) {
             node.children.forEach((child: TreeNode) => this.toggleCheckboxNode(child, selected));
         }
 
