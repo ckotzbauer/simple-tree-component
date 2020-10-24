@@ -65,14 +65,15 @@ export function createTreeNode(
     label: string,
     value: string | null | undefined,
     children: TreeNode[] = [],
-    selected = false
+    selected = false,
+    selectable = true
 ): TreeNode {
     return {
         label: label,
         value: value as string,
         disabled: false,
         selected,
-        selectable: true,
+        selectable: selectable,
         children: children,
         collapsed: false,
         hidden: false,
