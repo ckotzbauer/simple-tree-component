@@ -178,6 +178,13 @@ describe("simpleTree", () => {
             expect(nodeList[1].value).toEqual("parent2");
             expect(nodeList[2].value).toEqual("parent3");
         });
+
+        it("getFlattedClickableNodeValues - should return correct nodes", () => {
+            const flatted = dataService.getFlattedClickableNodeValues();
+            expect(flatted.length).toEqual(6);
+            expect(flatted.indexOf("parent2Child1") === -1).toBeTruthy();
+            expect(flatted.indexOf("parent3") === -1).toBeTruthy();
+        });
     });
 });
 
@@ -189,12 +196,12 @@ function init(): void {
             createTreeNode("Parent 1 Child 2", "parent1Child2"),
         ]),
         createTreeNode("Parent 2", "parent2", [
-            createTreeNode("Parent 2 Child 1", "parent2Child1"),
+            createTreeNode("Parent 2 Child 1", "parent2Child1", [], false, false),
             createTreeNode("Parent 2 Child 2", "parent2Child2", [
                 createTreeNode("Parent 2 Child 2 Sub 1", "parent2Child2Sub1"),
             ]),
         ]),
-        createTreeNode("Parent 3", "parent3"),
+        createTreeNode("Parent 3", "parent3", [], false, false),
     ];
 
     dataService = new DataService(treeNodes);

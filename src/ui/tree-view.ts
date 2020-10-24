@@ -19,6 +19,7 @@ export class TreeView extends CommonTreeLogic<"view"> {
         this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
         this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
         this.tree.renderContent();
+        this.tree.activateKeyListener();
     }
 
     /////////////////////////////// PUBLIC API ///////////////////////////////
@@ -47,11 +48,11 @@ export class TreeView extends CommonTreeLogic<"view"> {
             if (node?.value === (this.selected as TreeNode)?.value) {
                 this.dataService.setSelected();
                 this.selected = null;
-                this.tree.setHighlighting(null);
+                this.tree.highlightNode(null);
             } else {
                 this.dataService.setSelected(node);
                 this.selected = this.dataService.getSelected()[0] || null;
-                this.tree.setHighlighting(node);
+                this.tree.highlightNode(node);
             }
         }
 

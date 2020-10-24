@@ -155,6 +155,23 @@ export class DataService {
         return null;
     }
 
+    public getFlattedClickableNodeValues(): string[] {
+        return this.flatten(this.displayedNodes)
+            .filter((node: TreeNode) => node.selectable && !node.hidden)
+            .map((n: TreeNode) => n.value);
+    }
+
+    private flatten(nodes: TreeNode[]): TreeNode[] {
+        return nodes.reduce<TreeNode[]>((acc, e) => {
+            if (e.children.length > 0) {
+                acc.push(e);
+                return acc.concat(this.flatten(e.children));
+            } else {
+                return acc.concat(e);
+            }
+        }, []);
+    }
+
     public filter(searchTerm: string): void {
         if (searchTerm) {
             this.displayedNodes = this.filterNodes(this.allNodes, searchTerm.toLowerCase());

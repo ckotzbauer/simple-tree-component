@@ -28,7 +28,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
         this.dataService.setSelected(value || []);
         super.setSelected(this.dataService.getSelected()[0] || null);
         this.updateUiOnSelection();
-        this.tree.setHighlighting(value);
+        this.tree.highlightNode(value);
     }
 
     public setReadOnly(readOnly: boolean): void {
@@ -65,7 +65,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     private nodeSelected(node: TreeNode): void {
         this.dataService.setSelected(node);
         this.selected = this.dataService.getSelected()[0] || null;
-        this.tree.setHighlighting(node);
+        this.tree.highlightNode(node);
         this.updateUiOnSelection();
         this.closeDropdown();
         this.eventManager.publish(constants.events.SelectionChanged, this.selected);

@@ -3,7 +3,7 @@ import { Subscription } from "../types/subscription";
 export class EventManager {
     public eventLookup: { [event: string]: ((d: unknown, e: string) => void)[] } = {};
 
-    public publish(event: string, data?: unknown): void {
+    public publish<T>(event: string, data?: T): void {
         let subscribers;
         let i;
 
@@ -26,9 +26,9 @@ export class EventManager {
         }
     }
 
-    public subscribe(event: string, callback: (d: unknown, e: string) => void): Subscription {
+    public subscribe<T>(event: string, callback: (d: T, e: string) => void): Subscription {
         const handler = callback;
-        let subscribers: ((d: unknown, e: string) => void)[] = [];
+        let subscribers: ((d: T, e: string) => void)[] = [];
 
         if (!event) {
             throw new Error("Event channel/type was invalid.");
@@ -47,8 +47,8 @@ export class EventManager {
         };
     }
 
-    public subscribeOnce(event: string, callback: (d: unknown, e: string) => void): Subscription {
-        const sub = this.subscribe(event, (a: unknown, b: string) => {
+    public subscribeOnce<T>(event: string, callback: (d: T, e: string) => void): Subscription {
+        const sub = this.subscribe(event, (a: T, b: string) => {
             sub.dispose();
             return callback(a, b);
         });

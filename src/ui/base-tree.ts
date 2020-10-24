@@ -3,11 +3,15 @@ import { DataService } from "../data/data-service";
 import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { EventManager } from "../event/event-manager";
+import { KeyEventHandler } from "./key-event-handler";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
+    private hoveredNode: string | null = null;
 
     private searchTextInput: HTMLInputElement | null = null;
+
+    private keyEventHandler: KeyEventHandler;
 
     constructor(
         public element: HTMLElement,
@@ -15,26 +19,45 @@ export class BaseTree {
         public dataService: DataService,
         private eventManager: EventManager,
         private readOnly: boolean
-    ) {}
+    ) {
+        this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
+        this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
+    }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    public destroy(): void {}
+    public destroy(): void {
+        this.deactivateKeyListener();
+    }
 
-    public setHighlighting(node: TreeNode | null): void {
-        this.element
-            .querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${constants.classNames.SimpleTreeNodeSelected}`)
-            ?.classList.remove(constants.classNames.SimpleTreeNodeSelected);
+    public activateKeyListener(): void {
+        this.keyEventHandler.initialize();
+    }
 
-        if (node !== null && this.highlightedNode !== node.value) {
+    public deactivateKeyListener(): void {
+        this.keyEventHandler.destroy();
+    }
+
+    private setNodeUiState(node: TreeNode | null, current: string | null, cssClass: string): string | null {
+        this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)?.classList.remove(cssClass);
+
+        if (node !== null && current !== node.value) {
             document
                 .getElementById(node.uid)
                 ?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)
-                ?.classList.add(constants.classNames.SimpleTreeNodeSelected);
+                ?.classList.add(cssClass);
 
-            this.highlightedNode = node.value;
-        } else {
-            this.highlightedNode = null;
+            return node.value;
         }
+
+        return null;
+    }
+
+    public highlightNode(node: TreeNode | null): void {
+        this.highlightedNode = this.setNodeUiState(node, this.highlightedNode, constants.classNames.SimpleTreeNodeSelected);
+    }
+
+    private hoverNode(node: TreeNode | null) {
+        this.hoveredNode = this.setNodeUiState(node, this.hoveredNode, constants.classNames.SimpleTreeNodeHovered);
+        this.keyEventHandler.setHoveredNodeValue(this.hoveredNode);
     }
 
     public renderContent(): void {
@@ -99,6 +122,8 @@ export class BaseTree {
 
             const lineWrapperDiv = document.createElement("div");
             lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
+            lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
+            lineWrapperDiv.addEventListener("mouseout", () => this.hoverNode(null));
 
             const textDivElement = document.createElement("div");
             textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);

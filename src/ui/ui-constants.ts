@@ -21,6 +21,7 @@ export default {
         SimpleTreeNodeText: "simple-tree-node-text",
         SimpleTreeNodeSelected: "simple-tree-node-selected",
         SimpleTreeNodeSelectable: "simple-tree-node-selectable",
+        SimpleTreeNodeHovered: "simple-tree-node-hovered",
         SimpleTreeNodeArrow: "simple-tree-node-arrow",
         SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
         SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
@@ -34,6 +35,8 @@ export default {
     events: {
         SelectionChanged: "selectionChanged",
         NodeSelected: "nodeSelected",
+        EscapePressed: "escapePressed",
+        HoverChanged: "hoverChanged",
     },
     nodeIdPrefix: "simple-tree-node",
 };

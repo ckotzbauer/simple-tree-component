@@ -73,7 +73,7 @@ export function createTreeNode(
         value: value as string,
         disabled: false,
         selected,
-        selectable: selectable,
+        selectable,
         children: children,
         collapsed: false,
         hidden: false,
