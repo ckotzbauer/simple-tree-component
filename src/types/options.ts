@@ -3,7 +3,7 @@ import { TreeNode } from "./tree-node";
 /**
  * @ignore
  */
-export type ComponentMode = "view" | "singleSelectDropdown" | "multiSelectDropdown";
+export type ComponentMode = "tree" | "singleSelectDropdown" | "multiSelectDropdown";
 
 /**
  * @ignore
@@ -48,13 +48,14 @@ export interface TreeConfiguration {
 
     /**
      * Enable checkboxes in the tree-only-view mode. This also enables multi-selection.
-     * Only used in mode `view`.
+     * Only used in mode `tree`.
      * (Default: `false`)
      */
     treeViewCheckboxes: boolean;
 
     /**
      * Indicates if the checkbox-value of a parent-node should also change the value of its childs.
+     * Only used in mode `tree`.
      * (Default: `false`)
      */
     checkboxRecursiveSelect: boolean;
@@ -65,7 +66,7 @@ export interface TreeConfiguration {
  */
 export interface BaseOptions extends TreeConfiguration {
     /**
-     * All tree-node data-objects to start with.
+     * All tree-node data-objects to start with. Do not change this array afterwards.
      * (Default: `[]`)
      */
     nodes: TreeNode[];

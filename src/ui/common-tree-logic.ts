@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Instance, TreeModeNameMap } from "../types/instance";
+import { TreeInstance, TreeModeNameMap } from "../types/instance";
 import { EventManager } from "../event/event-manager";
 import { Subscription } from "../types/subscription";
 import { DataService } from "../data/data-service";
@@ -8,7 +8,7 @@ import { BaseTree } from "./base-tree";
 import { BaseOptions } from "../types/options";
 import { TreeNode } from "../types/tree-node";
 
-export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implements Instance<K> {
+export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implements TreeInstance<K> {
     protected eventManager: EventManager;
     protected dataService: DataService;
     protected tree!: BaseTree;
@@ -56,6 +56,18 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
 
     public getNode(value: string): TreeNode | null {
         return this.dataService.getNode(value);
+    }
+
+    public addNode(node: TreeNode, parent: TreeNode | string | null = null): void {
+        this.dataService.addNode(node, parent);
+    }
+
+    public deleteNode(node: TreeNode): void {
+        this.dataService.deleteNode(node.value);
+    }
+
+    public updateNodeLabel(node: TreeNode, newLabel: string): void {
+        this.dataService.updateNodeLabel(node.value, newLabel);
     }
 
     public setReadOnly(readOnly: boolean): void {

@@ -6,7 +6,7 @@
 - Modes
   - [Single-select](single-select-mode.md)
   - [Multi-select](multi-select-mode.md)
-  - [View](view-mode.md)
+  - [Tree](tree-mode.md)
 
 
 - [Overlay placement](overlay-placement.md)

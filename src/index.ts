@@ -1,4 +1,4 @@
-import { Instance, SimpleTreeFn, TreeModeNameMap } from "./types/instance";
+import { TreeInstance, SimpleTreeFn, TreeModeNameMap } from "./types/instance";
 import { Options, ComponentMode } from "./types/options";
 import { createSimpleTree } from "./factory";
 
@@ -7,11 +7,11 @@ function _simpleTree<K extends keyof TreeModeNameMap>(
     nodeList: ArrayLike<Node>,
     mode: K,
     config?: Options
-): Instance<K> | Instance<K>[] {
+): TreeInstance<K> | TreeInstance<K>[] {
     // static list
     const nodes = Array.prototype.slice.call(nodeList).filter((x) => x instanceof HTMLElement) as HTMLElement[];
 
-    const instances: Instance<K>[] = [];
+    const instances: TreeInstance<K>[] = [];
     for (let i = 0; i < nodes.length; i++) {
         const node: any = nodes[i];
         try {

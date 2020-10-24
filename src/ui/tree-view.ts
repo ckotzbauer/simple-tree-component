@@ -5,7 +5,7 @@ import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { CommonTreeLogic } from "./common-tree-logic";
 
-export class TreeView extends CommonTreeLogic<"view"> {
+export class TreeView extends CommonTreeLogic<"tree"> {
     constructor(element: HTMLElement, options: BaseOptions) {
         super(element, options);
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree, constants.classNames.SimpleTreeViewOnly);

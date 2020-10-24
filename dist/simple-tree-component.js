@@ -40,6 +40,7 @@
             SimpleTreeNodeText: "simple-tree-node-text",
             SimpleTreeNodeSelected: "simple-tree-node-selected",
             SimpleTreeNodeSelectable: "simple-tree-node-selectable",
+            SimpleTreeNodeHovered: "simple-tree-node-hovered",
             SimpleTreeNodeArrow: "simple-tree-node-arrow",
             SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
             SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
@@ -53,9 +54,60 @@
         events: {
             SelectionChanged: "selectionChanged",
             NodeSelected: "nodeSelected",
+            EscapePressed: "escapePressed",
+            HoverChanged: "hoverChanged",
         },
         nodeIdPrefix: "simple-tree-node",
     };
+
+    class KeyEventHandler {
+        constructor(eventManager, dataService) {
+            this.eventManager = eventManager;
+            this.dataService = dataService;
+            this.hoveredNodeValue = null;
+            this.boundKeyUp = this.handleKeyUp.bind(this);
+        }
+        initialize() {
+            window.addEventListener("keyup", this.boundKeyUp);
+        }
+        destroy() {
+            window.removeEventListener("keyup", this.boundKeyUp);
+        }
+        setHoveredNodeValue(value) {
+            this.hoveredNodeValue = value;
+        }
+        handleKeyUp(e) {
+            if (e.code === "Escape") {
+                this.eventManager.publish(constants.events.EscapePressed);
+                return;
+            }
+            console.log(`Active: ${document.activeElement}`);
+            const flattedValues = this.dataService.getFlattedClickableNodeValues();
+            const hoveredIndex = this.hoveredNodeValue === null ? -1 : flattedValues.indexOf(this.hoveredNodeValue);
+            let targetIndex = hoveredIndex;
+            if (e.code === "ArrowUp") {
+                if (hoveredIndex > 0) {
+                    targetIndex = hoveredIndex - 1;
+                }
+                else {
+                    targetIndex = flattedValues.length - 1;
+                }
+            }
+            else if (e.code === "ArrowDown") {
+                if (hoveredIndex !== -1 && hoveredIndex < flattedValues.length - 1) {
+                    targetIndex = hoveredIndex + 1;
+                }
+                else {
+                    targetIndex = 0;
+                }
+            }
+            if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
+                this.hoveredNodeValue = flattedValues[targetIndex];
+                this.eventManager.publish(constants.events.HoverChanged, this.dataService.getNode(this.hoveredNodeValue));
+            }
+            e.preventDefault();
+        }
+    }
 
     class BaseTree {
         constructor(element, config, dataService, eventManager, readOnly) {
@@ -65,21 +117,36 @@
             this.eventManager = eventManager;
             this.readOnly = readOnly;
             this.highlightedNode = null;
+            this.hoveredNode = null;
             this.searchTextInput = null;
+            this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
+            this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
         }
-        destroy() { }
-        setHighlighting(node) {
+        destroy() {
+            this.deactivateKeyListener();
+        }
+        activateKeyListener() {
+            this.keyEventHandler.initialize();
+        }
+        deactivateKeyListener() {
+            this.keyEventHandler.destroy();
+        }
+        setNodeUiState(node, current, cssClass) {
             var _a, _b, _c;
-            (_a = this.element
-                .querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${constants.classNames.SimpleTreeNodeSelected}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(constants.classNames.SimpleTreeNodeSelected);
-            if (node !== null && this.highlightedNode !== node.value) {
+            (_a = this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(cssClass);
+            if (node !== null && current !== node.value) {
                 (_c = (_b = document
-                    .getElementById(node.uid)) === null || _b === void 0 ? void 0 : _b.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)) === null || _c === void 0 ? void 0 : _c.classList.add(constants.classNames.SimpleTreeNodeSelected);
-                this.highlightedNode = node.value;
+                    .getElementById(node.uid)) === null || _b === void 0 ? void 0 : _b.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)) === null || _c === void 0 ? void 0 : _c.classList.add(cssClass);
+                return node.value;
             }
-            else {
-                this.highlightedNode = null;
-            }
+            return null;
+        }
+        highlightNode(node) {
+            this.highlightedNode = this.setNodeUiState(node, this.highlightedNode, constants.classNames.SimpleTreeNodeSelected);
+        }
+        hoverNode(node) {
+            this.hoveredNode = this.setNodeUiState(node, this.hoveredNode, constants.classNames.SimpleTreeNodeHovered);
+            this.keyEventHandler.setHoveredNodeValue(this.hoveredNode);
         }
         renderContent() {
             this.element.innerHTML = "";
@@ -130,13 +197,15 @@
                 liElement.id = node.uid;
                 const lineWrapperDiv = document.createElement("div");
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
+                lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
+                lineWrapperDiv.addEventListener("mouseout", () => this.hoverNode(null));
                 const textDivElement = document.createElement("div");
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
                 this.addChevronDiv(lineWrapperDiv, node, hasChildren);
                 if (this.config.treeViewCheckboxes) {
                     const checkboxElement = document.createElement("div");
                     checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckbox);
-                    if (this.readOnly || !node.selectable) {
+                    if (this.readOnly || (!this.config.checkboxRecursiveSelect && !node.selectable)) {
                         checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                     }
                     else {
@@ -287,7 +356,6 @@
     const defaults$1 = {
         label: "",
         value: "",
-        disabled: false,
         selected: false,
         selectable: true,
         children: [],
@@ -325,7 +393,7 @@
             this.allNodes = [];
             this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
             this.displayedNodes = this.normalizeNodes(displayedNodes);
-            this.allNodes = this.normalizeNodes(displayedNodes);
+            this.allNodes = this.displayedNodes;
         }
         normalizeNodes(nodes) {
             return nodes.map((node) => {
@@ -441,6 +509,22 @@
             }
             return null;
         }
+        getFlattedClickableNodeValues() {
+            return this.flatten(this.displayedNodes)
+                .filter((node) => node.selectable && !node.hidden)
+                .map((n) => n.value);
+        }
+        flatten(nodes) {
+            return nodes.reduce((acc, e) => {
+                if (e.children.length > 0) {
+                    acc.push(e);
+                    return acc.concat(this.flatten(e.children));
+                }
+                else {
+                    return acc.concat(e);
+                }
+            }, []);
+        }
         filter(searchTerm) {
             if (searchTerm) {
                 this.displayedNodes = this.filterNodes(this.allNodes, searchTerm.toLowerCase());
@@ -490,8 +574,10 @@
         }
         setSelectedNodes(nodes, values) {
             nodes.forEach((n) => {
-                n.selected = values.includes(n.value);
-                this.updateCheckboxState(n);
+                if (this.checkboxRecursiveSelect || n.selectable) {
+                    n.selected = values.includes(n.value);
+                    this.updateCheckboxState(n);
+                }
                 if (n.children && n.children.length > 0) {
                     this.setSelectedNodes(n.children, values);
                 }
@@ -629,10 +715,22 @@
         getNode(value) {
             return this.dataService.getNode(value);
         }
+        addNode(node, parent = null) {
+            this.dataService.addNode(node, parent);
+        }
+        deleteNode(node) {
+            this.dataService.deleteNode(node.value);
+        }
+        updateNodeLabel(node, newLabel) {
+            this.dataService.updateNodeLabel(node.value, newLabel);
+        }
         setReadOnly(readOnly) {
-            this.readOnly = readOnly;
-            this.tree.setReadOnly(readOnly);
-            this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
+            if (this.readOnly !== readOnly) {
+                this.readOnly = readOnly;
+                this.tree.setReadOnly(readOnly);
+                this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
+                this.tree.renderContent();
+            }
         }
         subscribe(event, handler) {
             return this.eventManager.subscribe(event, handler);
@@ -676,7 +774,7 @@
         constructor(element, options) {
             super(element, options);
             this.dropdownOpen = false;
-            this.boundKeyUp = this.onKeyUp.bind(this);
+            this.eventManager.subscribe(constants.events.EscapePressed, () => this.closeDropdown());
             this.boundClick = this.onClick.bind(this);
         }
         toggleDropdown() {
@@ -685,11 +783,6 @@
             }
             else {
                 this.openDropdown();
-            }
-        }
-        onKeyUp(e) {
-            if (e.code === "Escape") {
-                this.closeDropdown();
             }
         }
         onClick(e) {
@@ -704,14 +797,17 @@
             }
             this.dropdownHolder.style.display = "inherit";
             this.tree.renderContent();
+            this.tree.activateKeyListener();
             calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
             this.dropdownOpen = true;
-            window.addEventListener("keyup", this.boundKeyUp);
             window.addEventListener("mouseup", this.boundClick);
         }
         closeDropdown() {
+            if (!this.dropdownOpen) {
+                return;
+            }
             this.dropdownHolder.style.display = "none";
             this.dropdownHolder.style.top = ``;
             this.dropdownHolder.style.left = ``;
@@ -720,8 +816,8 @@
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronUp);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronDown);
             this.dropdownOpen = false;
-            window.removeEventListener("keyup", this.boundKeyUp);
             window.removeEventListener("mouseup", this.boundClick);
+            this.tree.deactivateKeyListener();
         }
     }
 
@@ -739,7 +835,7 @@
             this.dataService.setSelected(value || []);
             super.setSelected(this.dataService.getSelected()[0] || null);
             this.updateUiOnSelection();
-            this.tree.setHighlighting(value);
+            this.tree.highlightNode(value);
         }
         setReadOnly(readOnly) {
             super.setReadOnly(readOnly);
@@ -767,7 +863,7 @@
         nodeSelected(node) {
             this.dataService.setSelected(node);
             this.selected = this.dataService.getSelected()[0] || null;
-            this.tree.setHighlighting(node);
+            this.tree.highlightNode(node);
             this.updateUiOnSelection();
             this.closeDropdown();
             this.eventManager.publish(constants.events.SelectionChanged, this.selected);
@@ -867,6 +963,7 @@
             this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
             this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
             this.tree.renderContent();
+            this.tree.activateKeyListener();
         }
         setSelected(value) {
             if (this.options.treeViewCheckboxes) {
@@ -891,12 +988,12 @@
                 if ((node === null || node === void 0 ? void 0 : node.value) === ((_a = this.selected) === null || _a === void 0 ? void 0 : _a.value)) {
                     this.dataService.setSelected();
                     this.selected = null;
-                    this.tree.setHighlighting(null);
+                    this.tree.highlightNode(null);
                 }
                 else {
                     this.dataService.setSelected(node);
                     this.selected = this.dataService.getSelected()[0] || null;
-                    this.tree.setHighlighting(node);
+                    this.tree.highlightNode(node);
                 }
             }
             this.eventManager.publish(constants.events.SelectionChanged, this.selected);

@@ -12,7 +12,7 @@ import constants from "../ui/ui-constants";
 
 const singleCtx = initialize<"singleSelectDropdown">();
 const multiCtx = initialize<"multiSelectDropdown">();
-const treeOnlyCtx = initialize<"view">();
+const treeOnlyCtx = initialize<"tree">();
 
 describe("simpleTree", () => {
     beforeEach(() => {
@@ -241,7 +241,7 @@ describe("simpleTree", () => {
 
     describe("treeOnlySelection", () => {
         it("should respect initial selection (single-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1"),
                     createTreeNode("node2", "node2"),
@@ -254,7 +254,7 @@ describe("simpleTree", () => {
         });
 
         it("should respect initial selection (checkbox-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [], true),
                     createTreeNode("node2", "node2"),
@@ -274,7 +274,7 @@ describe("simpleTree", () => {
         });
 
         it("item should be selected on setSelected api-call (single-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
 
@@ -292,7 +292,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selectable depending on their selectable state via api-call (single-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1"),
                     createTreeNode("node2", "node2", [], false, false),
@@ -313,7 +313,7 @@ describe("simpleTree", () => {
         });
 
         it("item should be selected on setSelected api-call (checkbox-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
                     createTreeNode("node2", "node2"),
@@ -343,7 +343,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selectable depending on their selectable state via api-call (checkbox-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1"),
                     createTreeNode("node2", "node2", [], false, false),
@@ -363,7 +363,7 @@ describe("simpleTree", () => {
         });
 
         it("item should be selected on setSelected api-call (checkbox-mode, recursive).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
                     createTreeNode("node2", "node2"),
@@ -395,7 +395,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selectable regardless of their selectable state via api-call (checkbox-mode, recursive).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node11", "node11", [], false, false)]),
                     createTreeNode("node2", "node2"),
@@ -420,7 +420,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selected or unselected when clicked (single-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
 
@@ -438,7 +438,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
                     createTreeNode("node2", "node2"),
@@ -465,7 +465,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selectable depending on their selectable state when clicked (checkbox-mode).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1"),
                     createTreeNode("node2", "node2", [], false, false),
@@ -481,7 +481,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode, recursive) 1.", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
                     createTreeNode("node2", "node2"),
@@ -515,7 +515,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode, recursive) 2.", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
                     createTreeNode("node2", "node2"),
@@ -544,7 +544,7 @@ describe("simpleTree", () => {
         });
 
         it("items should be selected regardless of their selectable state when clicked (checkbox-mode, recursive).", () => {
-            const tree = createInstance<"view">(treeOnlyCtx, "view", {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
                     createTreeNode("node1", "node1", [createTreeNode("node11", "node11", [], false, false)]),
                     createTreeNode("node2", "node2"),

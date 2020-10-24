@@ -1,4 +1,4 @@
-import { Instance, TreeModeNameMap } from "./types/instance";
+import { TreeInstance, TreeModeNameMap } from "./types/instance";
 import { Options, defaults, BaseOptions } from "./types/options";
 import { SingleSelectDropdown } from "./ui/single-select-dropdown";
 import { MultiSelectDropdown } from "./ui/multi-select-dropdown";
@@ -8,7 +8,7 @@ export function createSimpleTree<K extends keyof TreeModeNameMap>(
     element: HTMLElement,
     mode: K,
     instanceConfig: Options
-): Instance<K> {
+): TreeInstance<K> {
     const config: BaseOptions = {
         ...defaults,
         ...instanceConfig,

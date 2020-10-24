@@ -1,5 +1,5 @@
 
-# View mode
+# Tree mode
 
 **TODO**: Add screenshot, if styling is done.
 

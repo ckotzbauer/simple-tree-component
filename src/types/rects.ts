@@ -1,5 +1,5 @@
 /**
- * A general rectangle object which is used from the `{@link calculate}` function.
+ * A general rectangle object which is used from the `calculate` function.
  */
 export interface Rect {
     /**

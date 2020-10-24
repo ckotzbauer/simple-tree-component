@@ -5,13 +5,13 @@ import { Subscription } from "../types/subscription";
 export interface TreeModeNameMap {
     singleSelectDropdown: TreeNode | null;
     multiSelectDropdown: TreeNode[];
-    view: TreeNode | TreeNode[] | null;
+    tree: TreeNode | TreeNode[] | null;
 }
 
 /**
  * Represents the public api of a tree-instance.
  */
-export interface Instance<K extends keyof TreeModeNameMap> {
+export interface TreeInstance<K extends keyof TreeModeNameMap> {
     /**
      * Applied configuration options for the current instance.
      */
@@ -29,6 +29,29 @@ export interface Instance<K extends keyof TreeModeNameMap> {
      * @returns a matching tree-node or null.
      */
     getNode(value: string): TreeNode | null;
+
+    /**
+     * Adds a new node to the tree with a optional parent.
+     *
+     * @param node to add.
+     * @param parent of the new tree-node or null
+     */
+    addNode(node: TreeNode, parent: TreeNode | string | null): void;
+
+    /**
+     * Deletes the given tree-node from the tree.
+     *
+     * @param node to delete.
+     */
+    deleteNode(node: TreeNode): void;
+
+    /**
+     * Updates the display-text of the given tree-node.
+     *
+     * @param node to update.
+     * @param newLabel-text to use for the given node.
+     */
+    updateNodeLabel(node: TreeNode, newLabel: string): void;
 
     /**
      * Moves the up or down in the same hierarchy-level.
@@ -90,11 +113,11 @@ export interface Instance<K extends keyof TreeModeNameMap> {
     subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], e: string) => void): Subscription;
 }
 
-export type SimpleTree = Instance<"singleSelectDropdown" | "multiSelectDropdown" | "view">;
+export type SimpleTree = TreeInstance<"singleSelectDropdown" | "multiSelectDropdown" | "tree">;
 
 export interface SimpleTreeFn {
-    <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options): Instance<K>;
-    <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, config?: Options): Instance<K>[];
-    <K extends keyof TreeModeNameMap>(selector: string, config?: Options): Instance<K> | Instance<K>[];
+    <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options): TreeInstance<K>;
+    <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, mode: K, config?: Options): TreeInstance<K>[];
+    <K extends keyof TreeModeNameMap>(selector: string, mode: K, config?: Options): TreeInstance<K> | TreeInstance<K>[];
     defaultConfig: Partial<BaseOptions>;
 }

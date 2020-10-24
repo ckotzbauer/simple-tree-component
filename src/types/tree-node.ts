@@ -13,11 +13,6 @@ export interface TreeNode {
     value: string;
 
     /**
-     * Indicates if this node is disabled.
-     */
-    disabled: boolean;
-
-    /**
      * Indicates if this node is currently selected and included in the component-value ({@link Instance.getSelected()}).
      */
     selected: boolean;
@@ -56,7 +51,6 @@ export interface TreeNode {
 export const defaults: TreeNode = {
     label: "",
     value: "",
-    disabled: false,
     selected: false,
     selectable: true,
     children: [],

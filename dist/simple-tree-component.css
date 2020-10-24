@@ -184,7 +184,7 @@
   padding: 0.25rem;
 }
 
-.simple-tree-node-container .simple-tree-node-wrapper:hover {
+.simple-tree-node-container .simple-tree-node-wrapper.simple-tree-node-hovered {
   background-color: #a1bfe4;
 }
 

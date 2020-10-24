@@ -1,7 +1,6 @@
 export interface TreeNode {
     label: string;
     value: string;
-    disabled: boolean;
     selected: boolean;
     selectable: boolean;
     children: TreeNode[];

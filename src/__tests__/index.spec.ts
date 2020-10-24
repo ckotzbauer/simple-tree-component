@@ -10,11 +10,11 @@ describe("simpleTree", () => {
 
     describe("init", () => {
         it("should gracefully handle no elements", () => {
-            expect(simpleTree([])).toEqual([]);
+            expect(simpleTree([], "tree")).toEqual([]);
         });
 
         it("should use default options", () => {
-            const tree = createInstance(ctx, "view");
+            const tree = createInstance(ctx, "tree");
             expect(tree instanceof TreeView).toBeTruthy();
             expect(tree.options).toEqual(
                 expect.objectContaining({

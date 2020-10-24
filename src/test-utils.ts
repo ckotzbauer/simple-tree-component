@@ -1,12 +1,12 @@
 import simpleTree from "./index";
-import { Instance, TreeModeNameMap } from "./types/instance";
+import { TreeInstance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
 import { TreeNode } from "./types/tree-node";
 import { DataService } from "./data/data-service";
 
 export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;
-    stc: Instance<K> | undefined;
+    stc: TreeInstance<K> | undefined;
     dataService: DataService | undefined;
 }
 
@@ -54,9 +54,9 @@ export function createInstance<K extends keyof TreeModeNameMap>(
     mode: K,
     config?: Options,
     el?: HTMLInputElement
-): Instance<K> {
+): TreeInstance<K> {
     ctx.elem = el || ctx.elem || document.createElement("input");
-    ctx.stc = simpleTree<K>(ctx.elem, mode, config || {}) as Instance<K>;
+    ctx.stc = simpleTree<K>(ctx.elem, mode, config || {}) as TreeInstance<K>;
     ctx.dataService = (ctx.stc as any).dataService;
     return ctx.stc;
 }
@@ -71,7 +71,6 @@ export function createTreeNode(
     return {
         label: label,
         value: value as string,
-        disabled: false,
         selected,
         selectable,
         children: children,

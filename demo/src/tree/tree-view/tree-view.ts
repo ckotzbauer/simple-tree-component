@@ -11,7 +11,7 @@ export class TreeView {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const nodes: TreeNode[] = require("./data.json");
 
-    this.tree = simpleTree(this.element.querySelector("#tree-view"), "view", {
+    this.tree = simpleTree(this.element.querySelector("#tree-view"), "tree", {
       searchBar: true,
       nodes,
     });

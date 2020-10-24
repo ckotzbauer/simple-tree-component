@@ -11,7 +11,7 @@ export class TreeViewCheckbox {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const nodes: TreeNode[] = require("./data.json");
 
-    this.tree = simpleTree(this.element.querySelector("#tree-view-checkbox"), "view", {
+    this.tree = simpleTree(this.element.querySelector("#tree-view-checkbox"), "tree", {
       searchBar: true,
       treeViewCheckboxes: true,
       nodes,
