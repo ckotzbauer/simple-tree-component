@@ -40,7 +40,9 @@ describe("simpleTree", () => {
 
             const tree = createInstance<"tree">(treeCtx, "tree", {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
-                treeViewCheckboxes: true,
+                checkboxes: {
+                    active: true,
+                },
             });
             tree.subscribe("selectionChanged", (s: TreeNode | TreeNode[] | null) => {
                 called = true;
@@ -65,8 +67,10 @@ describe("simpleTree", () => {
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
-                treeViewCheckboxes: true,
-                checkboxRecursiveSelect: true,
+                checkboxes: {
+                    active: true,
+                    recursive: true,
+                },
             });
             tree.subscribe("selectionChanged", (s: TreeNode | TreeNode[] | null) => {
                 called = true;
