@@ -59,9 +59,12 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
     }
 
     public setReadOnly(readOnly: boolean): void {
-        this.readOnly = readOnly;
-        this.tree.setReadOnly(readOnly);
-        this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
+        if (this.readOnly !== readOnly) {
+            this.readOnly = readOnly;
+            this.tree.setReadOnly(readOnly);
+            this.rootContainer.classList.toggle(constants.classNames.SimpleTreeReadOnly, readOnly);
+            this.tree.renderContent();
+        }
     }
 
     public subscribe(event: string, handler: (d: any, e: string) => void): Subscription {

@@ -109,7 +109,7 @@ export class BaseTree {
                 const checkboxElement = document.createElement("div");
                 checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckbox);
 
-                if (this.readOnly || !node.selectable) {
+                if (this.readOnly || (!this.config.checkboxRecursiveSelect && !node.selectable)) {
                     checkboxElement.classList.add(constants.classNames.SimpleTreeNodeCheckboxDisabled);
                 } else {
                     checkboxElement.addEventListener("click", () => this.toggleCheckboxSelected(node));
