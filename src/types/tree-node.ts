@@ -24,6 +24,8 @@ export interface TreeNode {
 
     /**
      * Indicates if this node is selectable. Mouse-clicks on the node are avoided if `false`.
+     * Nodes that are not selectable are also ignored when setting via API.
+     * In Recursive Checkbox Mode this flag has no effect since all nodes are selectable there.
      */
     selectable: boolean;
 
