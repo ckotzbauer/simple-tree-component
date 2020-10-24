@@ -13,7 +13,7 @@ export class DataService {
     ) {
         this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
         this.displayedNodes = this.normalizeNodes(displayedNodes);
-        this.allNodes = this.normalizeNodes(displayedNodes);
+        this.allNodes = this.displayedNodes;
     }
 
     private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
@@ -214,8 +214,10 @@ export class DataService {
 
     private setSelectedNodes(nodes: TreeNode[], values: string[]): void {
         nodes.forEach((n: TreeNode) => {
-            n.selected = values.includes(n.value);
-            this.updateCheckboxState(n);
+            if (this.checkboxRecursiveSelect || n.selectable) {
+                n.selected = values.includes(n.value);
+                this.updateCheckboxState(n);
+            }
 
             if (n.children && n.children.length > 0) {
                 this.setSelectedNodes(n.children, values);
