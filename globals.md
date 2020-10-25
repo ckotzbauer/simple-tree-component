@@ -2,17 +2,13 @@
 
 ## Index
 
-### Namespaces
-
-* [\_\_global](modules/__global.md)
-
 ### Interfaces
 
 * [BaseOptions](interfaces/baseoptions.md)
-* [Instance](interfaces/instance.md)
 * [Rect](interfaces/rect.md)
 * [SimpleTreeFn](interfaces/simpletreefn.md)
 * [Subscription](interfaces/subscription.md)
+* [TreeInstance](interfaces/treeinstance.md)
 * [TreeModeNameMap](interfaces/treemodenamemap.md)
 * [TreeNode](interfaces/treenode.md)
 
@@ -32,7 +28,7 @@
 
 Ƭ  **Options**: Partial\<[BaseOptions](interfaces/baseoptions.md)>
 
-*Defined in [types/options.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/options.ts#L93)*
+*Defined in [types/options.ts:100](https://github.com/ckotzbauer/simple-tree-component/blob/b8593e9/src/types/options.ts#L100)*
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
@@ -40,9 +36,9 @@ ___
 
 ### SimpleTree
 
-Ƭ  **SimpleTree**: [Instance](interfaces/instance.md)\<\"singleSelectDropdown\" \| \"multiSelectDropdown\" \| \"view\">
+Ƭ  **SimpleTree**: [TreeInstance](interfaces/treeinstance.md)\<\"singleSelectDropdown\" \| \"multiSelectDropdown\" \| \"tree\">
 
-*Defined in [types/instance.ts:93](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/instance.ts#L93)*
+*Defined in [types/instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/b8593e9/src/types/instance.ts#L116)*
 
 ## Functions
 
@@ -50,7 +46,7 @@ ___
 
 ▸ **calculate**(`elementRect`: [Rect](interfaces/rect.md), `availableHeight`: number, `overlayHeight`: number, `borderWith?`: undefined \| number, `maxOverlayHeight?`: undefined \| number): [Rect](interfaces/rect.md)
 
-*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/rects.ts#L40)*
+*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/b8593e9/src/types/rects.ts#L40)*
 
 Calculates a rectangle to display a overlay-flyout relative to the position of the given `elementRect`.
 The following strategy is used (in order):
@@ -78,9 +74,9 @@ ___
 
 ### calculateOverlayPlacement
 
-▸ **calculateOverlayPlacement**(`overlay`: [HTMLElement](interfaces/__global.htmlelement.md), `element`: [HTMLElement](interfaces/__global.htmlelement.md), `maxHeight?`: undefined \| number): void
+▸ **calculateOverlayPlacement**(`overlay`: HTMLElement, `element`: HTMLElement, `maxHeight?`: undefined \| number): void
 
-*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/4c3a2a5/src/types/rects.ts#L56)*
+*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/b8593e9/src/types/rects.ts#L56)*
 
 Calculates the position of the `overlay` relative to the `element` and sets the values accordingly.
 See the docs of the `calculate` function for more details.
@@ -89,8 +85,8 @@ See the docs of the `calculate` function for more details.
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`overlay` | [HTMLElement](interfaces/__global.htmlelement.md) | The HTML element of the overlay, which should be placed correctly. |
-`element` | [HTMLElement](interfaces/__global.htmlelement.md) | The HTML element to which the `overlay` belongs. |
+`overlay` | HTMLElement | The HTML element of the overlay, which should be placed correctly. |
+`element` | HTMLElement | The HTML element to which the `overlay` belongs. |
 `maxHeight?` | undefined \| number | The maximum height of the overlay. Defaults to `300`.  |
 
 **Returns:** void

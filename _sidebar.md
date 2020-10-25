@@ -6,7 +6,7 @@
 - Modes
   - [Single-select](single-select-mode.md)
   - [Multi-select](multi-select-mode.md)
-  - [View](view-mode.md)
+  - [Tree](tree-mode.md)
 
 
 - [Overlay placement](overlay-placement.md)
@@ -16,9 +16,9 @@
   - [Summary](globals.md)
   - Interfaces
     - [BaseOptions](interfaces/baseoptions.md)
-    - [Instance](interfaces/instance.md)
     - [Rect](interfaces/rect.md)
     - [SimpleTreeFn](interfaces/simpletreefn.md)
     - [Subscription](interfaces/subscription.md)
+    - [TreeInstance](interfaces/treeinstance.md)
     - [TreeModeNameMap](interfaces/treemodenamemap.md)
     - [TreeNode](interfaces/treenode.md)

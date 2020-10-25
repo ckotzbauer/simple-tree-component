@@ -99,6 +99,12 @@ the project guidelines. ;)
 6. Click on the debug symbol on the actions bar.
 7. Click on the play button to start the debug session in a new Chrome browser window.
 
+## Create a release
+
+1. Trigger the `create-release` GitHub Action through UI with the new version.
+2. If the action succeeds, pull the changes locally (working tree should be clean).
+3. Publish to npm with `npm publish`
+
 ## License
 
 By submitting a contribution to this project, you agree to allow the project
