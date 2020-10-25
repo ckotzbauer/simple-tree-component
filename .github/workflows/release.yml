@@ -28,11 +28,14 @@ jobs:
 
       - name: Build
         run: |
-          npm i
+          npm ci
           npm run build
 
       - name: Build docs
         run: npm run build:docs
+
+      - name: Test
+        run: npm test
 
       - name: Generate changelog
         run: npx changelog-generator --release-version ${{ github.event.inputs.version }} --github-handle ${{ github.repository }} --commit-output commits.md
