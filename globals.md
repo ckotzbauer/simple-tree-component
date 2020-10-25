@@ -28,7 +28,7 @@
 
 Ƭ  **Options**: Partial\<[BaseOptions](interfaces/baseoptions.md)>
 
-*Defined in [types/options.ts:100](https://github.com/ckotzbauer/simple-tree-component/blob/0dc2fcc/src/types/options.ts#L100)*
+*Defined in [types/options.ts:100](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L100)*
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
@@ -38,7 +38,7 @@ ___
 
 Ƭ  **SimpleTree**: [TreeInstance](interfaces/treeinstance.md)\<\"singleSelectDropdown\" \| \"multiSelectDropdown\" \| \"tree\">
 
-*Defined in [types/instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/0dc2fcc/src/types/instance.ts#L116)*
+*Defined in [types/instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L116)*
 
 ## Functions
 
@@ -46,7 +46,7 @@ ___
 
 ▸ **calculate**(`elementRect`: [Rect](interfaces/rect.md), `availableHeight`: number, `overlayHeight`: number, `borderWith?`: undefined \| number, `maxOverlayHeight?`: undefined \| number): [Rect](interfaces/rect.md)
 
-*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/0dc2fcc/src/types/rects.ts#L40)*
+*Defined in [types/rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/rects.ts#L40)*
 
 Calculates a rectangle to display a overlay-flyout relative to the position of the given `elementRect`.
 The following strategy is used (in order):
@@ -76,7 +76,7 @@ ___
 
 ▸ **calculateOverlayPlacement**(`overlay`: HTMLElement, `element`: HTMLElement, `maxHeight?`: undefined \| number): void
 
-*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/0dc2fcc/src/types/rects.ts#L56)*
+*Defined in [types/rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/rects.ts#L56)*
 
 Calculates the position of the `overlay` relative to the `element` and sets the values accordingly.
 See the docs of the `calculate` function for more details.
