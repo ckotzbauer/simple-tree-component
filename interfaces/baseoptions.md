@@ -28,7 +28,7 @@ All instance-specific options and behaviors to initialize the tree.
 
 *Inherited from void*
 
-*Defined in [types/options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L53)*
+*Defined in [types/options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L53)*
 
 Checkbox settings.
 Only used in mode `tree`.
@@ -48,7 +48,7 @@ ___
 
 *Inherited from void*
 
-*Defined in [types/options.ts:32](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L32)*
+*Defined in [types/options.ts:32](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L32)*
 
 Custom css-classes.
 
@@ -64,7 +64,7 @@ ___
 
 •  **nodes**: [TreeNode](treenode.md)[]
 
-*Defined in [types/options.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L76)*
+*Defined in [types/options.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L76)*
 
 All tree-node data-objects to start with. Do not change this array afterwards.
 (Default: `[]`)
@@ -77,7 +77,7 @@ ___
 
 *Inherited from void*
 
-*Defined in [types/options.ts:15](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L15)*
+*Defined in [types/options.ts:15](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L15)*
 
 Add a searchbar to search for tree-nodes. (Default: `true`)
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from void*
 
-*Defined in [types/options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L20)*
+*Defined in [types/options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L20)*
 
 Determines if the searchbar requests the focus by default. (Default: `false`)
 
@@ -101,7 +101,7 @@ ___
 
 *Inherited from void*
 
-*Defined in [types/options.ts:47](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L47)*
+*Defined in [types/options.ts:47](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L47)*
 
 Template function which is called if the given node is selected.
 Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
@@ -118,7 +118,7 @@ ___
 
 *Inherited from void*
 
-*Defined in [types/options.ts:27](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/options.ts#L27)*
+*Defined in [types/options.ts:27](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/options.ts#L27)*
 
 A watermark text which is displayed if no value is selected.
 Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.

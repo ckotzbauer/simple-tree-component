@@ -1,7 +1,9 @@
 
 # Single-select mode
 
-**TODO**: Add screenshot, if styling is done.
+<p align="center">
+  <img src="assets/single-select.png">
+</p>
 
 ## Features
 
@@ -36,4 +38,5 @@ instance.showEmphasizeIcon("starred-item");
 
 
 ## Live demo
-**TODO**: Add JSFiddle demo, when repo is public.
+
+Try this [JSFiddle](https://jsfiddle.net/asqm9r65/).

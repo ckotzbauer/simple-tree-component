@@ -18,7 +18,7 @@
 
 •  **multiSelectDropdown**: [TreeNode](treenode.md)[]
 
-*Defined in [types/instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L7)*
+*Defined in [types/instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L7)*
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 •  **singleSelectDropdown**: [TreeNode](treenode.md) \| null
 
-*Defined in [types/instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L6)*
+*Defined in [types/instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L6)*
 
 ___
 
@@ -34,4 +34,4 @@ ___
 
 •  **tree**: [TreeNode](treenode.md) \| [TreeNode](treenode.md)[] \| null
 
-*Defined in [types/instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L8)*
+*Defined in [types/instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L8)*

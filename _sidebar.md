@@ -2,6 +2,7 @@
 - Getting started
   - [Overview](README.md)
   - [Quick start](quick-start.md)
+  - [Styling](styling.md)
 
 - Modes
   - [Single-select](single-select-mode.md)

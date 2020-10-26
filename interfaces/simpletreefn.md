@@ -8,7 +8,7 @@
 
 ▸ \<K>(`selector`: Node, `mode`: K, `config?`: [Options](../globals.md#options)): [TreeInstance](treeinstance.md)\<K>
 
-*Defined in [types/instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L118)*
+*Defined in [types/instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L118)*
 
 #### Type parameters:
 
@@ -28,7 +28,7 @@ Name | Type |
 
 ▸ \<K>(`selector`: ArrayLike\<Node>, `mode`: K, `config?`: [Options](../globals.md#options)): [TreeInstance](treeinstance.md)\<K>[]
 
-*Defined in [types/instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L119)*
+*Defined in [types/instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L119)*
 
 #### Type parameters:
 
@@ -48,7 +48,7 @@ Name | Type |
 
 ▸ \<K>(`selector`: string, `mode`: K, `config?`: [Options](../globals.md#options)): [TreeInstance](treeinstance.md)\<K> \| [TreeInstance](treeinstance.md)\<K>[]
 
-*Defined in [types/instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L120)*
+*Defined in [types/instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L120)*
 
 #### Type parameters:
 
@@ -78,4 +78,4 @@ Name | Type |
 
 •  **defaultConfig**: Partial\<[BaseOptions](baseoptions.md)>
 
-*Defined in [types/instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/9038ae2/src/types/instance.ts#L122)*
+*Defined in [types/instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/0d90ad8/src/types/instance.ts#L122)*

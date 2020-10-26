@@ -1,7 +1,9 @@
 
 # Tree mode
 
-**TODO**: Add screenshot, if styling is done.
+<p align="center">
+  <img src="assets/tree-view.png">
+</p>
 
 ## Features
 
@@ -32,4 +34,5 @@ the parent is deselected too.
 
 
 ## Live demo
-**TODO**: Add JSFiddle demo, when repo is public.
+
+Try this [JSFiddle](https://jsfiddle.net/zn1qwjb9/4/).
