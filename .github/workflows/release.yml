@@ -64,7 +64,7 @@ jobs:
           prerelease: ${{ contains(github.event.inputs.version, 'alpha') || contains(github.event.inputs.version, 'beta') || contains(github.event.inputs.version, 'rc') }}
 
       - name: Deploy docs
-        uses: benc-uk/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1.1
         with:
           workflow: deploy-docs
           ref: master
