@@ -1,7 +1,9 @@
 
 # Multi-select mode
 
-**TODO**: Add screenshot, if styling is done.
+<p align="center">
+  <img src="assets/multi-select.png">
+</p>
 
 ## Features
 
@@ -26,4 +28,5 @@ templateSelectedText: node => (`Selected: ${node.label}`)
 
 
 ## Live demo
-**TODO**: Add JSFiddle demo, when repo is public.
+
+Try this [JSFiddle](https://jsfiddle.net/z6bj4e30/).
