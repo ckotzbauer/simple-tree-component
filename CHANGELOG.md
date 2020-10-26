@@ -1,3 +1,14 @@
+## Version 1.0.0-beta.1 (2020-10-26)
+
+* [[`0384bf90`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0384bf90)] - **build(deps)**: bump pascalgn&#x2F;size-label-action
+* [[`a1716b16`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a1716b16)] - **build(deps)**: bump benc-uk&#x2F;workflow-dispatch from v1 to v1.1
+* [[`b8593e93`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b8593e93)] - **chore**: release 1.0.0-alpha.2
+* [[`290f4aff`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/290f4aff)] - **doc**: several improvements to docs
+* [[`07755e2b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/07755e2b)] - **doc**: add demos and screenshots
+* [[`9038ae29`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9038ae29)] - **doc**: commit as binary
+* [[`0dc2fcc4`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0dc2fcc4)] - **doc**: add new images
+* [[`25865906`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/25865906)] - **doc**: remove corrupted images
+* [[`fd0e30ad`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fd0e30ad)] - **fix**: apply default keyword to all variables
 ## Version 1.0.0-alpha.2 (2020-10-25)
 
 * [[`220df19c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/220df19c)] - **build**: use node@14
