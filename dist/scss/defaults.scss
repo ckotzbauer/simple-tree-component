@@ -1,11 +1,11 @@
 // ------------------------------ DEFAULTS ------------------------------
-$base-size: 0.5rem !default;
-$font-size: $base-size * 2;
+$base-size:                  0.5rem !default;
+$font-size:                  $base-size * 2 !default;
 
-$child-left-indent: $base-size * 2.5;
-$max-dropdown-height: 37.5 * $base-size;
+$child-left-indent:          $base-size * 2.5 !default;
+$max-dropdown-height:        37.5 * $base-size !default;
 
-$view-only-default-height: 37.5 * $base-size;
+$view-only-default-height:   37.5 * $base-size !default;
 
-$base-border: 1px solid $grey !default;
-$base-border-radius: $base-size * 0.5;
+$base-border:                1px solid $grey !default;
+$base-border-radius:         $base-size * 0.5 !default;
