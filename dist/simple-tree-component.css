@@ -2,11 +2,9 @@
   border: 1px solid #808080;
   border-radius: 0.25rem;
 }
-
 .simple-tree .simple-tree-input-container {
   padding: 0.25rem;
 }
-
 .simple-tree .simple-tree-input-container input {
   width: 100%;
   height: 2rem;
@@ -14,67 +12,54 @@
   padding: 0.25rem;
   box-sizing: border-box;
 }
-
 .simple-tree.simple-tree-view-only {
   height: 18.75rem;
 }
-
 .simple-tree.simple-tree-readonly {
   background-color: #d6d6d6;
 }
-
 .simple-tree.simple-tree-readonly .simple-tree-single-selectbox,
 .simple-tree.simple-tree-readonly .simple-tree-multi-selectbox {
   cursor: default;
 }
-
 .simple-tree.simple-tree-readonly .simple-tree-multi-selectbox .simple-tree-pillbox-holder .simple-tree-pillbox-cross {
   cursor: default;
 }
-
 .simple-tree.simple-tree-readonly .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-selectable {
   cursor: default;
 }
-
 .simple-tree .simple-tree-single-selectbox {
   cursor: pointer;
   padding: 0.5rem;
   padding-right: 1.5rem;
   height: 1rem;
 }
-
 .simple-tree .simple-tree-single-selectbox .simple-tree-selected-label {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
-
 .simple-tree .simple-tree-single-selectbox .simple-tree-selected-label-watermark {
   color: #808080;
 }
-
 .simple-tree .simple-tree-single-selectbox.simple-tree-emphasized {
   padding-right: 3rem;
 }
-
 .simple-tree .simple-tree-single-selectbox.simple-tree-emphasized .simple-tree-emphasize-icon {
   float: right;
   margin-right: -1rem;
 }
-
 .simple-tree .simple-tree-single-selectbox.simple-tree-emphasized .simple-tree-chevron-up,
 .simple-tree .simple-tree-single-selectbox.simple-tree-emphasized .simple-tree-chevron-down {
   margin-right: -2.5rem;
 }
-
 .simple-tree .simple-tree-multi-selectbox {
   cursor: pointer;
   padding-bottom: 0.25rem;
   padding-right: 1.5rem;
   min-height: 1.75rem;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder {
   list-style: none;
   display: inline-block;
@@ -82,7 +67,6 @@
   margin: 0;
   min-height: 1.5rem;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li {
   display: inline-block;
   border: 1px solid #808080;
@@ -93,7 +77,6 @@
   border-radius: 0.25rem;
   background-color: #d6d6d6;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross {
   width: 0.75rem;
   height: 0.75rem;
@@ -105,33 +88,28 @@
   display: inline-block;
   cursor: pointer;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross:before, .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross:after {
   content: "";
   position: absolute;
   z-index: -1;
   background-color: #808080;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross:before {
   left: 50%;
   width: 20%;
   margin-left: -10%;
   height: 100%;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross:after {
   top: 50%;
   height: 20%;
   margin-top: -10%;
   width: 100%;
 }
-
 .simple-tree .simple-tree-multi-selectbox .simple-tree-chevron-up,
 .simple-tree .simple-tree-multi-selectbox .simple-tree-chevron-down {
   margin-top: 0.5rem;
 }
-
 .simple-tree .simple-tree-chevron-up {
   border-left: 0.375rem solid transparent;
   border-right: 0.375rem solid transparent;
@@ -141,7 +119,6 @@
   margin-right: -1rem;
   float: right;
 }
-
 .simple-tree .simple-tree-chevron-down {
   border-left: 0.375rem solid transparent;
   border-right: 0.375rem solid transparent;
@@ -159,11 +136,9 @@
   max-height: 18.75rem;
   background-color: #fff;
 }
-
 .simple-tree-dropdown-holder .simple-tree-input-container {
   padding: 0.25rem;
 }
-
 .simple-tree-dropdown-holder .simple-tree-input-container input {
   width: 100%;
   height: 2rem;
@@ -176,27 +151,22 @@
   overflow-y: overlay;
   height: calc(100% - 2.5rem);
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.25rem;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper.simple-tree-node-hovered {
   background-color: #a1bfe4;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper.simple-tree-node-selected {
   font-weight: bold;
   background-color: #78a9e6;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper.simple-tree-node-selectable {
   cursor: pointer;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container {
   display: inline-block;
   width: 0.5rem;
@@ -207,11 +177,9 @@
       -ms-user-select: none;
           user-select: none;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container.simple-tree-node-chevron-clickable {
   cursor: pointer;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container .simple-tree-node-chevron-right {
   border-top: 0.25rem solid transparent;
   border-left: 0.5rem solid #808080;
@@ -219,7 +187,6 @@
   height: 0rem;
   width: 0rem;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container .simple-tree-node-chevron-down {
   border-left: 0.25rem solid transparent;
   border-right: 0.25rem solid transparent;
@@ -227,7 +194,6 @@
   height: 0rem;
   width: 0rem;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-checkbox {
   width: 0.75rem;
   height: 0.75rem;
@@ -236,20 +202,16 @@
   background-color: #fff;
   cursor: pointer;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-checkbox.simple-tree-node-checkbox-disabled {
   border-color: #808080;
   cursor: default;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-checkbox.simple-tree-node-checkbox-selected {
   background-color: #808080;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-checkbox.simple-tree-node-checkbox-disabled.simple-tree-node-checkbox-selected {
   background-color: #d6d6d6;
 }
-
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-text {
   text-overflow: ellipsis;
   white-space: nowrap;

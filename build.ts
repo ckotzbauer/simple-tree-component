@@ -5,7 +5,7 @@ import { exec as execCommand } from "child_process";
 import { ncp } from "ncp";
 import terser from "terser";
 import chokidar from "chokidar";
-import sass, { Result } from "node-sass";
+import sass, { Result } from "sass";
 import autoprefixer from "autoprefixer";
 import postcss from "postcss";
 
