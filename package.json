@@ -50,7 +50,7 @@
     "@types/autoprefixer": "9.7.2",
     "@types/jest": "26.0.15",
     "@types/ncp": "2.0.4",
-    "@types/node": "13.13.31",
+    "@types/node": "13.13.32",
     "@types/node-sass": "4.11.1",
     "@types/sass": "1.16.0",
     "@typescript-eslint/eslint-plugin": "4.8.1",
