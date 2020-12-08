@@ -48,7 +48,7 @@
     "@code-chris/changelog-generator": "2.1.0",
     "@rollup/plugin-typescript": "8.0.0",
     "@types/autoprefixer": "9.7.2",
-    "@types/jest": "26.0.17",
+    "@types/jest": "26.0.18",
     "@types/ncp": "2.0.4",
     "@types/node": "13.13.35",
     "@types/node-sass": "4.11.1",
