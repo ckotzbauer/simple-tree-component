@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: '14'
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
       - name: Bump version
         run: |
@@ -50,7 +51,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.REPO_ACCESS_TOKEN }}
           branch: master
 
       - name: Create release
