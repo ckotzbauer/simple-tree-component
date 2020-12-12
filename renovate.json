@@ -7,6 +7,9 @@
     "kind/dependencies"
   ],
   "ignorePaths": ["demo"],
+  "schedule": [
+    "every weekend"
+  ],
   "packageRules": [
     {
       "updateTypes": [
