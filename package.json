@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@code-chris/changelog-generator": "2.1.1",
-    "@rollup/plugin-typescript": "8.0.0",
+    "@rollup/plugin-typescript": "8.1.0",
     "@types/autoprefixer": "9.7.2",
     "@types/jest": "26.0.19",
     "@types/ncp": "2.0.4",
