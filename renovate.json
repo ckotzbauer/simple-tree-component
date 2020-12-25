@@ -1,37 +1,6 @@
 {
   "extends": [
-    "config:base",
-    ":semanticCommitScopeDisabled"
+    "github>ckotzbauer/renovate-config"
   ],
-  "labels": [
-    "kind/dependencies"
-  ],
-  "ignorePaths": ["demo"],
-  "schedule": [
-    "every weekend"
-  ],
-  "packageRules": [
-    {
-      "updateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest"
-      ],
-      "addLabels": [
-        "approved"
-      ]
-    },
-    {
-      "updateTypes": [
-        "major",
-        "lockFileMaintenance",
-        "rollback",
-        "bump"
-      ],
-      "reviewers": [
-        "ckotzbauer"
-      ]
-    }
-  ]
+  "ignorePaths": ["demo"]
 }
