@@ -9,9 +9,9 @@ import { calculate } from "simple-tree-component";
 const targetOverlayRect = calculate(elementRect, availableHeight, overlayHeight);
 ```
 
-Check out the [API docs](globals.md#calculate) for a detailed description how the calculation works.
+Check out the [API docs](modules/rects.md#calculate) for a detailed description how the calculation works.
 
-If you directly want to manipulate the overlay-element with the calculated values, you can use [this](globals.md#calculateOverlayPlacement) function instead:
+If you directly want to manipulate the overlay-element with the calculated values, you can use [this](modules/rects.md#calculateOverlayPlacement) function instead:
 
 ```js
 import { calculateOverlayPlacement } from "simple-tree-component";

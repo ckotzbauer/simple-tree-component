@@ -1,20 +1,14 @@
 {
   "name": "Simple Tree Component",
-  "mode": "file",
   "out": "docs/out",
-  "includeDeclarations": true,
   "excludeExternals": true,
-  "excludeNotExported": true,
   "excludePrivate": true,
   "excludeProtected": true,
   "hideBreadcrumbs": true,
   "hideProjectName": true,
-  "plugins": [
-    "typedoc-plugin-markdown"
-  ],
   "theme": "docs/typedoc-docsify",
-  "exclude": "./src/__tests__",
-  "inputFiles": [
-    "./src/types"
+  "exclude": "**/*+(.spec).ts",
+  "entryPoints": [
+    "src/types"
   ]
 }

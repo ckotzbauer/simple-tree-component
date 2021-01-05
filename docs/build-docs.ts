@@ -35,19 +35,24 @@ const ignoreFiles = ["_sidebar.md"];
 })();
 
 async function generateTypesSidebar(outDir: string): Promise<string> {
-    const interfaces = (await fs.promises.readdir(`${outDir}/interfaces`)).filter((f) => !f.startsWith("_"));
-    const interfaceLines = interfaces.map(async (f) => `    - [${await extractTitle(outDir, f)}](interfaces/${f})`);
+    const interfaces = await fs.promises.readdir(`${outDir}/interfaces`);
+    const interfaceLines = interfaces.map(
+        async (f) => `    - [${await extractTitle(outDir, f, "Interface", "interfaces")}](interfaces/${f})`
+    );
+    const modules = await fs.promises.readdir(`${outDir}/modules`);
+    const moduleLines = modules.map(async (f) => `    - [${await extractTitle(outDir, f, "Module", "modules")}](modules/${f})`);
     const lines = [
         "- Types Documentation",
-        "  - [Summary](globals.md)",
         "  - Interfaces",
         ...(await Promise.all(interfaceLines)),
+        "  - Modules",
+        ...(await Promise.all(moduleLines)),
     ];
     return lines.join("\n");
 }
 
-async function extractTitle(outDir: string, file: string): Promise<string | undefined> {
-    const regex = /# Interface: (?<type>[a-zA-Z]*)/g;
-    const content = (await fs.promises.readFile(`${outDir}/interfaces/${file}`)).toString();
+async function extractTitle(outDir: string, file: string, title: string, path: string): Promise<string | undefined> {
+    const regex = new RegExp(`# ${title}: (?<type>[a-zA-Z]*)`, "g");
+    const content = (await fs.promises.readFile(`${outDir}/${path}/${file}`)).toString();
     return regex.exec(content)?.groups?.type;
 }

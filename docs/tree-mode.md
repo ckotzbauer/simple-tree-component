@@ -20,7 +20,7 @@ checkboxes: {
 ```
 
 All items are now selectable completely independent from each other. So selections of parent-nodes have no effect to their childs. This can be changed, when enabling
-[recursive-selection](interfaces/baseoptions.md#checkboxes):
+[recursive-selection](interfaces/options.baseoptions.md#checkboxes):
 
 ```js
 checkboxes: {
