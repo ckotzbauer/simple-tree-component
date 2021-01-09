@@ -3,6 +3,7 @@
 ![build](https://github.com/ckotzbauer/simple-tree-component/workflows/build/badge.svg)
 [![codecov](https://codecov.io/gh/ckotzbauer/simple-tree-component/branch/master/graph/badge.svg?token=CDK8TH9DLZ)](https://codecov.io/gh/ckotzbauer/simple-tree-component)
 [![NPM](https://img.shields.io/npm/v/simple-tree-component.svg)](https://www.npmjs.com/package/simple-tree-component)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fckotzbauer%2Fsimple-tree-component.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fckotzbauer%2Fsimple-tree-component?ref=badge_shield)
 
 > This pure JavaScript component comes without any dependencies and is targeted to modern browsers. Full TypeScript support is available.
 
@@ -51,3 +52,7 @@ You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-com
 --------
 [Changelog](https://github.com/ckotzbauer/simple-tree-component/blob/master/CHANGELOG.md)
 --------
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fckotzbauer%2Fsimple-tree-component.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fckotzbauer%2Fsimple-tree-component?ref=badge_large)
