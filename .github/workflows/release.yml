@@ -39,7 +39,7 @@ jobs:
         run: npm test
 
       - name: Generate changelog
-        run: npx changelog-generator --release-version ${{ github.event.inputs.version }} --github-handle ${{ github.repository }} --commit-output commits.md
+        run: npx @code-chris/changelog-generator --release-version ${{ github.event.inputs.version }} --github-handle ${{ github.repository }} --commit-output commits.md
 
       - name: Commit files
         id: commit
