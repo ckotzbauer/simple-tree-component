@@ -30,6 +30,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          SSH: true
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: docs/out # The folder the action should deploy.
+          ssh-key: true
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs/out # The folder the action should deploy.
