@@ -30,12 +30,13 @@ export function calculate(
 }
 
 export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight = 300): void {
+    const boundingRect = element.getBoundingClientRect();
     const rect = calculate(
         {
-            top: element.offsetTop,
-            height: element.offsetHeight,
-            left: element.offsetLeft,
-            width: element.offsetWidth,
+            top: boundingRect.top,
+            height: boundingRect.height,
+            left: boundingRect.left,
+            width: boundingRect.width,
         },
         window.innerHeight,
         overlay.clientHeight,
