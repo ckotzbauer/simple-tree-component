@@ -14,12 +14,17 @@
 - [Contributing](CONTRIBUTING.md)
 
 - Types Documentation
-  - [Summary](globals.md)
   - Interfaces
-    - [BaseOptions](interfaces/baseoptions.md)
-    - [Rect](interfaces/rect.md)
-    - [SimpleTreeFn](interfaces/simpletreefn.md)
-    - [Subscription](interfaces/subscription.md)
-    - [TreeInstance](interfaces/treeinstance.md)
-    - [TreeModeNameMap](interfaces/treemodenamemap.md)
-    - [TreeNode](interfaces/treenode.md)
+    - [undefined](interfaces/instance.simpletreefn.md)
+    - [undefined](interfaces/instance.treeinstance.md)
+    - [undefined](interfaces/instance.treemodenamemap.md)
+    - [undefined](interfaces/options.baseoptions.md)
+    - [undefined](interfaces/rects.rect.md)
+    - [undefined](interfaces/subscription.subscription-1.md)
+    - [undefined](interfaces/tree_node.treenode.md)
+  - Modules
+    - [undefined](modules/instance.md)
+    - [undefined](modules/options.md)
+    - [undefined](modules/rects.md)
+    - [undefined](modules/subscription.md)
+    - [undefined](modules/tree_node.md)
