@@ -41,10 +41,15 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
             return;
         }
 
-        this.dropdownHolder.style.display = "inherit";
         this.tree.renderContent();
         this.tree.activateKeyListener();
-        calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
+
+        // Avoid interference of main page
+        this.dropdownHolder.style.top = "-9999px";
+        this.dropdownHolder.style.left = "-9999px";
+        this.dropdownHolder.style.display = "inherit";
+
+        calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement);
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
         this.dropdownOpen = true;

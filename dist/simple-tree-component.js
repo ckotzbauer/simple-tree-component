@@ -5,7 +5,7 @@
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global['simple-tree-component'] = factory());
 }(this, (function () { 'use strict';
 
-    const defaults = {
+    const defaults$1 = {
         nodes: [],
         searchBar: true,
         searchBarFocus: false,
@@ -355,7 +355,7 @@
         }
     }
 
-    const defaults$1 = {
+    const defaults = {
         label: "",
         value: "",
         selected: false,
@@ -406,7 +406,7 @@
             });
         }
         copyNode(node) {
-            return Object.assign(Object.assign({}, defaults$1), node);
+            return Object.assign(Object.assign({}, defaults), node);
         }
         clear() {
             this.allNodes = [];
@@ -760,11 +760,12 @@
         };
     }
     function calculateOverlayPlacement(overlay, element, maxHeight = 300) {
+        const boundingRect = element.getBoundingClientRect();
         const rect = calculate({
-            top: element.offsetTop,
-            height: element.offsetHeight,
-            left: element.offsetLeft,
-            width: element.offsetWidth,
+            top: boundingRect.top,
+            height: boundingRect.height,
+            left: boundingRect.left,
+            width: boundingRect.width,
         }, window.innerHeight, overlay.clientHeight, parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10), maxHeight);
         overlay.style.top = `${rect.top}px`;
         overlay.style.left = `${rect.left}px`;
@@ -797,10 +798,12 @@
             if (this.readOnly) {
                 return;
             }
-            this.dropdownHolder.style.display = "inherit";
             this.tree.renderContent();
             this.tree.activateKeyListener();
-            calculateOverlayPlacement(this.dropdownHolder, this.selectContainer);
+            this.dropdownHolder.style.top = "-9999px";
+            this.dropdownHolder.style.left = "-9999px";
+            this.dropdownHolder.style.display = "inherit";
+            calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement);
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
             this.dropdownOpen = true;
@@ -1003,7 +1006,7 @@
     }
 
     function createSimpleTree(element, mode, instanceConfig) {
-        const config = Object.assign(Object.assign({}, defaults), instanceConfig);
+        const config = Object.assign(Object.assign({}, defaults$1), instanceConfig);
         if (mode === "singleSelectDropdown") {
             return new SingleSelectDropdown(element, config);
         }
