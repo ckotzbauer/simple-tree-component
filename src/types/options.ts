@@ -27,6 +27,12 @@ export interface TreeConfiguration {
     watermark: string;
 
     /**
+     * A message text which is displayed if no tree-nodes are avialble at all or through filtering.
+     * (Default: `No items found.`)
+     */
+    noNodesMessage: string;
+
+    /**
      * Custom css-classes.
      */
     css: {
@@ -84,6 +90,7 @@ export const defaults: BaseOptions = {
     searchBar: true,
     searchBarFocus: false,
     watermark: "Please select a value...",
+    noNodesMessage: "No items found.",
     css: {
         dropdownHolder: "",
     },

@@ -4,6 +4,7 @@ export interface TreeConfiguration {
     searchBar: boolean;
     searchBarFocus: boolean;
     watermark: string;
+    noNodesMessage: string;
     css: {
         dropdownHolder: string;
     };

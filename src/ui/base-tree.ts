@@ -166,6 +166,20 @@ export class BaseTree {
             }
         });
 
+        if (nodes.length === 0) {
+            const liElement: HTMLLIElement = document.createElement("li");
+            const lineWrapperDiv = document.createElement("div");
+            lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
+
+            const textDivElement = document.createElement("div");
+            textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
+            textDivElement.textContent = this.config.noNodesMessage;
+
+            lineWrapperDiv.appendChild(textDivElement);
+            liElement.appendChild(lineWrapperDiv);
+            ulElement.appendChild(liElement);
+        }
+
         return ulElement;
     }
 

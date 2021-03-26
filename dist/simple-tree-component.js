@@ -10,6 +10,7 @@
         searchBar: true,
         searchBarFocus: false,
         watermark: "Please select a value...",
+        noNodesMessage: "No items found.",
         css: {
             dropdownHolder: "",
         },
@@ -233,6 +234,17 @@
                     liElement.appendChild(this.renderUnorderedList(node.children));
                 }
             });
+            if (nodes.length === 0) {
+                const liElement = document.createElement("li");
+                const lineWrapperDiv = document.createElement("div");
+                lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
+                const textDivElement = document.createElement("div");
+                textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
+                textDivElement.textContent = this.config.noNodesMessage;
+                lineWrapperDiv.appendChild(textDivElement);
+                liElement.appendChild(lineWrapperDiv);
+                ulElement.appendChild(liElement);
+            }
             return ulElement;
         }
         toggleNodeSelected(node) {
