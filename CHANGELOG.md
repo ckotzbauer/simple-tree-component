@@ -1,3 +1,10 @@
+## Version 1.0.0-beta.4 (2021-03-26)
+
+* [[`0ad5cb40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0ad5cb40)] - **chore**: cleanup package-lock.json
+* [[`132be1ad`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/132be1ad)] - **doc**: fixed docs
+* [[`6da994f0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6da994f0)] - **feat**: add noNodesMessage option and text
+* [[`b9865d40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b9865d40)] - **fix**: set selected class to wrapper-div fixes: 562
+
 ## Version 1.0.0-beta.3 (2021-03-23)
 
 * [[`96e0bae7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/96e0bae7)] - **build**: promote release on master
