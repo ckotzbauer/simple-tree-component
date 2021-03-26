@@ -219,7 +219,7 @@
                     lineWrapperDiv.appendChild(checkboxElement);
                 }
                 else if (node.selected) {
-                    textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelected);
+                    lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelected);
                 }
                 textDivElement.textContent = node.label;
                 if (!this.config.checkboxes.active && node.selectable && !this.readOnly) {

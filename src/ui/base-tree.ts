@@ -146,7 +146,7 @@ export class BaseTree {
 
                 lineWrapperDiv.appendChild(checkboxElement);
             } else if (node.selected) {
-                textDivElement.classList.add(constants.classNames.SimpleTreeNodeSelected);
+                lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelected);
             }
 
             textDivElement.textContent = node.label;
