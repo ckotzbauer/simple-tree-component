@@ -27,7 +27,7 @@ export interface TreeConfiguration {
     watermark: string;
 
     /**
-     * A message text which is displayed if no tree-nodes are avialble at all or through filtering.
+     * A message text which is displayed if no tree-nodes are available at all or through filtering.
      * (Default: `No items found.`)
      */
     noNodesMessage: string;

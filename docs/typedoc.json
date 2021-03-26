@@ -5,7 +5,7 @@
   "excludePrivate": true,
   "excludeProtected": true,
   "hideBreadcrumbs": true,
-  "hidePageTitle": true,
+  "hidePageTitle": false,
   "theme": "docs/typedoc-docsify",
   "exclude": "**/*+(.spec).ts",
   "entryPoints": [
