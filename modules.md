@@ -1,3 +1,5 @@
+# Simple Tree Component
+
 ## Table of contents
 
 ### Modules

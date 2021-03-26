@@ -15,16 +15,16 @@
 
 - Types Documentation
   - Interfaces
-    - [undefined](interfaces/instance.simpletreefn.md)
-    - [undefined](interfaces/instance.treeinstance.md)
-    - [undefined](interfaces/instance.treemodenamemap.md)
-    - [undefined](interfaces/options.baseoptions.md)
-    - [undefined](interfaces/rects.rect.md)
-    - [undefined](interfaces/subscription.subscription-1.md)
-    - [undefined](interfaces/tree_node.treenode.md)
+    - [SimpleTreeFn](interfaces/instance.simpletreefn.md)
+    - [TreeInstance](interfaces/instance.treeinstance.md)
+    - [TreeModeNameMap](interfaces/instance.treemodenamemap.md)
+    - [BaseOptions](interfaces/options.baseoptions.md)
+    - [Rect](interfaces/rects.rect.md)
+    - [Subscription](interfaces/subscription.subscription-1.md)
+    - [TreeNode](interfaces/tree_node.treenode.md)
   - Modules
-    - [undefined](modules/instance.md)
-    - [undefined](modules/options.md)
-    - [undefined](modules/rects.md)
-    - [undefined](modules/subscription.md)
-    - [undefined](modules/tree_node.md)
+    - [instance](modules/instance.md)
+    - [options](modules/options.md)
+    - [rects](modules/rects.md)
+    - [subscription](modules/subscription.md)
+    - [tree](modules/tree_node.md)

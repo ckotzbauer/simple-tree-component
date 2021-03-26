@@ -1,3 +1,5 @@
+# Module: rects
+
 ## Table of contents
 
 ### Interfaces
@@ -37,7 +39,7 @@ Name | Type | Description |
 
 The calculated rectangle of the overlay position.
 
-Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L40)
+Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L40)
 
 ___
 
@@ -58,4 +60,4 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L56)
+Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L56)

@@ -1,3 +1,5 @@
+# Interface: Rect
+
 [rects](../modules/rects.md).Rect
 
 A general rectangle object which is used from the `calculate` function.
@@ -19,7 +21,7 @@ A general rectangle object which is used from the `calculate` function.
 
 Height of the rectangle.
 
-Defined in: [rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L20)
+Defined in: [rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L20)
 
 ___
 
@@ -29,7 +31,7 @@ ___
 
 Difference from the base-point in x-direction.
 
-Defined in: [rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L12)
+Defined in: [rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L12)
 
 ___
 
@@ -39,7 +41,7 @@ ___
 
 Difference from the base-point in y-direction.
 
-Defined in: [rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L8)
+Defined in: [rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L8)
 
 ___
 
@@ -49,4 +51,4 @@ ___
 
 Width of the rectangle.
 
-Defined in: [rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/rects.ts#L16)
+Defined in: [rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/rects.ts#L16)

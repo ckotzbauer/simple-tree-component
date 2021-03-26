@@ -1,3 +1,5 @@
+# Module: options
+
 ## Table of contents
 
 ### Interfaces
@@ -16,4 +18,4 @@
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
-Defined in: [options.ts:100](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/options.ts#L100)
+Defined in: [options.ts:107](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L107)

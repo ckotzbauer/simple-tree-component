@@ -1,3 +1,5 @@
+# Module: subscription
+
 ## Table of contents
 
 ### Interfaces

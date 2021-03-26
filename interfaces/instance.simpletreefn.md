@@ -1,3 +1,5 @@
+# Interface: SimpleTreeFn
+
 [instance](../modules/instance.md).SimpleTreeFn
 
 ## Callable
@@ -20,7 +22,7 @@ Name | Type |
 
 **Returns:** [*TreeInstance*](instance.treeinstance.md)<K\>
 
-Defined in: [instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/instance.ts#L118)
+Defined in: [instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L118)
 
 ▸ **SimpleTreeFn**<K\>(`selector`: *ArrayLike*<Node\>, `mode`: K, `config?`: *Partial*<[*BaseOptions*](options.baseoptions.md)\>): [*TreeInstance*](instance.treeinstance.md)<K\>[]
 
@@ -40,7 +42,7 @@ Name | Type |
 
 **Returns:** [*TreeInstance*](instance.treeinstance.md)<K\>[]
 
-Defined in: [instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/instance.ts#L119)
+Defined in: [instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L119)
 
 ▸ **SimpleTreeFn**<K\>(`selector`: *string*, `mode`: K, `config?`: *Partial*<[*BaseOptions*](options.baseoptions.md)\>): [*TreeInstance*](instance.treeinstance.md)<K\> \| [*TreeInstance*](instance.treeinstance.md)<K\>[]
 
@@ -60,7 +62,7 @@ Name | Type |
 
 **Returns:** [*TreeInstance*](instance.treeinstance.md)<K\> \| [*TreeInstance*](instance.treeinstance.md)<K\>[]
 
-Defined in: [instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/instance.ts#L120)
+Defined in: [instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L120)
 
 ## Table of contents
 
@@ -74,4 +76,4 @@ Defined in: [instance.ts:120](https://github.com/ckotzbauer/simple-tree-componen
 
 • **defaultConfig**: *Partial*<[*BaseOptions*](options.baseoptions.md)\>
 
-Defined in: [instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/instance.ts#L122)
+Defined in: [instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L122)

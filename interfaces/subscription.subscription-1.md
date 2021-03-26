@@ -1,3 +1,5 @@
+# Interface: Subscription
+
 [subscription](../modules/subscription.md).Subscription
 
 A subscription-object which is issued when `subscribe` or `subscribeOnce` is called on a tree-instance to receive different events.
@@ -18,4 +20,4 @@ Ends the subscription. No further events (this subscription was linked to) where
 
 **Returns:** *void*
 
-Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/subscription.ts#L8)
+Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/subscription.ts#L8)

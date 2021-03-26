@@ -1,3 +1,5 @@
+# Module: instance
+
 ## Table of contents
 
 ### Interfaces
@@ -16,4 +18,4 @@
 
 Ƭ **SimpleTree**: [*TreeInstance*](../interfaces/instance.treeinstance.md)<*singleSelectDropdown* \| *multiSelectDropdown* \| *tree*\>
 
-Defined in: [instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/7a66e99/src/types/instance.ts#L116)
+Defined in: [instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L116)
