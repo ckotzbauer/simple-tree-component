@@ -40,7 +40,7 @@ Name | Type |
 
 Applied configuration options for the current instance.
 
-Defined in: [instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L18)
+Defined in: [instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L18)
 
 ## Methods
 
@@ -59,7 +59,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L39)
+Defined in: [instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L39)
 
 ___
 
@@ -77,7 +77,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L46)
+Defined in: [instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L46)
 
 ___
 
@@ -89,7 +89,7 @@ Destroy the current instance and remove all modifications to the dom.
 
 **Returns:** *void*
 
-Defined in: [instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L23)
+Defined in: [instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L23)
 
 ___
 
@@ -109,7 +109,7 @@ Name | Type | Description |
 
 a matching tree-node or null.
 
-Defined in: [instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L31)
+Defined in: [instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L31)
 
 ___
 
@@ -123,7 +123,7 @@ Returns one or multiple selected tree-node objects, depending on the mode.
 
 a tree-node object in single-mode and view-mode without checkboxes. An array of nodes otherwise.
 
-Defined in: [instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L69)
+Defined in: [instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L69)
 
 ___
 
@@ -135,7 +135,7 @@ Only usable in single-mode. Hides the emphasize-icon again.
 
 **Returns:** *void*
 
-Defined in: [instance.ts:95](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L95)
+Defined in: [instance.ts:95](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L95)
 
 ___
 
@@ -154,7 +154,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:62](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L62)
+Defined in: [instance.ts:62](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L62)
 
 ___
 
@@ -172,7 +172,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L83)
+Defined in: [instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L83)
 
 ___
 
@@ -190,7 +190,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L76)
+Defined in: [instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L76)
 
 ___
 
@@ -208,7 +208,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L90)
+Defined in: [instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L90)
 
 ___
 
@@ -229,7 +229,7 @@ Name | Type | Description |
 
 a subscription object to unsubscribe again.
 
-Defined in: [instance.ts:104](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L104)
+Defined in: [instance.ts:104](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L104)
 
 ___
 
@@ -250,7 +250,7 @@ Name | Type | Description |
 
 a subscription object to unsubscribe again.
 
-Defined in: [instance.ts:113](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L113)
+Defined in: [instance.ts:113](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L113)
 
 ___
 
@@ -269,4 +269,4 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [instance.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/instance.ts#L54)
+Defined in: [instance.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/instance.ts#L54)

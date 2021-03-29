@@ -41,7 +41,7 @@ Name | Type | Description |
 
 Inherited from: void
 
-Defined in: [options.ts:59](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L59)
+Defined in: [options.ts:59](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L59)
 
 ___
 
@@ -59,7 +59,7 @@ Name | Type | Description |
 
 Inherited from: void
 
-Defined in: [options.ts:38](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L38)
+Defined in: [options.ts:38](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L38)
 
 ___
 
@@ -72,7 +72,7 @@ A message text which is displayed if no tree-nodes are available at all or throu
 
 Inherited from: void
 
-Defined in: [options.ts:33](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L33)
+Defined in: [options.ts:33](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L33)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 All tree-node data-objects to start with. Do not change this array afterwards.
 (Default: `[]`)
 
-Defined in: [options.ts:82](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L82)
+Defined in: [options.ts:82](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L82)
 
 ___
 
@@ -95,7 +95,7 @@ Add a searchbar to search for tree-nodes. (Default: `true`)
 
 Inherited from: void
 
-Defined in: [options.ts:15](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L15)
+Defined in: [options.ts:15](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L15)
 
 ___
 
@@ -107,7 +107,7 @@ Determines if the searchbar requests the focus by default. (Default: `false`)
 
 Inherited from: void
 
-Defined in: [options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L20)
+Defined in: [options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L20)
 
 ___
 
@@ -134,11 +134,11 @@ Name | Type |
 
 **Returns:** *string*
 
-Defined in: [options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L53)
+Defined in: [options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L53)
 
 Inherited from: void
 
-Defined in: [options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L53)
+Defined in: [options.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L53)
 
 ___
 
@@ -152,4 +152,4 @@ Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
 
 Inherited from: void
 
-Defined in: [options.ts:27](https://github.com/ckotzbauer/simple-tree-component/blob/6c84b56/src/types/options.ts#L27)
+Defined in: [options.ts:27](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/options.ts#L27)
