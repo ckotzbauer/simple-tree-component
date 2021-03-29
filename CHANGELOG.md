@@ -1,3 +1,20 @@
+## Version 1.0.0-beta.5 (2021-03-29)
+
+* [[`f629bcb1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f629bcb1)] - **chore**: add more test-items
+* [[`603add1f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/603add1f)] - **chore**: update dependency rollup to v2.43.1 (#572)
+* [[`3838d5b3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3838d5b3)] - **chore**: update dependency rollup to v2.43.0 (#571)
+* [[`ef1f62a6`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ef1f62a6)] - **chore**: update dependency @rollup&#x2F;plugin-typescript to v8.2.1 (#564)
+* [[`b557be5a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b557be5a)] - **chore**: update dependency eslint to v7.23.0 (#566)
+* [[`9b84105c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9b84105c)] - **chore**: update dependency @types&#x2F;jest to v26.0.22 (#565)
+* [[`3677280f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3677280f)] - **chore**: update dependency rollup to v2.42.4 (#567)
+* [[`5fe7e1ba`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5fe7e1ba)] - **chore**: update dependency typedoc to v0.20.34 (#568)
+* [[`5fe297b5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5fe297b5)] - **chore**: update typescript-eslint monorepo to v4.19.0 (#569)
+* [[`8a7b852a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8a7b852a)] - **chore**: update dependency @types&#x2F;node to v13.13.48 (#570)
+* [[`d7a9f034`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d7a9f034)] - **feat**: resize dropdown on filtering
+* [[`3474a625`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3474a625)] - **fix**: reset filter on renderContent call
+* [[`cbb294be`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cbb294be)] - **fix**: improve placement-logic for different scrolling scenarios closes #563
+* [[`6acdd5bf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6acdd5bf)] - **test**: fix tests to pass with new tolerance
+
 ## Version 1.0.0-beta.4 (2021-03-26)
 
 * [[`0ad5cb40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0ad5cb40)] - **chore**: cleanup package-lock.json
