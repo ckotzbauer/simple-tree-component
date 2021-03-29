@@ -10,7 +10,7 @@ describe("overlay-placement", () => {
         it("should place dropdown below", () => {
             const rect = calculate(
                 {
-                    top: 775,
+                    top: 765,
                     height: 20,
                     left: 10,
                     width: 100,
@@ -20,7 +20,7 @@ describe("overlay-placement", () => {
                 0
             );
 
-            expect(rect).toEqual({ top: 795, height: 200, left: 10, width: 100 });
+            expect(rect).toEqual({ top: 785, height: 200, left: 10, width: 100 });
         });
 
         it("should place dropdown above", () => {
@@ -53,7 +53,7 @@ describe("overlay-placement", () => {
                 200
             );
 
-            expect(rect).toEqual({ top: 60, height: 190, left: 10, width: 100 });
+            expect(rect).toEqual({ top: 60, height: 180, left: 10, width: 100 });
         });
     });
 });
