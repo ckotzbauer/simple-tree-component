@@ -757,12 +757,14 @@
     function calculate(elementRect, availableHeight, overlayHeight, borderWith = 0, maxOverlayHeight = 300) {
         let top = elementRect.top + elementRect.height + borderWith;
         let height = overlayHeight > maxOverlayHeight ? maxOverlayHeight : overlayHeight;
-        if (top + height > availableHeight) {
+        const tolerance = 10;
+        const topRelative = top - window.scrollY;
+        if (topRelative + height + tolerance > availableHeight) {
             top = elementRect.top - height - borderWith;
         }
         if (top < 0) {
             top = elementRect.top + elementRect.height + borderWith;
-            height = availableHeight - top;
+            height = availableHeight - top - tolerance;
         }
         return {
             top,
@@ -772,12 +774,14 @@
         };
     }
     function calculateOverlayPlacement(overlay, element, maxHeight = 300) {
-        const boundingRect = element.getBoundingClientRect();
+        const { top, left } = element.getBoundingClientRect();
+        const scrollX = window.scrollX;
+        const scrollY = window.scrollY;
         const rect = calculate({
-            top: boundingRect.top,
-            height: boundingRect.height,
-            left: boundingRect.left,
-            width: boundingRect.width,
+            top: top + scrollY,
+            height: element.offsetHeight,
+            left: left + scrollX,
+            width: element.offsetWidth,
         }, window.innerHeight, overlay.clientHeight, parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10), maxHeight);
         overlay.style.top = `${rect.top}px`;
         overlay.style.left = `${rect.left}px`;

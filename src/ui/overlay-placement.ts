@@ -9,8 +9,10 @@ export function calculate(
 ): Rect {
     let top = elementRect.top + elementRect.height + borderWith;
     let height = overlayHeight > maxOverlayHeight ? maxOverlayHeight : overlayHeight;
+    const tolerance = 10;
+    const topRelative = top - window.scrollY;
 
-    if (top + height > availableHeight) {
+    if (topRelative + height + tolerance > availableHeight) {
         // show above of the corresponding element
         top = elementRect.top - height - borderWith;
     }
@@ -18,7 +20,7 @@ export function calculate(
     if (top < 0) {
         // show below of the corresponding element and reduce height
         top = elementRect.top + elementRect.height + borderWith;
-        height = availableHeight - top;
+        height = availableHeight - top - tolerance;
     }
 
     return {
@@ -30,13 +32,16 @@ export function calculate(
 }
 
 export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight = 300): void {
-    const boundingRect = element.getBoundingClientRect();
+    const { top, left } = element.getBoundingClientRect();
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
     const rect = calculate(
         {
-            top: boundingRect.top,
-            height: boundingRect.height,
-            left: boundingRect.left,
-            width: boundingRect.width,
+            top: top + scrollY,
+            height: element.offsetHeight,
+            left: left + scrollX,
+            width: element.offsetWidth,
         },
         window.innerHeight,
         overlay.clientHeight,
