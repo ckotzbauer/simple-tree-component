@@ -37,6 +37,7 @@ export default {
         NodeSelected: "nodeSelected",
         EscapePressed: "escapePressed",
         HoverChanged: "hoverChanged",
+        FilterChanged: "filterChanged",
     },
     nodeIdPrefix: "simple-tree-node",
 };

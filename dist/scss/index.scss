@@ -141,11 +141,12 @@
     border-radius: $base-border-radius;
     max-height: $max-dropdown-height;
     background-color: $white;
+    overflow-y: auto;
 }
 
 .simple-tree-node-container {
     overflow-y: overlay;
-    height: calc(100% - #{$base-size * 5});
+    height: fit-content;
 
     .simple-tree-node-wrapper {
         display: flex;

@@ -3,9 +3,11 @@ import { TreeModeNameMap } from "../types/instance";
 import { BaseOptions } from "../types/options";
 import { calculateOverlayPlacement } from "./overlay-placement";
 import constants from "./ui-constants";
+import { Subscription } from "types/subscription";
 
 export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> extends CommonTreeLogic<K> {
     protected dropdownOpen = false;
+    private filterChangedSubscription!: Subscription | null;
 
     protected dropdownHolder!: HTMLElement;
     protected selectContainer!: HTMLElement;
@@ -43,6 +45,9 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
 
         this.tree.renderContent();
         this.tree.activateKeyListener();
+        this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () =>
+            calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement)
+        );
 
         // Avoid interference of main page
         this.dropdownHolder.style.top = "-9999px";
@@ -59,6 +64,11 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
     protected closeDropdown(): void {
         if (!this.dropdownOpen) {
             return;
+        }
+
+        if (this.filterChangedSubscription) {
+            this.filterChangedSubscription.dispose();
+            this.filterChangedSubscription = null;
         }
 
         this.dropdownHolder.style.display = "none";

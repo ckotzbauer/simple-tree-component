@@ -82,6 +82,7 @@ export class BaseTree {
             this.searchTextInput.addEventListener("input", (e: Event) => {
                 this.dataService.filter((e.target as HTMLInputElement).value);
                 this.renderTree();
+                this.eventManager.publish(constants.events.FilterChanged);
             });
 
             wrapperDiv.appendChild(this.searchTextInput);

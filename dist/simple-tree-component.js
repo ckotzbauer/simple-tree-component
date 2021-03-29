@@ -59,6 +59,7 @@
             NodeSelected: "nodeSelected",
             EscapePressed: "escapePressed",
             HoverChanged: "hoverChanged",
+            FilterChanged: "filterChanged",
         },
         nodeIdPrefix: "simple-tree-node",
     };
@@ -169,6 +170,7 @@
                 this.searchTextInput.addEventListener("input", (e) => {
                     this.dataService.filter(e.target.value);
                     this.renderTree();
+                    this.eventManager.publish(constants.events.FilterChanged);
                 });
                 wrapperDiv.appendChild(this.searchTextInput);
                 this.element.appendChild(wrapperDiv);
@@ -787,7 +789,6 @@
         overlay.style.top = `${rect.top}px`;
         overlay.style.left = `${rect.left}px`;
         overlay.style.width = `${rect.width}px`;
-        overlay.style.height = `${rect.height}px`;
     }
 
     class CommonDropdownTreeLogic extends CommonTreeLogic {
@@ -817,6 +818,7 @@
             }
             this.tree.renderContent();
             this.tree.activateKeyListener();
+            this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () => calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement));
             this.dropdownHolder.style.top = "-9999px";
             this.dropdownHolder.style.left = "-9999px";
             this.dropdownHolder.style.display = "inherit";
@@ -829,6 +831,10 @@
         closeDropdown() {
             if (!this.dropdownOpen) {
                 return;
+            }
+            if (this.filterChangedSubscription) {
+                this.filterChangedSubscription.dispose();
+                this.filterChangedSubscription = null;
             }
             this.dropdownHolder.style.display = "none";
             this.dropdownHolder.style.top = ``;

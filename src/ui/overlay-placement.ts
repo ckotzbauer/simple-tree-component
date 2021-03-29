@@ -52,5 +52,4 @@ export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLEle
     overlay.style.top = `${rect.top}px`;
     overlay.style.left = `${rect.left}px`;
     overlay.style.width = `${rect.width}px`;
-    overlay.style.height = `${rect.height}px`;
 }
