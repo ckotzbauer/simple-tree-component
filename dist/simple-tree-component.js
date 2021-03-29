@@ -154,6 +154,7 @@
         renderContent() {
             this.element.innerHTML = "";
             this.createBasicHtml();
+            this.dataService.filter("");
             this.renderTree();
         }
         createBasicHtml() {

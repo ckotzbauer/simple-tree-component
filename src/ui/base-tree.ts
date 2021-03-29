@@ -63,6 +63,7 @@ export class BaseTree {
     public renderContent(): void {
         this.element.innerHTML = "";
         this.createBasicHtml();
+        this.dataService.filter(""); // reset potential filter
         this.renderTree();
     }
 
