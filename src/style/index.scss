@@ -98,8 +98,10 @@
             padding: 0;
             margin: 0;
             min-height: $base-size * 3;
+            max-width: calc(100% - #{$base-size * 2});
 
             li {
+                @include text-overflow();
                 display: inline-block;
                 border: $base-border;
                 padding: $base-size / 4;
@@ -108,10 +110,15 @@
                 cursor: default;
                 border-radius: $base-border-radius;
                 background-color: $light-grey;
+                max-width: calc(100% - #{$base-size * 3});
+                position: relative;
+                padding-right: $base-size * 3;
 
                 .simple-tree-pillbox-cross {
                     @include generate-cross($base-size * 1.5, $control-color);
-                    margin-left: $base-size * 0.5;
+                    right: $base-size * 0.5;
+                    margin-top: $base-size * 0.5;
+                    position: absolute;
                     display: inline-block;
                     cursor: pointer;
                 }

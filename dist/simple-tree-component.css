@@ -71,8 +71,12 @@
   padding: 0;
   margin: 0;
   min-height: 1.5rem;
+  max-width: calc(100% - 1rem);
 }
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   display: inline-block;
   border: 1px solid #808080;
   padding: 0.125rem;
@@ -81,6 +85,9 @@
   cursor: default;
   border-radius: 0.25rem;
   background-color: #d6d6d6;
+  max-width: calc(100% - 1.5rem);
+  position: relative;
+  padding-right: 1.5rem;
 }
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder li .simple-tree-pillbox-cross {
   width: 0.75rem;
@@ -89,7 +96,9 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   /* Safari and Chrome */
-  margin-left: 0.25rem;
+  right: 0.25rem;
+  margin-top: 0.25rem;
+  position: absolute;
   display: inline-block;
   cursor: pointer;
 }
