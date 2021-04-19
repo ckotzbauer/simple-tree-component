@@ -35,10 +35,15 @@
   height: 1rem;
 }
 .simple-tree .simple-tree-single-selectbox .simple-tree-selected-label {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  max-width: 100%;
+  display: inline-block;
 }
 .simple-tree .simple-tree-single-selectbox .simple-tree-selected-label-watermark {
   color: #808080;

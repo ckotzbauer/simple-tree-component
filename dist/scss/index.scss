@@ -61,7 +61,10 @@
         height: $base-size * 2;
 
         .simple-tree-selected-label {
+            @include text-overflow();
             user-select: none;
+            max-width: 100%;
+            display: inline-block;
         }
 
         .simple-tree-selected-label-watermark {
