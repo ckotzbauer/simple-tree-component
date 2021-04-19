@@ -88,9 +88,8 @@
 
     .simple-tree-multi-selectbox {
         @include base-select-container();
-        padding-bottom: $base-size * 0.5;
         padding-right: $base-size * 3;
-        min-height: $base-size * 3.5;
+        min-height: $base-size * 4;
 
         .simple-tree-pillbox-holder {
             list-style: none;

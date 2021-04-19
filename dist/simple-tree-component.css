@@ -61,9 +61,8 @@
 }
 .simple-tree .simple-tree-multi-selectbox {
   cursor: pointer;
-  padding-bottom: 0.25rem;
   padding-right: 1.5rem;
-  min-height: 1.75rem;
+  min-height: 2rem;
 }
 .simple-tree .simple-tree-multi-selectbox .simple-tree-pillbox-holder {
   list-style: none;
