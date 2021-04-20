@@ -317,11 +317,11 @@
     function createListItem(element, ...cssClasses) {
         return createInternalContainer(element, "li", ...cssClasses);
     }
-    function createDropdownContainer(customCssClass) {
+    function createDropdownContainer() {
         const className = constants.classNames.SimpleTreeDropdownHolder;
         let container = document.body.querySelector(`.${className}`);
         if (!container) {
-            container = createContainer(document.body, className, customCssClass);
+            container = createContainer(document.body, className);
             container.style.display = "none";
         }
         return container;
@@ -826,6 +826,9 @@
             this.tree.renderContent();
             this.tree.activateKeyListener();
             this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () => calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement));
+            if (this.options.css.dropdownHolder) {
+                this.dropdownHolder.classList.add(this.options.css.dropdownHolder);
+            }
             this.dropdownHolder.style.top = "-9999px";
             this.dropdownHolder.style.left = "-9999px";
             this.dropdownHolder.style.display = "inherit";
@@ -842,6 +845,9 @@
             if (this.filterChangedSubscription) {
                 this.filterChangedSubscription.dispose();
                 this.filterChangedSubscription = null;
+            }
+            if (this.options.css.dropdownHolder) {
+                this.dropdownHolder.classList.remove(this.options.css.dropdownHolder);
             }
             this.dropdownHolder.style.display = "none";
             this.dropdownHolder.style.top = ``;
@@ -861,7 +867,7 @@
             super(element, options);
             this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
             this.selected = this.dataService.getSelected()[0] || null;
-            this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
+            this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
             this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
             this.renderSelectField(this.rootContainer);
@@ -955,7 +961,7 @@
             super(element, options);
             this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
             this.selected = this.dataService.getSelected();
-            this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
+            this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
             this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
             this.renderSelectField(this.rootContainer);

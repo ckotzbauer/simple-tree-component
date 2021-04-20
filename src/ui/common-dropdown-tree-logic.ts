@@ -50,6 +50,10 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
             calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement)
         );
 
+        if (this.options.css.dropdownHolder) {
+            this.dropdownHolder.classList.add(this.options.css.dropdownHolder);
+        }
+
         // Avoid interference of main page
         this.dropdownHolder.style.top = "-9999px";
         this.dropdownHolder.style.left = "-9999px";
@@ -70,6 +74,10 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         if (this.filterChangedSubscription) {
             this.filterChangedSubscription.dispose();
             this.filterChangedSubscription = null;
+        }
+
+        if (this.options.css.dropdownHolder) {
+            this.dropdownHolder.classList.remove(this.options.css.dropdownHolder);
         }
 
         this.dropdownHolder.style.display = "none";

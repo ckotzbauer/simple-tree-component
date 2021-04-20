@@ -19,12 +19,12 @@ export function createListItem(element: HTMLElement, ...cssClasses: string[]): H
     return createInternalContainer(element, "li", ...cssClasses);
 }
 
-export function createDropdownContainer(customCssClass: string): HTMLElement {
+export function createDropdownContainer(): HTMLElement {
     const className = constants.classNames.SimpleTreeDropdownHolder;
     let container = document.body.querySelector(`.${className}`) as HTMLElement;
 
     if (!container) {
-        container = createContainer(document.body, className, customCssClass);
+        container = createContainer(document.body, className);
         container.style.display = "none";
     }
 

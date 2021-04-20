@@ -13,7 +13,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
         this.rootContainer = createContainer(element, constants.classNames.SimpleTree);
         this.selected = this.dataService.getSelected();
 
-        this.dropdownHolder = createDropdownContainer(options.css.dropdownHolder);
+        this.dropdownHolder = createDropdownContainer();
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
         this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
         this.renderSelectField(this.rootContainer);
