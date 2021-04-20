@@ -31,7 +31,7 @@ export function calculate(
     };
 }
 
-export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight = 300): void {
+export function calculateOverlay(overlay: HTMLElement, element: HTMLElement, overlayHeight: number, maxHeight = 300): void {
     const { top, left } = element.getBoundingClientRect();
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
@@ -44,7 +44,7 @@ export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLEle
             width: element.offsetWidth,
         },
         window.innerHeight,
-        overlay.clientHeight,
+        overlayHeight,
         parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10),
         maxHeight
     );
@@ -52,4 +52,9 @@ export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLEle
     overlay.style.top = `${rect.top}px`;
     overlay.style.left = `${rect.left}px`;
     overlay.style.width = `${rect.width}px`;
+    overlay.style.height = `${rect.height}px`;
+}
+
+export function calculateOverlayPlacement(overlay: HTMLElement, element: HTMLElement, maxHeight = 300): void {
+    return calculateOverlay(overlay, element, overlay.clientHeight, maxHeight);
 }

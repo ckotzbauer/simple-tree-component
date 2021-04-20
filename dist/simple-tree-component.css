@@ -208,7 +208,6 @@
   border-radius: 0.25rem;
   max-height: 18.75rem;
   background-color: #fff;
-  overflow-y: auto;
 }
 .simple-tree-dropdown-holder .simple-tree-input-container {
   padding: 0.25rem;
@@ -223,9 +222,7 @@
 
 .simple-tree-node-container {
   overflow-y: overlay;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  max-height: calc(100% - 2.5rem);
 }
 .simple-tree-node-container .simple-tree-node-wrapper {
   display: flex;

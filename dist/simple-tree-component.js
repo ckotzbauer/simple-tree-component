@@ -783,7 +783,7 @@
             height,
         };
     }
-    function calculateOverlayPlacement(overlay, element, maxHeight = 300) {
+    function calculateOverlay(overlay, element, overlayHeight, maxHeight = 300) {
         const { top, left } = element.getBoundingClientRect();
         const scrollX = window.scrollX;
         const scrollY = window.scrollY;
@@ -792,10 +792,11 @@
             height: element.offsetHeight,
             left: left + scrollX,
             width: element.offsetWidth,
-        }, window.innerHeight, overlay.clientHeight, parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10), maxHeight);
+        }, window.innerHeight, overlayHeight, parseInt(getComputedStyle(overlay).borderLeftWidth.replace("px", ""), 10), maxHeight);
         overlay.style.top = `${rect.top}px`;
         overlay.style.left = `${rect.left}px`;
         overlay.style.width = `${rect.width}px`;
+        overlay.style.height = `${rect.height}px`;
     }
 
     class CommonDropdownTreeLogic extends CommonTreeLogic {
@@ -825,14 +826,14 @@
             }
             this.tree.renderContent();
             this.tree.activateKeyListener();
-            this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () => calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement));
+            this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () => this.calculateDropdownPosition());
             if (this.options.css.dropdownHolder) {
                 this.dropdownHolder.classList.add(this.options.css.dropdownHolder);
             }
             this.dropdownHolder.style.top = "-9999px";
             this.dropdownHolder.style.left = "-9999px";
             this.dropdownHolder.style.display = "inherit";
-            calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement);
+            this.calculateDropdownPosition();
             this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
             this.dropdownOpen = true;
@@ -859,6 +860,17 @@
             this.dropdownOpen = false;
             window.removeEventListener("mouseup", this.boundClick);
             this.tree.deactivateKeyListener();
+        }
+        calculateDropdownPosition() {
+            let height = 0;
+            if (this.options.searchBar) {
+                height += this.dropdownHolder.children[0].clientHeight;
+                height += this.dropdownHolder.children[1].scrollHeight;
+            }
+            else {
+                height += this.dropdownHolder.children[0].scrollHeight;
+            }
+            calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement, height);
         }
     }
 

@@ -1,7 +1,7 @@
 import { CommonTreeLogic } from "./common-tree-logic";
 import { TreeModeNameMap } from "../types/instance";
 import { BaseOptions } from "../types/options";
-import { calculateOverlayPlacement } from "./overlay-placement";
+import { calculateOverlay } from "./overlay-placement";
 import constants from "./ui-constants";
 import { Subscription } from "types/subscription";
 
@@ -47,7 +47,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.tree.renderContent();
         this.tree.activateKeyListener();
         this.filterChangedSubscription = this.eventManager.subscribe(constants.events.FilterChanged, () =>
-            calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement)
+            this.calculateDropdownPosition()
         );
 
         if (this.options.css.dropdownHolder) {
@@ -59,7 +59,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.dropdownHolder.style.left = "-9999px";
         this.dropdownHolder.style.display = "inherit";
 
-        calculateOverlayPlacement(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement);
+        this.calculateDropdownPosition();
         this.arrowElement.classList.remove(constants.classNames.SimpleTreeChevronDown);
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
         this.dropdownOpen = true;
@@ -90,5 +90,18 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.dropdownOpen = false;
         window.removeEventListener("mouseup", this.boundClick);
         this.tree.deactivateKeyListener();
+    }
+
+    private calculateDropdownPosition(): void {
+        let height = 0;
+
+        if (this.options.searchBar) {
+            height += this.dropdownHolder.children[0].clientHeight;
+            height += this.dropdownHolder.children[1].scrollHeight;
+        } else {
+            height += this.dropdownHolder.children[0].scrollHeight;
+        }
+
+        calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement, height);
     }
 }
