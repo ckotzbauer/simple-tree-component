@@ -12,6 +12,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
     protected dropdownHolder!: HTMLElement;
     protected selectContainer!: HTMLElement;
     protected arrowElement!: HTMLElement;
+    protected clearElement!: HTMLElement | null;
 
     private boundClick: (e: MouseEvent) => void;
 

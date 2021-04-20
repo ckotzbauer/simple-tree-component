@@ -19,6 +19,7 @@
             active: false,
             recursive: false,
         },
+        clearButton: false,
     };
 
     var constants = {
@@ -32,6 +33,8 @@
             SimpleTreeInputContainer: "simple-tree-input-container",
             SimpleTreePillboxHolder: "simple-tree-pillbox-holder",
             SimpleTreePillboxCross: "simple-tree-pillbox-cross",
+            SimpleTreeCross: "simple-tree-cross",
+            SimpleTreeClearable: "simple-tree-clearable",
             SimpleTreeSelectedLabel: "simple-tree-selected-label",
             SimpleTreeSelectedLabelWatermark: "simple-tree-selected-label-watermark",
             SimpleTreeChevronUp: "simple-tree-chevron-up",
@@ -104,7 +107,7 @@
                     targetIndex = 0;
                 }
             }
-            else if (e.code === "Enter" && flattedValues[targetIndex]) {
+            else if ((e.code === "Enter" || e.code === "NumpadEnter") && flattedValues[targetIndex]) {
                 const mutatedNode = this.dataService.toggleNodeSelected(flattedValues[targetIndex]);
                 this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
             }
@@ -864,7 +867,12 @@
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
-            this.dataService.setSelected(value || []);
+            if (value) {
+                this.dataService.setSelected(value);
+            }
+            else {
+                this.dataService.setSelected();
+            }
             super.setSelected(this.dataService.getSelected()[0] || null);
             this.updateUiOnSelection();
             this.tree.highlightNode(value);
@@ -877,7 +885,7 @@
         }
         showEmphasizeIcon(cssClass) {
             this.emphasisCssClass = cssClass;
-            if (this.selected && this.emphasisCssClass) {
+            if (this.selected && this.emphasisCssClass && !this.emphasizeElement) {
                 this.selectContainer.classList.add(constants.classNames.SimpleTreeEmphasized);
                 this.emphasizeElement = document.createElement("i");
                 this.emphasizeElement.classList.add(constants.classNames.SimpleTreeEmphasize, cssClass);
@@ -921,6 +929,23 @@
                 const css = this.emphasisCssClass;
                 this.hideEmphasizeIcon();
                 this.emphasisCssClass = css;
+            }
+            if (this.options.clearButton && this.selected && !this.clearElement) {
+                this.clearElement = document.createElement("i");
+                this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+                this.clearElement.onclick = (e) => {
+                    if (!this.readOnly) {
+                        this.setSelected(null);
+                        this.eventManager.publish(constants.events.SelectionChanged, []);
+                    }
+                    e.stopPropagation();
+                };
+                this.selectContainer.appendChild(this.clearElement);
+                this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+            }
+            else if (!this.selected && this.clearElement) {
+                this.clearElement.remove();
+                this.clearElement = null;
             }
         }
     }
@@ -976,14 +1001,31 @@
             this.selected.forEach((item) => {
                 const listItem = createListItem(this.pillboxContainer, "");
                 listItem.innerText = this.options.templateSelectedText(item);
-                const arrow = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
-                arrow.addEventListener("click", (e) => {
+                const cross = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
+                cross.addEventListener("click", (e) => {
                     if (!this.readOnly) {
                         this.nodeSelected(item);
                     }
                     e.stopPropagation();
                 });
             });
+            if (this.options.clearButton && this.selected.length > 0 && !this.clearElement) {
+                this.clearElement = document.createElement("i");
+                this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+                this.clearElement.onclick = (e) => {
+                    if (!this.readOnly) {
+                        this.setSelected([]);
+                        this.eventManager.publish(constants.events.SelectionChanged, []);
+                    }
+                    e.stopPropagation();
+                };
+                this.selectContainer.appendChild(this.clearElement);
+                this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+            }
+            else if (this.selected.length === 0 && this.clearElement) {
+                this.clearElement.remove();
+                this.clearElement = null;
+            }
         }
     }
 

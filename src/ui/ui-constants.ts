@@ -9,6 +9,8 @@ export default {
         SimpleTreeInputContainer: "simple-tree-input-container",
         SimpleTreePillboxHolder: "simple-tree-pillbox-holder",
         SimpleTreePillboxCross: "simple-tree-pillbox-cross",
+        SimpleTreeCross: "simple-tree-cross",
+        SimpleTreeClearable: "simple-tree-clearable",
         SimpleTreeSelectedLabel: "simple-tree-selected-label",
         SimpleTreeSelectedLabelWatermark: "simple-tree-selected-label-watermark",
         SimpleTreeChevronUp: "simple-tree-chevron-up",

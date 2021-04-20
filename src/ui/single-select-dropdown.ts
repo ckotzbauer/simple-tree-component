@@ -24,8 +24,13 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
 
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
-    public setSelected(value: TreeNode): void {
-        this.dataService.setSelected(value || []);
+    public setSelected(value: TreeNode | null): void {
+        if (value) {
+            this.dataService.setSelected(value);
+        } else {
+            this.dataService.setSelected();
+        }
+
         super.setSelected(this.dataService.getSelected()[0] || null);
         this.updateUiOnSelection();
         this.tree.highlightNode(value);
@@ -42,7 +47,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     public showEmphasizeIcon(cssClass: string): void {
         this.emphasisCssClass = cssClass;
 
-        if (this.selected && this.emphasisCssClass) {
+        if (this.selected && this.emphasisCssClass && !this.emphasizeElement) {
             this.selectContainer.classList.add(constants.classNames.SimpleTreeEmphasized);
             this.emphasizeElement = document.createElement("i");
             this.emphasizeElement.classList.add(constants.classNames.SimpleTreeEmphasize, cssClass);
@@ -95,6 +100,25 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
             const css = this.emphasisCssClass;
             this.hideEmphasizeIcon();
             this.emphasisCssClass = css; // restore the class here
+        }
+
+        if (this.options.clearButton && this.selected && !this.clearElement) {
+            this.clearElement = document.createElement("i");
+            this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+            this.clearElement.onclick = (e: MouseEvent) => {
+                if (!this.readOnly) {
+                    this.setSelected(null);
+                    this.eventManager.publish(constants.events.SelectionChanged, []);
+                }
+
+                e.stopPropagation();
+            };
+
+            this.selectContainer.appendChild(this.clearElement);
+            this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+        } else if (!this.selected && this.clearElement) {
+            this.clearElement.remove();
+            this.clearElement = null;
         }
     }
 }

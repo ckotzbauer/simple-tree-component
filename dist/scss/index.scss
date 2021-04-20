@@ -84,6 +84,37 @@
                 margin-right: $base-size * -5;
             }
         }
+
+        &.simple-tree-clearable {
+            padding-right: $base-size * 6;
+
+            .simple-tree-chevron-up,
+            .simple-tree-chevron-down {
+                margin-right: $base-size * -5;
+            }
+
+            .simple-tree-cross {
+                margin-top: 0;
+            }
+        }
+
+        &.simple-tree-clearable.simple-tree-emphasized {
+            padding-right: $base-size * 9;
+
+            .simple-tree-chevron-up,
+            .simple-tree-chevron-down {
+                margin-right: $base-size * -8;
+            }
+
+            .simple-tree-cross {
+                margin-right: $base-size * -5;
+            }
+
+            .simple-tree-emphasize-icon {
+                float: right;
+                margin-right: $base-size * -2;
+            }
+        }
     }
 
     .simple-tree-multi-selectbox {
@@ -128,6 +159,15 @@
         .simple-tree-chevron-down {
             margin-top: $base-size;
         }
+
+        &.simple-tree-clearable {
+            padding-right: $base-size * 6;
+
+            .simple-tree-chevron-up,
+            .simple-tree-chevron-down {
+                margin-right: $base-size * -5;
+            }
+        }
     }
 
     .simple-tree-chevron-up {
@@ -139,6 +179,13 @@
     .simple-tree-chevron-down {
         @include generate-chevron-down($base-size * 1.5, $control-color);
         margin-right: $base-size * -2;
+        float: right;
+    }
+
+    .simple-tree-cross {
+        @include generate-cross($base-size * 1.5, $control-color);
+        margin-right: $base-size * -2;
+        margin-top: $base-size;
         float: right;
     }
 }

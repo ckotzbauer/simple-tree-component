@@ -69,6 +69,11 @@ export interface TreeConfiguration {
          */
         recursive?: boolean;
     };
+
+    /**
+     * Add a cross-button to clear the current value(s). (Default: `false`)
+     */
+    clearButton: boolean;
 }
 
 /**
@@ -99,6 +104,7 @@ export const defaults: BaseOptions = {
         active: false,
         recursive: false,
     },
+    clearButton: false,
 };
 
 /**

@@ -13,6 +13,7 @@ export interface TreeConfiguration {
         active: boolean;
         recursive?: boolean;
     };
+    clearButton: boolean;
 }
 export interface BaseOptions extends TreeConfiguration {
     nodes: TreeNode[];

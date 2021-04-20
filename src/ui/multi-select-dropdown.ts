@@ -72,8 +72,8 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
             const listItem = createListItem(this.pillboxContainer, "");
             listItem.innerText = this.options.templateSelectedText(item);
 
-            const arrow: HTMLElement = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
-            arrow.addEventListener("click", (e: MouseEvent) => {
+            const cross: HTMLElement = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
+            cross.addEventListener("click", (e: MouseEvent) => {
                 if (!this.readOnly) {
                     this.nodeSelected(item);
                 }
@@ -81,5 +81,24 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
                 e.stopPropagation();
             });
         });
+
+        if (this.options.clearButton && this.selected.length > 0 && !this.clearElement) {
+            this.clearElement = document.createElement("i");
+            this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+            this.clearElement.onclick = (e: MouseEvent) => {
+                if (!this.readOnly) {
+                    this.setSelected([]);
+                    this.eventManager.publish(constants.events.SelectionChanged, []);
+                }
+
+                e.stopPropagation();
+            };
+
+            this.selectContainer.appendChild(this.clearElement);
+            this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+        } else if (this.selected.length === 0 && this.clearElement) {
+            this.clearElement.remove();
+            this.clearElement = null;
+        }
     }
 }
