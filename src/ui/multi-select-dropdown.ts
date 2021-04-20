@@ -73,7 +73,13 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
             listItem.innerText = this.options.templateSelectedText(item);
 
             const arrow: HTMLElement = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
-            arrow.addEventListener("click", () => !this.readOnly && this.nodeSelected(item));
+            arrow.addEventListener("click", (e: MouseEvent) => {
+                if (!this.readOnly) {
+                    this.nodeSelected(item);
+                }
+
+                e.stopPropagation();
+            });
         });
     }
 }

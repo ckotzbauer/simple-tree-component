@@ -973,7 +973,12 @@
                 const listItem = createListItem(this.pillboxContainer, "");
                 listItem.innerText = this.options.templateSelectedText(item);
                 const arrow = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
-                arrow.addEventListener("click", () => !this.readOnly && this.nodeSelected(item));
+                arrow.addEventListener("click", (e) => {
+                    if (!this.readOnly) {
+                        this.nodeSelected(item);
+                    }
+                    e.stopPropagation();
+                });
             });
         }
     }
