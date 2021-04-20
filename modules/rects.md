@@ -27,19 +27,19 @@ It is assumed, that the width of the overlay is the same as of the `elementRect`
 
 #### Parameters:
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`elementRect` | [*Rect*](../interfaces/rects.rect.md) | The rectangle of the element this calculation belongs to. (e.g. rectangle of the selectbox for which the position of the flyout should be calculated.)   |
-`availableHeight` | *number* | Full height of the surrounding container (e.g. window height)   |
-`overlayHeight` | *number* | The height of the overlay which should be positioned.   |
-`borderWith?` | *number* | The border-width used. It is assumed, that all borders have the same width. Defaults to `0`   |
-`maxOverlayHeight?` | *number* | The maximum height of the overlay. Defaults to `300`.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `elementRect` | [*Rect*](../interfaces/rects.rect.md) | The rectangle of the element this calculation belongs to. (e.g. rectangle of the selectbox for which the position of the flyout should be calculated.) |
+| `availableHeight` | *number* | Full height of the surrounding container (e.g. window height) |
+| `overlayHeight` | *number* | The height of the overlay which should be positioned. |
+| `borderWith?` | *number* | The border-width used. It is assumed, that all borders have the same width. Defaults to `0` |
+| `maxOverlayHeight?` | *number* | The maximum height of the overlay. Defaults to `300`. |
 
 **Returns:** [*Rect*](../interfaces/rects.rect.md)
 
 The calculated rectangle of the overlay position.
 
-Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/rects.ts#L40)
+Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/9db61d8/src/types/rects.ts#L40)
 
 ___
 
@@ -52,12 +52,12 @@ See the docs of the `calculate` function for more details.
 
 #### Parameters:
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`overlay` | HTMLElement | The HTML element of the overlay, which should be placed correctly.   |
-`element` | HTMLElement | The HTML element to which the `overlay` belongs.   |
-`maxHeight?` | *number* | The maximum height of the overlay. Defaults to `300`.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `overlay` | HTMLElement | The HTML element of the overlay, which should be placed correctly. |
+| `element` | HTMLElement | The HTML element to which the `overlay` belongs. |
+| `maxHeight?` | *number* | The maximum height of the overlay. Defaults to `300`. |
 
 **Returns:** *void*
 
-Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/8798469/src/types/rects.ts#L56)
+Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/9db61d8/src/types/rects.ts#L56)
