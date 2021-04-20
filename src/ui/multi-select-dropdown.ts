@@ -22,7 +22,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public setSelected(value: TreeNode[]): void {
-        this.dataService.setSelected(...value);
+        this.dataService.setSelected(...(value || []));
         super.setSelected(this.dataService.getSelected());
         this.renderPillboxes();
     }

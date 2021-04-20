@@ -932,7 +932,7 @@
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
-            this.dataService.setSelected(...value);
+            this.dataService.setSelected(...(value || []));
             super.setSelected(this.dataService.getSelected());
             this.renderPillboxes();
         }
@@ -995,11 +995,11 @@
         }
         setSelected(value) {
             if (this.options.checkboxes.active) {
-                this.dataService.setSelected(...value);
+                this.dataService.setSelected(...(value || []));
                 super.setSelected(this.dataService.getSelected());
             }
             else {
-                this.dataService.setSelected(value);
+                this.dataService.setSelected(value || []);
                 super.setSelected(this.dataService.getSelected()[0] || []);
             }
         }
