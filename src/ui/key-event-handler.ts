@@ -28,8 +28,6 @@ export class KeyEventHandler {
             return;
         }
 
-        console.log(`Active: ${document.activeElement}`);
-
         const flattedValues: string[] = this.dataService.getFlattedClickableNodeValues();
         const hoveredIndex = this.hoveredNodeValue === null ? -1 : flattedValues.indexOf(this.hoveredNodeValue);
         let targetIndex: number = hoveredIndex;
@@ -46,6 +44,9 @@ export class KeyEventHandler {
             } else {
                 targetIndex = 0;
             }
+        } else if (e.code === "Enter" && flattedValues[targetIndex]) {
+            const mutatedNode = this.dataService.toggleNodeSelected(flattedValues[targetIndex]);
+            this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
         }
 
         if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
@@ -54,5 +55,6 @@ export class KeyEventHandler {
         }
 
         e.preventDefault();
+        e.stopPropagation();
     }
 }

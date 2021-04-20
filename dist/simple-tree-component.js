@@ -85,7 +85,6 @@
                 this.eventManager.publish(constants.events.EscapePressed);
                 return;
             }
-            console.log(`Active: ${document.activeElement}`);
             const flattedValues = this.dataService.getFlattedClickableNodeValues();
             const hoveredIndex = this.hoveredNodeValue === null ? -1 : flattedValues.indexOf(this.hoveredNodeValue);
             let targetIndex = hoveredIndex;
@@ -105,11 +104,16 @@
                     targetIndex = 0;
                 }
             }
+            else if (e.code === "Enter" && flattedValues[targetIndex]) {
+                const mutatedNode = this.dataService.toggleNodeSelected(flattedValues[targetIndex]);
+                this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+            }
             if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
                 this.hoveredNodeValue = flattedValues[targetIndex];
                 this.eventManager.publish(constants.events.HoverChanged, this.dataService.getNode(this.hoveredNodeValue));
             }
             e.preventDefault();
+            e.stopPropagation();
         }
     }
 
