@@ -26,10 +26,10 @@ export class TreeView extends CommonTreeLogic<"tree"> {
 
     public setSelected(value: TreeNode | TreeNode[]): void {
         if (this.options.checkboxes.active) {
-            this.dataService.setSelected(...(value as TreeNode[] || []));
+            this.dataService.setSelected(...((value as TreeNode[]) || []));
             super.setSelected(this.dataService.getSelected());
         } else {
-            this.dataService.setSelected(value as TreeNode || []);
+            this.dataService.setSelected((value as TreeNode) || []);
             super.setSelected(this.dataService.getSelected()[0] || []);
         }
     }
