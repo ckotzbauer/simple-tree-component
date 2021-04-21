@@ -113,7 +113,13 @@
             }
             if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
                 this.hoveredNodeValue = flattedValues[targetIndex];
-                this.eventManager.publish(constants.events.HoverChanged, this.dataService.getNode(this.hoveredNodeValue));
+                const node = this.dataService.getNode(this.hoveredNodeValue);
+                this.eventManager.publish(constants.events.HoverChanged, node);
+                const nodeElement = document.getElementById(node.uid);
+                const container = document.getElementsByClassName(constants.classNames.SimpleTreeNodeContainer)[0];
+                if (container.scrollHeight > container.clientHeight) {
+                    container.scrollTo({ top: nodeElement.offsetTop - container.offsetHeight });
+                }
             }
             e.preventDefault();
             e.stopPropagation();

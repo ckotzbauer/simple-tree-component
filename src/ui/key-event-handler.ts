@@ -1,3 +1,4 @@
+import { TreeNode } from "../types/tree-node";
 import { DataService } from "../data/data-service";
 import { EventManager } from "../event/event-manager";
 import constants from "./ui-constants";
@@ -51,7 +52,16 @@ export class KeyEventHandler {
 
         if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
             this.hoveredNodeValue = flattedValues[targetIndex];
-            this.eventManager.publish(constants.events.HoverChanged, this.dataService.getNode(this.hoveredNodeValue));
+
+            const node = this.dataService.getNode(this.hoveredNodeValue) as TreeNode;
+            this.eventManager.publish(constants.events.HoverChanged, node);
+
+            const nodeElement = document.getElementById(node.uid) as HTMLElement;
+            const container = document.getElementsByClassName(constants.classNames.SimpleTreeNodeContainer)[0] as HTMLElement;
+
+            if (container.scrollHeight > container.clientHeight)  {
+                container.scrollTo({ top: nodeElement.offsetTop - container.offsetHeight });
+            }
         }
 
         e.preventDefault();
