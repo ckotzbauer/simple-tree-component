@@ -59,7 +59,7 @@ export class KeyEventHandler {
             const nodeElement = document.getElementById(node.uid) as HTMLElement;
             const container = document.getElementsByClassName(constants.classNames.SimpleTreeNodeContainer)[0] as HTMLElement;
 
-            if (container.scrollHeight > container.clientHeight)  {
+            if (container.scrollHeight > container.clientHeight) {
                 container.scrollTo({ top: nodeElement.offsetTop - container.offsetHeight });
             }
         }
