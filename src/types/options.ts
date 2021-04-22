@@ -74,6 +74,11 @@ export interface TreeConfiguration {
      * Add a cross-button to clear the current value(s). (Default: `false`)
      */
     clearButton: boolean;
+
+    /**
+     * Element to prevent scrolling for when the dropdown is openend. (Default `null`)
+     */
+    scrollContainer: HTMLElement | null;
 }
 
 /**
@@ -105,6 +110,7 @@ export const defaults: BaseOptions = {
         recursive: false,
     },
     clearButton: false,
+    scrollContainer: null,
 };
 
 /**

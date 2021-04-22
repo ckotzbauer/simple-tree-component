@@ -20,6 +20,7 @@
             recursive: false,
         },
         clearButton: false,
+        scrollContainer: null,
     };
 
     var constants = {
@@ -844,6 +845,10 @@
             this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
             this.dropdownOpen = true;
             window.addEventListener("mouseup", this.boundClick);
+            if (this.options.scrollContainer) {
+                this.preventScrollListener = e => e.preventDefault();
+                this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener);
+            }
         }
         closeDropdown() {
             if (!this.dropdownOpen) {
@@ -866,6 +871,10 @@
             this.dropdownOpen = false;
             window.removeEventListener("mouseup", this.boundClick);
             this.tree.deactivateKeyListener();
+            if (this.options.scrollContainer && this.preventScrollListener) {
+                this.options.scrollContainer.removeEventListener("wheel", this.preventScrollListener);
+                this.preventScrollListener = null;
+            }
         }
         calculateDropdownPosition() {
             let height = 0;

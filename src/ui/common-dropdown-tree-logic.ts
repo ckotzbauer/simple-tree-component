@@ -14,6 +14,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
     protected arrowElement!: HTMLElement;
     protected clearElement!: HTMLElement | null;
 
+    private preventScrollListener!: null | ((e: WheelEvent) => void);
     private boundClick: (e: MouseEvent) => void;
 
     constructor(element: Element, options: BaseOptions) {
@@ -64,6 +65,11 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.arrowElement.classList.add(constants.classNames.SimpleTreeChevronUp);
         this.dropdownOpen = true;
         window.addEventListener("mouseup", this.boundClick);
+
+        if (this.options.scrollContainer) {
+            this.preventScrollListener = e => e.preventDefault();
+            this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener);
+        }
     }
 
     protected closeDropdown(): void {
@@ -90,6 +96,11 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         this.dropdownOpen = false;
         window.removeEventListener("mouseup", this.boundClick);
         this.tree.deactivateKeyListener();
+
+        if (this.options.scrollContainer && this.preventScrollListener) {
+            this.options.scrollContainer.removeEventListener("wheel", this.preventScrollListener);
+            this.preventScrollListener = null;
+        }
     }
 
     private calculateDropdownPosition(): void {
