@@ -1,3 +1,22 @@
+## Version 1.0.0-beta.7 (2021-04-22)
+
+### Features and improvements
+
+* [[`22774f5a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/22774f5a)] - **feat**: prevent scrolling of a custom element when the dropdown is open
+
+### Bug fixes
+
+* [[`ee003d3b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ee003d3b)] - **fix**: keyboard-navigation should scroll to element
+
+### Cleanup and refactoring
+
+* [[`aae9a47a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/aae9a47a)] - **cleanup**: codestyle
+
+### Documentation
+
+* [[`def2da62`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/def2da62)] - **doc**: preserve dts comments
+
+
 ## Version 1.0.0-beta.6 (2021-04-20)
 
 ### Features and improvements

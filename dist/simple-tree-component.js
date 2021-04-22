@@ -1,4 +1,4 @@
-/* simple-tree-component v1.0.0-beta.6, @license MIT */
+/* simple-tree-component v1.0.0-beta.7, @license MIT */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -846,7 +846,7 @@
             this.dropdownOpen = true;
             window.addEventListener("mouseup", this.boundClick);
             if (this.options.scrollContainer) {
-                this.preventScrollListener = e => e.preventDefault();
+                this.preventScrollListener = (e) => e.preventDefault();
                 this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener);
             }
         }
