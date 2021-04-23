@@ -1,3 +1,14 @@
+## Version 1.0.0-beta.8 (2021-04-23)
+
+### Features and improvements
+
+* [[`a3854856`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a3854856)] - **feat**: add search-result highlighting closes #598
+
+### Cleanup and refactoring
+
+* [[`97b74fe9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/97b74fe9)] - **cleanup**: format code
+
+
 ## Version 1.0.0-beta.7 (2021-04-22)
 
 ### Features and improvements

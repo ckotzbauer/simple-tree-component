@@ -1,4 +1,4 @@
-/* simple-tree-component v1.0.0-beta.7, @license MIT */
+/* simple-tree-component v1.0.0-beta.8, @license MIT */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -153,12 +153,7 @@
         return container;
     }
     function escape(s) {
-        return s
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
 
     class BaseTree {
@@ -348,7 +343,7 @@
         }
         formatNodeLabel(text, highlightRegex) {
             if (highlightRegex) {
-                return escape(text).replace(highlightRegex, (match) => (`<em>${match}</em>`));
+                return escape(text).replace(highlightRegex, (match) => `<em>${match}</em>`);
             }
             return escape(text);
         }
