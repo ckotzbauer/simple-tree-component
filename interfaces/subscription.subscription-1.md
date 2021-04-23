@@ -20,4 +20,4 @@ Ends the subscription. No further events (this subscription was linked to) where
 
 **Returns:** *void*
 
-Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/a370806/src/types/subscription.ts#L8)
+Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/3b54036/src/types/subscription.ts#L8)
