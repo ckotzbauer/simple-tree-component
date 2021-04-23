@@ -20,6 +20,11 @@ export interface TreeConfiguration {
     searchBarFocus: boolean;
 
     /**
+     * Enables text-highlighting while searching. (Default: `false`)
+     */
+    highlightSearchResults: boolean;
+
+    /**
      * A watermark text which is displayed if no value is selected.
      * Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
      * (Default: `Please select a value...`)
@@ -99,6 +104,7 @@ export const defaults: BaseOptions = {
     nodes: [],
     searchBar: true,
     searchBarFocus: false,
+    highlightSearchResults: false,
     watermark: "Please select a value...",
     noNodesMessage: "No items found.",
     css: {

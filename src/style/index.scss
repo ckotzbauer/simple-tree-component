@@ -268,6 +268,11 @@
             @include text-overflow();
             display: inline-block;
             width: calc(100% - #{$base-size * 1.5});
+
+            em {
+                font-style: normal;
+                background-color: $light-grey;
+            }
         }
     }
 }

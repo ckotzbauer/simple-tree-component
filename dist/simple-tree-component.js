@@ -9,6 +9,7 @@
         nodes: [],
         searchBar: true,
         searchBarFocus: false,
+        highlightSearchResults: false,
         watermark: "Please select a value...",
         noNodesMessage: "No items found.",
         css: {
@@ -127,6 +128,39 @@
         }
     }
 
+    function createInternalContainer(element, type, ...cssClasses) {
+        const container = document.createElement(type);
+        container.classList.add(...cssClasses.filter((s) => s));
+        element.appendChild(container);
+        return container;
+    }
+    function createContainer(element, ...cssClasses) {
+        return createInternalContainer(element, "div", ...cssClasses);
+    }
+    function createUnorderedList(element, ...cssClasses) {
+        return createInternalContainer(element, "ul", ...cssClasses);
+    }
+    function createListItem(element, ...cssClasses) {
+        return createInternalContainer(element, "li", ...cssClasses);
+    }
+    function createDropdownContainer() {
+        const className = constants.classNames.SimpleTreeDropdownHolder;
+        let container = document.body.querySelector(`.${className}`);
+        if (!container) {
+            container = createContainer(document.body, className);
+            container.style.display = "none";
+        }
+        return container;
+    }
+    function escape(s) {
+        return s
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
     class BaseTree {
         constructor(element, config, dataService, eventManager, readOnly) {
             this.element = element;
@@ -208,8 +242,13 @@
             }
         }
         renderUnorderedList(nodes) {
+            var _a, _b;
             const ulElement = document.createElement("ul");
             ulElement.classList.add(constants.classNames.SimpleTreeNodeContainerRoot);
+            let highlightRegex = null;
+            if (((_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.value) && this.config.highlightSearchResults) {
+                highlightRegex = new RegExp(`(${(_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value})`, "ig");
+            }
             nodes.forEach((node) => {
                 var _a;
                 const hasChildren = ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) > 0;
@@ -239,7 +278,7 @@
                 else if (node.selected) {
                     lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelected);
                 }
-                textDivElement.textContent = node.label;
+                textDivElement.innerHTML = this.formatNodeLabel(node.label, highlightRegex);
                 if (!this.config.checkboxes.active && node.selectable && !this.readOnly) {
                     lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
                     lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelectable);
@@ -307,31 +346,12 @@
                 this.searchTextInput.disabled = readOnly;
             }
         }
-    }
-
-    function createInternalContainer(element, type, ...cssClasses) {
-        const container = document.createElement(type);
-        container.classList.add(...cssClasses.filter((s) => s));
-        element.appendChild(container);
-        return container;
-    }
-    function createContainer(element, ...cssClasses) {
-        return createInternalContainer(element, "div", ...cssClasses);
-    }
-    function createUnorderedList(element, ...cssClasses) {
-        return createInternalContainer(element, "ul", ...cssClasses);
-    }
-    function createListItem(element, ...cssClasses) {
-        return createInternalContainer(element, "li", ...cssClasses);
-    }
-    function createDropdownContainer() {
-        const className = constants.classNames.SimpleTreeDropdownHolder;
-        let container = document.body.querySelector(`.${className}`);
-        if (!container) {
-            container = createContainer(document.body, className);
-            container.style.display = "none";
+        formatNodeLabel(text, highlightRegex) {
+            if (highlightRegex) {
+                return escape(text).replace(highlightRegex, (match) => (`<em>${match}</em>`));
+            }
+            return escape(text);
         }
-        return container;
     }
 
     class EventManager {

@@ -4,6 +4,7 @@ import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { EventManager } from "../event/event-manager";
 import { KeyEventHandler } from "./key-event-handler";
+import { escape } from "./utils";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
@@ -117,6 +118,12 @@ export class BaseTree {
         const ulElement: HTMLUListElement = document.createElement("ul");
         ulElement.classList.add(constants.classNames.SimpleTreeNodeContainerRoot);
 
+        let highlightRegex: RegExp | null = null;
+
+        if (this.searchTextInput?.value && this.config.highlightSearchResults) {
+            highlightRegex = new RegExp(`(${this.searchTextInput?.value})`, "ig");
+        }
+
         nodes.forEach((node: TreeNode) => {
             const hasChildren = node.children?.length > 0;
             const liElement: HTMLLIElement = document.createElement("li");
@@ -151,7 +158,7 @@ export class BaseTree {
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeSelected);
             }
 
-            textDivElement.textContent = node.label;
+            textDivElement.innerHTML = this.formatNodeLabel(node.label, highlightRegex);
 
             if (!this.config.checkboxes.active && node.selectable && !this.readOnly) {
                 lineWrapperDiv.addEventListener("click", () => this.toggleNodeSelected(node));
@@ -236,5 +243,14 @@ export class BaseTree {
         if (this.searchTextInput) {
             this.searchTextInput.disabled = readOnly;
         }
+    }
+
+    private formatNodeLabel(text: string, highlightRegex: RegExp | null): string {
+
+        if (highlightRegex) {
+            return escape(text).replace(highlightRegex, (match: string): string => (`<em>${match}</em>`));
+        }
+
+        return escape(text);
     }
 }

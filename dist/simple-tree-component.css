@@ -292,6 +292,10 @@
   display: inline-block;
   width: calc(100% - 0.75rem);
 }
+.simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-text em {
+  font-style: normal;
+  background-color: #d6d6d6;
+}
 
 .simple-tree-node-container-root {
   list-style: none;

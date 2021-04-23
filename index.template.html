@@ -141,13 +141,14 @@
         const stc3 = simpleTree(".demo-root-3", "singleSelectDropdown", {
             searchBarFocus: true,
             clearButton: true,
+            highlightSearchResults: true,
             nodes: [
                 {
                     label: "Parent 7",
                     value: "p7",
                     children: [
                         {
-                            label: "Parent 7 - Child 1",
+                            label: "Parent 7 <strong>bin</strong> - Child 1",
                             value: "p7c1",
                         },
                         {
