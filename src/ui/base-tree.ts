@@ -246,9 +246,8 @@ export class BaseTree {
     }
 
     private formatNodeLabel(text: string, highlightRegex: RegExp | null): string {
-
         if (highlightRegex) {
-            return escape(text).replace(highlightRegex, (match: string): string => (`<em>${match}</em>`));
+            return escape(text).replace(highlightRegex, (match: string): string => `<em>${match}</em>`);
         }
 
         return escape(text);
