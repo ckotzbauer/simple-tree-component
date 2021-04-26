@@ -108,7 +108,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
             this.clearElement.onclick = (e: MouseEvent) => {
                 if (!this.readOnly) {
                     this.setSelected(null);
-                    this.eventManager.publish(constants.events.SelectionChanged, []);
+                    this.eventManager.publish(constants.events.SelectionChanged, null);
                 }
 
                 e.stopPropagation();
