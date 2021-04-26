@@ -1,3 +1,19 @@
+## Version 1.0.0-beta.9 (2021-04-26)
+
+### Bug fixes
+
+* [[`d4c8b9de`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d4c8b9de)] - **fix**: emit null instead of empty array
+
+### Dependency updates
+
+* [[`fcc34871`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fcc34871)] - **deps**: update dependency typedoc-plugin-markdown to v3.7.2 (#604)
+* [[`0aa0f9d7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0aa0f9d7)] - **deps**: update dependency eslint-config-prettier to v8.3.0 (#603)
+* [[`f3421a6b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f3421a6b)] - **deps**: update dependency eslint to v7.25.0 (#599)
+* [[`cafeffd1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cafeffd1)] - **deps**: update dependency postcss to v8.2.12 (#600)
+* [[`3ba59497`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3ba59497)] - **deps**: update dependency sass to v1.32.11 (#601)
+* [[`983df5be`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/983df5be)] - **deps**: update dependency typedoc to v0.20.36 (#602)
+
+
 ## Version 1.0.0-beta.8 (2021-04-23)
 
 ### Features and improvements
