@@ -862,7 +862,7 @@
             window.addEventListener("mouseup", this.boundClick);
             if (this.options.scrollContainer) {
                 this.preventScrollListener = (e) => e.preventDefault();
-                this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener);
+                this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener, { passive: false });
             }
         }
         closeDropdown() {
