@@ -67,7 +67,12 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
         window.addEventListener("mouseup", this.boundClick);
 
         if (this.options.scrollContainer) {
-            this.preventScrollListener = (e) => e.preventDefault();
+            this.preventScrollListener = (e) => {
+                const root = this.dropdownHolder.querySelector(".simple-tree-node-container-root");
+                if (!root?.contains(e.target as Element)) {
+                    e.preventDefault();
+                }
+            };
             this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener, { passive: false });
         }
     }

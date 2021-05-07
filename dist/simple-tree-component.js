@@ -865,7 +865,12 @@
             this.dropdownOpen = true;
             window.addEventListener("mouseup", this.boundClick);
             if (this.options.scrollContainer) {
-                this.preventScrollListener = (e) => e.preventDefault();
+                this.preventScrollListener = (e) => {
+                    const root = this.dropdownHolder.querySelector(".simple-tree-node-container-root");
+                    if (!(root === null || root === void 0 ? void 0 : root.contains(e.target))) {
+                        e.preventDefault();
+                    }
+                };
                 this.options.scrollContainer.addEventListener("wheel", this.preventScrollListener, { passive: false });
             }
         }
