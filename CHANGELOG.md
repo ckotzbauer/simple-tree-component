@@ -1,3 +1,24 @@
+## Version 1.0.0-beta.10 (2021-05-07)
+
+### Features and improvements
+
+* [[`17c3089b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/17c3089b)] - **feat**: parent-nodes have a bold font
+
+### Bug fixes
+
+* [[`0dbb0faa`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0dbb0faa)] - **fix**: only block scroll-event when it does not appear on a flyout child
+* [[`3d34a020`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3d34a020)] - **fix**: use passive mode for scroll-blocking
+
+### Dependency updates
+
+* [[`0e9a4523`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0e9a4523)] - **deps**: update dependency sass to v1.32.12 (#609)
+* [[`d6157a95`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d6157a95)] - **deps**: update dependency @types&#x2F;jest to v26.0.23 (#605)
+* [[`b6d20b36`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b6d20b36)] - **deps**: update dependency @types&#x2F;node to v13.13.51 (#606)
+* [[`bde26d73`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/bde26d73)] - **deps**: update dependency postcss to v8.2.13 (#607)
+* [[`84c3bf68`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/84c3bf68)] - **deps**: update dependency rollup to v2.46.0 (#608)
+* [[`b2d97eca`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b2d97eca)] - **deps**: update dependency terser to v5.7.0 (#610)
+
+
 ## Version 1.0.0-beta.9 (2021-04-26)
 
 ### Bug fixes
