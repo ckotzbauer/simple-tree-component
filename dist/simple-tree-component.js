@@ -51,6 +51,7 @@
             SimpleTreeNodeHovered: "simple-tree-node-hovered",
             SimpleTreeNodeArrow: "simple-tree-node-arrow",
             SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
+            SimpleTreeParentNode: "simple-tree-parent-node",
             SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
             SimpleTreeNodeChevronClickable: "simple-tree-node-chevron-clickable",
             SimpleTreeNodeChevronDown: "simple-tree-node-chevron-down",
@@ -253,6 +254,9 @@
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
                 lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
                 lineWrapperDiv.addEventListener("mouseout", () => this.hoverNode(null));
+                if (hasChildren) {
+                    lineWrapperDiv.classList.add(constants.classNames.SimpleTreeParentNode);
+                }
                 const textDivElement = document.createElement("div");
                 textDivElement.classList.add(constants.classNames.SimpleTreeNodeText);
                 this.addChevronDiv(lineWrapperDiv, node, hasChildren);

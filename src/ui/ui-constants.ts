@@ -26,6 +26,7 @@ export default {
         SimpleTreeNodeHovered: "simple-tree-node-hovered",
         SimpleTreeNodeArrow: "simple-tree-node-arrow",
         SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
+        SimpleTreeParentNode: "simple-tree-parent-node",
         SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
         SimpleTreeNodeChevronClickable: "simple-tree-node-chevron-clickable",
         SimpleTreeNodeChevronDown: "simple-tree-node-chevron-down",

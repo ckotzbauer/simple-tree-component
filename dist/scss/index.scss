@@ -222,6 +222,12 @@
             cursor: pointer;
         }
 
+        &.simple-tree-parent-node {
+            .simple-tree-node-text {
+                font-weight: bold;
+            }
+        }
+
         .simple-tree-node-chevron-container {
             display: inline-block;
             width: $base-size * 1;

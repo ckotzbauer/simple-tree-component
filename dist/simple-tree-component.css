@@ -240,6 +240,9 @@
 .simple-tree-node-container .simple-tree-node-wrapper.simple-tree-node-selectable {
   cursor: pointer;
 }
+.simple-tree-node-container .simple-tree-node-wrapper.simple-tree-parent-node .simple-tree-node-text {
+  font-weight: bold;
+}
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container {
   display: inline-block;
   width: 0.5rem;
