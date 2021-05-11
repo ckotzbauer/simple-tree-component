@@ -18,4 +18,4 @@
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
-Defined in: [options.ts:125](https://github.com/ckotzbauer/simple-tree-component/blob/d3fda4a/src/types/options.ts#L125)
+Defined in: [options.ts:125](https://github.com/ckotzbauer/simple-tree-component/blob/41bd8da/src/types/options.ts#L125)
