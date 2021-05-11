@@ -1,3 +1,25 @@
+## Version 1.0.0-beta.11 (2021-05-11)
+
+### Features and improvements
+
+* [[`427e4f6b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/427e4f6b)] - **feat**: respect custom properties on TreeNodes
+* [[`6af6aae4`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6af6aae4)] - **feat**: use innerHTML for selection-label
+
+### Dependency updates
+
+* [[`29538058`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/29538058)] - **deps**: bump JamesIves&#x2F;github-pages-deploy-action
+* [[`3a7d3118`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3a7d3118)] - **deps**: bump hosted-git-info from 2.8.8 to 2.8.9 in &#x2F;demo (#619)
+* [[`78ff0f40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/78ff0f40)] - **deps**: update dependency eslint to v7.26.0 (#620)
+* [[`bd12326b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/bd12326b)] - **deps**: update dependency codecov to v3.8.2 (#613)
+* [[`7a412794`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7a412794)] - **deps**: update dependency postcss to v8.2.14 (#614)
+* [[`5b8dc117`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5b8dc117)] - **deps**: update dependency ts-jest to v26.5.6 (#615)
+* [[`f7f88526`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f7f88526)] - **deps**: update typescript-eslint monorepo to v4.22.1 (#616)
+* [[`ea5c9465`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ea5c9465)] - **deps**: update dependency rollup to v2.47.0 (#617)
+* [[`cdf15243`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cdf15243)] - **deps**: update dependency typedoc-plugin-markdown to v3.8.0 (#618)
+* [[`97f5f445`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/97f5f445)] - **deps**: bump lodash from 4.17.19 to 4.17.21 in &#x2F;demo
+* [[`1de87255`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1de87255)] - **deps**: bump url-parse from 1.4.7 to 1.5.1 in &#x2F;demo
+
+
 ## Version 1.0.0-beta.10 (2021-05-07)
 
 ### Features and improvements
