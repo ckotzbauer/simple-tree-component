@@ -43,6 +43,11 @@ export interface TreeNode {
      * The unique id-value used internally.
      */
     uid: string;
+
+    /**
+     * Any additional property, which is available (the component-logic will respect them).
+     */
+    [key: string]: any;
 }
 
 /**
