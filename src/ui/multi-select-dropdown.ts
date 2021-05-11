@@ -70,7 +70,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
         this.pillboxContainer.innerHTML = "";
         this.selected.forEach((item: TreeNode) => {
             const listItem = createListItem(this.pillboxContainer, "");
-            listItem.innerText = this.options.templateSelectedText(item);
+            listItem.innerHTML = this.options.templateSelectedText(item);
 
             const cross: HTMLElement = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
             cross.addEventListener("click", (e: MouseEvent) => {

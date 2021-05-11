@@ -977,7 +977,7 @@
             this.selectContainer.appendChild(this.arrowElement);
         }
         updateUiOnSelection() {
-            this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
+            this.selectedLabel.innerHTML = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
             this.selectedLabel.classList.toggle(constants.classNames.SimpleTreeSelectedLabelWatermark, !this.selected);
             if (this.emphasisCssClass && this.selected) {
                 this.showEmphasizeIcon(this.emphasisCssClass);
@@ -1057,7 +1057,7 @@
             this.pillboxContainer.innerHTML = "";
             this.selected.forEach((item) => {
                 const listItem = createListItem(this.pillboxContainer, "");
-                listItem.innerText = this.options.templateSelectedText(item);
+                listItem.innerHTML = this.options.templateSelectedText(item);
                 const cross = createContainer(listItem, constants.classNames.SimpleTreePillboxCross);
                 cross.addEventListener("click", (e) => {
                     if (!this.readOnly) {

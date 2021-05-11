@@ -91,7 +91,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
     }
 
     private updateUiOnSelection(): void {
-        this.selectedLabel.innerText = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
+        this.selectedLabel.innerHTML = this.selected ? this.options.templateSelectedText(this.selected) : this.options.watermark;
         this.selectedLabel.classList.toggle(constants.classNames.SimpleTreeSelectedLabelWatermark, !this.selected);
 
         if (this.emphasisCssClass && this.selected) {
