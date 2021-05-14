@@ -194,9 +194,10 @@ export class DataService {
         const filtered: TreeNode[] = [];
 
         nodes.forEach((n) => {
-            const textOrParentMatch = searchMode === "OnlyMatches"
-                ? n.label.toLowerCase().includes(searchTerm)
-                : n.label.toLowerCase().includes(searchTerm) || parentMatch;
+            const textOrParentMatch =
+                searchMode === "OnlyMatches"
+                    ? n.label.toLowerCase().includes(searchTerm)
+                    : n.label.toLowerCase().includes(searchTerm) || parentMatch;
 
             const childNodes: TreeNode[] = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
 

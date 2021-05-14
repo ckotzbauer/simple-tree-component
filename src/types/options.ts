@@ -8,7 +8,7 @@ export type ComponentMode = "tree" | "singleSelectDropdown" | "multiSelectDropdo
 /**
  * @ignore
  */
- export type SearchMode = "OnlyMatches" | "OnlyMatchesAndChilds";
+export type SearchMode = "OnlyMatches" | "OnlyMatchesAndChilds";
 
 /**
  * @ignore
@@ -28,7 +28,7 @@ export interface TreeConfiguration {
      * Determines if only matching tree-nodes are displayed as search-results (default). The second mode `OnlyMatchesAndChilds`
      * also displays non-matching child-nodes if one of the parent-nodes matches the search-text. (Default: `OnlyMatches`)
      */
-    searchMode: SearchMode
+    searchMode: SearchMode;
 
     /**
      * Enables text-highlighting while searching. (Default: `false`)
