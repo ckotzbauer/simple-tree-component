@@ -55,7 +55,7 @@ export function createInstance<K extends keyof TreeModeNameMap>(
     config?: Options,
     el?: HTMLInputElement | string
 ): TreeInstance<K> {
-    ctx.elem = el as HTMLInputElement || ctx.elem || document.createElement("input");
+    ctx.elem = (el as HTMLInputElement) || ctx.elem || document.createElement("input");
     ctx.stc = simpleTree<K>(ctx.elem, mode, config || {}) as TreeInstance<K>;
     ctx.dataService = (ctx.stc as any).dataService;
     return ctx.stc;

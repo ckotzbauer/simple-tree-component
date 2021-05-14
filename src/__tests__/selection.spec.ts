@@ -32,7 +32,7 @@ describe("simpleTree", () => {
             });
 
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node3" }));
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
+            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
         });
 
         it("should handle null on setSelected api-call correctly.", () => {
