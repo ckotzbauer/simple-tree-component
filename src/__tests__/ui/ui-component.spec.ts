@@ -2,10 +2,12 @@ import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdow
 import constants from "../../ui/ui-constants";
 
 const singleCtx = initialize<"singleSelectDropdown">();
+const treeOnlyCtx = initialize<"tree">();
 
 describe("simpleTree", () => {
     beforeEach(() => {
         beforeEachTest(singleCtx);
+        beforeEachTest(treeOnlyCtx);
     });
 
     describe("base-tree", () => {
@@ -100,6 +102,25 @@ describe("simpleTree", () => {
             expect(singleCtx.dataService?.getFlattedClickableNodeValues()).toEqual(
                 expect.arrayContaining(["subchild1", "subchild2"])
             );
+        });
+
+        it("should be readonly correctly.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                searchBar: true
+            });
+
+            tree.setReadOnly(true);
+            expect(document.querySelector(
+                `.${constants.classNames.SimpleTree}`)?.classList.contains(constants.classNames.SimpleTreeReadOnly)).toBeTruthy();
         });
     });
 });
