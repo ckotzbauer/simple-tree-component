@@ -1,3 +1,38 @@
+## Version 1.0.0-beta.12 (2021-05-14)
+
+### Features and improvements
+
+* [[`61cad081`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/61cad081)] - **feat**: add different search-modes
+
+### Bug fixes
+
+* [[`0906ccd6`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0906ccd6)] - **fix**: avoid non-selectable selected nodes #627
+
+### Cleanup and refactoring
+
+* [[`7eb44225`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7eb44225)] - **cleanup**: fix formatting
+* [[`e4e0781c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e4e0781c)] - **cleanup**: prefix internal events #628
+
+### Build and testing
+
+* [[`d5f464da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d5f464da)] - **test**: add readonly-test #631
+* [[`54abfa26`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/54abfa26)] - **test**: add more test-cases
+* [[`ee7c8942`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ee7c8942)] - **test**: added test-cases #631
+
+### Documentation
+
+* [[`9bd667a1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9bd667a1)] - **docs**: extend documentation #629
+
+### Dependency updates
+
+* [[`5d1c1ab2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5d1c1ab2)] - **deps**: bump pascalgn&#x2F;automerge-action from 0.13.1 to 0.14.1
+* [[`47585614`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/47585614)] - **deps**: bump JamesIves&#x2F;github-pages-deploy-action
+
+### Common changes
+
+* [[`d56e3521`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d56e3521)] - **chore**: compile result of last commit
+
+
 ## Version 1.0.0-beta.11 (2021-05-11)
 
 ### Features and improvements
