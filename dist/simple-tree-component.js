@@ -62,10 +62,10 @@
         },
         events: {
             SelectionChanged: "selectionChanged",
-            NodeSelected: "nodeSelected",
-            EscapePressed: "escapePressed",
-            HoverChanged: "hoverChanged",
-            FilterChanged: "filterChanged",
+            NodeSelected: "_nodeSelected",
+            EscapePressed: "_escapePressed",
+            HoverChanged: "_hoverChanged",
+            FilterChanged: "_filterChanged",
         },
         nodeIdPrefix: "simple-tree-node",
     };
@@ -449,9 +449,15 @@
             return nodes.map((node) => {
                 const n = this.copyNode(node);
                 n.uid = this.generateUid(node.value);
+                this.mutateNode(n);
                 n.children = this.normalizeNodes(n.children || []);
                 return n;
             });
+        }
+        mutateNode(node) {
+            if (!node.selectable && node.selected) {
+                node.selected = false;
+            }
         }
         copyNode(node) {
             return Object.assign(Object.assign({}, defaults), node);
@@ -488,6 +494,7 @@
             if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
                 throw new Error("node value is invalid or node with value already exists!");
             }
+            this.mutateNode(node);
             if (parent && this.isTreeNode(parent)) {
                 parent.children.push(node);
             }
@@ -1183,3 +1190,4 @@
     return simpleTree;
 
 })));
+//# sourceMappingURL=simple-tree-component.js.map
