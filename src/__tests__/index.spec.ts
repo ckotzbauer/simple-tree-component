@@ -13,7 +13,17 @@ describe("simpleTree", () => {
             expect(simpleTree([], "tree")).toEqual([]);
         });
 
-        it("should use default options", () => {
+        it("should use default options (by selector)", () => {
+            const tree = createInstance(ctx, "tree", undefined, "input");
+            expect(tree instanceof TreeView).toBeTruthy();
+            expect(tree.options).toEqual(
+                expect.objectContaining({
+                    searchBar: true,
+                })
+            );
+        });
+
+        it("should use default options (by element)", () => {
             const tree = createInstance(ctx, "tree");
             expect(tree instanceof TreeView).toBeTruthy();
             expect(tree.options).toEqual(

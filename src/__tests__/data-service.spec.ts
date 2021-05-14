@@ -198,6 +198,16 @@ describe("simpleTree", () => {
             expect(firstNode.children[1].children.length).toEqual(2);
             expect(secondNode.value).toEqual("parent1");
             expect(secondNode.children.length).toEqual(2);
+
+            dataService.moveNode(secondNode, "up");
+
+            firstNode = dataService.getAllNodes()[0];
+            secondNode = dataService.getAllNodes()[1];
+            expect(firstNode.value).toEqual("parent1");
+            expect(firstNode.children.length).toEqual(2);
+            expect(secondNode.value).toEqual("parent2");
+            expect(secondNode.children.length).toEqual(2);
+            expect(secondNode.children[1].children.length).toEqual(2);
         });
 
         it("moveNode - should not move nodes on end of list", () => {
