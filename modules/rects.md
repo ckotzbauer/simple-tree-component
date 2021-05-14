@@ -39,7 +39,7 @@ It is assumed, that the width of the overlay is the same as of the `elementRect`
 
 The calculated rectangle of the overlay position.
 
-Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/41bd8da/src/types/rects.ts#L40)
+Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/rects.ts#L40)
 
 ___
 
@@ -60,4 +60,4 @@ See the docs of the `calculate` function for more details.
 
 **Returns:** *void*
 
-Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/41bd8da/src/types/rects.ts#L56)
+Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/rects.ts#L56)

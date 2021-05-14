@@ -18,4 +18,4 @@
 
 Ƭ **SimpleTree**: [*TreeInstance*](../interfaces/instance.treeinstance.md)<``"singleSelectDropdown"`` \| ``"multiSelectDropdown"`` \| ``"tree"``\>
 
-Defined in: [instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/41bd8da/src/types/instance.ts#L116)
+Defined in: [instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/instance.ts#L116)
