@@ -37,10 +37,10 @@ export default {
     },
     events: {
         SelectionChanged: "selectionChanged",
-        NodeSelected: "nodeSelected",
-        EscapePressed: "escapePressed",
-        HoverChanged: "hoverChanged",
-        FilterChanged: "filterChanged",
+        NodeSelected: "_nodeSelected",
+        EscapePressed: "_escapePressed",
+        HoverChanged: "_hoverChanged",
+        FilterChanged: "_filterChanged",
     },
     nodeIdPrefix: "simple-tree-node",
 };
