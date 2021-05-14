@@ -64,7 +64,7 @@ export class BaseTree {
     public renderContent(): void {
         this.element.innerHTML = "";
         this.createBasicHtml();
-        this.dataService.filter(""); // reset potential filter
+        this.dataService.filter("", this.config.searchMode); // reset potential filter
         this.renderTree();
     }
 
@@ -81,7 +81,7 @@ export class BaseTree {
             }
 
             this.searchTextInput.addEventListener("input", (e: Event) => {
-                this.dataService.filter((e.target as HTMLInputElement).value);
+                this.dataService.filter((e.target as HTMLInputElement).value, this.config.searchMode);
                 this.renderTree();
                 this.eventManager.publish(constants.events.FilterChanged);
             });

@@ -9,6 +9,7 @@
         nodes: [],
         searchBar: true,
         searchBarFocus: false,
+        searchMode: "OnlyMatches",
         highlightSearchResults: false,
         watermark: "Please select a value...",
         noNodesMessage: "No items found.",
@@ -199,7 +200,7 @@
         renderContent() {
             this.element.innerHTML = "";
             this.createBasicHtml();
-            this.dataService.filter("");
+            this.dataService.filter("", this.config.searchMode);
             this.renderTree();
         }
         createBasicHtml() {
@@ -212,7 +213,7 @@
                     setTimeout(() => { var _a; return (_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.focus(); }, 0);
                 }
                 this.searchTextInput.addEventListener("input", (e) => {
-                    this.dataService.filter(e.target.value);
+                    this.dataService.filter(e.target.value, this.config.searchMode);
                     this.renderTree();
                     this.eventManager.publish(constants.events.FilterChanged);
                 });
@@ -582,19 +583,22 @@
                 }
             }, []);
         }
-        filter(searchTerm) {
+        filter(searchTerm, searchMode) {
             if (searchTerm) {
-                this.displayedNodes = this.filterNodes(this.allNodes, searchTerm.toLowerCase());
+                this.displayedNodes = this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
             }
             else {
                 this.displayedNodes = this.normalizeNodes(this.allNodes);
             }
         }
-        filterNodes(nodes, searchTerm) {
+        filterNodes(nodes, parentMatch, searchTerm, searchMode) {
             const filtered = [];
             nodes.forEach((n) => {
-                const childNodes = this.filterNodes(n.children, searchTerm);
-                if (n.label.toLowerCase().includes(searchTerm) || childNodes.length > 0) {
+                const textOrParentMatch = searchMode === "OnlyMatches"
+                    ? n.label.toLowerCase().includes(searchTerm)
+                    : n.label.toLowerCase().includes(searchTerm) || parentMatch;
+                const childNodes = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
+                if (textOrParentMatch || childNodes.length > 0) {
                     const node = this.copyNode(n);
                     node.children = childNodes;
                     filtered.push(node);
@@ -1190,4 +1194,3 @@
     return simpleTree;
 
 })));
-//# sourceMappingURL=simple-tree-component.js.map

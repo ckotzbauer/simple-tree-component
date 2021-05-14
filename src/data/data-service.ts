@@ -1,6 +1,7 @@
 import { TreeNode, defaults } from "../types/tree-node";
 import { isDuplicateNodeValue, isTreeNodeValid } from "../validation/validation";
 import constants from "../ui/ui-constants";
+import { SearchMode } from "types/options";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
@@ -181,21 +182,25 @@ export class DataService {
         }, []);
     }
 
-    public filter(searchTerm: string): void {
+    public filter(searchTerm: string, searchMode: SearchMode): void {
         if (searchTerm) {
-            this.displayedNodes = this.filterNodes(this.allNodes, searchTerm.toLowerCase());
+            this.displayedNodes = this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
         } else {
             this.displayedNodes = this.normalizeNodes(this.allNodes);
         }
     }
 
-    private filterNodes(nodes: TreeNode[], searchTerm: string): TreeNode[] {
+    private filterNodes(nodes: TreeNode[], parentMatch: boolean, searchTerm: string, searchMode: SearchMode): TreeNode[] {
         const filtered: TreeNode[] = [];
 
         nodes.forEach((n) => {
-            const childNodes: TreeNode[] = this.filterNodes(n.children, searchTerm);
+            const textOrParentMatch = searchMode === "OnlyMatches"
+                ? n.label.toLowerCase().includes(searchTerm)
+                : n.label.toLowerCase().includes(searchTerm) || parentMatch;
 
-            if (n.label.toLowerCase().includes(searchTerm) || childNodes.length > 0) {
+            const childNodes: TreeNode[] = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
+
+            if (textOrParentMatch || childNodes.length > 0) {
                 const node = this.copyNode(n);
                 node.children = childNodes;
 

@@ -98,14 +98,14 @@ describe("simpleTree", () => {
             expect(node?.label).toEqual("Parent 2 Child 1");
         });
 
-        it("filter - should filter nodes case insensitive based on given search term", () => {
+        it("filter - should filter nodes case insensitive based on given search term (OnlyMatches)", () => {
             // Filters out Parent 3
-            dataService.filter("child");
+            dataService.filter("child", "OnlyMatches");
             expect(dataService.displayedNodes.length).toEqual(2);
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(7);
 
             // Only find results within tree of Parent 2
-            dataService.filter("sub");
+            dataService.filter("sub", "OnlyMatches");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
             expect(dataService.displayedNodes.length).toEqual(1);
             expect(dataService.displayedNodes[0].value).toEqual("parent2");
@@ -114,13 +114,56 @@ describe("simpleTree", () => {
             expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
             expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
 
+            // Check specific node
+            dataService.filter("Parent 2 Child 2", "OnlyMatches");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
+            expect(dataService.displayedNodes.length).toEqual(1);
+            expect(dataService.displayedNodes[0].value).toEqual("parent2");
+            expect(dataService.displayedNodes[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
+
             // All visible
-            dataService.filter("parent");
+            dataService.filter("parent", "OnlyMatches");
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
 
             // Don't filter
-            dataService.filter("");
+            dataService.filter("", "OnlyMatches");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
+        });
+
+        it("filter - should filter nodes case insensitive based on given search term (OnlyMatchesAndChilds)", () => {
+            // Filters out Parent 3
+            dataService.filter("child", "OnlyMatchesAndChilds");
+            expect(dataService.displayedNodes.length).toEqual(2);
             expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
+
+            // Only find results within tree of Parent 2
+            dataService.filter("sub", "OnlyMatchesAndChilds");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
+            expect(dataService.displayedNodes.length).toEqual(1);
+            expect(dataService.displayedNodes[0].value).toEqual("parent2");
+            expect(dataService.displayedNodes[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
+
+            // Check specific node
+            dataService.filter("Parent 2 Child 2", "OnlyMatchesAndChilds");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(4);
+            expect(dataService.displayedNodes.length).toEqual(1);
+            expect(dataService.displayedNodes[0].value).toEqual("parent2");
+            expect(dataService.displayedNodes[0].children.length).toEqual(1);
+            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(2);
+
+            // All visible
+            dataService.filter("parent", "OnlyMatchesAndChilds");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
+
+            // Don't filter
+            dataService.filter("", "OnlyMatchesAndChilds");
+            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
         });
 
         it("moveNode - should not crash for null value", () => {
@@ -144,7 +187,7 @@ describe("simpleTree", () => {
             expect(firstNode.children.length).toEqual(2);
             expect(secondNode.value).toEqual("parent2");
             expect(secondNode.children.length).toEqual(2);
-            expect(secondNode.children[1].children.length).toEqual(1);
+            expect(secondNode.children[1].children.length).toEqual(2);
 
             dataService.moveNode(firstNode, "down");
 
@@ -152,7 +195,7 @@ describe("simpleTree", () => {
             secondNode = dataService.getAllNodes()[1];
             expect(firstNode.value).toEqual("parent2");
             expect(firstNode.children.length).toEqual(2);
-            expect(firstNode.children[1].children.length).toEqual(1);
+            expect(firstNode.children[1].children.length).toEqual(2);
             expect(secondNode.value).toEqual("parent1");
             expect(secondNode.children.length).toEqual(2);
         });
@@ -189,7 +232,7 @@ describe("simpleTree", () => {
 
         it("getFlattedClickableNodeValues - should return correct nodes", () => {
             const flatted = dataService.getFlattedClickableNodeValues();
-            expect(flatted.length).toEqual(6);
+            expect(flatted.length).toEqual(7);
             expect(flatted.indexOf("parent2Child1") === -1).toBeTruthy();
             expect(flatted.indexOf("parent3") === -1).toBeTruthy();
         });
@@ -207,6 +250,7 @@ function init(): void {
             createTreeNode("Parent 2 Child 1", "parent2Child1", [], false, false),
             createTreeNode("Parent 2 Child 2", "parent2Child2", [
                 createTreeNode("Parent 2 Child 2 Sub 1", "parent2Child2Sub1"),
+                createTreeNode("Different named", "parent2Child2Sub2")
             ]),
         ]),
         createTreeNode("Parent 3", "parent3", [], false, false),

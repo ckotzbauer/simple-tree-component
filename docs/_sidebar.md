@@ -6,6 +6,7 @@
 
 - Features
   - [Events](events.md)
+  - [Search mode](search-mode.md)
   - [Highlighting](highlighting.md)
   - [Scrolling](scrolling.md)
   - [Overlay placement](overlay-placement.md)

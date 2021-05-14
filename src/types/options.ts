@@ -8,6 +8,11 @@ export type ComponentMode = "tree" | "singleSelectDropdown" | "multiSelectDropdo
 /**
  * @ignore
  */
+ export type SearchMode = "OnlyMatches" | "OnlyMatchesAndChilds";
+
+/**
+ * @ignore
+ */
 export interface TreeConfiguration {
     /**
      * Add a searchbar to search for tree-nodes. (Default: `true`)
@@ -18,6 +23,12 @@ export interface TreeConfiguration {
      * Determines if the searchbar requests the focus by default. (Default: `false`)
      */
     searchBarFocus: boolean;
+
+    /**
+     * Determines if only matching tree-nodes are displayed as search-results (default). The second mode `OnlyMatchesAndChilds`
+     * also displays non-matching child-nodes if one of the parent-nodes matches the search-text. (Default: `OnlyMatches`)
+     */
+    searchMode: SearchMode
 
     /**
      * Enables text-highlighting while searching. (Default: `false`)
@@ -104,6 +115,7 @@ export const defaults: BaseOptions = {
     nodes: [],
     searchBar: true,
     searchBarFocus: false,
+    searchMode: "OnlyMatches",
     highlightSearchResults: false,
     watermark: "Please select a value...",
     noNodesMessage: "No items found.",
