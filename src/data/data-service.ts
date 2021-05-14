@@ -20,9 +20,16 @@ export class DataService {
         return nodes.map((node: TreeNode) => {
             const n = this.copyNode(node);
             n.uid = this.generateUid(node.value);
+            this.mutateNode(n);
             n.children = this.normalizeNodes(n.children || []);
             return n;
         });
+    }
+
+    private mutateNode(node: TreeNode): void {
+        if (!node.selectable && node.selected) {
+            node.selected = false;
+        }
     }
 
     private copyNode(node: TreeNode): TreeNode {
@@ -74,6 +81,8 @@ export class DataService {
         if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
             throw new Error("node value is invalid or node with value already exists!");
         }
+
+        this.mutateNode(node);
 
         if (parent && this.isTreeNode(parent)) {
             parent.children.push(node);

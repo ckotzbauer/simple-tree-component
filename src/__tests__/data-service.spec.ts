@@ -51,6 +51,14 @@ describe("simpleTree", () => {
             expect(dataService.getAllNodes().length).toEqual(3);
         });
 
+        it("addNode - avoid non-selectable to be selected", () => {
+            const treeNode = createTreeNode("Parent 4", "parent4");
+            treeNode.selectable = false;
+            treeNode.selected = true;
+            dataService.addNode(treeNode);
+            expect(dataService.getNode("parent4")?.selected).toBeFalsy();
+        });
+
         it("deleteNode - should remove specified root node from tree", () => {
             dataService.deleteNode("parent3");
             expect(dataService.getNode("parent3")).toBeNull();
