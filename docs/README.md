@@ -9,7 +9,7 @@ Check out the [Quick Start](quick-start.md) documentation to get started.
 
 ## API
 
-For detailed information about the API-design have a look at the [API docs](globals.md).
+For detailed information about the API-design have a look at the [API docs](interfaces/instance.simpletreefn.md).
 
 
 ## Contributing
