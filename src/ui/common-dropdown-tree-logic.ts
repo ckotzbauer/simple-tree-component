@@ -118,7 +118,12 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
             height += this.dropdownHolder.children[0].scrollHeight;
         }
 
-        calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement, height);
+        calculateOverlay(
+            this.dropdownHolder,
+            this.selectContainer.parentElement as HTMLElement,
+            height,
+            this.options.defaultDropdownHeight
+        );
     }
 
     protected updateClearButton(emptyValue: TreeModeNameMap[K]): void {

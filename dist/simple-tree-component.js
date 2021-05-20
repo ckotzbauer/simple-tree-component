@@ -23,6 +23,7 @@
         },
         clearButton: false,
         scrollContainer: null,
+        defaultDropdownHeight: 300,
     };
 
     var constants = {
@@ -920,7 +921,7 @@
             else {
                 height += this.dropdownHolder.children[0].scrollHeight;
             }
-            calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement, height);
+            calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement, height, this.options.defaultDropdownHeight);
         }
         updateClearButton(emptyValue) {
             const selectedCondition = Array.isArray(this.selected) ? this.selected.length > 0 : this.selected;

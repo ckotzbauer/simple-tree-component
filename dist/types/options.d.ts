@@ -81,6 +81,13 @@ export interface TreeConfiguration {
      * Element to prevent scrolling for when the dropdown is openend. (Default `null`)
      */
     scrollContainer: HTMLElement | null;
+    /**
+     * Custom default-height of the dropdown in pixel.
+     * Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
+     * Note: to change the sass-variable `$max-dropdown-height` accordingly.
+     * (Default: `300`)
+     */
+    defaultDropdownHeight: number;
 }
 /**
  * All instance-specific options and behaviors to initialize the tree.
