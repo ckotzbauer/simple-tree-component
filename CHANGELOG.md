@@ -1,3 +1,26 @@
+## Version 1.0.0-beta.13 (2021-05-20)
+
+### Features and improvements
+
+* [[`f189bbf3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f189bbf3)] - **feat**: make dropdown-height fully configurable
+
+### Build and testing
+
+* [[`5ad399b9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5ad399b9)] - **test**: add key-event tests
+* [[`7c89bf3e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7c89bf3e)] - **test**: add emphasize test
+* [[`3a988fe0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3a988fe0)] - **test**: add clear-button test
+
+### Dependency updates
+
+* [[`c292deab`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c292deab)] - **deps**: update dependency rollup to v2.48.0 (#638)
+* [[`4d09101b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4d09101b)] - **deps**: update dependency postcss to v8.2.15 (#633)
+* [[`e85ed3d1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e85ed3d1)] - **deps**: update dependency @types&#x2F;node to v13.13.52 (#632)
+* [[`6f9c4664`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6f9c4664)] - **deps**: update dependency sass to v1.32.13 (#634)
+* [[`396b16bd`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/396b16bd)] - **deps**: update dependency typedoc-plugin-markdown to v3.8.1 (#635)
+* [[`db5fb067`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/db5fb067)] - **deps**: update dependency prettier to v2.3.0 (#636)
+* [[`8bf79577`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8bf79577)] - **deps**: update typescript-eslint monorepo to v4.23.0 (#637)
+
+
 ## Version 1.0.0-beta.12 (2021-05-14)
 
 ### Features and improvements
