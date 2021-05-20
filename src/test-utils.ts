@@ -3,6 +3,7 @@ import { TreeInstance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
 import { TreeNode } from "./types/tree-node";
 import { DataService } from "./data/data-service";
+import constants from "./ui/ui-constants";
 
 export interface Context<K extends keyof TreeModeNameMap> {
     elem: undefined | HTMLInputElement;
@@ -11,7 +12,7 @@ export interface Context<K extends keyof TreeModeNameMap> {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function simulate(eventType: string, onElement: Node, options?: unknown, type?: any): void {
+export function simulate(eventType: string, onElement: Node | Window, options?: unknown, type?: any): void {
     const eventOptions = Object.assign(options || {}, { bubbles: true });
     const evt = new (type || CustomEvent)(eventType, eventOptions);
     onElement.dispatchEvent(evt);
@@ -94,4 +95,9 @@ export function countTreeNodes(treeNodes: TreeNode[]): number {
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function expectObjectsInArray(array: any[], ...o: object[]): void {
     expect(array).toEqual(expect.arrayContaining(o.map((x) => expect.objectContaining(x))));
+}
+
+export function isDropdownVisible(): boolean {
+    const e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
+    return e?.style.display !== "none";
 }

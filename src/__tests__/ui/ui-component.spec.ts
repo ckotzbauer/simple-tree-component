@@ -1,4 +1,12 @@
-import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdown, simulate } from "../../test-utils";
+import {
+    initialize,
+    beforeEachTest,
+    createInstance,
+    createTreeNode,
+    openDropdown,
+    simulate,
+    isDropdownVisible,
+} from "../../test-utils";
 import constants from "../../ui/ui-constants";
 
 const singleCtx = initialize<"singleSelectDropdown">();
@@ -103,6 +111,111 @@ describe("simpleTree", () => {
             expect(singleCtx.dataService?.getFlattedClickableNodeValues()).toEqual(
                 expect.arrayContaining(["subchild1", "subchild2"])
             );
+        });
+
+        it("should close dropdown on escape.", () => {
+            createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeTruthy();
+
+            simulate("keyup", window, { code: "Escape" }, KeyboardEvent);
+            expect(isDropdownVisible()).toBeFalsy();
+        });
+
+        it("should change hover-state with arrow-keys.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+
+            let selectedElement = document?.querySelector(`.${constants.classNames.SimpleTreeNodeSelected}`);
+            expect(selectedElement).not.toBeNull();
+
+            simulate("mouseover", selectedElement as Element);
+            selectedElement = document?.querySelector(`.${constants.classNames.SimpleTreeNodeSelected}`);
+            expect(selectedElement?.classList.contains(constants.classNames.SimpleTreeNodeHovered)).toBeTruthy();
+
+            // mouse-down (expect first is hovered now)
+            simulate("keyup", window, { code: "ArrowDown" }, KeyboardEvent);
+            selectedElement = document?.querySelector(`.${constants.classNames.SimpleTreeNodeSelected}`);
+            expect(selectedElement?.classList.contains(constants.classNames.SimpleTreeNodeHovered)).toBeFalsy();
+            expect(
+                document
+                    .getElementById(tree.getNode("node1")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).not.toBeNull();
+
+            // mouse-down (expect second is hovered now)
+            simulate("keyup", window, { code: "ArrowDown" }, KeyboardEvent);
+            expect(
+                document
+                    .getElementById(tree.getNode("node1")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).toBeNull();
+            expect(
+                document
+                    .getElementById(tree.getNode("node2")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).not.toBeNull();
+
+            // mouse-up (expect first is hovered again)
+            simulate("keyup", window, { code: "ArrowUp" }, KeyboardEvent);
+            expect(
+                document
+                    .getElementById(tree.getNode("node2")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).toBeNull();
+            expect(
+                document
+                    .getElementById(tree.getNode("node1")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).not.toBeNull();
+
+            // mouse-up (expect last is hovered again)
+            simulate("keyup", window, { code: "ArrowUp" }, KeyboardEvent);
+            expect(
+                document
+                    .getElementById(tree.getNode("node1")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).toBeNull();
+            expect(
+                document
+                    .getElementById(tree.getNode("node3")?.uid as string)
+                    ?.querySelector(`.${constants.classNames.SimpleTreeNodeHovered}`)
+            ).not.toBeNull();
+        });
+
+        it("should select on enter.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            simulate("keyup", window, { code: "ArrowDown" }, KeyboardEvent);
+            simulate("keyup", window, { code: "Enter" }, KeyboardEvent);
+            expect(tree.getSelected()?.value).toBe("node1");
+            expect(isDropdownVisible()).toBeFalsy();
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            simulate("keyup", window, { code: "ArrowDown" }, KeyboardEvent);
+            simulate("keyup", window, { code: "NumpadEnter" }, KeyboardEvent);
+            expect(tree.getSelected()?.value).toBe("node2");
         });
     });
 
