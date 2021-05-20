@@ -17,6 +17,7 @@ All instance-specific options and behaviors to initialize the tree.
 - [checkboxes](options.baseoptions.md#checkboxes)
 - [clearButton](options.baseoptions.md#clearbutton)
 - [css](options.baseoptions.md#css)
+- [defaultDropdownHeight](options.baseoptions.md#defaultdropdownheight)
 - [highlightSearchResults](options.baseoptions.md#highlightsearchresults)
 - [noNodesMessage](options.baseoptions.md#nonodesmessage)
 - [nodes](options.baseoptions.md#nodes)
@@ -45,7 +46,7 @@ Only used in mode `tree`.
 
 Inherited from: TreeConfiguration.checkboxes
 
-Defined in: [options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L75)
+Defined in: [options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L75)
 
 ___
 
@@ -57,7 +58,7 @@ Add a cross-button to clear the current value(s). (Default: `false`)
 
 Inherited from: TreeConfiguration.clearButton
 
-Defined in: [options.ts:92](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L92)
+Defined in: [options.ts:92](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L92)
 
 ___
 
@@ -75,7 +76,22 @@ Custom css-classes.
 
 Inherited from: TreeConfiguration.css
 
-Defined in: [options.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L54)
+Defined in: [options.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L54)
+
+___
+
+### defaultDropdownHeight
+
+• **defaultDropdownHeight**: *number*
+
+Custom default-height of the dropdown in pixel.
+Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
+Note: to change the sass-variable `$max-dropdown-height` accordingly.
+(Default: `300`)
+
+Inherited from: TreeConfiguration.defaultDropdownHeight
+
+Defined in: [options.ts:105](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L105)
 
 ___
 
@@ -87,7 +103,7 @@ Enables text-highlighting while searching. (Default: `false`)
 
 Inherited from: TreeConfiguration.highlightSearchResults
 
-Defined in: [options.ts:36](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L36)
+Defined in: [options.ts:36](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L36)
 
 ___
 
@@ -100,7 +116,7 @@ A message text which is displayed if no tree-nodes are available at all or throu
 
 Inherited from: TreeConfiguration.noNodesMessage
 
-Defined in: [options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L49)
+Defined in: [options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L49)
 
 ___
 
@@ -111,7 +127,7 @@ ___
 All tree-node data-objects to start with. Do not change this array afterwards.
 (Default: `[]`)
 
-Defined in: [options.ts:108](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L108)
+Defined in: [options.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L116)
 
 ___
 
@@ -123,7 +139,7 @@ Element to prevent scrolling for when the dropdown is openend. (Default `null`)
 
 Inherited from: TreeConfiguration.scrollContainer
 
-Defined in: [options.ts:97](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L97)
+Defined in: [options.ts:97](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L97)
 
 ___
 
@@ -135,7 +151,7 @@ Add a searchbar to search for tree-nodes. (Default: `true`)
 
 Inherited from: TreeConfiguration.searchBar
 
-Defined in: [options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L20)
+Defined in: [options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L20)
 
 ___
 
@@ -147,7 +163,7 @@ Determines if the searchbar requests the focus by default. (Default: `false`)
 
 Inherited from: TreeConfiguration.searchBarFocus
 
-Defined in: [options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L25)
+Defined in: [options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L25)
 
 ___
 
@@ -160,7 +176,7 @@ also displays non-matching child-nodes if one of the parent-nodes matches the se
 
 Inherited from: TreeConfiguration.searchMode
 
-Defined in: [options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L31)
+Defined in: [options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L31)
 
 ___
 
@@ -187,11 +203,9 @@ Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
 
 **Returns:** *string*
 
-Defined in: [options.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L69)
-
 Inherited from: TreeConfiguration.templateSelectedText
 
-Defined in: [options.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L69)
+Defined in: [options.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L69)
 
 ___
 
@@ -205,4 +219,4 @@ Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
 
 Inherited from: TreeConfiguration.watermark
 
-Defined in: [options.ts:43](https://github.com/ckotzbauer/simple-tree-component/blob/9a79c13/src/types/options.ts#L43)
+Defined in: [options.ts:43](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/options.ts#L43)
