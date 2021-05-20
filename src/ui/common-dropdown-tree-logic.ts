@@ -120,4 +120,27 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
 
         calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement as HTMLElement, height);
     }
+
+    protected updateClearButton(emptyValue: TreeModeNameMap[K]): void {
+        const selectedCondition = Array.isArray(this.selected) ? this.selected.length > 0 : this.selected;
+
+        if (this.options.clearButton && selectedCondition && !this.clearElement) {
+            this.clearElement = document.createElement("i");
+            this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+            this.clearElement.onclick = (e: MouseEvent) => {
+                if (!this.readOnly) {
+                    this.setSelected(emptyValue);
+                    this.eventManager.publish(constants.events.SelectionChanged, emptyValue);
+                }
+
+                e.stopPropagation();
+            };
+
+            this.selectContainer.appendChild(this.clearElement);
+            this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+        } else if (!selectedCondition && this.clearElement) {
+            this.clearElement.remove();
+            this.clearElement = null;
+        }
+    }
 }

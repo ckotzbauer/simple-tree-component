@@ -922,6 +922,26 @@
             }
             calculateOverlay(this.dropdownHolder, this.selectContainer.parentElement, height);
         }
+        updateClearButton(emptyValue) {
+            const selectedCondition = Array.isArray(this.selected) ? this.selected.length > 0 : this.selected;
+            if (this.options.clearButton && selectedCondition && !this.clearElement) {
+                this.clearElement = document.createElement("i");
+                this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
+                this.clearElement.onclick = (e) => {
+                    if (!this.readOnly) {
+                        this.setSelected(emptyValue);
+                        this.eventManager.publish(constants.events.SelectionChanged, emptyValue);
+                    }
+                    e.stopPropagation();
+                };
+                this.selectContainer.appendChild(this.clearElement);
+                this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
+            }
+            else if (!selectedCondition && this.clearElement) {
+                this.clearElement.remove();
+                this.clearElement = null;
+            }
+        }
     }
 
     class SingleSelectDropdown extends CommonDropdownTreeLogic {
@@ -998,23 +1018,7 @@
                 this.hideEmphasizeIcon();
                 this.emphasisCssClass = css;
             }
-            if (this.options.clearButton && this.selected && !this.clearElement) {
-                this.clearElement = document.createElement("i");
-                this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
-                this.clearElement.onclick = (e) => {
-                    if (!this.readOnly) {
-                        this.setSelected(null);
-                        this.eventManager.publish(constants.events.SelectionChanged, null);
-                    }
-                    e.stopPropagation();
-                };
-                this.selectContainer.appendChild(this.clearElement);
-                this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
-            }
-            else if (!this.selected && this.clearElement) {
-                this.clearElement.remove();
-                this.clearElement = null;
-            }
+            this.updateClearButton(null);
         }
     }
 
@@ -1077,23 +1081,7 @@
                     e.stopPropagation();
                 });
             });
-            if (this.options.clearButton && this.selected.length > 0 && !this.clearElement) {
-                this.clearElement = document.createElement("i");
-                this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
-                this.clearElement.onclick = (e) => {
-                    if (!this.readOnly) {
-                        this.setSelected([]);
-                        this.eventManager.publish(constants.events.SelectionChanged, []);
-                    }
-                    e.stopPropagation();
-                };
-                this.selectContainer.appendChild(this.clearElement);
-                this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
-            }
-            else if (this.selected.length === 0 && this.clearElement) {
-                this.clearElement.remove();
-                this.clearElement = null;
-            }
+            this.updateClearButton([]);
         }
     }
 

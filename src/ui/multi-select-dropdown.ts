@@ -82,23 +82,6 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
             });
         });
 
-        if (this.options.clearButton && this.selected.length > 0 && !this.clearElement) {
-            this.clearElement = document.createElement("i");
-            this.clearElement.classList.add(constants.classNames.SimpleTreeCross);
-            this.clearElement.onclick = (e: MouseEvent) => {
-                if (!this.readOnly) {
-                    this.setSelected([]);
-                    this.eventManager.publish(constants.events.SelectionChanged, []);
-                }
-
-                e.stopPropagation();
-            };
-
-            this.selectContainer.appendChild(this.clearElement);
-            this.selectContainer.classList.add(constants.classNames.SimpleTreeClearable);
-        } else if (this.selected.length === 0 && this.clearElement) {
-            this.clearElement.remove();
-            this.clearElement = null;
-        }
+        this.updateClearButton([]);
     }
 }

@@ -2,11 +2,13 @@ import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdow
 import constants from "../../ui/ui-constants";
 
 const singleCtx = initialize<"singleSelectDropdown">();
+const multiCtx = initialize<"multiSelectDropdown">();
 const treeOnlyCtx = initialize<"tree">();
 
 describe("simpleTree", () => {
     beforeEach(() => {
         beforeEachTest(singleCtx);
+        beforeEachTest(multiCtx);
         beforeEachTest(treeOnlyCtx);
     });
 
@@ -95,7 +97,6 @@ describe("simpleTree", () => {
                 expect.arrayContaining(["subchild1", "subchild2"])
             );
 
-
             chevron.click();
 
             expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
@@ -115,12 +116,123 @@ describe("simpleTree", () => {
                     createTreeNode("Node Test 2", "node2"),
                     createTreeNode("Node Test 3", "node3", [], true),
                 ],
-                searchBar: true
+                searchBar: true,
             });
 
             tree.setReadOnly(true);
-            expect(document.querySelector(
-                `.${constants.classNames.SimpleTree}`)?.classList.contains(constants.classNames.SimpleTreeReadOnly)).toBeTruthy();
+            expect(
+                document
+                    .querySelector(`.${constants.classNames.SimpleTree}`)
+                    ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
+            ).toBeTruthy();
+        });
+    });
+
+    describe("single-select", () => {
+        it("clear-button should not be visible, if disabled.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            const clearButton = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`);
+            expect(clearButton).toBeNull();
+            expect(tree.getSelected()).not.toBeNull();
+        });
+
+        it("clear-button should be visible, if enabled.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                clearButton: true,
+            });
+
+            const clearButton = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`);
+            expect(clearButton).not.toBeNull();
+            expect(tree.getSelected()).not.toBeNull();
+        });
+
+        it("clear-button should clear selected-value.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                clearButton: true,
+            });
+
+            let clearButton: HTMLElement = singleCtx.elem?.querySelector(
+                `.${constants.classNames.SimpleTreeCross}`
+            ) as HTMLElement;
+            expect(clearButton).not.toBeNull();
+            expect(tree.getSelected()).not.toBeNull();
+
+            clearButton.click();
+
+            clearButton = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`) as HTMLElement;
+            expect(clearButton).toBeNull();
+            expect(tree.getSelected()).toBeNull();
+        });
+    });
+
+    describe("multi-select", () => {
+        it("clear-button should not be visible, if disabled.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            const clearButton = multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`);
+            expect(clearButton).toBeNull();
+            expect(tree.getSelected().length).toBe(1);
+        });
+
+        it("clear-button should be visible, if enabled.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                clearButton: true,
+            });
+
+            const clearButton = multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`);
+            expect(clearButton).not.toBeNull();
+            expect(tree.getSelected().length).toBe(1);
+        });
+
+        it("clear-button should clear selected-value.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                clearButton: true,
+            });
+
+            let clearButton: HTMLElement = multiCtx.elem?.querySelector(
+                `.${constants.classNames.SimpleTreeCross}`
+            ) as HTMLElement;
+            expect(clearButton).not.toBeNull();
+            expect(tree.getSelected().length).toBe(1);
+
+            clearButton.click();
+
+            clearButton = multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`) as HTMLElement;
+            expect(clearButton).toBeNull();
+            expect(tree.getSelected().length).toBe(0);
         });
     });
 });
