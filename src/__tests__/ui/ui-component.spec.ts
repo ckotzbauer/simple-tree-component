@@ -104,28 +104,6 @@ describe("simpleTree", () => {
                 expect.arrayContaining(["subchild1", "subchild2"])
             );
         });
-
-        it("should be readonly correctly.", () => {
-            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
-                nodes: [
-                    createTreeNode("Node Test 1", "node1", [
-                        createTreeNode("Child 1", "child1"),
-                        createTreeNode("Child 2", "child2"),
-                        createTreeNode("Child 3", "child3"),
-                    ]),
-                    createTreeNode("Node Test 2", "node2"),
-                    createTreeNode("Node Test 3", "node3", [], true),
-                ],
-                searchBar: true,
-            });
-
-            tree.setReadOnly(true);
-            expect(
-                document
-                    .querySelector(`.${constants.classNames.SimpleTree}`)
-                    ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
-            ).toBeTruthy();
-        });
     });
 
     describe("single-select", () => {
@@ -180,6 +158,67 @@ describe("simpleTree", () => {
             expect(clearButton).toBeNull();
             expect(tree.getSelected()).toBeNull();
         });
+
+        it("should be readonly correctly.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                searchBar: true,
+            });
+
+            tree.setReadOnly(true);
+            expect(
+                document
+                    .querySelector(`.${constants.classNames.SimpleTree}`)
+                    ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
+            ).toBeTruthy();
+        });
+
+        it("should handle emphasize icon correctly.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+                searchBar: true,
+            });
+
+            let emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).toBeNull();
+
+            tree.setSelected(tree.getNode("child2"));
+            emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).toBeNull();
+
+            tree.showEmphasizeIcon("my-emphasized-item");
+            emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).not.toBeNull();
+            expect(emphasize?.classList.contains("my-emphasized-item")).toBeTruthy();
+
+            tree.setSelected(null);
+            emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).toBeNull();
+
+            tree.setSelected(tree.getNode("child3"));
+            emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).not.toBeNull();
+
+            tree.hideEmphasizeIcon();
+            emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
+            expect(emphasize).toBeNull();
+        });
     });
 
     describe("multi-select", () => {
@@ -233,6 +272,52 @@ describe("simpleTree", () => {
             clearButton = multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`) as HTMLElement;
             expect(clearButton).toBeNull();
             expect(tree.getSelected().length).toBe(0);
+        });
+
+        it("should be readonly correctly.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                searchBar: true,
+            });
+
+            tree.setReadOnly(true);
+            expect(
+                document
+                    .querySelector(`.${constants.classNames.SimpleTree}`)
+                    ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
+            ).toBeTruthy();
+        });
+    });
+
+    describe("tree-view", () => {
+        it("should be readonly correctly.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+                searchBar: true,
+            });
+
+            tree.setReadOnly(true);
+            expect(
+                document
+                    .querySelector(`.${constants.classNames.SimpleTree}`)
+                    ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
+            ).toBeTruthy();
         });
     });
 });
