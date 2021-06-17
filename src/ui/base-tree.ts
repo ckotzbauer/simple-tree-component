@@ -4,7 +4,7 @@ import { TreeNode } from "../types/tree-node";
 import constants from "./ui-constants";
 import { EventManager } from "../event/event-manager";
 import { KeyEventHandler } from "./key-event-handler";
-import { escape } from "./utils";
+import { escape, escapeRegex } from "./utils";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
@@ -121,7 +121,7 @@ export class BaseTree {
         let highlightRegex: RegExp | null = null;
 
         if (this.searchTextInput?.value && this.config.highlightSearchResults) {
-            highlightRegex = new RegExp(`(${this.searchTextInput?.value})`, "ig");
+            highlightRegex = new RegExp(`(${escapeRegex(this.searchTextInput?.value)})`, "ig");
         }
 
         nodes.forEach((node: TreeNode) => {

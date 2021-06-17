@@ -158,6 +158,9 @@
     function escape(s) {
         return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
+    function escapeRegex(s) {
+        return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
 
     class BaseTree {
         constructor(element, config, dataService, eventManager, readOnly) {
@@ -245,7 +248,7 @@
             ulElement.classList.add(constants.classNames.SimpleTreeNodeContainerRoot);
             let highlightRegex = null;
             if (((_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.value) && this.config.highlightSearchResults) {
-                highlightRegex = new RegExp(`(${(_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value})`, "ig");
+                highlightRegex = new RegExp(`(${escapeRegex((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)})`, "ig");
             }
             nodes.forEach((node) => {
                 var _a;

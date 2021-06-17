@@ -1,4 +1,4 @@
-import { escape } from "../ui/utils";
+import { escape, escapeRegex } from "../ui/utils";
 
 describe("simpleTree", () => {
     describe("utils", () => {
@@ -18,6 +18,25 @@ describe("simpleTree", () => {
         it("escape - should return an empty string", () => {
             const s = "";
             const escaped = escape(s);
+            expect(escaped).toEqual(s);
+        });
+
+        it("escapeRegex - should preserve original value", () => {
+            const s = "Thisismyteststring";
+            const escaped = escapeRegex(s);
+            expect(escaped).toEqual(s);
+        });
+
+        it("escapeRegex - should escape html", () => {
+            const s = "This is my [test].* string";
+            const expected = "This\\ is\\ my\\ \\[test\\]\\.\\*\\ string";
+            const escaped = escapeRegex(s);
+            expect(escaped).toEqual(expected);
+        });
+
+        it("escapeRegex - should return an empty string", () => {
+            const s = "";
+            const escaped = escapeRegex(s);
             expect(escaped).toEqual(s);
         });
     });
