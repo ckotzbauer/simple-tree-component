@@ -51,3 +51,7 @@ You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-com
 --------
 [Changelog](https://github.com/ckotzbauer/simple-tree-component/blob/master/CHANGELOG.md)
 --------
+### Blog post
+https://dev.to/ckotzbauer/announcing-the-simple-tree-component-46nd
+
+
