@@ -55,7 +55,7 @@
     "@typescript-eslint/eslint-plugin": "4.27.0",
     "@typescript-eslint/parser": "4.27.0",
     "autoprefixer": "10.2.6",
-    "chokidar": "3.5.1",
+    "chokidar": "3.5.2",
     "codecov": "3.8.2",
     "docsify-cli": "4.4.3",
     "eslint": "7.29.0",
