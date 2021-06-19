@@ -1,6 +1,6 @@
 {
   "name": "simple-tree-component",
-  "version": "1.0.0-beta.13",
+  "version": "1.0.0",
   "description": "A simple to use ui-tree javascript component.",
   "repository": {
     "type": "git",
