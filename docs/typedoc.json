@@ -1,14 +1,14 @@
 {
   "name": "Simple Tree Component",
-  "out": "docs/out",
+  "out": "out",
   "excludeExternals": true,
   "excludePrivate": true,
   "excludeProtected": true,
   "hideBreadcrumbs": true,
   "hidePageTitle": false,
-  "theme": "docs/typedoc-docsify",
+  "theme": "typedoc-docsify",
   "exclude": "**/*+(.spec).ts",
   "entryPoints": [
-    "src/types"
+    "../src/types"
   ]
 }
