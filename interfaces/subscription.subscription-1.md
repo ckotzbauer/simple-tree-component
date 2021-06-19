@@ -14,10 +14,14 @@ A subscription-object which is issued when `subscribe` or `subscribeOnce` is cal
 
 ### dispose
 
-▸ **dispose**(): *void*
+▸ **dispose**(): `void`
 
 Ends the subscription. No further events (this subscription was linked to) where emitted.
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/subscription.ts#L8)
+`void`
+
+#### Defined in
+
+[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/subscription.ts#L8)

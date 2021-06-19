@@ -8,7 +8,7 @@ Represents the public api of a tree-instance.
 
 | Name | Type |
 | :------ | :------ |
-| `K` | keyof [*TreeModeNameMap*](instance.treemodenamemap.md) |
+| `K` | `K`: keyof [TreeModeNameMap](instance.treemodenamemap.md) |
 
 ## Table of contents
 
@@ -36,17 +36,19 @@ Represents the public api of a tree-instance.
 
 ### options
 
-• **options**: [*BaseOptions*](options.baseoptions.md)
+• **options**: [BaseOptions](options.baseoptions.md)
 
 Applied configuration options for the current instance.
 
-Defined in: [instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L18)
+#### Defined in
+
+[instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L18)
 
 ## Methods
 
 ### addNode
 
-▸ **addNode**(`node`: [*TreeNode*](tree_node.treenode.md), `parent`: ``null`` \| *string* \| [*TreeNode*](tree_node.treenode.md)): *void*
+▸ **addNode**(`node`, `parent`): `void`
 
 Adds a new node to the tree with a optional parent.
 
@@ -54,18 +56,22 @@ Adds a new node to the tree with a optional parent.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `node` | [*TreeNode*](tree_node.treenode.md) | to add. |
-| `parent` | ``null`` \| *string* \| [*TreeNode*](tree_node.treenode.md) | of the new tree-node or null |
+| `node` | [TreeNode](tree_node.treenode.md) | to add. |
+| `parent` | ``null`` \| `string` \| [TreeNode](tree_node.treenode.md) | of the new tree-node or null |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L39)
+`void`
+
+#### Defined in
+
+[instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L39)
 
 ___
 
 ### deleteNode
 
-▸ **deleteNode**(`node`: [*TreeNode*](tree_node.treenode.md)): *void*
+▸ **deleteNode**(`node`): `void`
 
 Deletes the given tree-node from the tree.
 
@@ -73,29 +79,37 @@ Deletes the given tree-node from the tree.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `node` | [*TreeNode*](tree_node.treenode.md) | to delete. |
+| `node` | [TreeNode](tree_node.treenode.md) | to delete. |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L46)
+`void`
+
+#### Defined in
+
+[instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L46)
 
 ___
 
 ### destroy
 
-▸ **destroy**(): *void*
+▸ **destroy**(): `void`
 
 Destroy the current instance and remove all modifications to the dom.
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L23)
+`void`
+
+#### Defined in
+
+[instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L23)
 
 ___
 
 ### getNode
 
-▸ **getNode**(`value`: *string*): ``null`` \| [*TreeNode*](tree_node.treenode.md)
+▸ **getNode**(`value`): ``null`` \| [TreeNode](tree_node.treenode.md)
 
 Returns a tree-node which has the given `value` as value-property.
 
@@ -103,45 +117,57 @@ Returns a tree-node which has the given `value` as value-property.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | *string* | of a tree-node which should be returned. |
+| `value` | `string` | of a tree-node which should be returned. |
 
-**Returns:** ``null`` \| [*TreeNode*](tree_node.treenode.md)
+#### Returns
+
+``null`` \| [TreeNode](tree_node.treenode.md)
 
 a matching tree-node or null.
 
-Defined in: [instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L31)
+#### Defined in
+
+[instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L31)
 
 ___
 
 ### getSelected
 
-▸ **getSelected**(): [*TreeModeNameMap*](instance.treemodenamemap.md)[K]
+▸ **getSelected**(): [TreeModeNameMap](instance.treemodenamemap.md)[`K`]
 
 Returns one or multiple selected tree-node objects, depending on the mode.
 
-**Returns:** [*TreeModeNameMap*](instance.treemodenamemap.md)[K]
+#### Returns
+
+[TreeModeNameMap](instance.treemodenamemap.md)[`K`]
 
 a tree-node object in single-mode and view-mode without checkboxes. An array of nodes otherwise.
 
-Defined in: [instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L69)
+#### Defined in
+
+[instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L69)
 
 ___
 
 ### hideEmphasizeIcon
 
-▸ **hideEmphasizeIcon**(): *void*
+▸ **hideEmphasizeIcon**(): `void`
 
 Only usable in single-mode. Hides the emphasize-icon again.
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:95](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L95)
+`void`
+
+#### Defined in
+
+[instance.ts:95](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L95)
 
 ___
 
 ### moveNode
 
-▸ **moveNode**(`value`: *string* \| [*TreeNode*](tree_node.treenode.md), `direction`: ``"up"`` \| ``"down"``): *void*
+▸ **moveNode**(`value`, `direction`): `void`
 
 Moves the up or down in the same hierarchy-level.
 
@@ -149,18 +175,22 @@ Moves the up or down in the same hierarchy-level.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | *string* \| [*TreeNode*](tree_node.treenode.md) | tree-node object to move. |
+| `value` | `string` \| [TreeNode](tree_node.treenode.md) | tree-node object to move. |
 | `direction` | ``"up"`` \| ``"down"`` | of move-operation. |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:62](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L62)
+`void`
+
+#### Defined in
+
+[instance.ts:62](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L62)
 
 ___
 
 ### setReadOnly
 
-▸ **setReadOnly**(`readOnly`: *boolean*): *void*
+▸ **setReadOnly**(`readOnly`): `void`
 
 Changes the read-only state of the tree.
 
@@ -168,17 +198,21 @@ Changes the read-only state of the tree.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `readOnly` | *boolean* | state of the tree. |
+| `readOnly` | `boolean` | state of the tree. |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L83)
+`void`
+
+#### Defined in
+
+[instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L83)
 
 ___
 
 ### setSelected
 
-▸ **setSelected**(`value`: [*TreeModeNameMap*](instance.treemodenamemap.md)[K]): *void*
+▸ **setSelected**(`value`): `void`
 
 Resets the selection-state of tree-nodes to the given one(s).
 
@@ -186,17 +220,21 @@ Resets the selection-state of tree-nodes to the given one(s).
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `value` | [*TreeModeNameMap*](instance.treemodenamemap.md)[K] | a tree-node object in single-mode and view-mode without checkboxes. An array of nodes otherwise. |
+| `value` | [TreeModeNameMap](instance.treemodenamemap.md)[`K`] | a tree-node object in single-mode and view-mode without checkboxes. An array of nodes otherwise. |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L76)
+`void`
+
+#### Defined in
+
+[instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L76)
 
 ___
 
 ### showEmphasizeIcon
 
-▸ **showEmphasizeIcon**(`cssClass`: *string*): *void*
+▸ **showEmphasizeIcon**(`cssClass`): `void`
 
 Only usable in single-mode. Shows an icon for a selected tree-node.
 
@@ -204,17 +242,21 @@ Only usable in single-mode. Shows an icon for a selected tree-node.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `cssClass` | *string* | to set on the icon-area. |
+| `cssClass` | `string` | to set on the icon-area. |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L90)
+`void`
+
+#### Defined in
+
+[instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L90)
 
 ___
 
 ### subscribe
 
-▸ **subscribe**(`event`: ``"selectionChanged"``, `handler`: (`d`: [*TreeModeNameMap*](instance.treemodenamemap.md)[K], `e`: *string*) => *void*): [*Subscription*](subscription.subscription-1.md)
+▸ **subscribe**(`event`, `handler`): [Subscription](subscription.subscription-1.md)
 
 Add a listener to handle "selectionChanged" events.
 
@@ -223,19 +265,23 @@ Add a listener to handle "selectionChanged" events.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `event` | ``"selectionChanged"`` | "selectionChanged" event |
-| `handler` | (`d`: [*TreeModeNameMap*](instance.treemodenamemap.md)[K], `e`: *string*) => *void* | to execute custom logic on this event. |
+| `handler` | (`d`: [TreeModeNameMap](instance.treemodenamemap.md)[`K`], `e`: `string`) => `void` | to execute custom logic on this event. |
 
-**Returns:** [*Subscription*](subscription.subscription-1.md)
+#### Returns
+
+[Subscription](subscription.subscription-1.md)
 
 a subscription object to unsubscribe again.
 
-Defined in: [instance.ts:104](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L104)
+#### Defined in
+
+[instance.ts:104](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L104)
 
 ___
 
 ### subscribeOnce
 
-▸ **subscribeOnce**(`event`: ``"selectionChanged"``, `handler`: (`d`: [*TreeModeNameMap*](instance.treemodenamemap.md)[K], `e`: *string*) => *void*): [*Subscription*](subscription.subscription-1.md)
+▸ **subscribeOnce**(`event`, `handler`): [Subscription](subscription.subscription-1.md)
 
 Add a listener to handle "selectionChanged" events. When the event is emitted for the first time, the subscription ends automatically.
 
@@ -244,19 +290,23 @@ Add a listener to handle "selectionChanged" events. When the event is emitted fo
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `event` | ``"selectionChanged"`` | "selectionChanged" event |
-| `handler` | (`d`: [*TreeModeNameMap*](instance.treemodenamemap.md)[K], `e`: *string*) => *void* | to execute custom logic on this event. |
+| `handler` | (`d`: [TreeModeNameMap](instance.treemodenamemap.md)[`K`], `e`: `string`) => `void` | to execute custom logic on this event. |
 
-**Returns:** [*Subscription*](subscription.subscription-1.md)
+#### Returns
+
+[Subscription](subscription.subscription-1.md)
 
 a subscription object to unsubscribe again.
 
-Defined in: [instance.ts:113](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L113)
+#### Defined in
+
+[instance.ts:113](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L113)
 
 ___
 
 ### updateNodeLabel
 
-▸ **updateNodeLabel**(`node`: [*TreeNode*](tree_node.treenode.md), `newLabel`: *string*): *void*
+▸ **updateNodeLabel**(`node`, `newLabel`): `void`
 
 Updates the display-text of the given tree-node.
 
@@ -264,9 +314,13 @@ Updates the display-text of the given tree-node.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `node` | [*TreeNode*](tree_node.treenode.md) | to update. |
-| `newLabel` | *string* | - |
+| `node` | [TreeNode](tree_node.treenode.md) | to update. |
+| `newLabel` | `string` | - |
 
-**Returns:** *void*
+#### Returns
 
-Defined in: [instance.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L54)
+`void`
+
+#### Defined in
+
+[instance.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L54)

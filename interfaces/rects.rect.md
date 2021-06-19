@@ -17,38 +17,46 @@ A general rectangle object which is used from the `calculate` function.
 
 ### height
 
-• **height**: *number*
+• **height**: `number`
 
 Height of the rectangle.
 
-Defined in: [rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/rects.ts#L20)
+#### Defined in
+
+[rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/rects.ts#L20)
 
 ___
 
 ### left
 
-• **left**: *number*
+• **left**: `number`
 
 Difference from the base-point in x-direction.
 
-Defined in: [rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/rects.ts#L12)
+#### Defined in
+
+[rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/rects.ts#L12)
 
 ___
 
 ### top
 
-• **top**: *number*
+• **top**: `number`
 
 Difference from the base-point in y-direction.
 
-Defined in: [rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/rects.ts#L8)
+#### Defined in
+
+[rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/rects.ts#L8)
 
 ___
 
 ### width
 
-• **width**: *number*
+• **width**: `number`
 
 Width of the rectangle.
 
-Defined in: [rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/rects.ts#L16)
+#### Defined in
+
+[rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/rects.ts#L16)

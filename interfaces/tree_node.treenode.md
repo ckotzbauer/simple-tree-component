@@ -6,7 +6,7 @@ The data representation of each node-object in the tree.
 
 ## Indexable
 
-▪ [key: *string*]: *any*
+▪ [key: `string`]: `any`
 
 Any additional property, which is available (the component-logic will respect them).
 
@@ -27,80 +27,96 @@ Any additional property, which is available (the component-logic will respect th
 
 ### children
 
-• **children**: [*TreeNode*](tree_node.treenode.md)[]
+• **children**: [TreeNode](tree_node.treenode.md)[]
 
 Recursive array of child `TreeNode` objects.
 
-Defined in: [tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L30)
+#### Defined in
+
+[tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L30)
 
 ___
 
 ### collapsed
 
-• **collapsed**: *boolean*
+• **collapsed**: `boolean`
 
 Indicates if this node (in case it has child-nodes) is currently collapsed.
 
-Defined in: [tree-node.ts:35](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L35)
+#### Defined in
+
+[tree-node.ts:35](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L35)
 
 ___
 
 ### hidden
 
-• **hidden**: *boolean*
+• **hidden**: `boolean`
 
 Indicates if this node is visible in the tree.
 
-Defined in: [tree-node.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L40)
+#### Defined in
+
+[tree-node.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L40)
 
 ___
 
 ### label
 
-• **label**: *string*
+• **label**: `string`
 
 The displayed text of this tree-node.
 
-Defined in: [tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L8)
+#### Defined in
+
+[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L8)
 
 ___
 
 ### selectable
 
-• **selectable**: *boolean*
+• **selectable**: `boolean`
 
 Indicates if this node is selectable. Mouse-clicks on the node are avoided if `false`.
 Nodes that are not selectable are also ignored when setting via API.
 In Recursive Checkbox Mode this flag has no effect since all nodes are selectable there.
 
-Defined in: [tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L25)
+#### Defined in
+
+[tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L25)
 
 ___
 
 ### selected
 
-• **selected**: *boolean*
+• **selected**: `boolean`
 
 Indicates if this node is currently selected and included in the component-value ({@link Instance.getSelected()}).
 
-Defined in: [tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L18)
+#### Defined in
+
+[tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L18)
 
 ___
 
 ### uid
 
-• **uid**: *string*
+• **uid**: `string`
 
 The unique id-value used internally.
 
-Defined in: [tree-node.ts:45](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L45)
+#### Defined in
+
+[tree-node.ts:45](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L45)
 
 ___
 
 ### value
 
-• **value**: *string*
+• **value**: `string`
 
 The data-value of this tree-node. It has to be unique.
 
-Defined in: [tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/tree-node.ts#L13)
+#### Defined in
+
+[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L13)

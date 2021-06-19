@@ -14,22 +14,28 @@
 
 ### multiSelectDropdown
 
-• **multiSelectDropdown**: [*TreeNode*](tree_node.treenode.md)[]
+• **multiSelectDropdown**: [TreeNode](tree_node.treenode.md)[]
 
-Defined in: [instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L7)
+#### Defined in
+
+[instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L7)
 
 ___
 
 ### singleSelectDropdown
 
-• **singleSelectDropdown**: ``null`` \| [*TreeNode*](tree_node.treenode.md)
+• **singleSelectDropdown**: ``null`` \| [TreeNode](tree_node.treenode.md)
 
-Defined in: [instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L6)
+#### Defined in
+
+[instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L6)
 
 ___
 
 ### tree
 
-• **tree**: ``null`` \| [*TreeNode*](tree_node.treenode.md) \| [*TreeNode*](tree_node.treenode.md)[]
+• **tree**: ``null`` \| [TreeNode](tree_node.treenode.md) \| [TreeNode](tree_node.treenode.md)[]
 
-Defined in: [instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/631084e/src/types/instance.ts#L8)
+#### Defined in
+
+[instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L8)
