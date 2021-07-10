@@ -71,7 +71,7 @@
     "sass": "1.35.1",
     "terser": "5.7.1",
     "ts-jest": "27.0.3",
-    "ts-node": "10.0.0",
+    "ts-node": "10.1.0",
     "tslib": "2.3.0",
     "typedoc": "0.21.2",
     "typedoc-plugin-markdown": "3.10.2",
