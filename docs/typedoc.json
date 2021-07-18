@@ -6,7 +6,7 @@
   "excludeProtected": true,
   "hideBreadcrumbs": true,
   "hidePageTitle": false,
-  "theme": "typedoc-docsify",
+  "theme": "docs/typedoc-docsify",
   "exclude": "**/*+(.spec).ts",
   "entryPoints": [
     "../src/types"

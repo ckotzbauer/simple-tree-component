@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-var-requires */
-const fs = require("fs-extra");
+const fs = require("fs");
 const { RendererEvent } = require("typedoc/dist/lib/output/events");
 const MarkdownTheme = require("typedoc-plugin-markdown/dist/theme").default;
 
