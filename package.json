@@ -58,7 +58,7 @@
     "chokidar": "3.5.2",
     "codecov": "3.8.3",
     "docsify-cli": "4.4.3",
-    "eslint": "7.31.0",
+    "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
     "jest": "27.0.6",
