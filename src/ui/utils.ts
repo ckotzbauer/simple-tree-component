@@ -36,5 +36,5 @@ export function escape(s: string): string {
 }
 
 export function escapeRegex(s: string): string {
-    return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
