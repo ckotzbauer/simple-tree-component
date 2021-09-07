@@ -14,10 +14,10 @@
 
 ### Options
 
-Ƭ **Options**: `Partial`<[BaseOptions](../interfaces/options.baseoptions.md)\>
+Ƭ **Options**: `Partial`<[`BaseOptions`](../interfaces/options.baseoptions.md)\>
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
 
 #### Defined in
 
-[options.ts:146](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/options.ts#L146)
+[options.ts:153](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L153)

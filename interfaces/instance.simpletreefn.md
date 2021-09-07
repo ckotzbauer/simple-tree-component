@@ -6,13 +6,13 @@
 
 ### SimpleTreeFn
 
-▸ **SimpleTreeFn**<K\>(`selector`, `mode`, `config?`): [TreeInstance](instance.treeinstance.md)<K\>
+▸ **SimpleTreeFn**<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](instance.treeinstance.md)<`K`\>
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `K` | `K`: keyof [TreeModeNameMap](instance.treemodenamemap.md) |
+| `K` | extends keyof [`TreeModeNameMap`](instance.treemodenamemap.md) |
 
 #### Parameters
 
@@ -20,51 +20,51 @@
 | :------ | :------ |
 | `selector` | `Node` |
 | `mode` | `K` |
-| `config?` | `Partial`<[BaseOptions](options.baseoptions.md)\> |
+| `config?` | `Partial`<[`BaseOptions`](options.baseoptions.md)\> |
 
 #### Returns
 
-[TreeInstance](instance.treeinstance.md)<K\>
+[`TreeInstance`](instance.treeinstance.md)<`K`\>
 
 #### Defined in
 
-[instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L118)
+[instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/instance.ts#L118)
 
 ### SimpleTreeFn
 
-▸ **SimpleTreeFn**<K\>(`selector`, `mode`, `config?`): [TreeInstance](instance.treeinstance.md)<K\>[]
+▸ **SimpleTreeFn**<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](instance.treeinstance.md)<`K`\>[]
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `K` | `K`: keyof [TreeModeNameMap](instance.treemodenamemap.md) |
+| `K` | extends keyof [`TreeModeNameMap`](instance.treemodenamemap.md) |
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `selector` | `ArrayLike`<Node\> |
+| `selector` | `ArrayLike`<`Node`\> |
 | `mode` | `K` |
-| `config?` | `Partial`<[BaseOptions](options.baseoptions.md)\> |
+| `config?` | `Partial`<[`BaseOptions`](options.baseoptions.md)\> |
 
 #### Returns
 
-[TreeInstance](instance.treeinstance.md)<K\>[]
+[`TreeInstance`](instance.treeinstance.md)<`K`\>[]
 
 #### Defined in
 
-[instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L119)
+[instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/instance.ts#L119)
 
 ### SimpleTreeFn
 
-▸ **SimpleTreeFn**<K\>(`selector`, `mode`, `config?`): [TreeInstance](instance.treeinstance.md)<K\> \| [TreeInstance](instance.treeinstance.md)<K\>[]
+▸ **SimpleTreeFn**<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](instance.treeinstance.md)<`K`\> \| [`TreeInstance`](instance.treeinstance.md)<`K`\>[]
 
 #### Type parameters
 
 | Name | Type |
 | :------ | :------ |
-| `K` | `K`: keyof [TreeModeNameMap](instance.treemodenamemap.md) |
+| `K` | extends keyof [`TreeModeNameMap`](instance.treemodenamemap.md) |
 
 #### Parameters
 
@@ -72,15 +72,15 @@
 | :------ | :------ |
 | `selector` | `string` |
 | `mode` | `K` |
-| `config?` | `Partial`<[BaseOptions](options.baseoptions.md)\> |
+| `config?` | `Partial`<[`BaseOptions`](options.baseoptions.md)\> |
 
 #### Returns
 
-[TreeInstance](instance.treeinstance.md)<K\> \| [TreeInstance](instance.treeinstance.md)<K\>[]
+[`TreeInstance`](instance.treeinstance.md)<`K`\> \| [`TreeInstance`](instance.treeinstance.md)<`K`\>[]
 
 #### Defined in
 
-[instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L120)
+[instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/instance.ts#L120)
 
 ## Table of contents
 
@@ -92,8 +92,8 @@
 
 ### defaultConfig
 
-• **defaultConfig**: `Partial`<[BaseOptions](options.baseoptions.md)\>
+• **defaultConfig**: `Partial`<[`BaseOptions`](options.baseoptions.md)\>
 
 #### Defined in
 
-[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/instance.ts#L122)
+[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/instance.ts#L122)

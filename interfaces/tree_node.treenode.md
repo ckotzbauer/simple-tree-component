@@ -27,13 +27,13 @@ Any additional property, which is available (the component-logic will respect th
 
 ### children
 
-• **children**: [TreeNode](tree_node.treenode.md)[]
+• **children**: [`TreeNode`](tree_node.treenode.md)[]
 
 Recursive array of child `TreeNode` objects.
 
 #### Defined in
 
-[tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L30)
+[tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L30)
 
 ___
 
@@ -45,7 +45,7 @@ Indicates if this node (in case it has child-nodes) is currently collapsed.
 
 #### Defined in
 
-[tree-node.ts:35](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L35)
+[tree-node.ts:35](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L35)
 
 ___
 
@@ -57,7 +57,7 @@ Indicates if this node is visible in the tree.
 
 #### Defined in
 
-[tree-node.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L40)
+[tree-node.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L40)
 
 ___
 
@@ -69,7 +69,7 @@ The displayed text of this tree-node.
 
 #### Defined in
 
-[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L8)
+[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L8)
 
 ___
 
@@ -83,7 +83,7 @@ In Recursive Checkbox Mode this flag has no effect since all nodes are selectabl
 
 #### Defined in
 
-[tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L25)
+[tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L25)
 
 ___
 
@@ -95,7 +95,7 @@ Indicates if this node is currently selected and included in the component-value
 
 #### Defined in
 
-[tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L18)
+[tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L18)
 
 ___
 
@@ -107,7 +107,7 @@ The unique id-value used internally.
 
 #### Defined in
 
-[tree-node.ts:45](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L45)
+[tree-node.ts:45](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L45)
 
 ___
 
@@ -119,4 +119,4 @@ The data-value of this tree-node. It has to be unique.
 
 #### Defined in
 
-[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/0e3e17d/src/types/tree-node.ts#L13)
+[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/tree-node.ts#L13)
