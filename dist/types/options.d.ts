@@ -25,6 +25,11 @@ export interface TreeConfiguration {
      */
     searchMode: SearchMode;
     /**
+     * Placeholder shown for the search bar.
+     * (Default: ``)
+     */
+    searchPlaceholder: string;
+    /**
      * Enables text-highlighting while searching. (Default: `false`)
      */
     highlightSearchResults: boolean;

@@ -10,6 +10,7 @@
         searchBar: true,
         searchBarFocus: false,
         searchMode: "OnlyMatches",
+        searchPlaceholder: "",
         highlightSearchResults: false,
         watermark: "Please select a value...",
         noNodesMessage: "No items found.",
@@ -213,6 +214,7 @@
                 wrapperDiv.classList.add(constants.classNames.SimpleTreeInputContainer);
                 this.searchTextInput = document.createElement("input");
                 this.searchTextInput.type = "text";
+                this.searchTextInput.placeholder = this.config.searchPlaceholder;
                 if (this.config.searchBarFocus) {
                     setTimeout(() => { var _a; return (_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.focus(); }, 0);
                 }
