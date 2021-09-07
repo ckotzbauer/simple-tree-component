@@ -75,6 +75,7 @@ export class BaseTree {
 
             this.searchTextInput = document.createElement("input");
             this.searchTextInput.type = "text";
+            this.searchTextInput.placeholder = this.config.searchPlaceholder;
 
             if (this.config.searchBarFocus) {
                 setTimeout(() => this.searchTextInput?.focus(), 0);

@@ -31,6 +31,12 @@ export interface TreeConfiguration {
     searchMode: SearchMode;
 
     /**
+     * Placeholder shown for the search bar.
+     * (Default: ``)
+     */
+    searchPlaceholder: string;
+
+    /**
      * Enables text-highlighting while searching. (Default: `false`)
      */
     highlightSearchResults: boolean;
@@ -124,6 +130,7 @@ export const defaults: BaseOptions = {
     searchBar: true,
     searchBarFocus: false,
     searchMode: "OnlyMatches",
+    searchPlaceholder: "",
     highlightSearchResults: false,
     watermark: "Please select a value...",
     noNodesMessage: "No items found.",
