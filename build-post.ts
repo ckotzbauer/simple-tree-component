@@ -21,7 +21,7 @@ async function postBuild() {
 
         await promisify(copyFile)("src/typings.d.ts", "dist/typings.d.ts");
     } catch (e) {
-        logErr(e);
+        logErr(e as Error);
     }
 }
 
