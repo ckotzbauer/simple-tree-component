@@ -1,10 +1,12 @@
+[Simple Tree Component](../README.md) / [Exports](../modules.md) / rects
+
 # Module: rects
 
 ## Table of contents
 
 ### Interfaces
 
-- [Rect](../interfaces/rects.rect.md)
+- [Rect](rects.Rect.md)
 
 ### Functions
 
@@ -15,7 +17,7 @@
 
 ### calculate
 
-▸ **calculate**(`elementRect`, `availableHeight`, `overlayHeight`, `borderWith?`, `maxOverlayHeight?`): [`Rect`](../interfaces/rects.rect.md)
+▸ **calculate**(`elementRect`, `availableHeight`, `overlayHeight`, `borderWith?`, `maxOverlayHeight?`): [`Rect`](rects.Rect.md)
 
 Calculates a rectangle to display a overlay-flyout relative to the position of the given `elementRect`.
 The following strategy is used (in order):
@@ -29,7 +31,7 @@ It is assumed, that the width of the overlay is the same as of the `elementRect`
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `elementRect` | [`Rect`](../interfaces/rects.rect.md) | The rectangle of the element this calculation belongs to. (e.g. rectangle of the selectbox for which the position of the flyout should be calculated.) |
+| `elementRect` | [`Rect`](rects.Rect.md) | The rectangle of the element this calculation belongs to. (e.g. rectangle of the selectbox for which the position of the flyout should be calculated.) |
 | `availableHeight` | `number` | Full height of the surrounding container (e.g. window height) |
 | `overlayHeight` | `number` | The height of the overlay which should be positioned. |
 | `borderWith?` | `number` | The border-width used. It is assumed, that all borders have the same width. Defaults to `0` |
@@ -37,13 +39,13 @@ It is assumed, that the width of the overlay is the same as of the `elementRect`
 
 #### Returns
 
-[`Rect`](../interfaces/rects.rect.md)
+[`Rect`](rects.Rect.md)
 
 The calculated rectangle of the overlay position.
 
 #### Defined in
 
-[rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/rects.ts#L40)
+[rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L40)
 
 ___
 
@@ -68,4 +70,4 @@ See the docs of the `calculate` function for more details.
 
 #### Defined in
 
-[rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/rects.ts#L56)
+[rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L56)

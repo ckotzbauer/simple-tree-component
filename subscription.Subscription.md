@@ -1,6 +1,8 @@
+[Simple Tree Component](../README.md) / [Exports](../modules.md) / [subscription](subscription.md) / Subscription
+
 # Interface: Subscription
 
-[subscription](../modules/subscription.md).Subscription
+[subscription](subscription.md).Subscription
 
 A subscription-object which is issued when `subscribe` or `subscribeOnce` is called on a tree-instance to receive different events.
 
@@ -8,7 +10,7 @@ A subscription-object which is issued when `subscribe` or `subscribeOnce` is cal
 
 ### Methods
 
-- [dispose](subscription.subscription-1.md#dispose)
+- [dispose](subscription.Subscription.md#dispose)
 
 ## Methods
 
@@ -24,4 +26,4 @@ Ends the subscription. No further events (this subscription was linked to) where
 
 #### Defined in
 
-[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/subscription.ts#L8)
+[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/subscription.ts#L8)

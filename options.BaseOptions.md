@@ -1,6 +1,8 @@
+[Simple Tree Component](../README.md) / [Exports](../modules.md) / [options](options.md) / BaseOptions
+
 # Interface: BaseOptions
 
-[options](../modules/options.md).BaseOptions
+[options](options.md).BaseOptions
 
 All instance-specific options and behaviors to initialize the tree.
 
@@ -14,20 +16,23 @@ All instance-specific options and behaviors to initialize the tree.
 
 ### Properties
 
-- [checkboxes](options.baseoptions.md#checkboxes)
-- [clearButton](options.baseoptions.md#clearbutton)
-- [css](options.baseoptions.md#css)
-- [defaultDropdownHeight](options.baseoptions.md#defaultdropdownheight)
-- [highlightSearchResults](options.baseoptions.md#highlightsearchresults)
-- [noNodesMessage](options.baseoptions.md#nonodesmessage)
-- [nodes](options.baseoptions.md#nodes)
-- [scrollContainer](options.baseoptions.md#scrollcontainer)
-- [searchBar](options.baseoptions.md#searchbar)
-- [searchBarFocus](options.baseoptions.md#searchbarfocus)
-- [searchMode](options.baseoptions.md#searchmode)
-- [searchPlaceholder](options.baseoptions.md#searchplaceholder)
-- [templateSelectedText](options.baseoptions.md#templateselectedtext)
-- [watermark](options.baseoptions.md#watermark)
+- [checkboxes](options.BaseOptions.md#checkboxes)
+- [clearButton](options.BaseOptions.md#clearbutton)
+- [css](options.BaseOptions.md#css)
+- [defaultDropdownHeight](options.BaseOptions.md#defaultdropdownheight)
+- [highlightSearchResults](options.BaseOptions.md#highlightsearchresults)
+- [noNodesMessage](options.BaseOptions.md#nonodesmessage)
+- [nodes](options.BaseOptions.md#nodes)
+- [scrollContainer](options.BaseOptions.md#scrollcontainer)
+- [searchBar](options.BaseOptions.md#searchbar)
+- [searchBarFocus](options.BaseOptions.md#searchbarfocus)
+- [searchMode](options.BaseOptions.md#searchmode)
+- [searchPlaceholder](options.BaseOptions.md#searchplaceholder)
+- [watermark](options.BaseOptions.md#watermark)
+
+### Methods
+
+- [templateSelectedText](options.BaseOptions.md#templateselectedtext)
 
 ## Properties
 
@@ -51,7 +56,7 @@ TreeConfiguration.checkboxes
 
 #### Defined in
 
-[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L81)
+[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L81)
 
 ___
 
@@ -67,7 +72,7 @@ TreeConfiguration.clearButton
 
 #### Defined in
 
-[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L98)
+[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L98)
 
 ___
 
@@ -89,7 +94,7 @@ TreeConfiguration.css
 
 #### Defined in
 
-[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L60)
+[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L60)
 
 ___
 
@@ -108,7 +113,7 @@ TreeConfiguration.defaultDropdownHeight
 
 #### Defined in
 
-[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L111)
+[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L111)
 
 ___
 
@@ -124,7 +129,7 @@ TreeConfiguration.highlightSearchResults
 
 #### Defined in
 
-[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L42)
+[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L42)
 
 ___
 
@@ -141,20 +146,20 @@ TreeConfiguration.noNodesMessage
 
 #### Defined in
 
-[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L55)
+[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L55)
 
 ___
 
 ### nodes
 
-• **nodes**: [`TreeNode`](tree_node.treenode.md)[]
+• **nodes**: [`TreeNode`](tree_node.TreeNode.md)[]
 
 All tree-node data-objects to start with. Do not change this array afterwards.
 (Default: `[]`)
 
 #### Defined in
 
-[options.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L122)
+[options.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L122)
 
 ___
 
@@ -170,7 +175,7 @@ TreeConfiguration.scrollContainer
 
 #### Defined in
 
-[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L103)
+[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L103)
 
 ___
 
@@ -186,7 +191,7 @@ TreeConfiguration.searchBar
 
 #### Defined in
 
-[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L20)
+[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L20)
 
 ___
 
@@ -202,7 +207,7 @@ TreeConfiguration.searchBarFocus
 
 #### Defined in
 
-[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L25)
+[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L25)
 
 ___
 
@@ -219,7 +224,7 @@ TreeConfiguration.searchMode
 
 #### Defined in
 
-[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L31)
+[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L31)
 
 ___
 
@@ -236,40 +241,7 @@ TreeConfiguration.searchPlaceholder
 
 #### Defined in
 
-[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L37)
-
-___
-
-### templateSelectedText
-
-• **templateSelectedText**: (`node`: [`TreeNode`](tree_node.treenode.md)) => `string`
-
-#### Type declaration
-
-▸ (`node`): `string`
-
-Template function which is called if the given node is selected.
-Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
-
-##### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `node` | [`TreeNode`](tree_node.treenode.md) | The tree-node to return a text-value for. |
-
-##### Returns
-
-`string`
-
-Any string value which should be displayed. (Default: `node.label`)
-
-#### Inherited from
-
-TreeConfiguration.templateSelectedText
-
-#### Defined in
-
-[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L75)
+[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L37)
 
 ___
 
@@ -287,4 +259,33 @@ TreeConfiguration.watermark
 
 #### Defined in
 
-[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/0d16ad4/src/types/options.ts#L49)
+[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L49)
+
+## Methods
+
+### templateSelectedText
+
+▸ **templateSelectedText**(`node`): `string`
+
+Template function which is called if the given node is selected.
+Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `node` | [`TreeNode`](tree_node.TreeNode.md) | The tree-node to return a text-value for. |
+
+#### Returns
+
+`string`
+
+Any string value which should be displayed. (Default: `node.label`)
+
+#### Inherited from
+
+TreeConfiguration.templateSelectedText
+
+#### Defined in
+
+[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L75)

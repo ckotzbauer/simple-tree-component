@@ -1,3 +1,5 @@
+[Simple Tree Component](README.md) / Exports
+
 # Simple Tree Component
 
 ## Table of contents

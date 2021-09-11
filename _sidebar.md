@@ -20,16 +20,16 @@
 
 - Types Documentation
   - Interfaces
-    - [SimpleTreeFn](interfaces/instance.simpletreefn.md)
-    - [TreeInstance](interfaces/instance.treeinstance.md)
-    - [TreeModeNameMap](interfaces/instance.treemodenamemap.md)
-    - [BaseOptions](interfaces/options.baseoptions.md)
-    - [Rect](interfaces/rects.rect.md)
-    - [Subscription](interfaces/subscription.subscription-1.md)
-    - [TreeNode](interfaces/tree_node.treenode.md)
+    - [SimpleTreeFn](instance.SimpleTreeFn.md)
+    - [TreeInstance](instance.TreeInstance.md)
+    - [TreeModeNameMap](instance.TreeModeNameMap.md)
+    - [BaseOptions](options.BaseOptions.md)
+    - [Rect](rects.Rect.md)
+    - [Subscription](subscription.Subscription.md)
+    - [TreeNode](tree_node.TreeNode.md)
   - Modules
-    - [instance](modules/instance.md)
-    - [options](modules/options.md)
-    - [rects](modules/rects.md)
-    - [subscription](modules/subscription.md)
-    - [tree](modules/tree_node.md)
+    - [instance](instance.md)
+    - [options](options.md)
+    - [rects](rects.md)
+    - [subscription](subscription.md)
+    - [tree](tree_node.md)
