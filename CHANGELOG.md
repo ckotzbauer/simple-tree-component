@@ -1,3 +1,19 @@
+## Version 1.1.1 (2021-09-11)
+
+### Bug fixes
+
+* [[`29320207`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/29320207)] - **fix**: change ui-state on api-selection of tree-view close #782
+
+### Dependency updates
+
+* [[`9b5825e9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9b5825e9)] - **deps**: update dependency typedoc to v0.21.9 (#715)
+* [[`f99dbb28`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f99dbb28)] - **deps**: update dependency @types&#x2F;node to v14.17.15 (#783)
+* [[`6a236c9b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6a236c9b)] - **deps**: update dependency jest to v27.1.1 (#784)
+* [[`f7f6c2f7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f7f6c2f7)] - **deps**: update dependency sass to v1.39.2 (#785)
+* [[`fe1c2545`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fe1c2545)] - **deps**: update dependency prettier to v2.4.0 (#786)
+* [[`8a0b2487`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8a0b2487)] - **deps**: update typescript-eslint monorepo to v4.31.0 (#787)
+
+
 ## Version 1.1.0 (2021-09-07)
 
 ### Features and improvements
