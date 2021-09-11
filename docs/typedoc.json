@@ -4,9 +4,9 @@
   "excludeExternals": true,
   "excludePrivate": true,
   "excludeProtected": true,
-  "hideBreadcrumbs": true,
-  "hidePageTitle": false,
-  "theme": "typedoc-docsify",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
   "exclude": "**/*+(.spec).ts",
   "entryPoints": [
     "../src/types"
