@@ -69,12 +69,6 @@ async function extractTitle(outDir: string, file: string, title: string, path: s
 
 async function removeRelativePaths(outDir: string, file: string, path: string): Promise<void> {
     let content = (await fs.promises.readFile(`${outDir}/${path}/${file}`)).toString();
-
     content = content.replace(/\.\.\/(modules|interfaces)\//g, "");
-
-    if (file === "instance.SimpleTreeFn.md") {
-        console.log(content);
-    }
-
     await fs.promises.writeFile(`${outDir}/${path}/${file}`, content, "utf8");
 }
