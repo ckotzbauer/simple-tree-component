@@ -31,6 +31,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
         } else {
             this.dataService.setSelected((value as TreeNode) || []);
             super.setSelected(this.dataService.getSelected()[0] || []);
+            this.tree.highlightNode(value as TreeNode);
         }
     }
 

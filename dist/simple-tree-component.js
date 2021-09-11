@@ -1114,6 +1114,7 @@
             else {
                 this.dataService.setSelected(value || []);
                 super.setSelected(this.dataService.getSelected()[0] || []);
+                this.tree.highlightNode(value);
             }
         }
         moveNode(value, direction) {
