@@ -3,5 +3,19 @@
     "github>ckotzbauer/renovate-config:default",
     "github>ckotzbauer/renovate-config:weekly"
   ],
-  "ignorePaths": ["demo"]
+  "ignorePaths": ["demo"],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "typedoc",
+        "typedoc-plugin-markdown"
+      ],
+      "reviewers": [
+        "ckotzbauer"
+      ],
+      "groupName": [
+        "Typedoc updates"
+      ]
+    }
+  ]
 }
