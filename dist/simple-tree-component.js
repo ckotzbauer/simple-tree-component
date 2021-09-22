@@ -453,7 +453,7 @@
             this.allNodes = this.displayedNodes;
         }
         normalizeNodes(nodes) {
-            return nodes.map((node) => {
+            return nodes.filter((node) => !!node).map((node) => {
                 const n = this.copyNode(node);
                 n.uid = this.generateUid(node.value);
                 this.mutateNode(n);
@@ -600,9 +600,10 @@
         filterNodes(nodes, parentMatch, searchTerm, searchMode) {
             const filtered = [];
             nodes.forEach((n) => {
+                var _a, _b;
                 const textOrParentMatch = searchMode === "OnlyMatches"
-                    ? n.label.toLowerCase().includes(searchTerm)
-                    : n.label.toLowerCase().includes(searchTerm) || parentMatch;
+                    ? (_a = n.label) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes(searchTerm)
+                    : ((_b = n.label) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes(searchTerm)) || parentMatch;
                 const childNodes = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
                 if (textOrParentMatch || childNodes.length > 0) {
                     const node = this.copyNode(n);

@@ -18,7 +18,7 @@ export class DataService {
     }
 
     private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
-        return nodes.map((node: TreeNode) => {
+        return nodes.filter((node: TreeNode) => !!node).map((node: TreeNode) => {
             const n = this.copyNode(node);
             n.uid = this.generateUid(node.value);
             this.mutateNode(n);
@@ -196,8 +196,8 @@ export class DataService {
         nodes.forEach((n) => {
             const textOrParentMatch =
                 searchMode === "OnlyMatches"
-                    ? n.label.toLowerCase().includes(searchTerm)
-                    : n.label.toLowerCase().includes(searchTerm) || parentMatch;
+                    ? n.label?.toLowerCase().includes(searchTerm)
+                    : n.label?.toLowerCase().includes(searchTerm) || parentMatch;
 
             const childNodes: TreeNode[] = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
 
