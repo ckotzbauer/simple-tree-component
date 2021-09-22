@@ -1,3 +1,24 @@
+## Version 1.1.2 (2021-09-22)
+
+### Bug fixes
+
+* [[`f73e5d9b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f73e5d9b)] - **fix**: added some nullchecks
+
+### Dependency updates
+
+* [[`64a3ac44`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/64a3ac44)] - **deps**: update dependency sass to v1.41.1 (#795)
+* [[`847a2cce`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/847a2cce)] - **deps**: update dependency @types&#x2F;node to v14.17.17 (#791)
+* [[`554f6462`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/554f6462)] - **deps**: update dependency prettier to v2.4.1 (#792)
+* [[`af3b73bb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/af3b73bb)] - **deps**: update typescript-eslint monorepo to v4.31.1 (#793)
+* [[`00aa7ca7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/00aa7ca7)] - **deps**: update dependency jest to v27.2.0 (#794)
+* [[`c31a4f96`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c31a4f96)] - **deps**: update dependency terser to v5.8.0 (#796)
+
+### Common changes
+
+* [[`ab4241a1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ab4241a1)] - **chore**: bundle typedoc updates
+* [[`d1891bde`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d1891bde)] - **chore**: Add FUNDING.yml
+
+
 ## Version 1.1.1 (2021-09-11)
 
 ### Bug fixes
