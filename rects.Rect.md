@@ -25,7 +25,7 @@ Height of the rectangle.
 
 #### Defined in
 
-[rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L20)
+[rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L20)
 
 ___
 
@@ -37,7 +37,7 @@ Difference from the base-point in x-direction.
 
 #### Defined in
 
-[rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L12)
+[rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L12)
 
 ___
 
@@ -49,7 +49,7 @@ Difference from the base-point in y-direction.
 
 #### Defined in
 
-[rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L8)
+[rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L8)
 
 ___
 
@@ -61,4 +61,4 @@ Width of the rectangle.
 
 #### Defined in
 
-[rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/rects.ts#L16)
+[rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L16)

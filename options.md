@@ -22,4 +22,4 @@ A partial representation of `BaseOptions`. All other values are set to its defau
 
 #### Defined in
 
-[options.ts:153](https://github.com/ckotzbauer/simple-tree-component/blob/f6a8cc7/src/types/options.ts#L153)
+[options.ts:153](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/options.ts#L153)
