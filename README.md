@@ -1,7 +1,7 @@
 # Simple Tree Component
 
 ![build](https://github.com/ckotzbauer/simple-tree-component/workflows/build/badge.svg)
-[![codecov](https://codecov.io/gh/ckotzbauer/simple-tree-component/branch/master/graph/badge.svg?token=CDK8TH9DLZ)](https://codecov.io/gh/ckotzbauer/simple-tree-component)
+[![codecov](https://codecov.io/gh/ckotzbauer/simple-tree-component/branch/main/graph/badge.svg?token=CDK8TH9DLZ)](https://codecov.io/gh/ckotzbauer/simple-tree-component)
 [![NPM](https://img.shields.io/npm/v/simple-tree-component.svg)](https://www.npmjs.com/package/simple-tree-component)
 
 > This pure JavaScript component comes without any dependencies and is targeted to modern browsers. Full TypeScript support is available.
@@ -45,11 +45,11 @@ instance.setReadOnly(true);
 You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-component).
 
 
-[Contributing](https://github.com/ckotzbauer/simple-tree-component/blob/master/.github/CONTRIBUTING.md)
+[Contributing](https://github.com/ckotzbauer/simple-tree-component/blob/main/.github/CONTRIBUTING.md)
 --------
-[License](https://github.com/ckotzbauer/simple-tree-component/blob/master/LICENSE)
+[License](https://github.com/ckotzbauer/simple-tree-component/blob/main/LICENSE)
 --------
-[Changelog](https://github.com/ckotzbauer/simple-tree-component/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/ckotzbauer/simple-tree-component/blob/main/CHANGELOG.md)
 --------
 ### Blog post
 https://dev.to/ckotzbauer/announcing-the-simple-tree-component-46nd

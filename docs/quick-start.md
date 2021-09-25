@@ -34,7 +34,7 @@ Add the CSS-Stylesheet and the JS-File to your `index.html`:
 
 Also check out the demo integration for:
 
-* [Aurelia 1](https://github.com/ckotzbauer/simple-tree-component/tree/master/demo)
+* [Aurelia 1](https://github.com/ckotzbauer/simple-tree-component/tree/main/demo)
 
 
 ### First usage
