@@ -25,6 +25,12 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
     }
 
+    protected isPrevented(node: TreeNode): boolean {
+        const evt: CustomEvent = new CustomEvent(constants.events.NodeSelected, { cancelable: true });
+        this.eventManager.publish(constants.events.NodeSelected, node, evt);
+        return evt.defaultPrevented;
+    }
+
     /////////////////////////////// PUBLIC API ///////////////////////////////
 
     public destroy(): void {
@@ -83,11 +89,11 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         }
     }
 
-    public subscribe(event: string, handler: (d: any, e: string) => void): Subscription {
+    public subscribe(event: string, handler: (payload: any, evt: string, e?: Event) => void): Subscription {
         return this.eventManager.subscribe(event, handler);
     }
 
-    public subscribeOnce(event: string, handler: (d: any, e: string) => void): Subscription {
+    public subscribeOnce(event: string, handler: (payload: any, evt: string, e?: Event) => void): Subscription {
         return this.eventManager.subscribeOnce(event, handler);
     }
 

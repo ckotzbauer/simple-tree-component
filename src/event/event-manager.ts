@@ -1,24 +1,24 @@
 import { Subscription } from "../types/subscription";
 
 export class EventManager {
-    public eventLookup: { [event: string]: ((d: unknown, e: string) => void)[] } = {};
+    public eventLookup: { [event: string]: ((d: unknown, evt: string, e?: Event) => void)[] } = {};
 
-    public publish<T>(event: string, data?: T): void {
+    public publish<T>(evt: string, data?: T, e?: Event): void {
         let subscribers;
         let i;
 
-        if (!event) {
+        if (!evt) {
             throw new Error("Event was invalid.");
         }
 
-        subscribers = this.eventLookup[event];
+        subscribers = this.eventLookup[evt];
         if (subscribers) {
             subscribers = subscribers.slice();
             i = subscribers.length;
 
             while (i--) {
                 try {
-                    subscribers[i](data, event);
+                    subscribers[i](data, evt, e);
                 } catch (e) {
                     console.error(e);
                 }
@@ -26,9 +26,9 @@ export class EventManager {
         }
     }
 
-    public subscribe<T>(event: string, callback: (d: T, e: string) => void): Subscription {
+    public subscribe<T>(event: string, callback: (d: T, evt: string, e?: Event) => void): Subscription {
         const handler = callback;
-        let subscribers: ((d: T, e: string) => void)[] = [];
+        let subscribers: ((d: T, evt: string, e?: Event) => void)[] = [];
 
         if (!event) {
             throw new Error("Event channel/type was invalid.");
@@ -47,10 +47,10 @@ export class EventManager {
         };
     }
 
-    public subscribeOnce<T>(event: string, callback: (d: T, e: string) => void): Subscription {
-        const sub = this.subscribe(event, (a: T, b: string) => {
+    public subscribeOnce<T>(event: string, callback: (d: T, evt: string, e?: Event) => void): Subscription {
+        const sub = this.subscribe(event, (a: T, b: string, e?: Event) => {
             sub.dispose();
-            return callback(a, b);
+            return callback(a, b, e);
         });
 
         return sub;

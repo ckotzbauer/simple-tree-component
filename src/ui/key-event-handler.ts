@@ -47,7 +47,7 @@ export class KeyEventHandler {
             }
         } else if ((e.code === "Enter" || e.code === "NumpadEnter") && flattedValues[targetIndex]) {
             const mutatedNode = this.dataService.toggleNodeSelected(flattedValues[targetIndex]);
-            this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+            this.eventManager.publish(constants.events._NodeSelected, mutatedNode, e);
         }
 
         if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
