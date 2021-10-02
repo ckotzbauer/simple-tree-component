@@ -65,7 +65,8 @@
         },
         events: {
             SelectionChanged: "selectionChanged",
-            NodeSelected: "_nodeSelected",
+            NodeSelected: "nodeSelected",
+            _NodeSelected: "_nodeSelected",
             EscapePressed: "_escapePressed",
             HoverChanged: "_hoverChanged",
             FilterChanged: "_filterChanged",
@@ -115,7 +116,7 @@
             }
             else if ((e.code === "Enter" || e.code === "NumpadEnter") && flattedValues[targetIndex]) {
                 const mutatedNode = this.dataService.toggleNodeSelected(flattedValues[targetIndex]);
-                this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+                this.eventManager.publish(constants.events._NodeSelected, mutatedNode, e);
             }
             if (targetIndex !== hoveredIndex && flattedValues[targetIndex]) {
                 this.hoveredNodeValue = flattedValues[targetIndex];
@@ -325,11 +326,11 @@
         }
         toggleNodeSelected(node) {
             const mutatedNode = this.dataService.toggleNodeSelected(node.value);
-            this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+            this.eventManager.publish(constants.events._NodeSelected, mutatedNode);
         }
         toggleCheckboxSelected(node) {
             const mutatedNode = this.dataService.toggleCheckboxSelected(node.value);
-            this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+            this.eventManager.publish(constants.events._NodeSelected, mutatedNode);
         }
         addChevronDiv(divElement, node, hasChildren) {
             const chevronDivContainer = document.createElement("div");
@@ -378,19 +379,19 @@
         constructor() {
             this.eventLookup = {};
         }
-        publish(event, data) {
+        publish(evt, data, e) {
             let subscribers;
             let i;
-            if (!event) {
+            if (!evt) {
                 throw new Error("Event was invalid.");
             }
-            subscribers = this.eventLookup[event];
+            subscribers = this.eventLookup[evt];
             if (subscribers) {
                 subscribers = subscribers.slice();
                 i = subscribers.length;
                 while (i--) {
                     try {
-                        subscribers[i](data, event);
+                        subscribers[i](data, evt, e);
                     }
                     catch (e) {
                         console.error(e);
@@ -416,9 +417,9 @@
             };
         }
         subscribeOnce(event, callback) {
-            const sub = this.subscribe(event, (a, b) => {
+            const sub = this.subscribe(event, (a, b, e) => {
                 sub.dispose();
-                return callback(a, b);
+                return callback(a, b, e);
             });
             return sub;
         }
@@ -777,6 +778,11 @@
             this.eventManager = new EventManager();
             this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
         }
+        isPrevented(node) {
+            const evt = new CustomEvent(constants.events.NodeSelected, { cancelable: true });
+            this.eventManager.publish(constants.events.NodeSelected, node, evt);
+            return evt.defaultPrevented;
+        }
         destroy() {
             this.tree.destroy();
             Array.from(this.element.children).forEach((e) => this.element.removeChild(e));
@@ -1015,6 +1021,9 @@
             }
         }
         nodeSelected(node) {
+            if (this.isPrevented(node)) {
+                return;
+            }
             this.dataService.setSelected(node);
             this.selected = this.dataService.getSelected()[0] || null;
             this.tree.highlightNode(node);
@@ -1076,6 +1085,9 @@
             }
         }
         nodeSelected(node) {
+            if (this.isPrevented(node)) {
+                return;
+            }
             const index = this.selected.findIndex((s) => s.value === node.value);
             if (index !== -1) {
                 node.selected = false;
@@ -1149,6 +1161,9 @@
         }
         nodeSelected(node) {
             var _a;
+            if (this.isPrevented(node)) {
+                return;
+            }
             if (this.options.checkboxes.active) {
                 this.selected = this.dataService.getSelected();
             }

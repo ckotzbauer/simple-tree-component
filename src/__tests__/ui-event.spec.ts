@@ -105,6 +105,30 @@ describe("simpleTree", () => {
             expect(selectedNode?.value).toEqual("node2");
         });
 
+        it("should not select node when nodeSelected-event is prevented (single select)", () => {
+            let called = false;
+            let selectedNode!: TreeNode | TreeNode[] | null;
+
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+            });
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+                called = true;
+                selectedNode = s;
+                e?.preventDefault();
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            clickTreeNode(tree.getNode("node1"));
+            const node: TreeNode = selectedNode as TreeNode;
+
+            expect(called).toBeTruthy();
+            expect(node).not.toBeNull();
+            expect(node.value).toEqual("node1");
+            expect(tree.getSelected()).toBeNull();
+        });
+
         it("should be thrown if multiple items are selected (multi select)", () => {
             let called = false;
             let selectedNodes!: TreeNode[];
@@ -131,6 +155,53 @@ describe("simpleTree", () => {
             expect(called).toBeTruthy();
             expect(selectedNodes.map((s) => s.value)).toContain("node2");
             expect(selectedNodes.map((s) => s.value)).toContain("node3");
+        });
+
+        it("should not select node when nodeSelected-event is prevented (multi select)", () => {
+            let called = false;
+            let selectedNode!: TreeNode | TreeNode[] | null;
+
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+            });
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+                called = true;
+                selectedNode = s;
+                e?.preventDefault();
+            });
+
+            openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
+            clickTreeNode(tree.getNode("node1"));
+            const node: TreeNode = selectedNode as TreeNode;
+
+            expect(called).toBeTruthy();
+            expect(node).not.toBeNull();
+            expect(node.value).toEqual("node1");
+            expect(tree.getSelected()).toEqual([]);
+        });
+
+        it("should not select node when nodeSelected-event is prevented (tree-view)", () => {
+            let called = false;
+            let selectedNode!: TreeNode | TreeNode[] | null;
+
+            const tree = createInstance<"tree">(treeCtx, "tree", {
+                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+            });
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+                called = true;
+                selectedNode = s;
+                e?.preventDefault();
+            });
+
+            clickTreeNode(tree.getNode("node1"));
+            const node: TreeNode = selectedNode as TreeNode;
+
+            expect(called).toBeTruthy();
+            expect(node).not.toBeNull();
+            expect(node.value).toEqual("node1");
+            expect(tree.getSelected()).toBeNull();
         });
     });
 });

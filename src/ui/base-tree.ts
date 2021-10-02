@@ -218,12 +218,12 @@ export class BaseTree {
 
     private toggleNodeSelected(node: TreeNode): void {
         const mutatedNode = this.dataService.toggleNodeSelected(node.value);
-        this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+        this.eventManager.publish(constants.events._NodeSelected, mutatedNode);
     }
 
     private toggleCheckboxSelected(node: TreeNode): void {
         const mutatedNode = this.dataService.toggleCheckboxSelected(node.value);
-        this.eventManager.publish(constants.events.NodeSelected, mutatedNode);
+        this.eventManager.publish(constants.events._NodeSelected, mutatedNode);
     }
 
     private addChevronDiv(divElement: HTMLDivElement, node: TreeNode, hasChildren: boolean): void {

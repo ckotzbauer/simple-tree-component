@@ -37,7 +37,8 @@ export default {
     },
     events: {
         SelectionChanged: "selectionChanged",
-        NodeSelected: "_nodeSelected",
+        NodeSelected: "nodeSelected",
+        _NodeSelected: "_nodeSelected",
         EscapePressed: "_escapePressed",
         HoverChanged: "_hoverChanged",
         FilterChanged: "_filterChanged",

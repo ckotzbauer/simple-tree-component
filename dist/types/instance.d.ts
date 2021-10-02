@@ -81,21 +81,23 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
      */
     hideEmphasizeIcon(): void;
     /**
-     * Add a listener to handle "selectionChanged" events.
+     * Add a listener to handle "selectionChanged" or "nodeSelected" events.
      *
-     * @param event "selectionChanged" event
+     * @param event "selectionChanged" or "nodeSelected" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
-    subscribe(event: "selectionChanged", handler: (d: TreeModeNameMap[K], e: string) => void): Subscription;
+    subscribe(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
+    subscribe(event: "nodeSelected", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
     /**
-     * Add a listener to handle "selectionChanged" events. When the event is emitted for the first time, the subscription ends automatically.
+     * Add a listener to handle "selectionChanged" or "nodeSelected" events. When the event is emitted for the first time, the subscription ends automatically.
      *
-     * @param event "selectionChanged" event
+     * @param event "selectionChanged" or "nodeSelected" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
-    subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], e: string) => void): Subscription;
+    subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
+    subscribeOnce(event: "nodeSelected", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
 }
 export declare type SimpleTree = TreeInstance<"singleSelectDropdown" | "multiSelectDropdown" | "tree">;
 export interface SimpleTreeFn {
