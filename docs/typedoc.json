@@ -9,6 +9,10 @@
   ],
   "exclude": "**/*+(.spec).ts",
   "entryPoints": [
-    "../src/types"
+    "../src/types/instance.ts",
+    "../src/types/options.ts",
+    "../src/types/rects.ts",
+    "../src/types/subscription.ts",
+    "../src/types/tree-node.ts"
   ]
 }
