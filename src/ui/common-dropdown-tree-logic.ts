@@ -19,7 +19,7 @@ export abstract class CommonDropdownTreeLogic<K extends keyof TreeModeNameMap> e
 
     constructor(element: Element, options: BaseOptions) {
         super(element, options);
-        this.eventManager.subscribe(constants.events.EscapePressed, () => this.closeDropdown());
+        this.subscriptions.push(this.eventManager.subscribe(constants.events.EscapePressed, () => this.closeDropdown()));
         this.boundClick = this.onClick.bind(this);
     }
 

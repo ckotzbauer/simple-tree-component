@@ -18,6 +18,8 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
     protected selected!: TreeModeNameMap[K];
     protected readOnly = false;
 
+    protected subscriptions: Subscription[] = [];
+
     constructor(protected element: Element, public options: BaseOptions) {
         this.eventManager = new EventManager();
         this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
@@ -30,6 +32,8 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         Array.from(this.element.children).forEach((e: Element) => this.element.removeChild(e));
 
         this.dataService.clear();
+        this.subscriptions.forEach((s: Subscription) => s.dispose());
+        this.subscriptions = [];
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -17,7 +17,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
         }
 
         this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
-        this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
+        this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n)));
         this.tree.renderContent();
         this.tree.activateKeyListener();
     }

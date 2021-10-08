@@ -15,7 +15,7 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
 
         this.dropdownHolder = createDropdownContainer();
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-        this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
+        this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n)));
         this.renderSelectField(this.rootContainer);
     }
 
@@ -32,6 +32,14 @@ export class MultiSelectDropdown extends CommonDropdownTreeLogic<"multiSelectDro
 
         if (readOnly && this.dropdownOpen) {
             this.closeDropdown();
+        }
+    }
+
+    public destroy(): void {
+        super.destroy();
+
+        if (this.pillboxContainer) {
+            this.pillboxContainer.innerHTML = "";
         }
     }
 

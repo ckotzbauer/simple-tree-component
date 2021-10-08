@@ -5,14 +5,17 @@ import constants from "./ui-constants";
 import { EventManager } from "../event/event-manager";
 import { KeyEventHandler } from "./key-event-handler";
 import { escape, escapeRegex } from "./utils";
+import { Subscription } from "typings";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
     private hoveredNode: string | null = null;
 
     private searchTextInput: HTMLInputElement | null = null;
+    private searchTextInputEvent: ((e: Event) => void) | null = null;
 
     private keyEventHandler: KeyEventHandler;
+    private subscription: Subscription | null;
 
     constructor(
         public element: HTMLElement,
@@ -22,11 +25,26 @@ export class BaseTree {
         private readOnly: boolean
     ) {
         this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
-        this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
+        this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
     }
 
     public destroy(): void {
         this.deactivateKeyListener();
+
+        if (this.subscription) {
+            this.subscription.dispose();
+            this.subscription = null;
+        }
+
+        const nodeContainer = this.getNodeContainer();
+        if (nodeContainer) {
+            nodeContainer.innerHTML = "";
+        }
+
+        if (this.searchTextInput && this.searchTextInputEvent) {
+            this.searchTextInput.removeEventListener("input", this.searchTextInputEvent);
+            this.searchTextInputEvent = null;
+        }
     }
 
     public activateKeyListener(): void {
@@ -81,12 +99,13 @@ export class BaseTree {
                 setTimeout(() => this.searchTextInput?.focus(), 0);
             }
 
-            this.searchTextInput.addEventListener("input", (e: Event) => {
+            this.searchTextInputEvent = (e: Event) => {
                 this.dataService.filter((e.target as HTMLInputElement).value, this.config.searchMode);
                 this.renderTree();
                 this.eventManager.publish(constants.events.FilterChanged);
-            });
+            };
 
+            this.searchTextInput.addEventListener("input", this.searchTextInputEvent);
             wrapperDiv.appendChild(this.searchTextInput);
             this.element.appendChild(wrapperDiv);
         }

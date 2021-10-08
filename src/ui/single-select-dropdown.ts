@@ -18,7 +18,7 @@ export class SingleSelectDropdown extends CommonDropdownTreeLogic<"singleSelectD
 
         this.dropdownHolder = createDropdownContainer();
         this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-        this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n));
+        this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n: TreeNode) => this.nodeSelected(n)));
         this.renderSelectField(this.rootContainer);
     }
 

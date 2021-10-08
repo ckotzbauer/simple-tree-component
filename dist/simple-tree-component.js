@@ -2,8 +2,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global['simple-tree-component'] = factory());
-}(this, (function () { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global["simple-tree-component"] = factory());
+})(this, (function () { 'use strict';
 
     const defaults$1 = {
         nodes: [],
@@ -173,11 +173,24 @@
             this.highlightedNode = null;
             this.hoveredNode = null;
             this.searchTextInput = null;
+            this.searchTextInputEvent = null;
             this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
-            this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
+            this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
         }
         destroy() {
             this.deactivateKeyListener();
+            if (this.subscription) {
+                this.subscription.dispose();
+                this.subscription = null;
+            }
+            const nodeContainer = this.getNodeContainer();
+            if (nodeContainer) {
+                nodeContainer.innerHTML = "";
+            }
+            if (this.searchTextInput && this.searchTextInputEvent) {
+                this.searchTextInput.removeEventListener("input", this.searchTextInputEvent);
+                this.searchTextInputEvent = null;
+            }
         }
         activateKeyListener() {
             this.keyEventHandler.initialize();
@@ -218,11 +231,12 @@
                 if (this.config.searchBarFocus) {
                     setTimeout(() => { var _a; return (_a = this.searchTextInput) === null || _a === void 0 ? void 0 : _a.focus(); }, 0);
                 }
-                this.searchTextInput.addEventListener("input", (e) => {
+                this.searchTextInputEvent = (e) => {
                     this.dataService.filter(e.target.value, this.config.searchMode);
                     this.renderTree();
                     this.eventManager.publish(constants.events.FilterChanged);
-                });
+                };
+                this.searchTextInput.addEventListener("input", this.searchTextInputEvent);
                 wrapperDiv.appendChild(this.searchTextInput);
                 this.element.appendChild(wrapperDiv);
             }
@@ -453,7 +467,9 @@
             this.allNodes = this.displayedNodes;
         }
         normalizeNodes(nodes) {
-            return nodes.filter((node) => !!node).map((node) => {
+            return nodes
+                .filter((node) => !!node)
+                .map((node) => {
                 const n = this.copyNode(node);
                 n.uid = this.generateUid(node.value);
                 this.mutateNode(n);
@@ -757,6 +773,7 @@
             this.element = element;
             this.options = options;
             this.readOnly = false;
+            this.subscriptions = [];
             this.eventManager = new EventManager();
             this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
         }
@@ -764,6 +781,8 @@
             this.tree.destroy();
             Array.from(this.element.children).forEach((e) => this.element.removeChild(e));
             this.dataService.clear();
+            this.subscriptions.forEach((s) => s.dispose());
+            this.subscriptions = [];
         }
         showEmphasizeIcon(_cssClass) {
             throw new Error("Feature not supported in this mode!");
@@ -847,7 +866,7 @@
         constructor(element, options) {
             super(element, options);
             this.dropdownOpen = false;
-            this.eventManager.subscribe(constants.events.EscapePressed, () => this.closeDropdown());
+            this.subscriptions.push(this.eventManager.subscribe(constants.events.EscapePressed, () => this.closeDropdown()));
             this.boundClick = this.onClick.bind(this);
         }
         toggleDropdown() {
@@ -958,7 +977,7 @@
             this.selected = this.dataService.getSelected()[0] || null;
             this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
+            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
@@ -1036,7 +1055,7 @@
             this.selected = this.dataService.getSelected();
             this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
+            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
@@ -1048,6 +1067,12 @@
             super.setReadOnly(readOnly);
             if (readOnly && this.dropdownOpen) {
                 this.closeDropdown();
+            }
+        }
+        destroy() {
+            super.destroy();
+            if (this.pillboxContainer) {
+                this.pillboxContainer.innerHTML = "";
             }
         }
         nodeSelected(node) {
@@ -1103,7 +1128,7 @@
                 this.selected = this.dataService.getSelected()[0] || null;
             }
             this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n));
+            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
             this.tree.renderContent();
             this.tree.activateKeyListener();
         }
@@ -1189,4 +1214,4 @@
 
     return simpleTree;
 
-})));
+}));
