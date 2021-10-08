@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / tree-node
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / tree-node
 
 # Module: tree-node
 

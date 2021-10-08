@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / [subscription](subscription.md) / Subscription
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / [subscription](subscription.md) / Subscription
 
 # Interface: Subscription
 
@@ -26,4 +26,4 @@ Ends the subscription. No further events (this subscription was linked to) where
 
 #### Defined in
 
-[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/subscription.ts#L8)
+[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/subscription.ts#L8)

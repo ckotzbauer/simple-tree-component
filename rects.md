@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / rects
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / rects
 
 # Module: rects
 
@@ -45,7 +45,7 @@ The calculated rectangle of the overlay position.
 
 #### Defined in
 
-[rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L40)
+[rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/rects.ts#L40)
 
 ___
 
@@ -70,4 +70,4 @@ See the docs of the `calculate` function for more details.
 
 #### Defined in
 
-[rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/rects.ts#L56)
+[rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/rects.ts#L56)

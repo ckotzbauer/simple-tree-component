@@ -1,4 +1,4 @@
-[Simple Tree Component](README.md) / Exports
+[Simple Tree Component](README.md) / Modules
 
 # Simple Tree Component
 

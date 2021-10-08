@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / subscription
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / subscription
 
 # Module: subscription
 

@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / instance
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / instance
 
 # Module: instance
 
@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[instance.ts:116](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/instance.ts#L116)
+[instance.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L118)

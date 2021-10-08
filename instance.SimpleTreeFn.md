@@ -1,4 +1,4 @@
-[Simple Tree Component](../README.md) / [Exports](../modules.md) / [instance](instance.md) / SimpleTreeFn
+[Simple Tree Component](../README.md) / [Modules](../modules.md) / [instance](instance.md) / SimpleTreeFn
 
 # Interface: SimpleTreeFn
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[instance.ts:119](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/instance.ts#L119)
+[instance.ts:121](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L121)
 
 ### SimpleTreeFn
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[instance.ts:120](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/instance.ts#L120)
+[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L122)
 
 ### SimpleTreeFn
 
@@ -82,7 +82,7 @@
 
 #### Defined in
 
-[instance.ts:121](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/instance.ts#L121)
+[instance.ts:123](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L123)
 
 ## Table of contents
 
@@ -98,4 +98,4 @@
 
 #### Defined in
 
-[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/5395451/src/types/instance.ts#L122)
+[instance.ts:124](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L124)
