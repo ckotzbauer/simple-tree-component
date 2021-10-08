@@ -42,11 +42,11 @@ async function generateTypesSidebar(outDir: string): Promise<string> {
     const modules = await fs.promises.readdir(`${outDir}/modules`);
     const moduleLines = modules.map(async (f) => `    - [${await extractTitle(outDir, f, "Module", "modules")}](${f})`);
 
-    interfaces.forEach(async x => {
+    interfaces.forEach(async (x) => {
         await removeRelativePaths(outDir, x, "interfaces");
         await fs.promises.rename(`${outDir}/interfaces/${x}`, `${outDir}/${x}`);
     });
-    modules.forEach(async x => {
+    modules.forEach(async (x) => {
         await removeRelativePaths(outDir, x, "modules");
         await fs.promises.rename(`${outDir}/modules/${x}`, `${outDir}/${x}`);
     });
