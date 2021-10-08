@@ -65,7 +65,7 @@
         },
         events: {
             SelectionChanged: "selectionChanged",
-            NodeSelected: "nodeSelected",
+            SelectionChanging: "selectionChanging",
             _NodeSelected: "_nodeSelected",
             EscapePressed: "_escapePressed",
             HoverChanged: "_hoverChanged",
@@ -779,8 +779,8 @@
             this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
         }
         isPrevented(node) {
-            const evt = new CustomEvent(constants.events.NodeSelected, { cancelable: true });
-            this.eventManager.publish(constants.events.NodeSelected, node, evt);
+            const evt = new CustomEvent(constants.events.SelectionChanging, { cancelable: true });
+            this.eventManager.publish(constants.events.SelectionChanging, node, evt);
             return evt.defaultPrevented;
         }
         destroy() {
@@ -983,7 +983,7 @@
             this.selected = this.dataService.getSelected()[0] || null;
             this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
+            this.subscriptions.push(this.subscribe(constants.events._NodeSelected, (n) => this.nodeSelected(n)));
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
@@ -1064,7 +1064,7 @@
             this.selected = this.dataService.getSelected();
             this.dropdownHolder = createDropdownContainer();
             this.tree = new BaseTree(this.dropdownHolder, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
+            this.subscriptions.push(this.subscribe(constants.events._NodeSelected, (n) => this.nodeSelected(n)));
             this.renderSelectField(this.rootContainer);
         }
         setSelected(value) {
@@ -1140,7 +1140,7 @@
                 this.selected = this.dataService.getSelected()[0] || null;
             }
             this.tree = new BaseTree(this.rootContainer, options, this.dataService, this.eventManager, this.readOnly);
-            this.subscriptions.push(this.subscribe(constants.events.NodeSelected, (n) => this.nodeSelected(n)));
+            this.subscriptions.push(this.subscribe(constants.events._NodeSelected, (n) => this.nodeSelected(n)));
             this.tree.renderContent();
             this.tree.activateKeyListener();
         }
