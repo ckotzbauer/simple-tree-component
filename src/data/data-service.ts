@@ -18,13 +18,15 @@ export class DataService {
     }
 
     private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
-        return nodes.filter((node: TreeNode) => !!node).map((node: TreeNode) => {
-            const n = this.copyNode(node);
-            n.uid = this.generateUid(node.value);
-            this.mutateNode(n);
-            n.children = this.normalizeNodes(n.children || []);
-            return n;
-        });
+        return nodes
+            .filter((node: TreeNode) => !!node)
+            .map((node: TreeNode) => {
+                const n = this.copyNode(node);
+                n.uid = this.generateUid(node.value);
+                this.mutateNode(n);
+                n.children = this.normalizeNodes(n.children || []);
+                return n;
+            });
     }
 
     private mutateNode(node: TreeNode): void {
