@@ -459,10 +459,10 @@
 
     class DataService {
         constructor(displayedNodes = [], checkboxesActive = false, checkboxesRecursive = false) {
-            this.displayedNodes = displayedNodes;
             this.checkboxesActive = checkboxesActive;
             this.checkboxesRecursive = checkboxesRecursive;
             this.allNodes = [];
+            this.displayedNodes = [];
             this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
             this.displayedNodes = this.normalizeNodes(displayedNodes);
             this.allNodes = this.displayedNodes;

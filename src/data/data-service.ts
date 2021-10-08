@@ -5,10 +5,11 @@ import { SearchMode } from "types/options";
 
 export class DataService {
     private allNodes: TreeNode[] = [];
+    public displayedNodes: TreeNode[] = [];
     private treeInstanceId: number;
 
     constructor(
-        public displayedNodes: TreeNode[] = [],
+        displayedNodes: Partial<TreeNode>[] = [],
         private checkboxesActive: boolean = false,
         private checkboxesRecursive: boolean = false
     ) {
@@ -17,12 +18,12 @@ export class DataService {
         this.allNodes = this.displayedNodes;
     }
 
-    private normalizeNodes(nodes: TreeNode[]): TreeNode[] {
+    private normalizeNodes(nodes: Partial<TreeNode>[]): TreeNode[] {
         return nodes
-            .filter((node: TreeNode) => !!node)
-            .map((node: TreeNode) => {
+            .filter((node: Partial<TreeNode>) => !!node)
+            .map((node: Partial<TreeNode>) => {
                 const n = this.copyNode(node);
-                n.uid = this.generateUid(node.value);
+                n.uid = this.generateUid(node.value as string);
                 this.mutateNode(n);
                 n.children = this.normalizeNodes(n.children || []);
                 return n;
@@ -35,7 +36,7 @@ export class DataService {
         }
     }
 
-    private copyNode(node: TreeNode): TreeNode {
+    private copyNode(node: Partial<TreeNode>): TreeNode {
         return {
             ...defaults,
             ...node,

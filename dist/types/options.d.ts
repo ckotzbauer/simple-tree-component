@@ -102,7 +102,7 @@ export interface BaseOptions extends TreeConfiguration {
      * All tree-node data-objects to start with. Do not change this array afterwards.
      * (Default: `[]`)
      */
-    nodes: TreeNode[];
+    nodes: Partial<TreeNode>[];
 }
 /**
  * @ignore
