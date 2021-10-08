@@ -26,8 +26,8 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
     }
 
     protected isPrevented(node: TreeNode): boolean {
-        const evt: CustomEvent = new CustomEvent(constants.events.NodeSelected, { cancelable: true });
-        this.eventManager.publish(constants.events.NodeSelected, node, evt);
+        const evt: CustomEvent = new CustomEvent(constants.events.SelectionChanging, { cancelable: true });
+        this.eventManager.publish(constants.events.SelectionChanging, node, evt);
         return evt.defaultPrevented;
     }
 

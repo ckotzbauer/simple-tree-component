@@ -22,6 +22,6 @@ tree.subscribeOnce("selectionChanged", (selected: TreeNode | TreeNode[], eventNa
 });
 ```
 
-Currently the only official events are `selectionChanged` and `nodeSelected`. The optional third event-object parameter is only used for the `nodeSelected`
+Currently the only official events are `selectionChanged` and `selectionChanging`. The optional third event-object parameter is only used for the `selectionChanging`
 event to allow a event-cancellation with `e.preventDefault()`. This will abort the current event and avoid any changes on the data-layer.
 There are numerous internal events (prefixed with `_`). Do not use them directly.

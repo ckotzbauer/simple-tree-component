@@ -105,7 +105,7 @@ describe("simpleTree", () => {
             expect(selectedNode?.value).toEqual("node2");
         });
 
-        it("should not select node when nodeSelected-event is prevented (single select)", () => {
+        it("should not select node when selectionChanging-event is prevented (single select)", () => {
             let called = false;
             let selectedNode!: TreeNode | TreeNode[] | null;
 
@@ -113,7 +113,7 @@ describe("simpleTree", () => {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+            tree.subscribe("selectionChanging", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
                 called = true;
                 selectedNode = s;
                 e?.preventDefault();
@@ -157,7 +157,7 @@ describe("simpleTree", () => {
             expect(selectedNodes.map((s) => s.value)).toContain("node3");
         });
 
-        it("should not select node when nodeSelected-event is prevented (multi select)", () => {
+        it("should not select node when selectionChanging-event is prevented (multi select)", () => {
             let called = false;
             let selectedNode!: TreeNode | TreeNode[] | null;
 
@@ -165,7 +165,7 @@ describe("simpleTree", () => {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+            tree.subscribe("selectionChanging", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
                 called = true;
                 selectedNode = s;
                 e?.preventDefault();
@@ -181,7 +181,7 @@ describe("simpleTree", () => {
             expect(tree.getSelected()).toEqual([]);
         });
 
-        it("should not select node when nodeSelected-event is prevented (tree-view)", () => {
+        it("should not select node when selectionChanging-event is prevented (tree-view)", () => {
             let called = false;
             let selectedNode!: TreeNode | TreeNode[] | null;
 
@@ -189,7 +189,7 @@ describe("simpleTree", () => {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            tree.subscribe("nodeSelected", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
+            tree.subscribe("selectionChanging", (s: TreeNode | TreeNode[] | null, _evt: string, e?: Event) => {
                 called = true;
                 selectedNode = s;
                 e?.preventDefault();
