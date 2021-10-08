@@ -1,3 +1,59 @@
+## Version 1.2.0 (2021-10-08)
+
+### Features and improvements
+
+* [[`9d30139b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9d30139b)] - **feat**: add cancellable selectionChanging event
+
+### Bug fixes
+
+* [[`41e2cbf2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/41e2cbf2)] - **fix**: allow Partial&lt;TreeNode&gt; objects on initialization
+* [[`be092346`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/be092346)] - **fix**: use sass:math module
+* [[`983619f9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/983619f9)] - **fix**: destroy references to prevent memory leaks
+
+### Cleanup and refactoring
+
+* [[`06e4291c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/06e4291c)] - **cleanup**: use new math.div function in sass
+* [[`849c8e0f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/849c8e0f)] - **cleanup**: renamed event to selectionChanging
+* [[`be6478bc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/be6478bc)] - **cleanup**: format code
+* [[`0d4053eb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0d4053eb)] - **cleanup**: format code
+
+### Documentation
+
+* [[`7a7ac40e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7a7ac40e)] - **doc**: add all types files
+* [[`9a05fe68`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a05fe68)] - **doc**: several clarifications close #789
+
+### Dependency updates
+
+* [[`1b8a405b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1b8a405b)] - **deps**: update typedoc updates
+* [[`b58a580c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b58a580c)] - **deps**: update dependency @types&#x2F;node to v14.17.20 (#814)
+* [[`2a9415b7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2a9415b7)] - **deps**: update dependency jest to v27.2.4 (#815)
+* [[`1e9f7c3e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1e9f7c3e)] - **deps**: update dependency rollup to v2.58.0 (#816)
+* [[`25525d88`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/25525d88)] - **deps**: update typescript-eslint monorepo to v4.32.0 (#817)
+* [[`27b65364`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/27b65364)] - **deps**: bump actions&#x2F;setup-node from 2.4.0 to 2.4.1 (#813)
+* [[`87288ffe`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/87288ffe)] - **deps**: bump aurelia-path from 1.1.5 to 1.1.7 in &#x2F;demo (#812)
+* [[`505fb4c4`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/505fb4c4)] - **deps**: update dependency autoprefixer to v10.3.6 (#811)
+* [[`ccf16e0e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ccf16e0e)] - **deps**: update dependency @types&#x2F;node to v14.17.19 (#809)
+* [[`ff01219b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ff01219b)] - **deps**: update dependency jest to v27.2.2 (#810)
+* [[`a3241775`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a3241775)] - **deps**: update dependency postcss to v8.3.8 (#808)
+* [[`1fb209dc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1fb209dc)] - **deps**: update dependency sass to v1.42.1 (#806)
+* [[`fb7475ac`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fb7475ac)] - **deps**: update dependency autoprefixer to v10.3.5 (#801)
+* [[`44234bd3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/44234bd3)] - **deps**: update dependency @types&#x2F;jest to v27.0.2 (#799)
+* [[`1dd90208`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1dd90208)] - **deps**: update dependency @types&#x2F;node to v14.17.18 (#800)
+* [[`da18be56`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/da18be56)] - **deps**: update dependency jest to v27.2.1 (#802)
+* [[`9fd076d7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9fd076d7)] - **deps**: update dependency postcss to v8.3.7 (#803)
+* [[`48d4b87c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/48d4b87c)] - **deps**: update typescript-eslint monorepo to v4.31.2 (#804)
+* [[`2c2ae8f9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2c2ae8f9)] - **deps**: update dependency rollup to v2.57.0 (#805)
+* [[`4c024e31`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4c024e31)] - **deps**: update dependency terser to v5.9.0 (#807)
+
+### Common changes
+
+* [[`a6cc439a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a6cc439a)] - **chore**: rebuild
+* [[`0b728284`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0b728284)] - **chore**: updated package-lock.json
+* [[`6470c08a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6470c08a)] - **chore**: use label-command-action@v1
+* [[`a33cd4ef`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a33cd4ef)] - **chore**: use main as default branch
+* [[`9a872458`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a872458)] - **chore**: add kind&#x2F;question label
+
+
 ## Version 1.1.2 (2021-09-22)
 
 ### Bug fixes
