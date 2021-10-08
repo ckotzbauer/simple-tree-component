@@ -134,7 +134,7 @@
                 @include text-overflow();
                 display: inline-block;
                 border: $base-border;
-                padding: $base-size / 4;
+                padding: math.div($base-size, 4);
                 margin-left: $base-size * 0.5;
                 margin-top: $base-size * 0.5;
                 cursor: default;
