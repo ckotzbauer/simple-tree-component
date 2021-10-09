@@ -54,7 +54,7 @@
     "@types/sass": "1.16.1",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
-    "autoprefixer": "10.3.6",
+    "autoprefixer": "10.3.7",
     "chokidar": "3.5.2",
     "codecov": "3.8.3",
     "docsify-cli": "4.4.3",
