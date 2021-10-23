@@ -1,7 +1,7 @@
 /**
- * The data representation of each node-object in the tree.
+ * The data representation of each node-object in the tree at initialization-time.
  */
-export interface TreeNode {
+export interface InitTreeNode {
     /**
      * The displayed text of this tree-node.
      */
@@ -10,6 +10,29 @@ export interface TreeNode {
      * The data-value of this tree-node. It has to be unique.
      */
     value: string;
+    /**
+     * Indicates if this node is currently selected and included in the component-value ({@link Instance.getSelected()}).
+     */
+    selected?: boolean;
+    /**
+     * Indicates if this node is selectable. Mouse-clicks on the node are avoided if `false`.
+     * Nodes that are not selectable are also ignored when setting via API.
+     * In Recursive Checkbox Mode this flag has no effect since all nodes are selectable there.
+     */
+    selectable?: boolean;
+    /**
+     * Recursive array of child `TreeNode` objects.
+     */
+    children?: InitTreeNode[];
+    /**
+     * Any additional property, which is available (the component-logic will respect them).
+     */
+    [key: string]: any;
+}
+/**
+ * The data representation of each node-object in the tree.
+ */
+export interface TreeNode extends InitTreeNode {
     /**
      * Indicates if this node is currently selected and included in the component-value ({@link Instance.getSelected()}).
      */
@@ -36,10 +59,6 @@ export interface TreeNode {
      * The unique id-value used internally.
      */
     uid: string;
-    /**
-     * Any additional property, which is available (the component-logic will respect them).
-     */
-    [key: string]: any;
 }
 /**
  * @ignore

@@ -1,6 +1,6 @@
 import { DataService } from "../data/data-service";
 import { createTreeNode, countTreeNodes } from "../test-utils";
-import { TreeNode } from "../types/tree-node";
+import { InitTreeNode, TreeNode } from "../types/tree-node";
 
 let dataService: DataService;
 
@@ -23,7 +23,7 @@ describe("simpleTree", () => {
 
             expect(dataService.getNode("parent4")).not.toBeNull();
             expect(dataService.getAllNodes().length).toEqual(4);
-            expect(dataService.getAllNodes()[3]).toEqual(treeNode);
+            expect(dataService.getAllNodes()[3]).toEqual(expect.objectContaining(treeNode));
         });
 
         it("addNode - should add node to specified parent by reference", () => {
@@ -33,7 +33,7 @@ describe("simpleTree", () => {
 
             expect(dataService.getNode("parent3Child1")).not.toBeNull();
             expect(dataService.getNode("parent3")?.children.length).toEqual(1);
-            expect(dataService.getNode("parent3")?.children[0]).toEqual(treeNode);
+            expect(dataService.getNode("parent3")?.children[0]).toEqual(expect.objectContaining(treeNode));
         });
 
         it("addNode - should add node to specified parent by string value", () => {
@@ -42,7 +42,7 @@ describe("simpleTree", () => {
 
             expect(dataService.getNode("parent3Child1")).not.toBeNull();
             expect(dataService.getNode("parent3")?.children.length).toEqual(1);
-            expect(dataService.getNode("parent3")?.children[0]).toEqual(treeNode);
+            expect(dataService.getNode("parent3")?.children[0]).toEqual(expect.objectContaining(treeNode));
         });
 
         it("addNode - should not allow adding duplicate node", () => {
@@ -57,6 +57,14 @@ describe("simpleTree", () => {
             treeNode.selected = true;
             dataService.addNode(treeNode);
             expect(dataService.getNode("parent4")?.selected).toBeFalsy();
+        });
+
+        it("addNode - node-object is normalized", () => {
+            const treeNode = createTreeNode("Parent 4", "parent4");
+            dataService.addNode(treeNode);
+
+            expect(dataService.getNode("parent4")).not.toBeNull();
+            expect(dataService.getNode("parent4")?.uid).not.toBe("");
         });
 
         it("deleteNode - should remove specified root node from tree", () => {
@@ -251,7 +259,7 @@ describe("simpleTree", () => {
 
 // prettier-ignore
 function init(): void {
-    const treeNodes: TreeNode[] = [
+    const treeNodes: InitTreeNode[] = [
         createTreeNode("Parent 1", "parent1", [
             createTreeNode("Parent 1 Child 1", "parent1Child1"),
             createTreeNode("Parent 1 Child 2", "parent1Child2"),
