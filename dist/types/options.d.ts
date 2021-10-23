@@ -1,4 +1,4 @@
-import { TreeNode } from "./tree-node";
+import { InitTreeNode, TreeNode } from "./tree-node";
 /**
  * @ignore
  */
@@ -102,7 +102,7 @@ export interface BaseOptions extends TreeConfiguration {
      * All tree-node data-objects to start with. Do not change this array afterwards.
      * (Default: `[]`)
      */
-    nodes: Partial<TreeNode>[];
+    nodes: InitTreeNode[];
 }
 /**
  * @ignore

@@ -6,7 +6,7 @@ import { DataService } from "../data/data-service";
 import constants from "./ui-constants";
 import { BaseTree } from "./base-tree";
 import { BaseOptions } from "../types/options";
-import { TreeNode } from "../types/tree-node";
+import { InitTreeNode, TreeNode } from "../types/tree-node";
 
 export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implements TreeInstance<K> {
     protected eventManager: EventManager;
@@ -68,7 +68,7 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         return this.dataService.getNode(value);
     }
 
-    public addNode(node: TreeNode, parent: TreeNode | string | null = null): void {
+    public addNode(node: InitTreeNode, parent: TreeNode | string | null = null): void {
         this.dataService.addNode(node, parent);
     }
 

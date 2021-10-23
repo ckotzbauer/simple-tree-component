@@ -1,7 +1,7 @@
 import simpleTree from "./index";
 import { TreeInstance, TreeModeNameMap } from "./types/instance";
 import { Options } from "./types/options";
-import { TreeNode } from "./types/tree-node";
+import { InitTreeNode, TreeNode } from "./types/tree-node";
 import { DataService } from "./data/data-service";
 import constants from "./ui/ui-constants";
 
@@ -65,19 +65,16 @@ export function createInstance<K extends keyof TreeModeNameMap>(
 export function createTreeNode(
     label: string,
     value: string | null | undefined,
-    children: TreeNode[] = [],
+    children: InitTreeNode[] = [],
     selected = false,
     selectable = true
-): TreeNode {
+): InitTreeNode {
     return {
         label: label,
         value: value as string,
         selected,
         selectable,
-        children: children,
-        collapsed: false,
-        hidden: false,
-        uid: "",
+        children,
     };
 }
 

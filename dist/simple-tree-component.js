@@ -470,13 +470,14 @@
         normalizeNodes(nodes) {
             return nodes
                 .filter((node) => !!node)
-                .map((node) => {
-                const n = this.copyNode(node);
-                n.uid = this.generateUid(node.value);
-                this.mutateNode(n);
-                n.children = this.normalizeNodes(n.children || []);
-                return n;
-            });
+                .map((node) => this.normalizeNode(node));
+        }
+        normalizeNode(node) {
+            const n = this.copyNode(node);
+            n.uid = this.generateUid(node.value);
+            this.mutateNode(n);
+            n.children = this.normalizeNodes(n.children || []);
+            return n;
         }
         mutateNode(node) {
             if (!node.selectable && node.selected) {
@@ -518,18 +519,18 @@
             if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
                 throw new Error("node value is invalid or node with value already exists!");
             }
-            this.mutateNode(node);
+            const n = this.normalizeNode(node);
             if (parent && this.isTreeNode(parent)) {
-                parent.children.push(node);
+                parent.children.push(n);
             }
             else if (typeof parent === "string") {
                 const parentNode = this.getNodeInternal(this.allNodes, parent);
                 if (this.isTreeNode(parentNode)) {
-                    parentNode.children.push(node);
+                    parentNode.children.push(n);
                 }
             }
             else {
-                this.allNodes.push(node);
+                this.allNodes.push(n);
             }
         }
         moveNode(node, direction) {

@@ -1,5 +1,5 @@
 import { Options, BaseOptions } from "./options";
-import { TreeNode } from "./tree-node";
+import { InitTreeNode, TreeNode } from "./tree-node";
 import { Subscription } from "../types/subscription";
 
 export interface TreeModeNameMap {
@@ -36,7 +36,7 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
      * @param node to add.
      * @param parent of the new tree-node or null
      */
-    addNode(node: TreeNode, parent: TreeNode | string | null): void;
+    addNode(node: InitTreeNode, parent: TreeNode | string | null): void;
 
     /**
      * Deletes the given tree-node from the tree.

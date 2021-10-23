@@ -1,6 +1,6 @@
 import { createTreeNode } from "../test-utils";
 import { ValidationResult, validateTreeNodeArray, isDuplicateNodeValue, isTreeNodeValid } from "../validation/validation";
-import { TreeNode } from "../types/tree-node";
+import { InitTreeNode } from "../types/tree-node";
 
 describe("simpleTree", () => {
     describe("validation", () => {
@@ -15,7 +15,7 @@ describe("simpleTree", () => {
         });
 
         it("validateTreeNodeArray - should allow correct structure", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Test Node 1", "testNode1"),
                 createTreeNode("Test Node 2", "testNode2"),
                 createTreeNode("Test Node 3", "testNode3"),
@@ -27,7 +27,7 @@ describe("simpleTree", () => {
         });
 
         it("validateTreeNodeArray - should not allow null or undefined node values", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Test Node 1", "testNode1"),
                 createTreeNode("Test Node 2", null),
                 createTreeNode("Test Node 3", undefined),
@@ -39,7 +39,7 @@ describe("simpleTree", () => {
         });
 
         it("validateTreeNodeArray - should not allow duplicate values on same layer", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Test Node 1", "duplicateValue"),
                 createTreeNode("Test Node 2", "testNode2"),
                 createTreeNode("Test Node 3", "duplicateValue"),
@@ -51,7 +51,7 @@ describe("simpleTree", () => {
         });
 
         it("validateTreeNodeArray - should not allow duplicate values on different layers", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Parent 1", "parent1", [
                     createTreeNode("Parent 1 Child 1", "parent1Child1"),
                     createTreeNode("Parent 1 Child 2", "duplicateValue"),
@@ -71,7 +71,7 @@ describe("simpleTree", () => {
 
         // prettier-ignore
         it("validateTreeNodeArray - should find and return multiple errors", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Parent 1", "parent1", [
                     createTreeNode("Parent 1 Child 1", "parent1Child1"),
                     createTreeNode("Parent 1 Child 2", "duplicateValue1"),
@@ -104,7 +104,7 @@ describe("simpleTree", () => {
         });
 
         it("isDuplicateNodeValue- should find duplicate value in tree", () => {
-            const treeNodes: TreeNode[] = [
+            const treeNodes: InitTreeNode[] = [
                 createTreeNode("Parent 1", "parent1", [
                     createTreeNode("Parent 1 Child 1", "parent1Child1"),
                     createTreeNode("Parent 1 Child 2", "parent1Child2"),

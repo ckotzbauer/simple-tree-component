@@ -1,6 +1,6 @@
-import { TreeNode } from "../types/tree-node";
+import { InitTreeNode } from "../types/tree-node";
 
-export function validateTreeNodeArray(treeNodes: TreeNode[]): ValidationResult {
+export function validateTreeNodeArray(treeNodes: InitTreeNode[]): ValidationResult {
     if (treeNodes === null || treeNodes === undefined) {
         return {
             success: false,
@@ -13,12 +13,12 @@ export function validateTreeNodeArray(treeNodes: TreeNode[]): ValidationResult {
 
     return {
         success: errors.length === 0,
-        errors: errors,
+        errors,
     };
 }
 
-function getTreeNodeValues(treeNodes: TreeNode[], values: string[], errors: ValidationError[]): void {
-    treeNodes.forEach((node: TreeNode) => {
+function getTreeNodeValues(treeNodes: InitTreeNode[], values: string[], errors: ValidationError[]): void {
+    treeNodes.forEach((node: InitTreeNode) => {
         if (!isTreeNodeValid(node)) {
             errors.push(createValidationError(node, "the given node list contains an invalid value"));
         }
@@ -35,11 +35,11 @@ function getTreeNodeValues(treeNodes: TreeNode[], values: string[], errors: Vali
     });
 }
 
-export function isTreeNodeValid(treeNode: TreeNode): boolean {
+export function isTreeNodeValid(treeNode: InitTreeNode): boolean {
     return !!treeNode && !!treeNode.value;
 }
 
-export function isDuplicateNodeValue(treeNodes: TreeNode[], value: string): boolean {
+export function isDuplicateNodeValue(treeNodes: InitTreeNode[], value: string): boolean {
     let duplicate = false;
 
     for (const node of treeNodes) {
@@ -60,10 +60,10 @@ export function isDuplicateNodeValue(treeNodes: TreeNode[], value: string): bool
     return duplicate;
 }
 
-function createValidationError(node: TreeNode | null, message: string): ValidationError {
+function createValidationError(node: InitTreeNode | null, message: string): ValidationError {
     return {
-        node: node,
-        message: message,
+        node,
+        message,
     };
 }
 
@@ -73,6 +73,6 @@ export interface ValidationResult {
 }
 
 export interface ValidationError {
-    node: TreeNode | null;
+    node: InitTreeNode | null;
     message: string;
 }

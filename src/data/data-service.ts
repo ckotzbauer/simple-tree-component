@@ -1,4 +1,4 @@
-import { TreeNode, defaults } from "../types/tree-node";
+import { TreeNode, defaults, InitTreeNode } from "../types/tree-node";
 import { isDuplicateNodeValue, isTreeNodeValid } from "../validation/validation";
 import constants from "../ui/ui-constants";
 import { SearchMode } from "types/options";
@@ -9,7 +9,7 @@ export class DataService {
     private treeInstanceId: number;
 
     constructor(
-        displayedNodes: Partial<TreeNode>[] = [],
+        displayedNodes: InitTreeNode[] = [],
         private checkboxesActive: boolean = false,
         private checkboxesRecursive: boolean = false
     ) {
@@ -18,29 +18,29 @@ export class DataService {
         this.allNodes = this.displayedNodes;
     }
 
-    private normalizeNodes(nodes: Partial<TreeNode>[]): TreeNode[] {
-        return nodes
-            .filter((node: Partial<TreeNode>) => !!node)
-            .map((node: Partial<TreeNode>) => {
-                const n = this.copyNode(node);
-                n.uid = this.generateUid(node.value as string);
-                this.mutateNode(n);
-                n.children = this.normalizeNodes(n.children || []);
-                return n;
-            });
+    private normalizeNodes(nodes: InitTreeNode[]): TreeNode[] {
+        return nodes.filter((node: InitTreeNode) => !!node).map((node: InitTreeNode) => this.normalizeNode(node));
     }
 
-    private mutateNode(node: TreeNode): void {
+    private normalizeNode(node: InitTreeNode): TreeNode {
+        const n = this.copyNode(node);
+        n.uid = this.generateUid(node.value as string);
+        this.mutateNode(n);
+        n.children = this.normalizeNodes(n.children || []);
+        return n;
+    }
+
+    private mutateNode(node: InitTreeNode): void {
         if (!node.selectable && node.selected) {
             node.selected = false;
         }
     }
 
-    private copyNode(node: Partial<TreeNode>): TreeNode {
+    private copyNode(node: InitTreeNode): TreeNode {
         return {
             ...defaults,
             ...node,
-        };
+        } as TreeNode;
     }
 
     public clear(): void {
@@ -81,23 +81,23 @@ export class DataService {
         return null;
     }
 
-    public addNode(node: TreeNode, parent: TreeNode | string | null = null): void {
+    public addNode(node: InitTreeNode, parent: TreeNode | string | null = null): void {
         if (!isTreeNodeValid(node) || isDuplicateNodeValue(this.allNodes, node.value)) {
             throw new Error("node value is invalid or node with value already exists!");
         }
 
-        this.mutateNode(node);
+        const n: TreeNode = this.normalizeNode(node);
 
         if (parent && this.isTreeNode(parent)) {
-            parent.children.push(node);
+            parent.children.push(n);
         } else if (typeof parent === "string") {
             const parentNode: TreeNode | null = this.getNodeInternal(this.allNodes, parent);
 
             if (this.isTreeNode(parentNode)) {
-                parentNode.children.push(node);
+                parentNode.children.push(n);
             }
         } else {
-            this.allNodes.push(node);
+            this.allNodes.push(n);
         }
     }
 
