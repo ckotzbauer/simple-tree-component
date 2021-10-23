@@ -20,10 +20,11 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Type check
-        run: npm run test:typecheck
       - name: Test
-        run: npm run codecov -- -t ${{ secrets.CODECOV_KEY }}
+        run: npm run test
+      - uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage/lcov.info
 
   docs:
     runs-on: ubuntu-latest
