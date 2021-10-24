@@ -276,6 +276,9 @@
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
                 lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
                 lineWrapperDiv.addEventListener("mouseout", () => this.hoverNode(null));
+                if (node.cssClass) {
+                    lineWrapperDiv.classList.add(node.cssClass);
+                }
                 if (hasChildren) {
                     lineWrapperDiv.classList.add(constants.classNames.SimpleTreeParentNode);
                 }
@@ -440,6 +443,7 @@
         collapsed: false,
         hidden: false,
         uid: "",
+        cssClass: "",
     };
 
     function isTreeNodeValid(treeNode) {

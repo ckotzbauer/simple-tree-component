@@ -154,6 +154,10 @@ export class BaseTree {
             lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
             lineWrapperDiv.addEventListener("mouseout", () => this.hoverNode(null));
 
+            if (node.cssClass) {
+                lineWrapperDiv.classList.add(node.cssClass);
+            }
+
             if (hasChildren) {
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeParentNode);
             }

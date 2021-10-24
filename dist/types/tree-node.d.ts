@@ -25,6 +25,11 @@ export interface InitTreeNode {
      */
     children?: InitTreeNode[];
     /**
+     * Custom css-class added to the line-wrapper element.
+     * (Default: `""`)
+     */
+    cssClass?: string;
+    /**
      * Any additional property, which is available (the component-logic will respect them).
      */
     [key: string]: any;

@@ -67,7 +67,8 @@ export function createTreeNode(
     value: string | null | undefined,
     children: InitTreeNode[] = [],
     selected = false,
-    selectable = true
+    selectable = true,
+    cssClass = ""
 ): InitTreeNode {
     return {
         label: label,
@@ -75,6 +76,7 @@ export function createTreeNode(
         selected,
         selectable,
         children,
+        cssClass,
     };
 }
 
