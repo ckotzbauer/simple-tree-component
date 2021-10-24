@@ -1,5 +1,5 @@
 import { DataService } from "../data/data-service";
-import { createTreeNode, countTreeNodes } from "../test-utils";
+import { createTreeNode, countTreeNodes, getDisplayedNodes } from "../test-utils";
 import { InitTreeNode, TreeNode } from "../types/tree-node";
 
 let dataService: DataService;
@@ -109,69 +109,79 @@ describe("simpleTree", () => {
         it("filter - should filter nodes case insensitive based on given search term (OnlyMatches)", () => {
             // Filters out Parent 3
             dataService.filter("child", "OnlyMatches");
-            expect(dataService.displayedNodes.length).toEqual(2);
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(7);
+            let displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(displayedNodes.length).toEqual(2);
+            expect(countTreeNodes(displayedNodes)).toEqual(7);
 
             // Only find results within tree of Parent 2
             dataService.filter("sub", "OnlyMatches");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
-            expect(dataService.displayedNodes.length).toEqual(1);
-            expect(dataService.displayedNodes[0].value).toEqual("parent2");
-            expect(dataService.displayedNodes[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
-            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(3);
+            expect(displayedNodes.length).toEqual(1);
+            expect(displayedNodes[0].value).toEqual("parent2");
+            expect(displayedNodes[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(displayedNodes[0].children[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
 
             // Check specific node
             dataService.filter("Parent 2 Child 2", "OnlyMatches");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
-            expect(dataService.displayedNodes.length).toEqual(1);
-            expect(dataService.displayedNodes[0].value).toEqual("parent2");
-            expect(dataService.displayedNodes[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
-            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(3);
+            expect(displayedNodes.length).toEqual(1);
+            expect(displayedNodes[0].value).toEqual("parent2");
+            expect(displayedNodes[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(displayedNodes[0].children[0].children.length).toEqual(1);
 
             // All visible
             dataService.filter("parent", "OnlyMatches");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(8);
 
             // Don't filter
             dataService.filter("", "OnlyMatches");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(9);
         });
 
         it("filter - should filter nodes case insensitive based on given search term (OnlyMatchesAndChilds)", () => {
             // Filters out Parent 3
             dataService.filter("child", "OnlyMatchesAndChilds");
-            expect(dataService.displayedNodes.length).toEqual(2);
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(8);
+            let displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(displayedNodes.length).toEqual(2);
+            expect(countTreeNodes(displayedNodes)).toEqual(8);
 
             // Only find results within tree of Parent 2
             dataService.filter("sub", "OnlyMatchesAndChilds");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(3);
-            expect(dataService.displayedNodes.length).toEqual(1);
-            expect(dataService.displayedNodes[0].value).toEqual("parent2");
-            expect(dataService.displayedNodes[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
-            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(3);
+            expect(displayedNodes.length).toEqual(1);
+            expect(displayedNodes[0].value).toEqual("parent2");
+            expect(displayedNodes[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(displayedNodes[0].children[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].children[0].value).toEqual("parent2Child2Sub1");
 
             // Check specific node
             dataService.filter("Parent 2 Child 2", "OnlyMatchesAndChilds");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(4);
-            expect(dataService.displayedNodes.length).toEqual(1);
-            expect(dataService.displayedNodes[0].value).toEqual("parent2");
-            expect(dataService.displayedNodes[0].children.length).toEqual(1);
-            expect(dataService.displayedNodes[0].children[0].value).toEqual("parent2Child2");
-            expect(dataService.displayedNodes[0].children[0].children.length).toEqual(2);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(4);
+            expect(displayedNodes.length).toEqual(1);
+            expect(displayedNodes[0].value).toEqual("parent2");
+            expect(displayedNodes[0].children.length).toEqual(1);
+            expect(displayedNodes[0].children[0].value).toEqual("parent2Child2");
+            expect(displayedNodes[0].children[0].children.length).toEqual(2);
 
             // All visible
             dataService.filter("parent", "OnlyMatchesAndChilds");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(9);
 
             // Don't filter
             dataService.filter("", "OnlyMatchesAndChilds");
-            expect(countTreeNodes(dataService.displayedNodes)).toEqual(9);
+            displayedNodes = getDisplayedNodes(dataService.allNodes);
+            expect(countTreeNodes(displayedNodes)).toEqual(9);
         });
 
         it("moveNode - should not crash for null value", () => {

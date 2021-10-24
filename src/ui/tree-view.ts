@@ -37,7 +37,7 @@ export class TreeView extends CommonTreeLogic<"tree"> {
 
     public moveNode(value: TreeNode | string, direction: "up" | "down"): void {
         this.dataService.moveNode(value, direction);
-        this.tree.renderContent();
+        this.tree.renderTree();
     }
 
     //////////////////////////////////////////////////////////////////////////

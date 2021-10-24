@@ -4,18 +4,16 @@ import constants from "../ui/ui-constants";
 import { SearchMode } from "types/options";
 
 export class DataService {
-    private allNodes: TreeNode[] = [];
-    public displayedNodes: TreeNode[] = [];
+    public allNodes: TreeNode[] = [];
     private treeInstanceId: number;
 
     constructor(
-        displayedNodes: InitTreeNode[] = [],
+        nodes: InitTreeNode[] = [],
         private checkboxesActive: boolean = false,
         private checkboxesRecursive: boolean = false
     ) {
         this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
-        this.displayedNodes = this.normalizeNodes(displayedNodes);
-        this.allNodes = this.displayedNodes;
+        this.allNodes = this.normalizeNodes(nodes);
     }
 
     private normalizeNodes(nodes: InitTreeNode[]): TreeNode[] {
@@ -45,7 +43,6 @@ export class DataService {
 
     public clear(): void {
         this.allNodes = [];
-        this.displayedNodes = [];
     }
 
     // Currently only used for testing. Maybe see if tests can be refactored with rendering/event logic
@@ -88,10 +85,11 @@ export class DataService {
 
         const n: TreeNode = this.normalizeNode(node);
 
-        if (parent && this.isTreeNode(parent)) {
-            parent.children.push(n);
-        } else if (typeof parent === "string") {
-            const parentNode: TreeNode | null = this.getNodeInternal(this.allNodes, parent);
+        if (parent && (this.isTreeNode(parent) || typeof parent === "string")) {
+            const parentNode: TreeNode | null = this.getNodeInternal(
+                this.allNodes,
+                this.isTreeNode(parent) ? parent.value : parent
+            );
 
             if (this.isTreeNode(parentNode)) {
                 parentNode.children.push(n);
@@ -187,14 +185,19 @@ export class DataService {
 
     public filter(searchTerm: string, searchMode: SearchMode): void {
         if (searchTerm) {
-            this.displayedNodes = this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
+            this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
         } else {
-            this.displayedNodes = this.normalizeNodes(this.allNodes);
+            this.allNodes.forEach((n) => this.revertHiddenFlag(n, false));
         }
     }
 
-    private filterNodes(nodes: TreeNode[], parentMatch: boolean, searchTerm: string, searchMode: SearchMode): TreeNode[] {
-        const filtered: TreeNode[] = [];
+    private revertHiddenFlag(node: TreeNode, parentCollapsed: boolean): void {
+        node.hidden = false || parentCollapsed;
+        node.children.forEach((c) => this.revertHiddenFlag(c, node.collapsed));
+    }
+
+    private filterNodes(nodes: TreeNode[], parentMatch: boolean, searchTerm: string, searchMode: SearchMode): boolean {
+        let remainingChilds = false;
 
         nodes.forEach((n) => {
             const textOrParentMatch =
@@ -202,20 +205,17 @@ export class DataService {
                     ? n.label?.toLowerCase().includes(searchTerm)
                     : n.label?.toLowerCase().includes(searchTerm) || parentMatch;
 
-            const childNodes: TreeNode[] = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
+            const childsRemaining: boolean = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
 
-            if (textOrParentMatch || childNodes.length > 0) {
+            if (textOrParentMatch || childsRemaining) {
                 n.hidden = false;
-                const node = this.copyNode(n);
-                node.children = childNodes;
-
-                filtered.push(node);
+                remainingChilds = true;
             } else {
                 n.hidden = true;
             }
         });
 
-        return filtered;
+        return remainingChilds;
     }
 
     public setSelected(...nodes: TreeNode[]): void {

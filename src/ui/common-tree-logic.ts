@@ -70,14 +70,17 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
 
     public addNode(node: InitTreeNode, parent: TreeNode | string | null = null): void {
         this.dataService.addNode(node, parent);
+        this.tree.renderTree();
     }
 
     public deleteNode(node: TreeNode): void {
         this.dataService.deleteNode(node.value);
+        this.tree.renderTree();
     }
 
     public updateNodeLabel(node: TreeNode, newLabel: string): void {
         this.dataService.updateNodeLabel(node.value, newLabel);
+        this.tree.renderTree();
     }
 
     public setReadOnly(readOnly: boolean): void {
