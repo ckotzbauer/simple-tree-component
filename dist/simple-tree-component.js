@@ -347,19 +347,25 @@
                 chevronDivContainer.addEventListener("click", (e) => {
                     e.stopPropagation();
                     const flag = !node.collapsed;
-                    node.collapsed = flag;
                     this.collapseNode(node, flag);
-                    this.renderTree();
                 });
                 chevronDivContainer.classList.add(constants.classNames.SimpleTreeNodeChevronClickable);
             }
             divElement.appendChild(chevronDivContainer);
         }
-        collapseNode(node, flag) {
-            node.children.forEach((c) => {
-                c.hidden = flag;
-                c.children.forEach((c) => this.collapseNode(c, flag));
-            });
+        collapseNode(node, flag, render = true) {
+            var _a;
+            if (!node || node.hidden || ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) === 0) {
+                return;
+            }
+            node.collapsed = this.dataService.collapseNode(node.value, flag);
+            if (render) {
+                this.renderTree();
+            }
+        }
+        collapseAllNodes(flag) {
+            this.dataService.getAllNodes().forEach((t) => this.collapseNode(t, flag, false));
+            this.renderTree();
         }
         setReadOnly(readOnly) {
             this.readOnly = readOnly;
@@ -468,9 +474,7 @@
             this.allNodes = this.displayedNodes;
         }
         normalizeNodes(nodes) {
-            return nodes
-                .filter((node) => !!node)
-                .map((node) => this.normalizeNode(node));
+            return nodes.filter((node) => !!node).map((node) => this.normalizeNode(node));
         }
         normalizeNode(node) {
             const n = this.copyNode(node);
@@ -592,7 +596,7 @@
             return null;
         }
         getFlattedClickableNodeValues() {
-            return this.flatten(this.displayedNodes)
+            return this.flatten(this.allNodes)
                 .filter((node) => node.selectable && !node.hidden)
                 .map((n) => n.value);
         }
@@ -624,9 +628,13 @@
                     : ((_b = n.label) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes(searchTerm)) || parentMatch;
                 const childNodes = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
                 if (textOrParentMatch || childNodes.length > 0) {
+                    n.hidden = false;
                     const node = this.copyNode(n);
                     node.children = childNodes;
                     filtered.push(node);
+                }
+                else {
+                    n.hidden = true;
                 }
             });
             return filtered;
@@ -759,6 +767,23 @@
                 this.toggleCheckboxParent(parentNode);
             }
         }
+        collapseNode(value, flag) {
+            let node;
+            if (typeof value === "string") {
+                node = this.getNodeInternal(this.allNodes, value);
+            }
+            else {
+                node = value;
+            }
+            if (node) {
+                node.collapsed = flag && node.children.length > 0;
+                node.children.forEach((c) => {
+                    c.hidden = flag;
+                    this.collapseNode(c, flag);
+                });
+            }
+            return (node === null || node === void 0 ? void 0 : node.collapsed) || false;
+        }
         generateUid(value) {
             let hash = 0;
             for (let i = 0; i < value.length; i++) {
@@ -831,6 +856,21 @@
         }
         subscribeOnce(event, handler) {
             return this.eventManager.subscribeOnce(event, handler);
+        }
+        collapseAllNodes() {
+            this.tree.collapseAllNodes(true);
+        }
+        expandAllNodes() {
+            this.tree.collapseAllNodes(false);
+        }
+        collapseNode(node) {
+            this.tree.collapseNode(node, true);
+        }
+        expandNode(node) {
+            this.tree.collapseNode(node, false);
+        }
+        toggleCollapseNode(node) {
+            this.tree.collapseNode(node, !node.collapsed);
         }
     }
 

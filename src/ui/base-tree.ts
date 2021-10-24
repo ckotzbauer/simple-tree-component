@@ -243,9 +243,7 @@ export class BaseTree {
             chevronDivContainer.addEventListener("click", (e: MouseEvent) => {
                 e.stopPropagation();
                 const flag = !node.collapsed;
-                node.collapsed = flag;
                 this.collapseNode(node, flag);
-                this.renderTree();
             });
 
             chevronDivContainer.classList.add(constants.classNames.SimpleTreeNodeChevronClickable);
@@ -254,11 +252,21 @@ export class BaseTree {
         divElement.appendChild(chevronDivContainer);
     }
 
-    private collapseNode(node: TreeNode, flag: boolean): void {
-        node.children.forEach((c) => {
-            c.hidden = flag;
-            c.children.forEach((c) => this.collapseNode(c, flag));
-        });
+    public collapseNode(node: TreeNode, flag: boolean, render = true): void {
+        if (!node || node.hidden || node.children?.length === 0) {
+            return;
+        }
+
+        node.collapsed = this.dataService.collapseNode(node.value, flag);
+
+        if (render) {
+            this.renderTree();
+        }
+    }
+
+    public collapseAllNodes(flag: boolean): void {
+        this.dataService.getAllNodes().forEach((t) => this.collapseNode(t, flag, false));
+        this.renderTree();
     }
 
     public setReadOnly(readOnly: boolean): void {

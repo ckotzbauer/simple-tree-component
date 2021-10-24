@@ -97,5 +97,25 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         return this.eventManager.subscribeOnce(event, handler);
     }
 
+    public collapseAllNodes(): void {
+        this.tree.collapseAllNodes(true);
+    }
+
+    public expandAllNodes(): void {
+        this.tree.collapseAllNodes(false);
+    }
+
+    public collapseNode(node: TreeNode): void {
+        this.tree.collapseNode(node, true);
+    }
+
+    public expandNode(node: TreeNode): void {
+        this.tree.collapseNode(node, false);
+    }
+
+    public toggleCollapseNode(node: TreeNode): void {
+        this.tree.collapseNode(node, !node.collapsed);
+    }
+
     //////////////////////////////////////////////////////////////////////////
 }
