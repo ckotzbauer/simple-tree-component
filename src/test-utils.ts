@@ -100,3 +100,10 @@ export function isDropdownVisible(): boolean {
     const e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
     return e?.style.display !== "none";
 }
+
+export function getDisplayedNodes(allNodes: TreeNode[]): TreeNode[] {
+    return (JSON.parse(JSON.stringify(allNodes)) as TreeNode[]).filter((c) => {
+        c.children = getDisplayedNodes(c.children);
+        return !c.hidden;
+    });
+}

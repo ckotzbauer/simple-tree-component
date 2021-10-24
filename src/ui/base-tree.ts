@@ -125,12 +125,12 @@ export class BaseTree {
         return container;
     }
 
-    private renderTree(): void {
+    public renderTree(): void {
         const nodeContainer = this.getNodeContainer();
 
         if (nodeContainer) {
             nodeContainer.innerHTML = "";
-            nodeContainer.appendChild(this.renderUnorderedList(this.dataService.displayedNodes));
+            nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
         }
     }
 
@@ -145,6 +145,10 @@ export class BaseTree {
         }
 
         nodes.forEach((node: TreeNode) => {
+            if (node.hidden) {
+                return;
+            }
+
             const hasChildren = node.children?.length > 0;
             const liElement: HTMLLIElement = document.createElement("li");
             liElement.id = node.uid;

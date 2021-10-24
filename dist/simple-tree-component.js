@@ -256,7 +256,7 @@
             const nodeContainer = this.getNodeContainer();
             if (nodeContainer) {
                 nodeContainer.innerHTML = "";
-                nodeContainer.appendChild(this.renderUnorderedList(this.dataService.displayedNodes));
+                nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
             }
         }
         renderUnorderedList(nodes) {
@@ -269,6 +269,9 @@
             }
             nodes.forEach((node) => {
                 var _a;
+                if (node.hidden) {
+                    return;
+                }
                 const hasChildren = ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) > 0;
                 const liElement = document.createElement("li");
                 liElement.id = node.uid;
@@ -468,14 +471,12 @@
     }
 
     class DataService {
-        constructor(displayedNodes = [], checkboxesActive = false, checkboxesRecursive = false) {
+        constructor(nodes = [], checkboxesActive = false, checkboxesRecursive = false) {
             this.checkboxesActive = checkboxesActive;
             this.checkboxesRecursive = checkboxesRecursive;
             this.allNodes = [];
-            this.displayedNodes = [];
             this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
-            this.displayedNodes = this.normalizeNodes(displayedNodes);
-            this.allNodes = this.displayedNodes;
+            this.allNodes = this.normalizeNodes(nodes);
         }
         normalizeNodes(nodes) {
             return nodes.filter((node) => !!node).map((node) => this.normalizeNode(node));
@@ -497,7 +498,6 @@
         }
         clear() {
             this.allNodes = [];
-            this.displayedNodes = [];
         }
         getAllNodes() {
             return this.allNodes;
@@ -528,11 +528,8 @@
                 throw new Error("node value is invalid or node with value already exists!");
             }
             const n = this.normalizeNode(node);
-            if (parent && this.isTreeNode(parent)) {
-                parent.children.push(n);
-            }
-            else if (typeof parent === "string") {
-                const parentNode = this.getNodeInternal(this.allNodes, parent);
+            if (parent && (this.isTreeNode(parent) || typeof parent === "string")) {
+                const parentNode = this.getNodeInternal(this.allNodes, this.isTreeNode(parent) ? parent.value : parent);
                 if (this.isTreeNode(parentNode)) {
                     parentNode.children.push(n);
                 }
@@ -617,31 +614,33 @@
         }
         filter(searchTerm, searchMode) {
             if (searchTerm) {
-                this.displayedNodes = this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
+                this.filterNodes(this.allNodes, false, searchTerm.toLowerCase(), searchMode);
             }
             else {
-                this.displayedNodes = this.normalizeNodes(this.allNodes);
+                this.allNodes.forEach((n) => this.revertHiddenFlag(n, false));
             }
         }
+        revertHiddenFlag(node, parentCollapsed) {
+            node.hidden = parentCollapsed;
+            node.children.forEach((c) => this.revertHiddenFlag(c, node.collapsed));
+        }
         filterNodes(nodes, parentMatch, searchTerm, searchMode) {
-            const filtered = [];
+            let remainingChilds = false;
             nodes.forEach((n) => {
                 var _a, _b;
                 const textOrParentMatch = searchMode === "OnlyMatches"
                     ? (_a = n.label) === null || _a === void 0 ? void 0 : _a.toLowerCase().includes(searchTerm)
                     : ((_b = n.label) === null || _b === void 0 ? void 0 : _b.toLowerCase().includes(searchTerm)) || parentMatch;
-                const childNodes = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
-                if (textOrParentMatch || childNodes.length > 0) {
+                const childsRemaining = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
+                if (textOrParentMatch || childsRemaining) {
                     n.hidden = false;
-                    const node = this.copyNode(n);
-                    node.children = childNodes;
-                    filtered.push(node);
+                    remainingChilds = true;
                 }
                 else {
                     n.hidden = true;
                 }
             });
-            return filtered;
+            return remainingChilds;
         }
         setSelected(...nodes) {
             const values = nodes.map((n) => n.value);
@@ -840,12 +839,15 @@
         }
         addNode(node, parent = null) {
             this.dataService.addNode(node, parent);
+            this.tree.renderTree();
         }
         deleteNode(node) {
             this.dataService.deleteNode(node.value);
+            this.tree.renderTree();
         }
         updateNodeLabel(node, newLabel) {
             this.dataService.updateNodeLabel(node.value, newLabel);
+            this.tree.renderTree();
         }
         setReadOnly(readOnly) {
             if (this.readOnly !== readOnly) {
@@ -1202,7 +1204,7 @@
         }
         moveNode(value, direction) {
             this.dataService.moveNode(value, direction);
-            this.tree.renderContent();
+            this.tree.renderTree();
         }
         nodeSelected(node) {
             var _a;
