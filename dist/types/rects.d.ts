@@ -36,7 +36,13 @@ export interface Rect {
  * @param maxOverlayHeight The maximum height of the overlay. Defaults to `300`.
  * @returns The calculated rectangle of the overlay position.
  */
-export declare function calculate(elementRect: Rect, availableHeight: number, overlayHeight: number, borderWith?: number, maxOverlayHeight?: number): Rect;
+export declare function calculate(
+    elementRect: Rect,
+    availableHeight: number,
+    overlayHeight: number,
+    borderWith?: number,
+    maxOverlayHeight?: number
+): Rect;
 /**
  * Calculates the position of the `overlay` relative to the `element` and sets the values accordingly.
  * See the docs of the `calculate` function for more details.

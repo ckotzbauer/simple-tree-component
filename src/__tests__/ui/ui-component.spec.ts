@@ -239,6 +239,24 @@ describe("simpleTree", () => {
             expect(tree.getNode("child2")?.hidden).toBeFalsy();
         });
 
+        it("should respect custom-node-css-classes.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2", [], false, true, "my-class"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            const uid = tree.getNode("node2")?.uid;
+            const lineWrapper = document
+                .getElementById(uid as string)
+                ?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`) as HTMLElement;
+
+            expect(lineWrapper.classList.contains("my-class")).toBeTruthy();
+        });
+
         it("should close dropdown on escape.", () => {
             createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
                 nodes: [
