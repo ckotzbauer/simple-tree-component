@@ -169,7 +169,7 @@ export class DataService {
     }
 
     public getFlattedClickableNodeValues(): string[] {
-        return this.flatten(this.displayedNodes)
+        return this.flatten(this.allNodes)
             .filter((node: TreeNode) => node.selectable && !node.hidden)
             .map((n: TreeNode) => n.value);
     }
@@ -205,10 +205,13 @@ export class DataService {
             const childNodes: TreeNode[] = this.filterNodes(n.children, textOrParentMatch, searchTerm, searchMode);
 
             if (textOrParentMatch || childNodes.length > 0) {
+                n.hidden = false;
                 const node = this.copyNode(n);
                 node.children = childNodes;
 
                 filtered.push(node);
+            } else {
+                n.hidden = true;
             }
         });
 
@@ -371,6 +374,26 @@ export class DataService {
             this.toggleCheckboxNode(parentNode, selected, false);
             this.toggleCheckboxParent(parentNode);
         }
+    }
+
+    public collapseNode(value: string | TreeNode, flag: boolean): boolean {
+        let node: TreeNode | null;
+
+        if (typeof value === "string") {
+            node = this.getNodeInternal(this.allNodes, value);
+        } else {
+            node = value;
+        }
+
+        if (node) {
+            node.collapsed = flag && node.children.length > 0;
+            node.children.forEach((c) => {
+                c.hidden = flag;
+                this.collapseNode(c, flag);
+            });
+        }
+
+        return node?.collapsed || false;
     }
 
     private generateUid(value: string): string {

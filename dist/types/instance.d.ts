@@ -81,6 +81,26 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
      */
     hideEmphasizeIcon(): void;
     /**
+     * Collapse all nodes in the tree.
+     */
+    collapseAllNodes(): void;
+    /**
+     * Expand all nodes in the tree.
+     */
+    expandAllNodes(): void;
+    /**
+     * Collapse a specific node in the tree. Does nothing if the node does not exist or is invisible.
+     */
+    collapseNode(node: TreeNode): void;
+    /**
+     * Expand a specific node in the tree. Does nothing if the node does not exist or is invisible.
+     */
+    expandNode(node: TreeNode): void;
+    /**
+     * Collapses or expands a specific node in the tree. Does nothing if the node does not exist or is invisible.
+     */
+    toggleCollapseNode(node: TreeNode): void;
+    /**
      * Add a listener to handle "selectionChanged" or "selectionChanging" events.
      *
      * @param event "selectionChanged" or "selectionChanging" event

@@ -1,3 +1,4 @@
+import { TreeNode } from "typings";
 import {
     initialize,
     beforeEachTest,
@@ -111,6 +112,131 @@ describe("simpleTree", () => {
             expect(singleCtx.dataService?.getFlattedClickableNodeValues()).toEqual(
                 expect.arrayContaining(["subchild1", "subchild2"])
             );
+        });
+
+        it("should collapse and expand specific node on api-call.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [
+                            createTreeNode("Subchild 1", "subchild1"),
+                            createTreeNode("Subchild 2", "subchild2"),
+                        ]),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+
+            tree.collapseNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+
+            // same call again - nothing should change
+            tree.collapseNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+
+            tree.expandNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+            expect(tree.getNode("node1")?.collapsed).toBeFalsy();
+            expect(tree.getNode("child2")?.collapsed).toBeFalsy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeFalsy();
+        });
+
+        it("should toggle collapse specific node on api-call.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [
+                            createTreeNode("Subchild 1", "subchild1"),
+                            createTreeNode("Subchild 2", "subchild2"),
+                        ]),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+
+            tree.toggleCollapseNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+
+            tree.toggleCollapseNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+            expect(tree.getNode("node1")?.collapsed).toBeFalsy();
+            expect(tree.getNode("child2")?.collapsed).toBeFalsy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeFalsy();
+
+            tree.toggleCollapseNode(tree.getNode("node1") as TreeNode);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+        });
+
+        it("should collapse and expand all nodes on api-call.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [
+                            createTreeNode("Subchild 1", "subchild1"),
+                            createTreeNode("Subchild 2", "subchild2"),
+                        ]),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+
+            tree.collapseAllNodes();
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+
+            // same call again - nothing should change
+            tree.collapseAllNodes();
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(3);
+            expect(tree.getNode("node1")?.collapsed).toBeTruthy();
+            expect(tree.getNode("child2")?.collapsed).toBeTruthy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeTruthy();
+
+            tree.expandAllNodes();
+            expect(singleCtx.dataService?.getFlattedClickableNodeValues().length).toBe(8);
+            expect(tree.getNode("node1")?.collapsed).toBeFalsy();
+            expect(tree.getNode("child2")?.collapsed).toBeFalsy();
+            expect(tree.getNode("node1")?.hidden).toBeFalsy();
+            expect(tree.getNode("child2")?.hidden).toBeFalsy();
         });
 
         it("should close dropdown on escape.", () => {
