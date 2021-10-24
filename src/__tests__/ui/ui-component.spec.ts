@@ -552,6 +552,57 @@ describe("simpleTree", () => {
                     ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
             ).toBeTruthy();
         });
+
+        it("should throw error on showEmphasize call.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+                searchBar: true,
+            });
+
+            expect(() => tree.showEmphasizeIcon("my-emphasized-item")).toThrow();
+        });
+
+        it("should throw error on hideEmphasize call.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+                searchBar: true,
+            });
+
+            expect(() => tree.hideEmphasizeIcon()).toThrow();
+        });
+
+        it("should throw error on moveNode call.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+                searchBar: true,
+            });
+
+            expect(() => tree.moveNode("node2", "up")).toThrow();
+        });
     });
 
     describe("tree-view", () => {
