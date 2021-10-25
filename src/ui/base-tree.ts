@@ -56,9 +56,11 @@ export class BaseTree {
     }
 
     private setNodeUiState(node: TreeNode | null, current: string | null, cssClass: string): string | null {
-        this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)?.classList.remove(cssClass);
+        if (!node || current !== node.value) {
+            this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)?.classList.remove(cssClass);
+        }
 
-        if (node !== null && current !== node.value) {
+        if (node !== null) {
             document
                 .getElementById(node.uid)
                 ?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)
