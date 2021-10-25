@@ -201,8 +201,10 @@
         }
         setNodeUiState(node, current, cssClass) {
             var _a, _b, _c;
-            (_a = this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(cssClass);
-            if (node !== null && current !== node.value) {
+            if (!node || current !== node.value) {
+                (_a = this.element.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}.${cssClass}`)) === null || _a === void 0 ? void 0 : _a.classList.remove(cssClass);
+            }
+            if (node !== null) {
                 (_c = (_b = document
                     .getElementById(node.uid)) === null || _b === void 0 ? void 0 : _b.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`)) === null || _c === void 0 ? void 0 : _c.classList.add(cssClass);
                 return node.value;
