@@ -109,6 +109,13 @@ export interface TreeConfiguration {
      * (Default: `300`)
      */
     defaultDropdownHeight: number;
+
+    /**
+     * Indicates if drag-and-drop of nodes on the same hierarchy-level is enabled.
+     * Only used in `tree` mode.
+     * (Default: `false`)
+     */
+    dragAndDrop: boolean;
 }
 
 /**
@@ -145,6 +152,7 @@ export const defaults: BaseOptions = {
     clearButton: false,
     scrollContainer: null,
     defaultDropdownHeight: 300,
+    dragAndDrop: false,
 };
 
 /**

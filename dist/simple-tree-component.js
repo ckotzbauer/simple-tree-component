@@ -25,6 +25,7 @@
         clearButton: false,
         scrollContainer: null,
         defaultDropdownHeight: 300,
+        dragAndDrop: false,
     };
 
     var constants = {
@@ -66,6 +67,7 @@
         events: {
             SelectionChanged: "selectionChanged",
             SelectionChanging: "selectionChanging",
+            NodeOrderChanged: "nodeOrderChanged",
             _NodeSelected: "_nodeSelected",
             EscapePressed: "_escapePressed",
             HoverChanged: "_hoverChanged",
@@ -173,6 +175,91 @@
         return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     }
 
+    class DragAndDropHandler {
+        constructor(setNodeIndex) {
+            this.setNodeIndex = setNodeIndex;
+            this.boundOnDragStart = this.onDragStart.bind(this);
+            this.boundOnDragOver = this.onDragOver.bind(this);
+            this.boundOnDrop = this.onDrop.bind(this);
+        }
+        initialize(liElement) {
+            liElement.setAttribute("draggable", "true");
+            liElement.addEventListener("dragstart", this.boundOnDragStart);
+            liElement.addEventListener("dragover", this.boundOnDragOver);
+            liElement.addEventListener("drop", this.boundOnDrop);
+        }
+        destroy(liElement) {
+            liElement.removeAttribute("draggable");
+            liElement.removeEventListener("dragstart", this.boundOnDragStart);
+            liElement.removeEventListener("dragover", this.boundOnDragOver);
+            liElement.removeEventListener("drop", this.boundOnDrop);
+        }
+        onDragStart(e) {
+            var _a;
+            const target = e.target;
+            if (!target.hasAttribute("draggable")) {
+                return;
+            }
+            if (e.dataTransfer) {
+                e.dataTransfer.effectAllowed = "move";
+                target.setAttribute("data-dragging", "true");
+                (_a = e.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData("text/plain", target.id);
+            }
+        }
+        onDragOver(e) {
+            var _a, _b, _c, _d;
+            e.preventDefault();
+            const target = this.getTargetListItem(e.target);
+            if (!target) {
+                return;
+            }
+            const { elements: sameLevelNodes, ids: sameLevelNodeIds } = this.getSameLevelNodes(target);
+            const draggedId = (_a = sameLevelNodes.find((x) => x.getAttribute("data-dragging") === "true")) === null || _a === void 0 ? void 0 : _a.id;
+            if (!draggedId) {
+                return;
+            }
+            if (!sameLevelNodeIds.includes(draggedId)) {
+                return;
+            }
+            const toDrop = document.getElementById(draggedId);
+            if (!toDrop) {
+                return;
+            }
+            const bounding = target.getBoundingClientRect();
+            const offset = bounding.y + bounding.height / 2;
+            if (e.clientY - offset > 0) {
+                (_b = target.parentElement) === null || _b === void 0 ? void 0 : _b.insertBefore(toDrop, target.nextSibling);
+            }
+            else {
+                (_c = target.parentElement) === null || _c === void 0 ? void 0 : _c.insertBefore(toDrop, target);
+            }
+            (_d = e.dataTransfer) === null || _d === void 0 ? void 0 : _d.setData("text/plain", JSON.stringify({ id: toDrop.id, newIndex: sameLevelNodeIds.indexOf(toDrop.id) }));
+        }
+        onDrop(e) {
+            var _a, _b;
+            e.preventDefault();
+            e.stopPropagation();
+            const droppedId = (_a = e.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData("text/plain");
+            if (droppedId) {
+                (_b = document.getElementById(droppedId)) === null || _b === void 0 ? void 0 : _b.removeAttribute("data-dragging");
+                const { ids } = this.getSameLevelNodes(document.getElementById(droppedId));
+                this.setNodeIndex(droppedId, ids.indexOf(droppedId));
+            }
+        }
+        getTargetListItem(t) {
+            while (t.parentElement && t.tagName !== "LI") {
+                t = t.parentElement;
+            }
+            return t;
+        }
+        getSameLevelNodes(target) {
+            var _a;
+            const sameLevelNodes = Array.from(((_a = target.parentElement) === null || _a === void 0 ? void 0 : _a.children) || []);
+            const sameLevelNodeIds = sameLevelNodes.map((x) => x.id);
+            return { elements: sameLevelNodes, ids: sameLevelNodeIds };
+        }
+    }
+
     class BaseTree {
         constructor(element, config, dataService, eventManager, readOnly) {
             this.element = element;
@@ -185,10 +272,17 @@
             this.searchTextInput = null;
             this.searchTextInputEvent = null;
             this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
+            this.dragAndDropHandler = new DragAndDropHandler((uid, newIndex) => {
+                this.dataService.setNodeIndex(uid, newIndex);
+                this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
+            });
             this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
         }
         destroy() {
             this.deactivateKeyListener();
+            if (this.config.dragAndDrop) {
+                this.removeDragAndDropListeners();
+            }
             if (this.subscription) {
                 this.subscription.dispose();
                 this.subscription = null;
@@ -207,6 +301,12 @@
         }
         deactivateKeyListener() {
             this.keyEventHandler.destroy();
+        }
+        removeDragAndDropListeners() {
+            const nodeContainer = this.getNodeContainer();
+            if (nodeContainer) {
+                Array.from(nodeContainer.querySelectorAll("li")).forEach((x) => this.dragAndDropHandler.destroy(x));
+            }
         }
         setNodeUiState(node, current, cssClass) {
             var _a, _b, _c;
@@ -266,6 +366,9 @@
         renderTree() {
             const nodeContainer = this.getNodeContainer();
             if (nodeContainer) {
+                if (this.config.dragAndDrop) {
+                    this.removeDragAndDropListeners();
+                }
                 nodeContainer.innerHTML = "";
                 nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
             }
@@ -279,13 +382,16 @@
                 highlightRegex = new RegExp(`(${escapeRegex((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)})`, "ig");
             }
             nodes.forEach((node) => {
-                var _a;
+                var _a, _b;
                 if (node.hidden) {
                     return;
                 }
                 const hasChildren = ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) > 0;
                 const liElement = document.createElement("li");
                 liElement.id = node.uid;
+                if (this.config.dragAndDrop && !((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)) {
+                    this.dragAndDropHandler.initialize(liElement);
+                }
                 const lineWrapperDiv = document.createElement("div");
                 lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
                 lineWrapperDiv.addEventListener("mouseover", () => this.hoverNode(node));
@@ -381,7 +487,7 @@
             }
         }
         collapseAllNodes(flag) {
-            this.dataService.getAllNodes().forEach((t) => this.collapseNode(t, flag, false));
+            this.dataService.getNodesInternal().forEach((t) => this.collapseNode(t, flag, false));
             this.renderTree();
         }
         setReadOnly(readOnly) {
@@ -511,8 +617,11 @@
         clear() {
             this.allNodes = [];
         }
-        getAllNodes() {
+        getNodesInternal() {
             return this.allNodes;
+        }
+        getNodes() {
+            return this.allNodes.map(this.copyNode);
         }
         getNode(value) {
             const nodeToReturn = this.getNodeInternal(this.allNodes, value);
@@ -593,14 +702,17 @@
                 node.label = newLabel;
             }
         }
-        getParentForNode(nodes, value) {
+        getParentForNode(nodes, comparisonValue, predicate = null) {
+            if (!predicate) {
+                predicate = (n) => n.value === comparisonValue;
+            }
             for (const node of nodes) {
-                if (node.children && node.children.some((n) => n.value === value)) {
+                if (node.children && node.children.some(predicate)) {
                     return node;
                 }
                 let parent = null;
                 if (node.children) {
-                    parent = this.getParentForNode(node.children, value);
+                    parent = this.getParentForNode(node.children, comparisonValue, predicate);
                 }
                 if (parent) {
                     return parent;
@@ -807,6 +919,22 @@
                 hash |= 0;
             }
             return `${this.treeInstanceId}-${Math.abs(hash)}`;
+        }
+        setNodeIndex(uid, newIndex) {
+            const node = this.allNodes.find((node) => node.uid === uid);
+            if (node) {
+                this.allNodes.splice(this.allNodes.indexOf(node), 1);
+                this.allNodes.splice(newIndex, 0, node);
+            }
+            else {
+                const parent = this.getParentForNode(this.allNodes, uid, (n) => n.uid === uid);
+                if (parent) {
+                    const childNode = parent.children.find((node) => node.uid === uid);
+                    parent.children.splice(parent.children.indexOf(childNode), 1);
+                    parent.children.splice(newIndex, 0, childNode);
+                }
+            }
+            console.log(this.allNodes);
         }
     }
 

@@ -46,8 +46,12 @@ export class DataService {
     }
 
     // Currently only used for testing. Maybe see if tests can be refactored with rendering/event logic
-    public getAllNodes(): TreeNode[] {
+    public getNodesInternal(): TreeNode[] {
         return this.allNodes;
+    }
+
+    public getNodes(): TreeNode[] {
+        return this.allNodes.map(this.copyNode);
     }
 
     public getNode(value: string): TreeNode | null {
@@ -147,15 +151,23 @@ export class DataService {
         }
     }
 
-    private getParentForNode(nodes: TreeNode[], value: string): TreeNode | null {
+    private getParentForNode(
+        nodes: TreeNode[],
+        comparisonValue: string,
+        predicate: null | ((n: TreeNode) => boolean) = null
+    ): TreeNode | null {
+        if (!predicate) {
+            predicate = (n: TreeNode) => n.value === comparisonValue;
+        }
+
         for (const node of nodes) {
-            if (node.children && node.children.some((n: TreeNode) => n.value === value)) {
+            if (node.children && node.children.some(predicate)) {
                 return node;
             }
 
             let parent: TreeNode | null = null;
             if (node.children) {
-                parent = this.getParentForNode(node.children, value);
+                parent = this.getParentForNode(node.children, comparisonValue, predicate);
             }
 
             if (parent) {
@@ -405,5 +417,24 @@ export class DataService {
         }
 
         return `${this.treeInstanceId}-${Math.abs(hash)}`;
+    }
+
+    public setNodeIndex(uid: string, newIndex: number): void {
+        const node: TreeNode | undefined = this.allNodes.find((node: TreeNode) => node.uid === uid);
+
+        if (node) {
+            this.allNodes.splice(this.allNodes.indexOf(node), 1);
+            this.allNodes.splice(newIndex, 0, node);
+        } else {
+            const parent: TreeNode | null = this.getParentForNode(this.allNodes, uid, (n: TreeNode) => n.uid === uid);
+
+            if (parent) {
+                const childNode: TreeNode = parent.children.find((node: TreeNode) => node.uid === uid) as TreeNode;
+                parent.children.splice(parent.children.indexOf(childNode), 1);
+                parent.children.splice(newIndex, 0, childNode);
+            }
+        }
+
+        console.log(this.allNodes);
     }
 }

@@ -6,6 +6,7 @@ import { EventManager } from "../event/event-manager";
 import { KeyEventHandler } from "./key-event-handler";
 import { escape, escapeRegex } from "./utils";
 import { Subscription } from "typings";
+import { DragAndDropHandler } from "./drag-and-drop-handler";
 
 export class BaseTree {
     private highlightedNode: string | null = null;
@@ -15,6 +16,7 @@ export class BaseTree {
     private searchTextInputEvent: ((e: Event) => void) | null = null;
 
     private keyEventHandler: KeyEventHandler;
+    private dragAndDropHandler: DragAndDropHandler;
     private subscription: Subscription | null;
 
     constructor(
@@ -25,11 +27,19 @@ export class BaseTree {
         private readOnly: boolean
     ) {
         this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
+        this.dragAndDropHandler = new DragAndDropHandler((uid: string, newIndex: number) => {
+            this.dataService.setNodeIndex(uid, newIndex);
+            this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
+        });
         this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
     }
 
     public destroy(): void {
         this.deactivateKeyListener();
+
+        if (this.config.dragAndDrop) {
+            this.removeDragAndDropListeners();
+        }
 
         if (this.subscription) {
             this.subscription.dispose();
@@ -53,6 +63,14 @@ export class BaseTree {
 
     public deactivateKeyListener(): void {
         this.keyEventHandler.destroy();
+    }
+
+    private removeDragAndDropListeners(): void {
+        const nodeContainer = this.getNodeContainer();
+
+        if (nodeContainer) {
+            Array.from(nodeContainer.querySelectorAll("li")).forEach((x: HTMLLIElement) => this.dragAndDropHandler.destroy(x));
+        }
     }
 
     private setNodeUiState(node: TreeNode | null, current: string | null, cssClass: string): string | null {
@@ -131,6 +149,10 @@ export class BaseTree {
         const nodeContainer = this.getNodeContainer();
 
         if (nodeContainer) {
+            if (this.config.dragAndDrop) {
+                this.removeDragAndDropListeners();
+            }
+
             nodeContainer.innerHTML = "";
             nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
         }
@@ -154,6 +176,10 @@ export class BaseTree {
             const hasChildren = node.children?.length > 0;
             const liElement: HTMLLIElement = document.createElement("li");
             liElement.id = node.uid;
+
+            if (this.config.dragAndDrop && !this.searchTextInput?.value) {
+                this.dragAndDropHandler.initialize(liElement);
+            }
 
             const lineWrapperDiv = document.createElement("div");
             lineWrapperDiv.classList.add(constants.classNames.SimpleTreeNodeWrapper);
@@ -275,7 +301,7 @@ export class BaseTree {
     }
 
     public collapseAllNodes(flag: boolean): void {
-        this.dataService.getAllNodes().forEach((t) => this.collapseNode(t, flag, false));
+        this.dataService.getNodesInternal().forEach((t) => this.collapseNode(t, flag, false));
         this.renderTree();
     }
 
