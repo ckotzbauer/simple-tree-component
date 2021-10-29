@@ -7,7 +7,7 @@ export class KeyEventHandler {
     private boundKeyUp: (e: KeyboardEvent) => void;
     private hoveredNodeValue: string | null = null;
 
-    constructor(private eventManager: EventManager, private dataService: DataService) {
+    constructor(private eventManager: EventManager, private dataService: DataService, private readOnly: boolean) {
         this.boundKeyUp = this.handleKeyUp.bind(this);
     }
 
@@ -23,7 +23,17 @@ export class KeyEventHandler {
         this.hoveredNodeValue = value;
     }
 
+    public setReadOnly(value: boolean): void {
+        this.readOnly = value;
+    }
+
     private handleKeyUp(e: KeyboardEvent): void {
+        if (this.readOnly) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+
         if (e.code === "Escape") {
             this.eventManager.publish(constants.events.EscapePressed);
             return;
