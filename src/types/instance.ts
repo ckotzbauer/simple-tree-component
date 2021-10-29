@@ -120,24 +120,26 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
     toggleCollapseNode(node: TreeNode): void;
 
     /**
-     * Add a listener to handle "selectionChanged" or "selectionChanging" events.
+     * Add a listener to handle "selectionChanged", "selectionChanging" or "nodeOrderChanged" events.
      *
-     * @param event "selectionChanged" or "selectionChanging" event
+     * @param event "selectionChanged", "selectionChanging" or "nodeOrderChanged" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
     subscribe(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
     subscribe(event: "selectionChanging", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
+    subscribe(event: "nodeOrderChanged", handler: (d: TreeNode[], evt: string, e?: Event) => void): Subscription;
 
     /**
-     * Add a listener to handle "selectionChanged" or "selectionChanging" events. When the event is emitted for the first time, the subscription ends automatically.
+     * Add a listener to handle "selectionChanged" "selectionChanging" or "nodeOrderChanged" events. When the event is emitted for the first time, the subscription ends automatically.
      *
-     * @param event "selectionChanged" or "selectionChanging" event
+     * @param event "selectionChanged", "selectionChanging" or "nodeOrderChanged" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
     subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
     subscribeOnce(event: "selectionChanging", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
+    subscribeOnce(event: "nodeOrderChanged", handler: (d: TreeNode[], evt: string, e?: Event) => void): Subscription;
 }
 
 export type SimpleTree = TreeInstance<"singleSelectDropdown" | "multiSelectDropdown" | "tree">;
