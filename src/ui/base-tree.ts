@@ -24,7 +24,7 @@ export class BaseTree {
         private eventManager: EventManager,
         private readOnly: boolean
     ) {
-        this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
+        this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
         this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
     }
 
@@ -285,6 +285,8 @@ export class BaseTree {
         if (this.searchTextInput) {
             this.searchTextInput.disabled = readOnly;
         }
+
+        this.keyEventHandler.setReadOnly(readOnly);
     }
 
     private formatNodeLabel(text: string, highlightRegex: RegExp | null): string {

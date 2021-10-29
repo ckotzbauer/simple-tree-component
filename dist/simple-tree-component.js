@@ -75,9 +75,10 @@
     };
 
     class KeyEventHandler {
-        constructor(eventManager, dataService) {
+        constructor(eventManager, dataService, readOnly) {
             this.eventManager = eventManager;
             this.dataService = dataService;
+            this.readOnly = readOnly;
             this.hoveredNodeValue = null;
             this.boundKeyUp = this.handleKeyUp.bind(this);
         }
@@ -90,7 +91,15 @@
         setHoveredNodeValue(value) {
             this.hoveredNodeValue = value;
         }
+        setReadOnly(value) {
+            this.readOnly = value;
+        }
         handleKeyUp(e) {
+            if (this.readOnly) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }
             if (e.code === "Escape") {
                 this.eventManager.publish(constants.events.EscapePressed);
                 return;
@@ -175,7 +184,7 @@
             this.hoveredNode = null;
             this.searchTextInput = null;
             this.searchTextInputEvent = null;
-            this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService);
+            this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
             this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
         }
         destroy() {
@@ -380,6 +389,7 @@
             if (this.searchTextInput) {
                 this.searchTextInput.disabled = readOnly;
             }
+            this.keyEventHandler.setReadOnly(readOnly);
         }
         formatNodeLabel(text, highlightRegex) {
             if (highlightRegex) {
