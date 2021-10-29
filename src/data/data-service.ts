@@ -419,12 +419,13 @@ export class DataService {
         return `${this.treeInstanceId}-${Math.abs(hash)}`;
     }
 
-    public setNodeIndex(uid: string, newIndex: number): void {
+    public setNodeIndex(uid: string, newIndex: number): TreeNode | null {
         const node: TreeNode | undefined = this.allNodes.find((node: TreeNode) => node.uid === uid);
 
         if (node) {
             this.allNodes.splice(this.allNodes.indexOf(node), 1);
             this.allNodes.splice(newIndex, 0, node);
+            return this.copyNode(node);
         } else {
             const parent: TreeNode | null = this.getParentForNode(this.allNodes, uid, (n: TreeNode) => n.uid === uid);
 
@@ -432,9 +433,10 @@ export class DataService {
                 const childNode: TreeNode = parent.children.find((node: TreeNode) => node.uid === uid) as TreeNode;
                 parent.children.splice(parent.children.indexOf(childNode), 1);
                 parent.children.splice(newIndex, 0, childNode);
+                return this.copyNode(childNode);
             }
         }
 
-        console.log(this.allNodes);
+        return null;
     }
 }

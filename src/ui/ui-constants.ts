@@ -39,6 +39,7 @@ export default {
         SelectionChanged: "selectionChanged",
         SelectionChanging: "selectionChanging",
         NodeOrderChanged: "nodeOrderChanged",
+        NodeIndexChanged: "nodeIndexChanged",
         _NodeSelected: "_nodeSelected",
         EscapePressed: "_escapePressed",
         HoverChanged: "_hoverChanged",

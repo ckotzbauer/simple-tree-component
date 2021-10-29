@@ -68,6 +68,7 @@
             SelectionChanged: "selectionChanged",
             SelectionChanging: "selectionChanging",
             NodeOrderChanged: "nodeOrderChanged",
+            NodeIndexChanged: "nodeIndexChanged",
             _NodeSelected: "_nodeSelected",
             EscapePressed: "_escapePressed",
             HoverChanged: "_hoverChanged",
@@ -273,7 +274,8 @@
             this.searchTextInputEvent = null;
             this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
             this.dragAndDropHandler = new DragAndDropHandler((uid, newIndex) => {
-                this.dataService.setNodeIndex(uid, newIndex);
+                const node = this.dataService.setNodeIndex(uid, newIndex);
+                this.eventManager.publish(constants.events.NodeIndexChanged, { node, newIndex });
                 this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
             });
             this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
@@ -925,6 +927,7 @@
             if (node) {
                 this.allNodes.splice(this.allNodes.indexOf(node), 1);
                 this.allNodes.splice(newIndex, 0, node);
+                return this.copyNode(node);
             }
             else {
                 const parent = this.getParentForNode(this.allNodes, uid, (n) => n.uid === uid);
@@ -932,9 +935,10 @@
                     const childNode = parent.children.find((node) => node.uid === uid);
                     parent.children.splice(parent.children.indexOf(childNode), 1);
                     parent.children.splice(newIndex, 0, childNode);
+                    return this.copyNode(childNode);
                 }
             }
-            console.log(this.allNodes);
+            return null;
         }
     }
 
