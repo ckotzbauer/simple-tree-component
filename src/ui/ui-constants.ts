@@ -38,6 +38,7 @@ export default {
     events: {
         SelectionChanged: "selectionChanged",
         SelectionChanging: "selectionChanging",
+        NodeOrderChanged: "nodeOrderChanged",
         _NodeSelected: "_nodeSelected",
         EscapePressed: "_escapePressed",
         HoverChanged: "_hoverChanged",

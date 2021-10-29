@@ -32,7 +32,7 @@ describe("simpleTree", () => {
             });
 
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node3" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
         });
 
         it("should handle null on setSelected api-call correctly.", () => {
@@ -46,7 +46,7 @@ describe("simpleTree", () => {
 
             tree.setSelected(null);
             expect(tree.getSelected()).toBeNull();
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBeFalsy());
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBeFalsy());
         });
 
         it("item should be selected on setSelected api-call.", () => {
@@ -62,13 +62,13 @@ describe("simpleTree", () => {
             expect(node2).not.toBeNull();
             tree.setSelected(node2 as TreeNode);
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node2" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             const node4 = tree.getNode("node4");
             expect(node4).not.toBeNull();
             tree.setSelected(node4 as TreeNode);
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node4" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
         });
 
         it("items should be selectable depending on their selectable state via api-call.", () => {
@@ -84,7 +84,7 @@ describe("simpleTree", () => {
             expect(node1).not.toBeNull();
             tree.setSelected(node1 as TreeNode);
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
 
             const node2 = tree.getNode("node2");
             expect(node2).not.toBeNull();
@@ -104,12 +104,12 @@ describe("simpleTree", () => {
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node2"));
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node2" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node4"));
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node4" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
         });
 
         it("items should be selectable depending on their selectable state when clicked.", () => {
@@ -124,12 +124,12 @@ describe("simpleTree", () => {
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node1"));
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
 
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             clickTreeNode(tree.getNode("node2"));
             expect(tree.getSelected()).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            singleCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            singleCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
     });
 
@@ -145,7 +145,7 @@ describe("simpleTree", () => {
 
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node1" }, { selected: true, value: "node3" });
             multiCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node3"));
         });
 
@@ -158,19 +158,19 @@ describe("simpleTree", () => {
             expect(node2).not.toBeNull();
             tree.setSelected([node2 as TreeNode]);
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node2" });
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             const node1 = tree.getNode("node1");
             expect(node1).not.toBeNull();
             tree.setSelected([node1 as TreeNode, node2 as TreeNode]);
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node1" }, { selected: true, value: "node2" });
             multiCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node2"));
 
             tree.setSelected([]);
             expect(tree.getSelected()).toEqual([]);
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBeFalsy());
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBeFalsy());
         });
 
         it("items should be selectable depending on their selectable state via api-call.", () => {
@@ -188,7 +188,7 @@ describe("simpleTree", () => {
             expect(node2).not.toBeNull();
             tree.setSelected([node1 as TreeNode, node2 as TreeNode]);
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node1" });
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
 
         it("items should be selected or unselected when clicked.", () => {
@@ -203,19 +203,19 @@ describe("simpleTree", () => {
             openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
             clickTreeNode(tree.getNode("node2"));
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node2" });
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
             clickTreeNode(tree.getNode("node4"));
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node4" }, { selected: true, value: "node2" });
             multiCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node4" || n.value === "node2"));
 
             openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
             clickTreeNode(tree.getNode("node2"));
             expect(tree.getSelected().map((n) => n.value)).not.toContain("node2");
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
         });
 
         it("items should be selectable depending on their selectable state when clicked.", () => {
@@ -230,12 +230,12 @@ describe("simpleTree", () => {
             openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
             clickTreeNode(tree.getNode("node1"));
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node1" });
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
 
             openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
             clickTreeNode(tree.getNode("node2"));
             expectObjectsInArray(tree.getSelected(), { selected: true, value: "node1" });
-            multiCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            multiCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
     });
 
@@ -250,7 +250,7 @@ describe("simpleTree", () => {
             });
 
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node3" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node3"));
         });
 
         it("should respect initial selection (checkbox-mode).", () => {
@@ -271,7 +271,7 @@ describe("simpleTree", () => {
                 { selected: true, value: "node3" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node3"));
         });
 
@@ -284,13 +284,13 @@ describe("simpleTree", () => {
             expect(node2).not.toBeNull();
             tree.setSelected(node2 as TreeNode);
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node2" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             const node1 = tree.getNode("node1");
             expect(node1).not.toBeNull();
             tree.setSelected(node1 as TreeNode);
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
 
         it("items should be selectable depending on their selectable state via api-call (single-mode).", () => {
@@ -306,7 +306,7 @@ describe("simpleTree", () => {
             expect(node1).not.toBeNull();
             tree.setSelected(node1 as TreeNode);
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
 
             const node2 = tree.getNode("node2");
             expect(node2).not.toBeNull();
@@ -337,13 +337,13 @@ describe("simpleTree", () => {
                 { selected: true, value: "node4" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node2" || n.value === "node4"));
 
             tree.setSelected([node4 as TreeNode]);
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node2");
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node4" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
         });
 
         it("items should be selectable depending on their selectable state via api-call (checkbox-mode).", () => {
@@ -365,7 +365,7 @@ describe("simpleTree", () => {
             tree.setSelected([node1 as TreeNode, node2 as TreeNode]);
 
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node1" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
 
         it("item should be selected on setSelected api-call (checkbox-mode, recursive).", () => {
@@ -391,7 +391,7 @@ describe("simpleTree", () => {
                 { selected: true, value: "node5" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node4" || n.value === "node5"));
 
             const node2 = tree.getNode("node2");
@@ -399,7 +399,7 @@ describe("simpleTree", () => {
             tree.setSelected([node2 as TreeNode]);
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node1");
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node2" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
         });
 
         it("items should be selectable regardless of their selectable state via api-call (checkbox-mode, recursive).", () => {
@@ -425,7 +425,7 @@ describe("simpleTree", () => {
             );
 
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node11"));
         });
 
@@ -436,15 +436,15 @@ describe("simpleTree", () => {
 
             clickTreeNode(tree.getNode("node1"));
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node1" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
 
             clickTreeNode(tree.getNode("node2"));
             expect(tree.getSelected() as TreeNode).toEqual(expect.objectContaining({ selected: true, value: "node2" }));
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
 
             clickTreeNode(tree.getNode("node2"));
             expect(tree.getSelected()).toBeNull();
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBeFalsy());
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBeFalsy());
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode).", () => {
@@ -467,13 +467,13 @@ describe("simpleTree", () => {
                 { selected: true, value: "node2" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node4" || n.value === "node2"));
 
             clickTreeNode(tree.getNode("node2"));
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node2");
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node4" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node4"));
         });
 
         it("items should be selectable depending on their selectable state when clicked (checkbox-mode).", () => {
@@ -491,7 +491,7 @@ describe("simpleTree", () => {
             clickTreeNode(tree.getNode("node1"));
             clickTreeNode(tree.getNode("node2"));
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node1" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node1"));
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode, recursive) 1.", () => {
@@ -517,7 +517,7 @@ describe("simpleTree", () => {
                 { selected: true, value: "node2" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) =>
                     expect(n.selected).toBe(
                         n.value === "node1" || n.value === "node7" || n.value === "node5" || n.value === "node2"
@@ -527,7 +527,7 @@ describe("simpleTree", () => {
             clickTreeNode(tree.getNode("node1"));
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node1");
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node2" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node2"));
         });
 
         it("items should be selected or unselected when clicked (checkbox-mode, recursive) 2.", () => {
@@ -551,14 +551,14 @@ describe("simpleTree", () => {
                 { selected: true, value: "node5" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node4" || n.value === "node5"));
 
             clickTreeNode(tree.getNode("node4"));
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node1");
             expect((tree.getSelected() as TreeNode[]).map((n) => n.value)).not.toContain("node4");
             expectObjectsInArray(tree.getSelected() as TreeNode[], { selected: true, value: "node5" });
-            treeOnlyCtx.dataService?.getAllNodes().forEach((n) => expect(n.selected).toBe(n.value === "node5"));
+            treeOnlyCtx.dataService?.getNodesInternal().forEach((n) => expect(n.selected).toBe(n.value === "node5"));
         });
 
         it("items should be selected regardless of their selectable state when clicked (checkbox-mode, recursive).", () => {
@@ -581,7 +581,7 @@ describe("simpleTree", () => {
                 { selected: true, selectable: false, value: "node11" }
             );
             treeOnlyCtx.dataService
-                ?.getAllNodes()
+                ?.getNodesInternal()
                 .forEach((n) => expect(n.selected).toBe(n.value === "node1" || n.value === "node11"));
         });
     });
