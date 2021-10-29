@@ -28,7 +28,8 @@ export class BaseTree {
     ) {
         this.keyEventHandler = new KeyEventHandler(this.eventManager, this.dataService, this.readOnly);
         this.dragAndDropHandler = new DragAndDropHandler((uid: string, newIndex: number) => {
-            this.dataService.setNodeIndex(uid, newIndex);
+            const node = this.dataService.setNodeIndex(uid, newIndex);
+            this.eventManager.publish(constants.events.NodeIndexChanged, { node, newIndex });
             this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
         });
         this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
