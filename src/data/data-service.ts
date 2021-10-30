@@ -144,6 +144,10 @@ export class DataService {
         }
     }
 
+    public setNodes(nodes: InitTreeNode[]): void {
+        this.allNodes = this.normalizeNodes(nodes);
+    }
+
     public updateNodeLabel(value: string, newLabel: string): void {
         const node = this.getNodeInternal(this.allNodes, value);
         if (node) {

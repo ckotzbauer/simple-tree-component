@@ -264,6 +264,27 @@ describe("simpleTree", () => {
             expect(flatted.indexOf("parent2Child1") === -1).toBeTruthy();
             expect(flatted.indexOf("parent3") === -1).toBeTruthy();
         });
+
+        it("setNodes - should clear all nodes", () => {
+            let nodes = dataService.getFlattedClickableNodeValues();
+            expect(nodes.length).toEqual(7);
+
+            dataService.setNodes([]);
+
+            nodes = dataService.getFlattedClickableNodeValues();
+            expect(nodes.length).toEqual(0);
+        });
+
+        it("setNodes - should replace all nodes", () => {
+            let nodes = dataService.getFlattedClickableNodeValues();
+            expect(nodes.length).toEqual(7);
+
+            const treeNode = createTreeNode("Parent 4", "parent4");
+            dataService.setNodes([treeNode]);
+
+            nodes = dataService.getFlattedClickableNodeValues();
+            expect(nodes.length).toEqual(1);
+        });
     });
 });
 

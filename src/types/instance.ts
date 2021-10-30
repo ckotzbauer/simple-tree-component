@@ -36,7 +36,7 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
      * @param node to add.
      * @param parent of the new tree-node or null
      */
-    addNode(node: InitTreeNode, parent: TreeNode | string | null): void;
+    addNode(node: InitTreeNode, parent?: TreeNode | string | null): void;
 
     /**
      * Deletes the given tree-node from the tree.
@@ -44,6 +44,13 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
      * @param node to delete.
      */
     deleteNode(node: TreeNode): void;
+
+    /**
+     * Replaces all nodes with the given ones.
+     *
+     * @param nodes to set.
+     */
+    setNodes(nodes: InitTreeNode[]): void;
 
     /**
      * Updates the display-text of the given tree-node.
