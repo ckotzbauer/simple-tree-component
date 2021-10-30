@@ -649,5 +649,27 @@ describe("simpleTree", () => {
 
             expect(document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`).length).toBe(2);
         });
+
+        it("node-css-class - is set correctly.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            let uid = tree.getNode("node1")?.uid;
+            let wrapper = document.getElementById(uid as string)?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`);
+            expect(wrapper?.classList.contains("my-css-class")).toBeFalsy();
+
+            uid = tree.getNode("child2")?.uid;
+            wrapper = document.getElementById(uid as string)?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`);
+            expect(wrapper?.classList.contains("my-css-class")).toBeTruthy();
+        });
     });
 });
