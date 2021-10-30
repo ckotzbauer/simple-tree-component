@@ -78,6 +78,11 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
         this.tree.renderTree();
     }
 
+    public setNodes(nodes: InitTreeNode[]): void {
+        this.dataService.setNodes(nodes);
+        this.tree.renderTree();
+    }
+
     public updateNodeLabel(node: TreeNode, newLabel: string): void {
         this.dataService.updateNodeLabel(node.value, newLabel);
         this.tree.renderTree();

@@ -627,5 +627,27 @@ describe("simpleTree", () => {
                     ?.classList.contains(constants.classNames.SimpleTreeReadOnly)
             ).toBeTruthy();
         });
+
+        it("setNodes - should work correctly.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            expect(treeOnlyCtx.dataService?.getFlattedClickableNodeValues().length).toBe(6);
+
+            tree.setNodes([createTreeNode("Replace Node 1", "r1"), createTreeNode("Replace Node 2", "r2")]);
+            expect(treeOnlyCtx.dataService?.getFlattedClickableNodeValues().length).toBe(2);
+            expect(tree.getNode("r1")?.label).toBe("Replace Node 1");
+
+            expect(document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`).length).toBe(2);
+        });
     });
 });

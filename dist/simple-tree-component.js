@@ -698,6 +698,9 @@
                 }
             }
         }
+        setNodes(nodes) {
+            this.allNodes = this.normalizeNodes(nodes);
+        }
         updateNodeLabel(value, newLabel) {
             const node = this.getNodeInternal(this.allNodes, value);
             if (node) {
@@ -987,6 +990,10 @@
         }
         deleteNode(node) {
             this.dataService.deleteNode(node.value);
+            this.tree.renderTree();
+        }
+        setNodes(nodes) {
+            this.dataService.setNodes(nodes);
             this.tree.renderTree();
         }
         updateNodeLabel(node, newLabel) {
