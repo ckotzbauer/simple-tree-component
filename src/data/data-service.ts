@@ -8,7 +8,7 @@ export class DataService {
     private treeInstanceId: number;
 
     constructor(
-        nodes: InitTreeNode[] = [],
+        nodes: InitTreeNode[],
         private checkboxesActive: boolean = false,
         private checkboxesRecursive: boolean = false
     ) {

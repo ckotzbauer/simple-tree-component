@@ -80,7 +80,6 @@ export class DragAndDropHandler {
         if (this.draggedId) {
             document.getElementById(this.draggedId)?.removeAttribute("data-dragging");
             const { ids } = this.getSameLevelNodes(document.getElementById(this.draggedId) as HTMLElement);
-            console.log(`Ids: ${ids.join(",")}; ID: ${this.draggedId}`);
             this.setNodeIndex(this.draggedId, ids.indexOf(this.draggedId));
         }
     }
