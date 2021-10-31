@@ -216,8 +216,8 @@ describe("simpleTree", () => {
             called = false;
 
             tree.subscribe(constants.events.EscapePressed as any, () => called = true);
-            tree.setReadOnly(false);
-            simulate("keyup", window, { code: "Escape" });
+            tree.setReadOnly(true);
+            simulate("keyup", window, { code: "Escape" }, KeyboardEvent);
             expect(called).toBeFalsy();
         });
     });
