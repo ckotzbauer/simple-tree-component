@@ -671,5 +671,168 @@ describe("simpleTree", () => {
             wrapper = document.getElementById(uid as string)?.querySelector(`.${constants.classNames.SimpleTreeNodeWrapper}`);
             expect(wrapper?.classList.contains("my-css-class")).toBeTruthy();
         });
+
+        it("addNode - adds node and renders tree.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            let texts = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(texts.length).toBe(6);
+
+            tree.addNode({ value: "new-node", label: "My new node" });
+            texts = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(texts.length).toBe(7);
+
+            const node = tree.getNode("new-node");
+            const text = document.getElementById(node?.uid as string)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(text?.innerHTML).toEqual("My new node");
+        });
+
+        it("deleteNode - removes node and renders tree.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            let texts = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(texts.length).toBe(6);
+
+            tree.deleteNode(tree.getNode("node2") as TreeNode);
+            texts = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(texts.length).toBe(5);
+        });
+
+        it("deleteNode - null throws exception.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            expect(() => tree.deleteNode(null as unknown as TreeNode)).toThrow();
+        });
+
+        it("setNodes - replaces all nodes.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            const texts = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(texts.length).toBe(6);
+
+            tree.setNodes([
+                createTreeNode("New node 1", "new-node-1", [], true),
+                createTreeNode("New node 2", "new-node-2", [
+                    createTreeNode("New node 3", "new-node-3", [], false, false)
+                ])
+            ]);
+
+            const wrapper = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeWrapper}`);
+            expect(wrapper.length).toBe(3);
+            expect(wrapper[0].classList.contains(constants.classNames.SimpleTreeNodeSelected)).toBeTruthy();
+            expect(wrapper[0].classList.contains(constants.classNames.SimpleTreeNodeSelectable)).toBeTruthy();
+            expect(wrapper[1].classList.contains(constants.classNames.SimpleTreeNodeSelected)).toBeFalsy();
+            expect(wrapper[1].classList.contains(constants.classNames.SimpleTreeParentNode)).toBeTruthy();
+            expect(wrapper[1].classList.contains(constants.classNames.SimpleTreeNodeSelectable)).toBeTruthy();
+            expect(wrapper[2].classList.contains(constants.classNames.SimpleTreeNodeSelectable)).toBeFalsy();
+        });
+
+        it("updateNodeLabel - replaces the node-text.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            const node = tree.getNode("child2") as TreeNode;
+            tree.updateNodeLabel(node, "New label!!");
+
+            const textNode = document.getElementById(node.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`);
+            expect(textNode?.innerHTML).toBe("New label!!");
+        });
+
+        it("moveNode - upwards and rerendered.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            tree.moveNode("child2", "up");
+
+            const node = tree.getNode("node1") as TreeNode;
+            let childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
+            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
+
+            tree.moveNode("child2", "up");
+            childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
+            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
+        });
+
+        it("moveNode - downwards and rerendered.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], false, true, "my-css-class"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            tree.moveNode("child2", "down");
+
+            const node = tree.getNode("node1") as TreeNode;
+            let childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
+            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
+
+            tree.moveNode("child2", "down");
+            childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
+            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
+        });
     });
 });
