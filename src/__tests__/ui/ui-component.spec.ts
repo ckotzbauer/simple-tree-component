@@ -330,13 +330,18 @@ describe("simpleTree", () => {
                     dropdownHolder: "my-css",
                 },
                 scrollContainer: document.body,
+                searchBar: false,
             });
 
             openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
             expect(isDropdownVisible()).toBeTruthy();
 
-            const e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
+            let e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
             expect(e.classList.contains("my-css")).toBeTruthy();
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
+            expect(e.classList.contains("my-css")).toBeFalsy();
         });
 
         it("should change hover-state with arrow-keys.", () => {
@@ -686,6 +691,26 @@ describe("simpleTree", () => {
 
             expect(() => tree.moveNode("node2", "up")).toThrow();
         });
+
+        it("should remove pillbox on x-click.", () => {
+            createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2", [], true),
+                        createTreeNode("Child 3", "child3", [], true),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+
+            expect(document.querySelector(`.${constants.classNames.SimpleTreePillboxHolder}`)?.children.length).toBe(2);
+
+            simulate("click", document.querySelector(`.${constants.classNames.SimpleTreePillboxCross}`) as Element);
+            expect(document.querySelector(`.${constants.classNames.SimpleTreePillboxHolder}`)?.children.length).toBe(1);
+            expect(multiCtx.dataService?.getSelected().map((t) => t.value)).toEqual(["child3"]);
+        });
     });
 
     describe("tree-view", () => {
@@ -940,7 +965,7 @@ describe("simpleTree", () => {
             });
 
             let called = false;
-            tree.subscribe("nodeIndexChanged", () => {
+            tree.subscribeOnce("nodeIndexChanged", () => {
                 called = true;
             });
 
