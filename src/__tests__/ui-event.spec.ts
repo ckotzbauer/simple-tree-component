@@ -1,4 +1,4 @@
-import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdown, clickTreeNode } from "../test-utils";
+import { initialize, beforeEachTest, createInstance, createTreeNode, openDropdown, clickTreeNode, simulate } from "../test-utils";
 import constants from "../ui/ui-constants";
 import { TreeNode } from "../types/tree-node";
 
@@ -202,6 +202,23 @@ describe("simpleTree", () => {
             expect(node).not.toBeNull();
             expect(node.value).toEqual("node1");
             expect(tree.getSelected()).toBeNull();
+        });
+
+        it("should only emit key-events on non-read-only (tree-view)", () => {
+            let called = false;
+            const tree = createInstance<"tree">(treeCtx, "tree", {
+                nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
+            });
+
+            tree.subscribe(constants.events.EscapePressed as any, () => called = true);
+            simulate("keyup", window, { code: "Escape" }, KeyboardEvent);
+            expect(called).toBeTruthy();
+            called = false;
+
+            tree.subscribe(constants.events.EscapePressed as any, () => called = true);
+            tree.setReadOnly(false);
+            simulate("keyup", window, { code: "Escape" });
+            expect(called).toBeFalsy();
         });
     });
 });

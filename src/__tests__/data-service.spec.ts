@@ -331,6 +331,11 @@ describe("simpleTree", () => {
             expect(nodes[0].value).toEqual("parent2Child1");
             expect(nodes[1].value).toEqual("parent2Child2");
         });
+
+        it("collapseNode - unknown-node should return false", () => {
+            const retVal = dataService.collapseNode("notExisting", true);
+            expect(retVal).toEqual(false);
+        });
     });
 });
 
