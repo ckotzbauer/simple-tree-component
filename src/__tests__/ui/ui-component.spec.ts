@@ -834,5 +834,107 @@ describe("simpleTree", () => {
             childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
             expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
         });
+
+        it("drag&drop - nothing happens when disabled 1.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            let called = false;
+            tree.subscribe("nodeIndexChanged", () => {
+                called = true;
+            });
+
+            const sourceNode = tree.getNode("child1") as TreeNode;
+            const sourceLiNode = document.getElementById(sourceNode.uid) as Element;
+            const targetNode = tree.getNode("child2") as TreeNode;
+            const targetLiNode = document.getElementById(targetNode.uid) as Element;
+
+            simulate("dragstart", sourceLiNode, { clientX: 0, clientY: 0 });
+            simulate("dragover", targetLiNode, { clientX: 0, clientY: 5 });
+            simulate("drop", targetLiNode, { clientX: 0, clientY: 5 });
+
+            expect(sourceLiNode.hasAttribute("draggable")).toBeFalsy();
+            expect(targetLiNode.hasAttribute("draggable")).toBeFalsy();
+            expect(called).toBeFalsy();
+        });
+
+        it("drag&drop - nothing happens when disabled 2.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                dragAndDrop: true,
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1", [], false, true, "", false),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            const sourceNode = tree.getNode("child1") as TreeNode;
+            const sourceLiNode = document.getElementById(sourceNode.uid) as Element;
+            const targetNode = tree.getNode("child2") as TreeNode;
+            const targetLiNode = document.getElementById(targetNode.uid) as Element;
+
+            expect(sourceLiNode.hasAttribute("draggable")).toBeFalsy();
+            expect(targetLiNode.hasAttribute("draggable")).toBeTruthy();
+        });
+
+        it("drag&drop - node order has changed.", () => {
+            const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
+                dragAndDrop: true,
+                nodes: [
+                    createTreeNode("Node Test 1", "node1", [
+                        createTreeNode("Child 1", "child1"),
+                        createTreeNode("Child 2", "child2"),
+                        createTreeNode("Child 3", "child3"),
+                    ]),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            let indexCalled = false;
+            let orderCalled = false;
+            let draggedNode: TreeNode | null = null;
+            let newIndex: number | null = null;
+            let orderedNodes: TreeNode[] | null = null;
+            tree.subscribe("nodeIndexChanged", (d: { node: TreeNode, newIndex: number }) => {
+                indexCalled = true;
+                draggedNode = d.node;
+                newIndex = d.newIndex;
+            });
+            tree.subscribe("nodeOrderChanged", (nodes: TreeNode[]) => {
+                orderCalled = true;
+                orderedNodes = nodes;
+            });
+
+            const sourceNode = tree.getNode("child3") as TreeNode;
+            const sourceLiNode = document.getElementById(sourceNode.uid) as Element;
+            const targetNode = tree.getNode("child2") as TreeNode;
+            const targetLiNode = document.getElementById(targetNode.uid) as Element;
+
+            simulate("dragstart", sourceLiNode, { clientX: 0, clientY: 0 });
+            simulate("dragover", targetLiNode, { clientX: 0, clientY: 5 });
+            simulate("drop", targetLiNode, { clientX: 0, clientY: 5 });
+
+            expect(sourceLiNode.hasAttribute("draggable")).toBeTruthy();
+            expect(targetLiNode.hasAttribute("draggable")).toBeTruthy();
+            expect(indexCalled).toBeTruthy();
+            expect(orderCalled).toBeTruthy();
+            expect((draggedNode as TreeNode | null)?.value).toBe("child3");
+            expect(newIndex).toBe(1);
+            expect((orderedNodes as unknown as TreeNode[])[0].children.map((c => c.value))).toEqual(["child1", "child3", "child2"]);
+        });
     });
 });
