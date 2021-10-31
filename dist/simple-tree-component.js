@@ -179,6 +179,7 @@
     class DragAndDropHandler {
         constructor(setNodeIndex) {
             this.setNodeIndex = setNodeIndex;
+            this.draggedId = null;
             this.boundOnDragStart = this.onDragStart.bind(this);
             this.boundOnDragOver = this.onDragOver.bind(this);
             this.boundOnDrop = this.onDrop.bind(this);
@@ -196,19 +197,18 @@
             liElement.removeEventListener("drop", this.boundOnDrop);
         }
         onDragStart(e) {
-            var _a;
             const target = e.target;
             if (!target.hasAttribute("draggable")) {
                 return;
             }
+            target.setAttribute("data-dragging", "true");
+            this.draggedId = target.id;
             if (e.dataTransfer) {
                 e.dataTransfer.effectAllowed = "move";
-                target.setAttribute("data-dragging", "true");
-                (_a = e.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData("text/plain", target.id);
             }
         }
         onDragOver(e) {
-            var _a, _b, _c, _d;
+            var _a, _b, _c;
             e.preventDefault();
             const target = this.getTargetListItem(e.target);
             if (!target) {
@@ -234,17 +234,15 @@
             else {
                 (_c = target.parentElement) === null || _c === void 0 ? void 0 : _c.insertBefore(toDrop, target);
             }
-            (_d = e.dataTransfer) === null || _d === void 0 ? void 0 : _d.setData("text/plain", JSON.stringify({ id: toDrop.id, newIndex: sameLevelNodeIds.indexOf(toDrop.id) }));
         }
         onDrop(e) {
-            var _a, _b;
+            var _a;
             e.preventDefault();
             e.stopPropagation();
-            const droppedId = (_a = e.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData("text/plain");
-            if (droppedId) {
-                (_b = document.getElementById(droppedId)) === null || _b === void 0 ? void 0 : _b.removeAttribute("data-dragging");
-                const { ids } = this.getSameLevelNodes(document.getElementById(droppedId));
-                this.setNodeIndex(droppedId, ids.indexOf(droppedId));
+            if (this.draggedId) {
+                (_a = document.getElementById(this.draggedId)) === null || _a === void 0 ? void 0 : _a.removeAttribute("data-dragging");
+                const { ids } = this.getSameLevelNodes(document.getElementById(this.draggedId));
+                this.setNodeIndex(this.draggedId, ids.indexOf(this.draggedId));
             }
         }
         getTargetListItem(t) {
@@ -306,9 +304,7 @@
         }
         removeDragAndDropListeners() {
             const nodeContainer = this.getNodeContainer();
-            if (nodeContainer) {
-                Array.from(nodeContainer.querySelectorAll("li")).forEach((x) => this.dragAndDropHandler.destroy(x));
-            }
+            Array.from(nodeContainer === null || nodeContainer === void 0 ? void 0 : nodeContainer.querySelectorAll("li")).forEach((x) => this.dragAndDropHandler.destroy(x));
         }
         setNodeUiState(node, current, cssClass) {
             var _a, _b, _c;
@@ -359,21 +355,15 @@
             this.element.appendChild(nodeContainer);
         }
         getNodeContainer() {
-            const container = this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
-            if (!container) {
-                console.error("node container not found!");
-            }
-            return container;
+            return this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
         }
         renderTree() {
             const nodeContainer = this.getNodeContainer();
-            if (nodeContainer) {
-                if (this.config.dragAndDrop) {
-                    this.removeDragAndDropListeners();
-                }
-                nodeContainer.innerHTML = "";
-                nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
+            if (this.config.dragAndDrop) {
+                this.removeDragAndDropListeners();
             }
+            nodeContainer.innerHTML = "";
+            nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
         }
         renderUnorderedList(nodes) {
             var _a, _b;
@@ -391,10 +381,7 @@
                 const hasChildren = ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) > 0;
                 const liElement = document.createElement("li");
                 liElement.id = node.uid;
-                if (this.config.dragAndDrop
-                    && !this.readOnly
-                    && !((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)
-                    && node.draggable) {
+                if (this.config.dragAndDrop && !this.readOnly && !((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value) && node.draggable) {
                     this.dragAndDropHandler.initialize(liElement);
                 }
                 const lineWrapperDiv = document.createElement("div");
@@ -595,7 +582,7 @@
     }
 
     class DataService {
-        constructor(nodes = [], checkboxesActive = false, checkboxesRecursive = false) {
+        constructor(nodes, checkboxesActive = false, checkboxesRecursive = false) {
             this.checkboxesActive = checkboxesActive;
             this.checkboxesRecursive = checkboxesRecursive;
             this.allNodes = [];
@@ -793,13 +780,11 @@
                 console.error("checkbox div not found for node!", node);
                 return;
             }
-            if (checkboxDiv) {
-                if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
-                    checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
-                }
-                else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
-                    checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
-                }
+            if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
+            }
+            else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+                checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
             }
         }
         setSelectedNodes(nodes, values) {

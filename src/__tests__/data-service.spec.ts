@@ -336,6 +336,26 @@ describe("simpleTree", () => {
             const retVal = dataService.collapseNode("notExisting", true);
             expect(retVal).toEqual(false);
         });
+
+        it("toggleNodeSelected should return null for not-existing node", () => {
+            const retVal = dataService.toggleNodeSelected("notExisting");
+            expect(retVal).toBeNull();
+        });
+
+        it("toggleNodeSelected should flip selection-state", () => {
+            const node = dataService.getNode("parent2");
+
+            let retVal = dataService.toggleNodeSelected(node?.value as string);
+            expect(retVal?.selected).toBe(!node?.selected);
+
+            retVal = dataService.toggleNodeSelected(node?.value as string);
+            expect(retVal?.selected).toBe(node?.selected);
+        });
+
+        it("toggleCheckboxSelected should return null for not-existing node", () => {
+            const retVal = dataService.toggleCheckboxSelected("notExisting");
+            expect(retVal).toBeNull();
+        });
     });
 });
 

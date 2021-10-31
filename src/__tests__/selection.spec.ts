@@ -497,7 +497,10 @@ describe("simpleTree", () => {
         it("items should be selected or unselected when clicked (checkbox-mode, recursive) 1.", () => {
             const tree = createInstance<"tree">(treeOnlyCtx, "tree", {
                 nodes: [
-                    createTreeNode("node1", "node1", [createTreeNode("node4", "node4"), createTreeNode("node5", "node5")]),
+                    createTreeNode("node1", "node1", [
+                        createTreeNode("node4", "node4", [createTreeNode("node6", "node6"), createTreeNode("node7", "node7")]),
+                        createTreeNode("node5", "node5"),
+                    ]),
                     createTreeNode("node2", "node2"),
                     createTreeNode("node3", "node3"),
                 ],
@@ -513,6 +516,8 @@ describe("simpleTree", () => {
                 tree.getSelected() as TreeNode[],
                 { selected: true, value: "node1" },
                 { selected: true, value: "node4" },
+                { selected: true, value: "node6" },
+                { selected: true, value: "node7" },
                 { selected: true, value: "node5" },
                 { selected: true, value: "node2" }
             );

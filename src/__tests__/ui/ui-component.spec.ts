@@ -75,6 +75,22 @@ describe("simpleTree", () => {
             expect(textNode?.innerHTML).toEqual("<em>Node Test</em> 1");
         });
 
+        it("should close dropdown on read-only call.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeTruthy();
+
+            tree.setReadOnly(true);
+            expect(isDropdownVisible()).toBeFalsy();
+        });
+
         it("should collapse correctly.", () => {
             const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
                 nodes: [
@@ -273,6 +289,56 @@ describe("simpleTree", () => {
             expect(isDropdownVisible()).toBeFalsy();
         });
 
+        it("should close dropdown on re-click.", () => {
+            createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeTruthy();
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeFalsy();
+        });
+
+        it("should not open dropdown when read-only.", () => {
+            const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+            });
+            tree.setReadOnly(true);
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeFalsy();
+        });
+
+        it("should add custom css-class to dropdown.", () => {
+            createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3"),
+                ],
+                css: {
+                    dropdownHolder: "my-css",
+                },
+                scrollContainer: document.body,
+            });
+
+            openDropdown(singleCtx, constants.classNames.SimpleTreeSingleSelectBox);
+            expect(isDropdownVisible()).toBeTruthy();
+
+            const e = document.querySelector(`.${constants.classNames.SimpleTreeDropdownHolder}`) as HTMLElement;
+            expect(e.classList.contains("my-css")).toBeTruthy();
+        });
+
         it("should change hover-state with arrow-keys.", () => {
             const tree = createInstance<"singleSelectDropdown">(singleCtx, "singleSelectDropdown", {
                 nodes: [
@@ -450,6 +516,7 @@ describe("simpleTree", () => {
                     createTreeNode("Node Test 3", "node3"),
                 ],
                 searchBar: true,
+                searchBarFocus: true,
             });
 
             let emphasize = singleCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeEmphasize}`);
@@ -491,6 +558,22 @@ describe("simpleTree", () => {
             const clearButton = multiCtx.elem?.querySelector(`.${constants.classNames.SimpleTreeCross}`);
             expect(clearButton).toBeNull();
             expect(tree.getSelected().length).toBe(1);
+        });
+
+        it("should close dropdown on read-only call.", () => {
+            const tree = createInstance<"multiSelectDropdown">(multiCtx, "multiSelectDropdown", {
+                nodes: [
+                    createTreeNode("Node Test 1", "node1"),
+                    createTreeNode("Node Test 2", "node2"),
+                    createTreeNode("Node Test 3", "node3", [], true),
+                ],
+            });
+
+            openDropdown(multiCtx, constants.classNames.SimpleTreeMultiSelectBox);
+            expect(isDropdownVisible()).toBeTruthy();
+
+            tree.setReadOnly(true);
+            expect(isDropdownVisible()).toBeFalsy();
         });
 
         it("clear-button should be visible, if enabled.", () => {
@@ -542,7 +625,7 @@ describe("simpleTree", () => {
                     createTreeNode("Node Test 2", "node2"),
                     createTreeNode("Node Test 3", "node3", [], true),
                 ],
-                searchBar: true,
+                searchBar: false,
             });
 
             tree.setReadOnly(true);
@@ -693,7 +776,9 @@ describe("simpleTree", () => {
             expect(texts.length).toBe(7);
 
             const node = tree.getNode("new-node");
-            const text = document.getElementById(node?.uid as string)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`);
+            const text = document
+                .getElementById(node?.uid as string)
+                ?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`);
             expect(text?.innerHTML).toEqual("My new node");
         });
 
@@ -752,9 +837,7 @@ describe("simpleTree", () => {
 
             tree.setNodes([
                 createTreeNode("New node 1", "new-node-1", [], true),
-                createTreeNode("New node 2", "new-node-2", [
-                    createTreeNode("New node 3", "new-node-3", [], false, false)
-                ])
+                createTreeNode("New node 2", "new-node-2", [createTreeNode("New node 3", "new-node-3", [], false, false)]),
             ]);
 
             const wrapper = document.querySelectorAll(`.${constants.classNames.SimpleTreeNodeWrapper}`);
@@ -803,12 +886,16 @@ describe("simpleTree", () => {
             tree.moveNode("child2", "up");
 
             const node = tree.getNode("node1") as TreeNode;
-            let childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
-            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
+            let childNodes = node.children.map(
+                (c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element
+            );
+            expect(Array.from(childNodes).map((s) => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
 
             tree.moveNode("child2", "up");
-            childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
-            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
+            childNodes = node.children.map(
+                (c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element
+            );
+            expect(Array.from(childNodes).map((s) => s.innerHTML)).toEqual(["Child 2", "Child 1", "Child 3"]);
         });
 
         it("moveNode - downwards and rerendered.", () => {
@@ -827,12 +914,16 @@ describe("simpleTree", () => {
             tree.moveNode("child2", "down");
 
             const node = tree.getNode("node1") as TreeNode;
-            let childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
-            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
+            let childNodes = node.children.map(
+                (c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element
+            );
+            expect(Array.from(childNodes).map((s) => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
 
             tree.moveNode("child2", "down");
-            childNodes = node.children.map((c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element);
-            expect(Array.from(childNodes).map(s => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
+            childNodes = node.children.map(
+                (c) => document.getElementById(c.uid)?.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element
+            );
+            expect(Array.from(childNodes).map((s) => s.innerHTML)).toEqual(["Child 1", "Child 3", "Child 2"]);
         });
 
         it("drag&drop - nothing happens when disabled 1.", () => {
@@ -912,7 +1003,7 @@ describe("simpleTree", () => {
             let draggedNode: TreeNode | null = null;
             let newIndex: number | null = null;
             let orderedNodes: TreeNode[] | null = null;
-            tree.subscribe("nodeIndexChanged", (d: { node: TreeNode, newIndex: number }) => {
+            tree.subscribe("nodeIndexChanged", (d: { node: TreeNode; newIndex: number }) => {
                 indexCalled = true;
                 draggedNode = d.node;
                 newIndex = d.newIndex;
@@ -929,7 +1020,10 @@ describe("simpleTree", () => {
 
             simulate("dragstart", sourceLiNode, { clientX: 0, clientY: 0 });
             expect(sourceLiNode.hasAttribute("data-dragging")).toBeTruthy();
-            simulate("dragover", targetLiNode.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element, { clientX: 0, clientY: 5 });
+            simulate("dragover", targetLiNode.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element, {
+                clientX: 0,
+                clientY: 5,
+            });
             simulate("drop", targetLiNode, { clientX: 0, clientY: 5 });
 
             expect(sourceLiNode.hasAttribute("draggable")).toBeTruthy();
@@ -938,7 +1032,11 @@ describe("simpleTree", () => {
             expect(orderCalled).toBeTruthy();
             expect((draggedNode as TreeNode | null)?.value).toBe("child3");
             expect(newIndex).toBe(1);
-            expect((orderedNodes as unknown as TreeNode[])[0].children.map((c => c.value))).toEqual(["child1", "child3", "child2"]);
+            expect((orderedNodes as unknown as TreeNode[])[0].children.map((c) => c.value)).toEqual([
+                "child1",
+                "child3",
+                "child2",
+            ]);
         });
     });
 });
