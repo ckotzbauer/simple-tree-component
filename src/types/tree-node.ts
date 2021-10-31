@@ -36,6 +36,12 @@ export interface InitTreeNode {
     cssClass?: string;
 
     /**
+     * Indicates if this node is draggable, when dragAndDrop is enabled.
+     * (Default: `true`)
+     */
+    draggable?: boolean;
+
+    /**
      * Any additional property, which is available (the component-logic will respect them).
      */
     [key: string]: any;
@@ -61,6 +67,18 @@ export interface TreeNode extends InitTreeNode {
      * Recursive array of child `TreeNode` objects.
      */
     children: TreeNode[];
+
+    /**
+     * Custom css-class added to the line-wrapper element.
+     * (Default: `""`)
+     */
+    cssClass: string;
+
+    /**
+     * Indicates if this node is draggable, when dragAndDrop is enabled.
+     * (Default: `true`)
+     */
+    draggable: boolean;
 
     /**
      * Indicates if this node (in case it has child-nodes) is currently collapsed.
@@ -91,4 +109,5 @@ export const defaults: TreeNode = {
     hidden: false,
     uid: "",
     cssClass: "",
+    draggable: true,
 };
