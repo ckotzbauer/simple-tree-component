@@ -886,6 +886,9 @@ describe("simpleTree", () => {
             const targetNode = tree.getNode("child2") as TreeNode;
             const targetLiNode = document.getElementById(targetNode.uid) as Element;
 
+            simulate("dragstart", sourceLiNode, { clientX: 0, clientY: 0 });
+            expect(sourceLiNode.hasAttribute("data-dragging")).toBeFalsy();
+
             expect(sourceLiNode.hasAttribute("draggable")).toBeFalsy();
             expect(targetLiNode.hasAttribute("draggable")).toBeTruthy();
         });
@@ -925,7 +928,8 @@ describe("simpleTree", () => {
             const targetLiNode = document.getElementById(targetNode.uid) as Element;
 
             simulate("dragstart", sourceLiNode, { clientX: 0, clientY: 0 });
-            simulate("dragover", targetLiNode, { clientX: 0, clientY: 5 });
+            expect(sourceLiNode.hasAttribute("data-dragging")).toBeTruthy();
+            simulate("dragover", targetLiNode.querySelector(`.${constants.classNames.SimpleTreeNodeText}`) as Element, { clientX: 0, clientY: 5 });
             simulate("drop", targetLiNode, { clientX: 0, clientY: 5 });
 
             expect(sourceLiNode.hasAttribute("draggable")).toBeTruthy();
