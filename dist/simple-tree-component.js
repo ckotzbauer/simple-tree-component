@@ -391,7 +391,10 @@
                 const hasChildren = ((_a = node.children) === null || _a === void 0 ? void 0 : _a.length) > 0;
                 const liElement = document.createElement("li");
                 liElement.id = node.uid;
-                if (this.config.dragAndDrop && !((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)) {
+                if (this.config.dragAndDrop
+                    && !this.readOnly
+                    && !((_b = this.searchTextInput) === null || _b === void 0 ? void 0 : _b.value)
+                    && node.draggable) {
                     this.dragAndDropHandler.initialize(liElement);
                 }
                 const lineWrapperDiv = document.createElement("div");
@@ -567,6 +570,7 @@
         hidden: false,
         uid: "",
         cssClass: "",
+        draggable: true,
     };
 
     function isTreeNodeValid(treeNode) {

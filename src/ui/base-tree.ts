@@ -178,7 +178,7 @@ export class BaseTree {
             const liElement: HTMLLIElement = document.createElement("li");
             liElement.id = node.uid;
 
-            if (this.config.dragAndDrop && !this.searchTextInput?.value) {
+            if (this.config.dragAndDrop && !this.readOnly && !this.searchTextInput?.value && node.draggable) {
                 this.dragAndDropHandler.initialize(liElement);
             }
 
