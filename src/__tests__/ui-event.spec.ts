@@ -210,12 +210,12 @@ describe("simpleTree", () => {
                 nodes: [createTreeNode("node1", "node1"), createTreeNode("node2", "node2"), createTreeNode("node3", "node3")],
             });
 
-            tree.subscribe(constants.events.EscapePressed as any, () => called = true);
+            tree.subscribe(constants.events.EscapePressed as any, () => (called = true));
             simulate("keyup", window, { code: "Escape" }, KeyboardEvent);
             expect(called).toBeTruthy();
             called = false;
 
-            tree.subscribe(constants.events.EscapePressed as any, () => called = true);
+            tree.subscribe(constants.events.EscapePressed as any, () => (called = true));
             tree.setReadOnly(true);
             simulate("keyup", window, { code: "Escape" }, KeyboardEvent);
             expect(called).toBeFalsy();

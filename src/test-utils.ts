@@ -69,7 +69,7 @@ export function createTreeNode(
     selected = false,
     selectable = true,
     cssClass = "",
-    draggable = true,
+    draggable = true
 ): InitTreeNode {
     return {
         label: label,

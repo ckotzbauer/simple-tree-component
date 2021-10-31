@@ -69,9 +69,7 @@ export class BaseTree {
     private removeDragAndDropListeners(): void {
         const nodeContainer = this.getNodeContainer();
 
-        if (nodeContainer) {
-            Array.from(nodeContainer.querySelectorAll("li")).forEach((x: HTMLLIElement) => this.dragAndDropHandler.destroy(x));
-        }
+        Array.from(nodeContainer?.querySelectorAll("li")).forEach((x: HTMLLIElement) => this.dragAndDropHandler.destroy(x));
     }
 
     private setNodeUiState(node: TreeNode | null, current: string | null, cssClass: string): string | null {
@@ -136,27 +134,19 @@ export class BaseTree {
         this.element.appendChild(nodeContainer);
     }
 
-    private getNodeContainer(): Element | null {
-        const container = this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`);
-
-        if (!container) {
-            console.error("node container not found!");
-        }
-
-        return container;
+    private getNodeContainer(): Element {
+        return this.element.querySelector(`div.${constants.classNames.SimpleTreeNodeContainer}`) as Element;
     }
 
     public renderTree(): void {
         const nodeContainer = this.getNodeContainer();
 
-        if (nodeContainer) {
-            if (this.config.dragAndDrop) {
-                this.removeDragAndDropListeners();
-            }
-
-            nodeContainer.innerHTML = "";
-            nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
+        if (this.config.dragAndDrop) {
+            this.removeDragAndDropListeners();
         }
+
+        nodeContainer.innerHTML = "";
+        nodeContainer.appendChild(this.renderUnorderedList(this.dataService.allNodes));
     }
 
     private renderUnorderedList(nodes: TreeNode[]): HTMLUListElement {

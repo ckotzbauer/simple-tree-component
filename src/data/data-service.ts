@@ -7,11 +7,7 @@ export class DataService {
     public allNodes: TreeNode[] = [];
     private treeInstanceId: number;
 
-    constructor(
-        nodes: InitTreeNode[],
-        private checkboxesActive: boolean = false,
-        private checkboxesRecursive: boolean = false
-    ) {
+    constructor(nodes: InitTreeNode[], private checkboxesActive: boolean = false, private checkboxesRecursive: boolean = false) {
         this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
         this.allNodes = this.normalizeNodes(nodes);
     }
@@ -257,12 +253,10 @@ export class DataService {
             return;
         }
 
-        if (checkboxDiv) {
-            if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
-                checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
-            } else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
-                checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
-            }
+        if (node.selected && !checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+            checkboxDiv.classList.add(constants.classNames.SimpleTreeNodeCheckboxSelected);
+        } else if (!node.selected && checkboxDiv.classList.contains(constants.classNames.SimpleTreeNodeCheckboxSelected)) {
+            checkboxDiv.classList.remove(constants.classNames.SimpleTreeNodeCheckboxSelected);
         }
     }
 

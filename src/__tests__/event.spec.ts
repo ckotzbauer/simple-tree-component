@@ -3,6 +3,11 @@ import { EventManager } from "../event/event-manager";
 describe("simpleTree", () => {
     describe("event", () => {
         describe("subscribe", () => {
+            it("should throw error on null event", () => {
+                const em = new EventManager();
+                expect(() => em.subscribe(null as unknown as string, () => null)).toThrow();
+            });
+
             it("should not remove another callback when dispose called twice", () => {
                 const em = new EventManager();
                 let data = 0;
@@ -185,6 +190,11 @@ describe("simpleTree", () => {
         });
 
         describe("publish", () => {
+            it("should throw error on null event", () => {
+                const em = new EventManager();
+                expect(() => em.publish(null as unknown as string, () => null)).toThrow();
+            });
+
             it("calls the callback functions for the event", () => {
                 const em = new EventManager();
 
