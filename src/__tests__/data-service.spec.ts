@@ -285,6 +285,52 @@ describe("simpleTree", () => {
             nodes = dataService.getFlattedClickableNodeValues();
             expect(nodes.length).toEqual(1);
         });
+
+        it("setNodeIndex - should reorder root nodes correctly", () => {
+            let nodes = dataService.getNodes();
+            expect(nodes[0].value).toEqual("parent1");
+            expect(nodes[1].value).toEqual("parent2");
+            expect(nodes[2].value).toEqual("parent3");
+
+            dataService.setNodeIndex(dataService.getNode("parent1")?.uid as string, 1);
+            nodes = dataService.getNodes();
+            expect(nodes[0].value).toEqual("parent2");
+            expect(nodes[1].value).toEqual("parent1");
+            expect(nodes[2].value).toEqual("parent3");
+
+            dataService.setNodeIndex(dataService.getNode("parent3")?.uid as string, 0);
+            nodes = dataService.getNodes();
+            expect(nodes[0].value).toEqual("parent3");
+            expect(nodes[1].value).toEqual("parent2");
+            expect(nodes[2].value).toEqual("parent1");
+
+            dataService.setNodeIndex(dataService.getNode("parent2")?.uid as string, 10);
+            nodes = dataService.getNodes();
+            expect(nodes[0].value).toEqual("parent3");
+            expect(nodes[1].value).toEqual("parent1");
+            expect(nodes[2].value).toEqual("parent2");
+        });
+
+        it("setNodeIndex - should reorder child nodes correctly", () => {
+            let nodes = dataService.getNode("parent2")?.children as TreeNode[];
+            expect(nodes[0].value).toEqual("parent2Child1");
+            expect(nodes[1].value).toEqual("parent2Child2");
+
+            dataService.setNodeIndex(dataService.getNode("parent2Child1")?.uid as string, 1);
+            nodes = dataService.getNode("parent2")?.children as TreeNode[];
+            expect(nodes[0].value).toEqual("parent2Child2");
+            expect(nodes[1].value).toEqual("parent2Child1");
+
+            dataService.setNodeIndex(dataService.getNode("parent2Child2")?.uid as string, 0);
+            nodes = dataService.getNode("parent2")?.children as TreeNode[];
+            expect(nodes[0].value).toEqual("parent2Child2");
+            expect(nodes[1].value).toEqual("parent2Child1");
+
+            dataService.setNodeIndex(dataService.getNode("parent2Child2")?.uid as string, 10);
+            nodes = dataService.getNode("parent2")?.children as TreeNode[];
+            expect(nodes[0].value).toEqual("parent2Child1");
+            expect(nodes[1].value).toEqual("parent2Child2");
+        });
     });
 });
 
