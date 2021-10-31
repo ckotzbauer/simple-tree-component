@@ -2,6 +2,7 @@ export class DragAndDropHandler {
     private boundOnDragStart: (e: DragEvent) => void;
     private boundOnDragOver: (e: DragEvent) => void;
     private boundOnDrop: (e: DragEvent) => void;
+    private draggedId: string | null = null;
 
     constructor(private setNodeIndex: (uid: string, newIndex: number) => void) {
         this.boundOnDragStart = this.onDragStart.bind(this);
@@ -29,10 +30,11 @@ export class DragAndDropHandler {
             return;
         }
 
+        target.setAttribute("data-dragging", "true");
+        this.draggedId = target.id;
+
         if (e.dataTransfer) {
             e.dataTransfer.effectAllowed = "move";
-            target.setAttribute("data-dragging", "true");
-            e.dataTransfer?.setData("text/plain", target.id);
         }
     }
 
@@ -69,19 +71,17 @@ export class DragAndDropHandler {
         } else {
             target.parentElement?.insertBefore(toDrop, target);
         }
-
-        e.dataTransfer?.setData("text/plain", JSON.stringify({ id: toDrop.id, newIndex: sameLevelNodeIds.indexOf(toDrop.id) }));
     }
 
     private onDrop(e: DragEvent): void {
         e.preventDefault();
         e.stopPropagation();
-        const droppedId = e.dataTransfer?.getData("text/plain") as string;
 
-        if (droppedId) {
-            document.getElementById(droppedId)?.removeAttribute("data-dragging");
-            const { ids } = this.getSameLevelNodes(document.getElementById(droppedId) as HTMLElement);
-            this.setNodeIndex(droppedId, ids.indexOf(droppedId));
+        if (this.draggedId) {
+            document.getElementById(this.draggedId)?.removeAttribute("data-dragging");
+            const { ids } = this.getSameLevelNodes(document.getElementById(this.draggedId) as HTMLElement);
+            console.log(`Ids: ${ids.join(",")}; ID: ${this.draggedId}`);
+            this.setNodeIndex(this.draggedId, ids.indexOf(this.draggedId));
         }
     }
 
