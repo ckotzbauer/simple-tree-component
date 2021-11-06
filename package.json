@@ -56,7 +56,7 @@
     "autoprefixer": "10.4.0",
     "chokidar": "3.5.2",
     "docsify-cli": "4.4.3",
-    "eslint": "8.1.0",
+    "eslint": "8.2.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
     "jest": "27.3.1",
