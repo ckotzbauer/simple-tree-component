@@ -1024,18 +1024,12 @@ describe("simpleTree", () => {
             });
 
             let indexCalled = false;
-            let orderCalled = false;
             let draggedNode: TreeNode | null = null;
             let newIndex: number | null = null;
-            let orderedNodes: TreeNode[] | null = null;
             tree.subscribe("nodeIndexChanged", (d: { node: TreeNode; newIndex: number }) => {
                 indexCalled = true;
                 draggedNode = d.node;
                 newIndex = d.newIndex;
-            });
-            tree.subscribe("nodeOrderChanged", (nodes: TreeNode[]) => {
-                orderCalled = true;
-                orderedNodes = nodes;
             });
 
             const sourceNode = tree.getNode("child3") as TreeNode;
@@ -1054,14 +1048,8 @@ describe("simpleTree", () => {
             expect(sourceLiNode.hasAttribute("draggable")).toBeTruthy();
             expect(targetLiNode.hasAttribute("draggable")).toBeTruthy();
             expect(indexCalled).toBeTruthy();
-            expect(orderCalled).toBeTruthy();
             expect((draggedNode as TreeNode | null)?.value).toBe("child3");
             expect(newIndex).toBe(1);
-            expect((orderedNodes as unknown as TreeNode[])[0].children.map((c) => c.value)).toEqual([
-                "child1",
-                "child3",
-                "child2",
-            ]);
         });
     });
 });

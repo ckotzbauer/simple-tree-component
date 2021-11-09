@@ -127,30 +127,28 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
     toggleCollapseNode(node: TreeNode): void;
 
     /**
-     * Add a listener to handle "selectionChanged", "selectionChanging" or "nodeOrderChanged" events.
+     * Add a listener to handle "selectionChanged", "selectionChanging" or "nodeIndexChanged" events.
      *
-     * @param event "selectionChanged", "selectionChanging" or "nodeOrderChanged" event
+     * @param event "selectionChanged", "selectionChanging" or "nodeIndexChanged" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
     subscribe(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
     subscribe(event: "selectionChanging", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
-    subscribe(event: "nodeOrderChanged", handler: (d: TreeNode[], evt: string, e?: Event) => void): Subscription;
     subscribe(
         event: "nodeIndexChanged",
         handler: (d: { node: TreeNode; newIndex: number }, evt: string, e?: Event) => void
     ): Subscription;
 
     /**
-     * Add a listener to handle "selectionChanged" "selectionChanging" or "nodeOrderChanged" events. When the event is emitted for the first time, the subscription ends automatically.
+     * Add a listener to handle "selectionChanged" "selectionChanging" or "nodeIndexChanged" events. When the event is emitted for the first time, the subscription ends automatically.
      *
-     * @param event "selectionChanged", "selectionChanging" or "nodeOrderChanged" event
+     * @param event "selectionChanged", "selectionChanging" or "nodeIndexChanged" event
      * @param handler to execute custom logic on this event.
      * @returns a subscription object to unsubscribe again.
      */
     subscribeOnce(event: "selectionChanged", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
     subscribeOnce(event: "selectionChanging", handler: (d: TreeModeNameMap[K], evt: string, e?: Event) => void): Subscription;
-    subscribeOnce(event: "nodeOrderChanged", handler: (d: TreeNode[], evt: string, e?: Event) => void): Subscription;
     subscribeOnce(
         event: "nodeIndexChanged",
         handler: (d: { node: TreeNode; newIndex: number }, evt: string, e?: Event) => void
