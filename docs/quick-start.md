@@ -85,3 +85,16 @@ within the tree. So changing the selection-state of a node for example with `nod
 #### How can I select a node directly on initialization?
 To select a specific node directly on component-initialization, you can simply set the `selected` property of the node to `true` as shown in the example above.
 
+#### How can I replace all tree-nodes?
+You can call `tree.setNodes([...])` to replace all nodes from the tree. This re-renders the whole tree, when currently visible.
+
+#### Can I collapse or expand nodes via the API?
+Yes. There are several functions available to collapse or expand specific or all nodes:
+```js
+tree.collapseAllNodes();
+tree.expandAllNodes();
+tree.collapseNode(tree.getNode("my-node"));
+tree.expandNode(tree.getNode("my-node"));
+tree.toggleCollapseNode(tree.getNode("my-node"));
+```
+

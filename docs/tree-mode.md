@@ -33,6 +33,25 @@ With recursion enabled, a parent automatically select its childs. A parent is on
 the parent is deselected too.
 
 
+### Drag & Drop
+
+The drag&drop-feature is disabled by default. When enabled, all nodes whose `draggable` flag is not false (true by default) can be reordered.
+It is only possible to drag&drop on the same hierarchy-level, parent-changes are therefore not allowed. Currently there is no
+support for cancelling a specific (already started) drag-action.
+
+```js
+dragAndDrop: true
+```
+
+The native "drop" event is fired as component-event `nodeIndexChanged`:
+
+```js
+tree.subscribe("nodeIndexChanged", (payload: { node: TreeNode, newIndex: number }) => {
+    // handle the index-change in any way you want.
+});
+```
+
+
 ## Live demo
 
 Try this [JSFiddle](https://jsfiddle.net/zn1qwjb9/4/).
