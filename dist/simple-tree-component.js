@@ -1,4 +1,4 @@
-/* simple-tree-component v1.2.0, @license MIT */
+/* simple-tree-component v1.3.0, @license MIT */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
