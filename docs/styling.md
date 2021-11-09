@@ -13,3 +13,5 @@ The css-class used there is `.simple-tree-dropdown-holder`.
 
 See [here](https://github.com/ckotzbauer/simple-tree-component/tree/main/dist/scss) for more info.
 If you have questions to specific variables or classes, feel free to reach out on Github. :)
+
+To style tree-nodes individually you can set the `cssClass` property on each `TreeNode` object.
