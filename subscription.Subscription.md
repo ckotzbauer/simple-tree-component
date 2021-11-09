@@ -26,4 +26,4 @@ Ends the subscription. No further events (this subscription was linked to) where
 
 #### Defined in
 
-[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/subscription.ts#L8)
+[subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/subscription.ts#L8)

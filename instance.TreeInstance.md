@@ -21,17 +21,23 @@ Represents the public api of a tree-instance.
 ### Methods
 
 - [addNode](instance.TreeInstance.md#addnode)
+- [collapseAllNodes](instance.TreeInstance.md#collapseallnodes)
+- [collapseNode](instance.TreeInstance.md#collapsenode)
 - [deleteNode](instance.TreeInstance.md#deletenode)
 - [destroy](instance.TreeInstance.md#destroy)
+- [expandAllNodes](instance.TreeInstance.md#expandallnodes)
+- [expandNode](instance.TreeInstance.md#expandnode)
 - [getNode](instance.TreeInstance.md#getnode)
 - [getSelected](instance.TreeInstance.md#getselected)
 - [hideEmphasizeIcon](instance.TreeInstance.md#hideemphasizeicon)
 - [moveNode](instance.TreeInstance.md#movenode)
+- [setNodes](instance.TreeInstance.md#setnodes)
 - [setReadOnly](instance.TreeInstance.md#setreadonly)
 - [setSelected](instance.TreeInstance.md#setselected)
 - [showEmphasizeIcon](instance.TreeInstance.md#showemphasizeicon)
 - [subscribe](instance.TreeInstance.md#subscribe)
 - [subscribeOnce](instance.TreeInstance.md#subscribeonce)
+- [toggleCollapseNode](instance.TreeInstance.md#togglecollapsenode)
 - [updateNodeLabel](instance.TreeInstance.md#updatenodelabel)
 
 ## Properties
@@ -44,13 +50,13 @@ Applied configuration options for the current instance.
 
 #### Defined in
 
-[instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L18)
+[instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L18)
 
 ## Methods
 
 ### addNode
 
-▸ **addNode**(`node`, `parent`): `void`
+▸ **addNode**(`node`, `parent?`): `void`
 
 Adds a new node to the tree with a optional parent.
 
@@ -58,8 +64,8 @@ Adds a new node to the tree with a optional parent.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `node` | [`TreeNode`](tree_node.TreeNode.md) | to add. |
-| `parent` | ``null`` \| `string` \| [`TreeNode`](tree_node.TreeNode.md) | of the new tree-node or null |
+| `node` | [`InitTreeNode`](tree_node.InitTreeNode.md) | to add. |
+| `parent?` | ``null`` \| `string` \| [`TreeNode`](tree_node.TreeNode.md) | of the new tree-node or null |
 
 #### Returns
 
@@ -67,7 +73,45 @@ Adds a new node to the tree with a optional parent.
 
 #### Defined in
 
-[instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L39)
+[instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L39)
+
+___
+
+### collapseAllNodes
+
+▸ **collapseAllNodes**(): `void`
+
+Collapse all nodes in the tree.
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:107](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L107)
+
+___
+
+### collapseNode
+
+▸ **collapseNode**(`node`): `void`
+
+Collapse a specific node in the tree. Does nothing if the node does not exist or is invisible.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `node` | [`TreeNode`](tree_node.TreeNode.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:117](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L117)
 
 ___
 
@@ -89,7 +133,7 @@ Deletes the given tree-node from the tree.
 
 #### Defined in
 
-[instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L46)
+[instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L46)
 
 ___
 
@@ -105,7 +149,45 @@ Destroy the current instance and remove all modifications to the dom.
 
 #### Defined in
 
-[instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L23)
+[instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L23)
+
+___
+
+### expandAllNodes
+
+▸ **expandAllNodes**(): `void`
+
+Expand all nodes in the tree.
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:112](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L112)
+
+___
+
+### expandNode
+
+▸ **expandNode**(`node`): `void`
+
+Expand a specific node in the tree. Does nothing if the node does not exist or is invisible.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `node` | [`TreeNode`](tree_node.TreeNode.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L122)
 
 ___
 
@@ -129,7 +211,7 @@ a matching tree-node or null.
 
 #### Defined in
 
-[instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L31)
+[instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L31)
 
 ___
 
@@ -147,7 +229,7 @@ a tree-node object in single-mode and view-mode without checkboxes. An array of 
 
 #### Defined in
 
-[instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L69)
+[instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L76)
 
 ___
 
@@ -163,7 +245,7 @@ Only usable in single-mode. Hides the emphasize-icon again.
 
 #### Defined in
 
-[instance.ts:95](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L95)
+[instance.ts:102](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L102)
 
 ___
 
@@ -186,7 +268,29 @@ Moves the up or down in the same hierarchy-level.
 
 #### Defined in
 
-[instance.ts:62](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L62)
+[instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L69)
+
+___
+
+### setNodes
+
+▸ **setNodes**(`nodes`): `void`
+
+Replaces all nodes with the given ones.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `nodes` | [`InitTreeNode`](tree_node.InitTreeNode.md)[] | to set. |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L53)
 
 ___
 
@@ -208,7 +312,7 @@ Changes the read-only state of the tree.
 
 #### Defined in
 
-[instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L83)
+[instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L90)
 
 ___
 
@@ -230,7 +334,7 @@ Resets the selection-state of tree-nodes to the given one(s).
 
 #### Defined in
 
-[instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L76)
+[instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L83)
 
 ___
 
@@ -252,7 +356,7 @@ Only usable in single-mode. Shows an icon for a selected tree-node.
 
 #### Defined in
 
-[instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L90)
+[instance.ts:97](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L97)
 
 ___
 
@@ -260,13 +364,13 @@ ___
 
 ▸ **subscribe**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
-Add a listener to handle "selectionChanged" or "selectionChanging" events.
+Add a listener to handle "selectionChanged", "selectionChanging" or "nodeIndexChanged" events.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `event` | ``"selectionChanged"`` | "selectionChanged" or "selectionChanging" event |
+| `event` | ``"selectionChanged"`` | "selectionChanged", "selectionChanging" or "nodeIndexChanged" event |
 | `handler` | (`d`: [`TreeModeNameMap`](instance.TreeModeNameMap.md)[`K`], `evt`: `string`, `e?`: `Event`) => `void` | to execute custom logic on this event. |
 
 #### Returns
@@ -277,7 +381,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:104](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L104)
+[instance.ts:136](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L136)
 
 ▸ **subscribe**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -294,7 +398,24 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:105](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L105)
+[instance.ts:137](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L137)
+
+▸ **subscribe**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"nodeIndexChanged"`` |
+| `handler` | (`d`: { `newIndex`: `number` ; `node`: [`TreeNode`](tree_node.TreeNode.md)  }, `evt`: `string`, `e?`: `Event`) => `void` |
+
+#### Returns
+
+[`Subscription`](subscription.Subscription.md)
+
+#### Defined in
+
+[instance.ts:138](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L138)
 
 ___
 
@@ -302,13 +423,13 @@ ___
 
 ▸ **subscribeOnce**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
-Add a listener to handle "selectionChanged" or "selectionChanging" events. When the event is emitted for the first time, the subscription ends automatically.
+Add a listener to handle "selectionChanged" "selectionChanging" or "nodeIndexChanged" events. When the event is emitted for the first time, the subscription ends automatically.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `event` | ``"selectionChanged"`` | "selectionChanged" or "selectionChanging" event |
+| `event` | ``"selectionChanged"`` | "selectionChanged", "selectionChanging" or "nodeIndexChanged" event |
 | `handler` | (`d`: [`TreeModeNameMap`](instance.TreeModeNameMap.md)[`K`], `evt`: `string`, `e?`: `Event`) => `void` | to execute custom logic on this event. |
 
 #### Returns
@@ -319,7 +440,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:114](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L114)
+[instance.ts:150](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L150)
 
 ▸ **subscribeOnce**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -336,7 +457,46 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:115](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L115)
+[instance.ts:151](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L151)
+
+▸ **subscribeOnce**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `event` | ``"nodeIndexChanged"`` |
+| `handler` | (`d`: { `newIndex`: `number` ; `node`: [`TreeNode`](tree_node.TreeNode.md)  }, `evt`: `string`, `e?`: `Event`) => `void` |
+
+#### Returns
+
+[`Subscription`](subscription.Subscription.md)
+
+#### Defined in
+
+[instance.ts:152](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L152)
+
+___
+
+### toggleCollapseNode
+
+▸ **toggleCollapseNode**(`node`): `void`
+
+Collapses or expands a specific node in the tree. Does nothing if the node does not exist or is invisible.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `node` | [`TreeNode`](tree_node.TreeNode.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[instance.ts:127](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L127)
 
 ___
 
@@ -359,4 +519,4 @@ Updates the display-text of the given tree-node.
 
 #### Defined in
 
-[instance.ts:54](https://github.com/ckotzbauer/simple-tree-component/blob/e64bd84/src/types/instance.ts#L54)
+[instance.ts:61](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L61)

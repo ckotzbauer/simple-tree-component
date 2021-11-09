@@ -26,6 +26,7 @@
     - [BaseOptions](options.BaseOptions.md)
     - [Rect](rects.Rect.md)
     - [Subscription](subscription.Subscription.md)
+    - [InitTreeNode](tree_node.InitTreeNode.md)
     - [TreeNode](tree_node.TreeNode.md)
   - Modules
     - [instance](instance.md)
