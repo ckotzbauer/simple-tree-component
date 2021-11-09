@@ -38,7 +38,6 @@ export default {
     events: {
         SelectionChanged: "selectionChanged",
         SelectionChanging: "selectionChanging",
-        NodeOrderChanged: "nodeOrderChanged",
         NodeIndexChanged: "nodeIndexChanged",
         _NodeSelected: "_nodeSelected",
         EscapePressed: "_escapePressed",

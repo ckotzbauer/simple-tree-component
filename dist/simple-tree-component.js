@@ -67,7 +67,6 @@
         events: {
             SelectionChanged: "selectionChanged",
             SelectionChanging: "selectionChanging",
-            NodeOrderChanged: "nodeOrderChanged",
             NodeIndexChanged: "nodeIndexChanged",
             _NodeSelected: "_nodeSelected",
             EscapePressed: "_escapePressed",
@@ -274,7 +273,6 @@
             this.dragAndDropHandler = new DragAndDropHandler((uid, newIndex) => {
                 const node = this.dataService.setNodeIndex(uid, newIndex);
                 this.eventManager.publish(constants.events.NodeIndexChanged, { node, newIndex });
-                this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
             });
             this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n) => this.hoverNode(n));
         }

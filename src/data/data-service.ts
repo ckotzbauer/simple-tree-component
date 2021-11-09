@@ -41,13 +41,8 @@ export class DataService {
         this.allNodes = [];
     }
 
-    // Currently only used for testing. Maybe see if tests can be refactored with rendering/event logic
-    public getNodesInternal(): TreeNode[] {
-        return this.allNodes;
-    }
-
     public getNodes(): TreeNode[] {
-        return this.allNodes.map(this.copyNode);
+        return this.allNodes;
     }
 
     public getNode(value: string): TreeNode | null {

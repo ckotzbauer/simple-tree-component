@@ -22,8 +22,8 @@ describe("simpleTree", () => {
             dataService.addNode(treeNode);
 
             expect(dataService.getNode("parent4")).not.toBeNull();
-            expect(dataService.getNodesInternal().length).toEqual(4);
-            expect(dataService.getNodesInternal()[3]).toEqual(expect.objectContaining(treeNode));
+            expect(dataService.getNodes().length).toEqual(4);
+            expect(dataService.getNodes()[3]).toEqual(expect.objectContaining(treeNode));
         });
 
         it("addNode - should add node to specified parent by reference", () => {
@@ -48,7 +48,7 @@ describe("simpleTree", () => {
         it("addNode - should not allow adding duplicate node", () => {
             const treeNode = createTreeNode("Parent 3", "parent3");
             expect(() => dataService.addNode(treeNode)).toThrowError();
-            expect(dataService.getNodesInternal().length).toEqual(3);
+            expect(dataService.getNodes().length).toEqual(3);
         });
 
         it("addNode - avoid non-selectable to be selected", () => {
@@ -87,9 +87,9 @@ describe("simpleTree", () => {
         });
 
         it("deleteNode - should not remove anything if no node was found", () => {
-            const nodeCountBefore = countTreeNodes(dataService.getNodesInternal());
+            const nodeCountBefore = countTreeNodes(dataService.getNodes());
             dataService.deleteNode("parent4");
-            expect(nodeCountBefore).toEqual(countTreeNodes(dataService.getNodesInternal()));
+            expect(nodeCountBefore).toEqual(countTreeNodes(dataService.getNodes()));
         });
 
         it("updateNodeLabel - should update the label of the specified node", () => {
@@ -189,18 +189,18 @@ describe("simpleTree", () => {
         });
 
         it("moveNode - should not move anything if node is the only one in list", () => {
-            let node = dataService.getNodesInternal()[1].children[1].children[0];
-            expect(dataService.getNodesInternal()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
+            let node = dataService.getNodes()[1].children[1].children[0];
+            expect(dataService.getNodes()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
 
             dataService.moveNode(node, "up");
 
-            node = dataService.getNodesInternal()[1].children[1].children[0];
-            expect(dataService.getNodesInternal()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
+            node = dataService.getNodes()[1].children[1].children[0];
+            expect(dataService.getNodes()[1].children[1].children[0].value).toEqual("parent2Child2Sub1");
         });
 
         it("moveNode - should switch nodes and also move child nodes", () => {
-            let firstNode = dataService.getNodesInternal()[0];
-            let secondNode = dataService.getNodesInternal()[1];
+            let firstNode = dataService.getNodes()[0];
+            let secondNode = dataService.getNodes()[1];
             expect(firstNode.value).toEqual("parent1");
             expect(firstNode.children.length).toEqual(2);
             expect(secondNode.value).toEqual("parent2");
@@ -209,8 +209,8 @@ describe("simpleTree", () => {
 
             dataService.moveNode(firstNode, "down");
 
-            firstNode = dataService.getNodesInternal()[0];
-            secondNode = dataService.getNodesInternal()[1];
+            firstNode = dataService.getNodes()[0];
+            secondNode = dataService.getNodes()[1];
             expect(firstNode.value).toEqual("parent2");
             expect(firstNode.children.length).toEqual(2);
             expect(firstNode.children[1].children.length).toEqual(2);
@@ -219,8 +219,8 @@ describe("simpleTree", () => {
 
             dataService.moveNode(secondNode, "up");
 
-            firstNode = dataService.getNodesInternal()[0];
-            secondNode = dataService.getNodesInternal()[1];
+            firstNode = dataService.getNodes()[0];
+            secondNode = dataService.getNodes()[1];
             expect(firstNode.value).toEqual("parent1");
             expect(firstNode.children.length).toEqual(2);
             expect(secondNode.value).toEqual("parent2");
@@ -229,22 +229,22 @@ describe("simpleTree", () => {
         });
 
         it("moveNode - should not move nodes on end of list", () => {
-            let firstNode = dataService.getNodesInternal()[0].children[0];
-            let secondNode = dataService.getNodesInternal()[0].children[1];
+            let firstNode = dataService.getNodes()[0].children[0];
+            let secondNode = dataService.getNodes()[0].children[1];
             expect(firstNode.value).toEqual("parent1Child1");
             expect(secondNode.value).toEqual("parent1Child2");
 
             dataService.moveNode(firstNode, "up");
 
-            firstNode = dataService.getNodesInternal()[0].children[0];
-            secondNode = dataService.getNodesInternal()[0].children[1];
+            firstNode = dataService.getNodes()[0].children[0];
+            secondNode = dataService.getNodes()[0].children[1];
             expect(firstNode.value).toEqual("parent1Child1");
             expect(secondNode.value).toEqual("parent1Child2");
 
             dataService.moveNode(secondNode, "down");
 
-            firstNode = dataService.getNodesInternal()[0].children[0];
-            secondNode = dataService.getNodesInternal()[0].children[1];
+            firstNode = dataService.getNodes()[0].children[0];
+            secondNode = dataService.getNodes()[0].children[1];
             expect(firstNode.value).toEqual("parent1Child1");
             expect(secondNode.value).toEqual("parent1Child2");
         });
@@ -252,7 +252,7 @@ describe("simpleTree", () => {
         it("moveNode - should not move anything if node is unknown", () => {
             dataService.moveNode("parent4", "up");
 
-            const nodeList = dataService.getNodesInternal();
+            const nodeList = dataService.getNodes();
             expect(nodeList[0].value).toEqual("parent1");
             expect(nodeList[1].value).toEqual("parent2");
             expect(nodeList[2].value).toEqual("parent3");

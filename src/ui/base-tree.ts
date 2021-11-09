@@ -30,7 +30,6 @@ export class BaseTree {
         this.dragAndDropHandler = new DragAndDropHandler((uid: string, newIndex: number) => {
             const node = this.dataService.setNodeIndex(uid, newIndex);
             this.eventManager.publish(constants.events.NodeIndexChanged, { node, newIndex });
-            this.eventManager.publish(constants.events.NodeOrderChanged, this.dataService.getNodes());
         });
         this.subscription = this.eventManager.subscribe(constants.events.HoverChanged, (n: TreeNode | null) => this.hoverNode(n));
     }
@@ -292,7 +291,7 @@ export class BaseTree {
     }
 
     public collapseAllNodes(flag: boolean): void {
-        this.dataService.getNodesInternal().forEach((t) => this.collapseNode(t, flag, false));
+        this.dataService.getNodes().forEach((t) => this.collapseNode(t, flag, false));
         this.renderTree();
     }
 
