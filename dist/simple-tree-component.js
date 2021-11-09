@@ -477,7 +477,7 @@
             }
         }
         collapseAllNodes(flag) {
-            this.dataService.getNodesInternal().forEach((t) => this.collapseNode(t, flag, false));
+            this.dataService.getNodes().forEach((t) => this.collapseNode(t, flag, false));
             this.renderTree();
         }
         setReadOnly(readOnly) {
@@ -608,11 +608,8 @@
         clear() {
             this.allNodes = [];
         }
-        getNodesInternal() {
-            return this.allNodes;
-        }
         getNodes() {
-            return this.allNodes.map(this.copyNode);
+            return this.allNodes;
         }
         getNode(value) {
             const nodeToReturn = this.getNodeInternal(this.allNodes, value);
