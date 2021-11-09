@@ -1,5 +1,10 @@
 ## Version 1.3.0 (2021-11-09)
 
+### Potential breaking changes
+
+* There is a new type `InitTreeNode` available with limited properties, which are respected for new nodes. It is used for initialization and `addNode`.
+* The `nodes` property in the options is now a `InitTreeNode` instead of a `Partial<TreeNode>` which applies the described behaviour also to the `children` array.
+
 ### Features and improvements
 
 * [[`0d5853c9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0d5853c9)] - **feat**: add draggable flag; only on non-readonly
