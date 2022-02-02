@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[instance.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L161)
+[instance.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L161)
 
 ### SimpleTreeFn
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[instance.ts:162](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L162)
+[instance.ts:162](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L162)
 
 ### SimpleTreeFn
 
@@ -82,7 +82,7 @@
 
 #### Defined in
 
-[instance.ts:163](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L163)
+[instance.ts:163](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L163)
 
 ## Table of contents
 
@@ -98,4 +98,4 @@
 
 #### Defined in
 
-[instance.ts:164](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L164)
+[instance.ts:164](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L164)

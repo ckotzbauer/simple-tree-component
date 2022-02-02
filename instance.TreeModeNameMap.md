@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L7)
+[instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L7)
 
 ___
 
@@ -30,7 +30,7 @@ ___
 
 #### Defined in
 
-[instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L6)
+[instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L6)
 
 ___
 
@@ -40,4 +40,4 @@ ___
 
 #### Defined in
 
-[instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L8)
+[instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L8)

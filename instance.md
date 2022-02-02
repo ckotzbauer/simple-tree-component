@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/instance.ts#L158)
+[instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L158)

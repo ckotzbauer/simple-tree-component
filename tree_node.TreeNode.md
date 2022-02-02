@@ -41,7 +41,7 @@ Recursive array of child `TreeNode` objects.
 
 #### Defined in
 
-[tree-node.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L69)
+[tree-node.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L69)
 
 ___
 
@@ -53,7 +53,7 @@ Indicates if this node (in case it has child-nodes) is currently collapsed.
 
 #### Defined in
 
-[tree-node.ts:86](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L86)
+[tree-node.ts:86](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L86)
 
 ___
 
@@ -70,7 +70,7 @@ Custom css-class added to the line-wrapper element.
 
 #### Defined in
 
-[tree-node.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L75)
+[tree-node.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L75)
 
 ___
 
@@ -87,7 +87,7 @@ Indicates if this node is draggable, when dragAndDrop is enabled.
 
 #### Defined in
 
-[tree-node.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L81)
+[tree-node.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L81)
 
 ___
 
@@ -99,7 +99,7 @@ Indicates if this node is visible in the tree.
 
 #### Defined in
 
-[tree-node.ts:91](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L91)
+[tree-node.ts:91](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L91)
 
 ___
 
@@ -115,7 +115,7 @@ The displayed text of this tree-node.
 
 #### Defined in
 
-[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L8)
+[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L8)
 
 ___
 
@@ -133,7 +133,7 @@ In Recursive Checkbox Mode this flag has no effect since all nodes are selectabl
 
 #### Defined in
 
-[tree-node.ts:64](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L64)
+[tree-node.ts:64](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L64)
 
 ___
 
@@ -149,7 +149,7 @@ Indicates if this node is currently selected and included in the component-value
 
 #### Defined in
 
-[tree-node.ts:57](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L57)
+[tree-node.ts:57](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L57)
 
 ___
 
@@ -161,7 +161,7 @@ The unique id-value used internally.
 
 #### Defined in
 
-[tree-node.ts:96](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L96)
+[tree-node.ts:96](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L96)
 
 ___
 
@@ -177,4 +177,4 @@ The data-value of this tree-node. It has to be unique.
 
 #### Defined in
 
-[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/tree-node.ts#L13)
+[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L13)

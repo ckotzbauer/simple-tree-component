@@ -57,7 +57,7 @@ TreeConfiguration.checkboxes
 
 #### Defined in
 
-[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L81)
+[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L81)
 
 ___
 
@@ -73,7 +73,7 @@ TreeConfiguration.clearButton
 
 #### Defined in
 
-[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L98)
+[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L98)
 
 ___
 
@@ -95,7 +95,7 @@ TreeConfiguration.css
 
 #### Defined in
 
-[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L60)
+[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L60)
 
 ___
 
@@ -114,7 +114,7 @@ TreeConfiguration.defaultDropdownHeight
 
 #### Defined in
 
-[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L111)
+[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L111)
 
 ___
 
@@ -132,7 +132,7 @@ TreeConfiguration.dragAndDrop
 
 #### Defined in
 
-[options.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L118)
+[options.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L118)
 
 ___
 
@@ -148,7 +148,7 @@ TreeConfiguration.highlightSearchResults
 
 #### Defined in
 
-[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L42)
+[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L42)
 
 ___
 
@@ -165,7 +165,7 @@ TreeConfiguration.noNodesMessage
 
 #### Defined in
 
-[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L55)
+[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L55)
 
 ___
 
@@ -178,7 +178,7 @@ All tree-node data-objects to start with. Do not change this array afterwards.
 
 #### Defined in
 
-[options.ts:129](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L129)
+[options.ts:129](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L129)
 
 ___
 
@@ -194,7 +194,7 @@ TreeConfiguration.scrollContainer
 
 #### Defined in
 
-[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L103)
+[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L103)
 
 ___
 
@@ -210,7 +210,7 @@ TreeConfiguration.searchBar
 
 #### Defined in
 
-[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L20)
+[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L20)
 
 ___
 
@@ -226,7 +226,7 @@ TreeConfiguration.searchBarFocus
 
 #### Defined in
 
-[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L25)
+[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L25)
 
 ___
 
@@ -243,7 +243,7 @@ TreeConfiguration.searchMode
 
 #### Defined in
 
-[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L31)
+[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L31)
 
 ___
 
@@ -260,7 +260,7 @@ TreeConfiguration.searchPlaceholder
 
 #### Defined in
 
-[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L37)
+[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L37)
 
 ___
 
@@ -278,7 +278,7 @@ TreeConfiguration.watermark
 
 #### Defined in
 
-[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L49)
+[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L49)
 
 ## Methods
 
@@ -307,4 +307,4 @@ TreeConfiguration.templateSelectedText
 
 #### Defined in
 
-[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/ad6211e/src/types/options.ts#L75)
+[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L75)
