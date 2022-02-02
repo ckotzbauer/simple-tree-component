@@ -139,6 +139,9 @@ export class BaseTree {
 
     public renderTree(): void {
         const nodeContainer = this.getNodeContainer();
+        if (!nodeContainer) {
+            return;
+        }
 
         if (this.config.dragAndDrop) {
             this.removeDragAndDropListeners();
