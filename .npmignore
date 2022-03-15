@@ -1,11 +1,14 @@
+.github
+config
+coverage
+demo
+docs
+src
 
-*
-!LICENSE.md
-!CHANGELOG.md
-!README.md
-!dist
-!dist/**/*
-!src/style
-!src/style/**/*
-dist/index.d.ts
-!index.d.ts
+.editorconfig
+.eslintrc.js
+.prettierrc.js
+build*.ts
+index*.html
+renovate.json
+tsconfig.*
