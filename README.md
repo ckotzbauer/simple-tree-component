@@ -44,9 +44,6 @@ instance.setReadOnly(true);
 
 You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-component).
 
-
-[Contributing](https://github.com/ckotzbauer/simple-tree-component/blob/main/.github/CONTRIBUTING.md)
---------
 [License](https://github.com/ckotzbauer/simple-tree-component/blob/main/LICENSE)
 --------
 [Changelog](https://github.com/ckotzbauer/simple-tree-component/blob/main/CHANGELOG.md)
@@ -54,4 +51,16 @@ You can find more documentation [here](https://www.ckotzbauer.de/simple-tree-com
 ### Blog post
 https://dev.to/ckotzbauer/announcing-the-simple-tree-component-46nd
 
+
+## Contributing
+
+Please refer to the [Contribution guildelines](https://github.com/ckotzbauer/.github/blob/main/CONTRIBUTING.md).
+
+## Code of conduct
+
+Please refer to the [Conduct guildelines](https://github.com/ckotzbauer/.github/blob/main/CODE_OF_CONDUCT.md).
+
+## Security
+
+Please refer to the [Security process](https://github.com/ckotzbauer/.github/blob/main/SECURITY.md).
 
