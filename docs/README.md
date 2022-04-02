@@ -14,4 +14,12 @@ For detailed information about the API-design have a look at the [API docs](inte
 
 ## Contributing
 
-Check out the [Contributing Guide](CONTRIBUTING.md) for more details.
+Please refer to the [Contribution guildelines](https://github.com/ckotzbauer/.github/blob/main/CONTRIBUTING.md).
+
+## Code of conduct
+
+Please refer to the [Conduct guildelines](https://github.com/ckotzbauer/.github/blob/main/CODE_OF_CONDUCT.md).
+
+## Security
+
+Please refer to the [Security process](https://github.com/ckotzbauer/.github/blob/main/SECURITY.md).

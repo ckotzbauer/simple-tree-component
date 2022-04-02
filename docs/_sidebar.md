@@ -16,4 +16,3 @@
   - [Multi-select](multi-select-mode.md)
   - [Tree](tree-mode.md)
 
-- [Contributing](CONTRIBUTING.md)

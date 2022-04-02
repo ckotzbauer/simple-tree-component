@@ -28,9 +28,6 @@ const ignoreFiles = ["_sidebar.md"];
 
     await fs.promises.writeFile(`${outDir}/_sidebar.md`, fullSidebar);
 
-    // Copy CONTRIBUTING
-    await fs.promises.copyFile(`${path.join(docsDir, "..", ".github")}/CONTRIBUTING.md`, `${outDir}/CONTRIBUTING.md`);
-
     console.log("Documentation copied successfully!");
 })();
 
