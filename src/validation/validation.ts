@@ -36,7 +36,7 @@ function getTreeNodeValues(treeNodes: InitTreeNode[], values: string[], errors: 
 }
 
 export function isTreeNodeValid(treeNode: InitTreeNode): boolean {
-    return !!treeNode && !!treeNode.value;
+    return !!treeNode && !!treeNode.value && !!treeNode.label;
 }
 
 export function isDuplicateNodeValue(treeNodes: InitTreeNode[], value: string): boolean {

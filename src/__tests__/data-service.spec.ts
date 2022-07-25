@@ -67,6 +67,12 @@ describe("simpleTree", () => {
             expect(dataService.getNode("parent4")?.uid).not.toBe("");
         });
 
+        it("addNode - node without label should fail", () => {
+            const treeNode = createTreeNode("Parent 4", "parent4");
+            treeNode.label = "";
+            expect(() => dataService.addNode(treeNode)).toThrowError();
+        });
+
         it("deleteNode - should remove specified root node from tree", () => {
             dataService.deleteNode("parent3");
             expect(dataService.getNode("parent3")).toBeNull();
