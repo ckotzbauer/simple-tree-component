@@ -16,8 +16,6 @@ The data representation of each node-object in the tree at initialization-time.
 
 ▪ [key: `string`]: `any`
 
-Any additional property, which is available (the component-logic will respect them).
-
 ## Table of contents
 
 ### Properties
@@ -40,7 +38,7 @@ Recursive array of child `TreeNode` objects.
 
 #### Defined in
 
-[tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L30)
+[tree-node.ts:30](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L30)
 
 ___
 
@@ -53,7 +51,7 @@ Custom css-class added to the line-wrapper element.
 
 #### Defined in
 
-[tree-node.ts:36](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L36)
+[tree-node.ts:36](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L36)
 
 ___
 
@@ -66,7 +64,7 @@ Indicates if this node is draggable, when dragAndDrop is enabled.
 
 #### Defined in
 
-[tree-node.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L42)
+[tree-node.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L42)
 
 ___
 
@@ -78,7 +76,7 @@ The displayed text of this tree-node.
 
 #### Defined in
 
-[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L8)
+[tree-node.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L8)
 
 ___
 
@@ -92,7 +90,7 @@ In Recursive Checkbox Mode this flag has no effect since all nodes are selectabl
 
 #### Defined in
 
-[tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L25)
+[tree-node.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L25)
 
 ___
 
@@ -100,11 +98,11 @@ ___
 
 • `Optional` **selected**: `boolean`
 
-Indicates if this node is currently selected and included in the component-value ({@link Instance.getSelected()}).
+Indicates if this node is currently selected and included in the component-value (Instance.getSelected()).
 
 #### Defined in
 
-[tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L18)
+[tree-node.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L18)
 
 ___
 
@@ -116,4 +114,4 @@ The data-value of this tree-node. It has to be unique.
 
 #### Defined in
 
-[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/tree-node.ts#L13)
+[tree-node.ts:13](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/tree-node.ts#L13)

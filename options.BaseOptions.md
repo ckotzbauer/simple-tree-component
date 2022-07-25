@@ -29,11 +29,8 @@ All instance-specific options and behaviors to initialize the tree.
 - [searchBarFocus](options.BaseOptions.md#searchbarfocus)
 - [searchMode](options.BaseOptions.md#searchmode)
 - [searchPlaceholder](options.BaseOptions.md#searchplaceholder)
-- [watermark](options.BaseOptions.md#watermark)
-
-### Methods
-
 - [templateSelectedText](options.BaseOptions.md#templateselectedtext)
+- [watermark](options.BaseOptions.md#watermark)
 
 ## Properties
 
@@ -57,7 +54,7 @@ TreeConfiguration.checkboxes
 
 #### Defined in
 
-[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L81)
+[options.ts:81](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L81)
 
 ___
 
@@ -73,7 +70,7 @@ TreeConfiguration.clearButton
 
 #### Defined in
 
-[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L98)
+[options.ts:98](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L98)
 
 ___
 
@@ -95,7 +92,7 @@ TreeConfiguration.css
 
 #### Defined in
 
-[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L60)
+[options.ts:60](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L60)
 
 ___
 
@@ -114,7 +111,7 @@ TreeConfiguration.defaultDropdownHeight
 
 #### Defined in
 
-[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L111)
+[options.ts:111](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L111)
 
 ___
 
@@ -132,7 +129,7 @@ TreeConfiguration.dragAndDrop
 
 #### Defined in
 
-[options.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L118)
+[options.ts:118](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L118)
 
 ___
 
@@ -148,7 +145,7 @@ TreeConfiguration.highlightSearchResults
 
 #### Defined in
 
-[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L42)
+[options.ts:42](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L42)
 
 ___
 
@@ -165,7 +162,7 @@ TreeConfiguration.noNodesMessage
 
 #### Defined in
 
-[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L55)
+[options.ts:55](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L55)
 
 ___
 
@@ -178,7 +175,7 @@ All tree-node data-objects to start with. Do not change this array afterwards.
 
 #### Defined in
 
-[options.ts:129](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L129)
+[options.ts:129](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L129)
 
 ___
 
@@ -194,7 +191,7 @@ TreeConfiguration.scrollContainer
 
 #### Defined in
 
-[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L103)
+[options.ts:103](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L103)
 
 ___
 
@@ -210,7 +207,7 @@ TreeConfiguration.searchBar
 
 #### Defined in
 
-[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L20)
+[options.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L20)
 
 ___
 
@@ -226,7 +223,7 @@ TreeConfiguration.searchBarFocus
 
 #### Defined in
 
-[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L25)
+[options.ts:25](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L25)
 
 ___
 
@@ -243,7 +240,7 @@ TreeConfiguration.searchMode
 
 #### Defined in
 
-[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L31)
+[options.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L31)
 
 ___
 
@@ -260,7 +257,40 @@ TreeConfiguration.searchPlaceholder
 
 #### Defined in
 
-[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L37)
+[options.ts:37](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L37)
+
+___
+
+### templateSelectedText
+
+• **templateSelectedText**: (`node`: [`TreeNode`](tree_node.TreeNode.md)) => `string`
+
+#### Type declaration
+
+▸ (`node`): `string`
+
+Template function which is called if the given node is selected.
+Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
+
+##### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `node` | [`TreeNode`](tree_node.TreeNode.md) | The tree-node to return a text-value for. |
+
+##### Returns
+
+`string`
+
+Any string value which should be displayed. (Default: `node.label`)
+
+#### Inherited from
+
+TreeConfiguration.templateSelectedText
+
+#### Defined in
+
+[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L75)
 
 ___
 
@@ -278,33 +308,4 @@ TreeConfiguration.watermark
 
 #### Defined in
 
-[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L49)
-
-## Methods
-
-### templateSelectedText
-
-▸ **templateSelectedText**(`node`): `string`
-
-Template function which is called if the given node is selected.
-Only used in modes `singleSelectDropdown` and `multiSelectDropdown`.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `node` | [`TreeNode`](tree_node.TreeNode.md) | The tree-node to return a text-value for. |
-
-#### Returns
-
-`string`
-
-Any string value which should be displayed. (Default: `node.label`)
-
-#### Inherited from
-
-TreeConfiguration.templateSelectedText
-
-#### Defined in
-
-[options.ts:75](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L75)
+[options.ts:49](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L49)

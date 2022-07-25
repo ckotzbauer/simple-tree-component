@@ -50,7 +50,7 @@ Applied configuration options for the current instance.
 
 #### Defined in
 
-[instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L18)
+[instance.ts:18](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L18)
 
 ## Methods
 
@@ -73,7 +73,7 @@ Adds a new node to the tree with a optional parent.
 
 #### Defined in
 
-[instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L39)
+[instance.ts:39](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L39)
 
 ___
 
@@ -89,7 +89,7 @@ Collapse all nodes in the tree.
 
 #### Defined in
 
-[instance.ts:107](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L107)
+[instance.ts:107](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L107)
 
 ___
 
@@ -111,7 +111,7 @@ Collapse a specific node in the tree. Does nothing if the node does not exist or
 
 #### Defined in
 
-[instance.ts:117](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L117)
+[instance.ts:117](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L117)
 
 ___
 
@@ -133,7 +133,7 @@ Deletes the given tree-node from the tree.
 
 #### Defined in
 
-[instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L46)
+[instance.ts:46](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L46)
 
 ___
 
@@ -149,7 +149,7 @@ Destroy the current instance and remove all modifications to the dom.
 
 #### Defined in
 
-[instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L23)
+[instance.ts:23](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L23)
 
 ___
 
@@ -165,7 +165,7 @@ Expand all nodes in the tree.
 
 #### Defined in
 
-[instance.ts:112](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L112)
+[instance.ts:112](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L112)
 
 ___
 
@@ -187,7 +187,7 @@ Expand a specific node in the tree. Does nothing if the node does not exist or i
 
 #### Defined in
 
-[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L122)
+[instance.ts:122](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L122)
 
 ___
 
@@ -211,7 +211,7 @@ a matching tree-node or null.
 
 #### Defined in
 
-[instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L31)
+[instance.ts:31](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L31)
 
 ___
 
@@ -229,7 +229,7 @@ a tree-node object in single-mode and view-mode without checkboxes. An array of 
 
 #### Defined in
 
-[instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L76)
+[instance.ts:76](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L76)
 
 ___
 
@@ -245,7 +245,7 @@ Only usable in single-mode. Hides the emphasize-icon again.
 
 #### Defined in
 
-[instance.ts:102](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L102)
+[instance.ts:102](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L102)
 
 ___
 
@@ -268,7 +268,7 @@ Moves the up or down in the same hierarchy-level.
 
 #### Defined in
 
-[instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L69)
+[instance.ts:69](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L69)
 
 ___
 
@@ -290,7 +290,7 @@ Replaces all nodes with the given ones.
 
 #### Defined in
 
-[instance.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L53)
+[instance.ts:53](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L53)
 
 ___
 
@@ -312,7 +312,7 @@ Changes the read-only state of the tree.
 
 #### Defined in
 
-[instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L90)
+[instance.ts:90](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L90)
 
 ___
 
@@ -334,7 +334,7 @@ Resets the selection-state of tree-nodes to the given one(s).
 
 #### Defined in
 
-[instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L83)
+[instance.ts:83](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L83)
 
 ___
 
@@ -356,7 +356,7 @@ Only usable in single-mode. Shows an icon for a selected tree-node.
 
 #### Defined in
 
-[instance.ts:97](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L97)
+[instance.ts:97](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L97)
 
 ___
 
@@ -381,7 +381,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:136](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L136)
+[instance.ts:136](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L136)
 
 ▸ **subscribe**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -398,7 +398,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:137](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L137)
+[instance.ts:137](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L137)
 
 ▸ **subscribe**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -415,7 +415,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:138](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L138)
+[instance.ts:138](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L138)
 
 ___
 
@@ -440,7 +440,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:150](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L150)
+[instance.ts:150](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L150)
 
 ▸ **subscribeOnce**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -457,7 +457,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:151](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L151)
+[instance.ts:151](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L151)
 
 ▸ **subscribeOnce**(`event`, `handler`): [`Subscription`](subscription.Subscription.md)
 
@@ -474,7 +474,7 @@ a subscription object to unsubscribe again.
 
 #### Defined in
 
-[instance.ts:152](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L152)
+[instance.ts:152](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L152)
 
 ___
 
@@ -496,7 +496,7 @@ Collapses or expands a specific node in the tree. Does nothing if the node does 
 
 #### Defined in
 
-[instance.ts:127](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L127)
+[instance.ts:127](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L127)
 
 ___
 
@@ -519,4 +519,4 @@ Updates the display-text of the given tree-node.
 
 #### Defined in
 
-[instance.ts:61](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L61)
+[instance.ts:61](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L61)

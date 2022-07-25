@@ -10,11 +10,11 @@
 - [TreeInstance](instance.TreeInstance.md)
 - [TreeModeNameMap](instance.TreeModeNameMap.md)
 
-### Type aliases
+### Type Aliases
 
 - [SimpleTree](instance.md#simpletree)
 
-## Type aliases
+## Type Aliases
 
 ### SimpleTree
 
@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/instance.ts#L158)
+[instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/instance.ts#L158)

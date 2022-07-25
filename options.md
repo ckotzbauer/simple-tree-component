@@ -8,11 +8,11 @@
 
 - [BaseOptions](options.BaseOptions.md)
 
-### Type aliases
+### Type Aliases
 
 - [Options](options.md#options)
 
-## Type aliases
+## Type Aliases
 
 ### Options
 
@@ -22,4 +22,4 @@ A partial representation of `BaseOptions`. All other values are set to its defau
 
 #### Defined in
 
-[options.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/bbc7fa7/src/types/options.ts#L161)
+[options.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/ff6bb27/src/types/options.ts#L161)
