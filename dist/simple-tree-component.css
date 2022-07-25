@@ -117,8 +117,7 @@
   height: 0.75rem;
   position: relative;
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  /* Safari and Chrome */
+  -webkit-transform: rotate(45deg); /* Safari and Chrome */
   right: 0.25rem;
   margin-top: 0.25rem;
   position: absolute;
@@ -177,8 +176,7 @@
   height: 0.75rem;
   position: relative;
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  /* Safari and Chrome */
+  -webkit-transform: rotate(45deg); /* Safari and Chrome */
   margin-right: -1rem;
   margin-top: 0.5rem;
   float: right;

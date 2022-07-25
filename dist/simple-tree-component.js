@@ -1,4 +1,4 @@
-/* simple-tree-component v1.3.1, @license MIT */
+/* simple-tree-component v1.3.2, @license MIT */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -562,7 +562,7 @@
     };
 
     function isTreeNodeValid(treeNode) {
-        return !!treeNode && !!treeNode.value;
+        return !!treeNode && !!treeNode.value && !!treeNode.label;
     }
     function isDuplicateNodeValue(treeNodes, value) {
         let duplicate = false;
