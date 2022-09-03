@@ -6,9 +6,9 @@
     "node_modules",
     "src"
   ],
-  "globals": {
-    "ts-jest": {
-      "isolatedModules": true
-    }
+  "transform": {
+    ".ts": ["ts-jest", {
+        "isolatedModules": true
+      }]
   }
 }
