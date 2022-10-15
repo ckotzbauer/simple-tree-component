@@ -14,20 +14,6 @@ export const getConfig = (opts?: { dev: boolean }): RollupOptions => ({
         banner: `/* simple-tree-component v${pkg.version}, @license MIT */`,
         ...(opts && opts.dev ? { sourcemap: true } : {}),
     },
-    /*onwarn(warning) {
-        const ignoredCircular = ["src/types/options.ts", "src/utils/dates.ts"];
-
-        if (typeof warning === "string") throw Error(warning);
-        else if (
-            warning.code !== "CIRCULAR_DEPENDENCY" ||
-            !warning.importer ||
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            !ignoredCircular.includes(warning.importer!)
-        ) {
-            throw Error(warning.message);
-        }
-    },*/
-
     plugins: [typescript({ tsconfig: resolve("./src/tsconfig.json") })],
     watch: {},
 });
