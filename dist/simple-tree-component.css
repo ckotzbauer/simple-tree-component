@@ -40,7 +40,6 @@
   overflow: hidden;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   max-width: 100%;
   display: inline-block;
@@ -248,7 +247,6 @@
   margin-right: 0.375rem;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .simple-tree-node-container .simple-tree-node-wrapper .simple-tree-node-chevron-container.simple-tree-node-chevron-clickable {
