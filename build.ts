@@ -5,7 +5,7 @@ import { exec as execCommand } from "child_process";
 import { ncp } from "ncp";
 import terser from "terser";
 import chokidar from "chokidar";
-import sass, { Result } from "sass";
+import sass from "sass";
 import autoprefixer from "autoprefixer";
 import postcss from "postcss";
 
@@ -46,10 +46,7 @@ async function uglify(src: string) {
         },
     });
 
-    if (minified.error) {
-        logErr(minified.error);
-    }
-    return minified.code;
+    return minified.code as string;
 }
 
 async function buildBundleJs() {
@@ -69,16 +66,9 @@ async function buildScripts() {
 }
 
 async function transpileStyle(src: string, compress = false) {
-    return new Promise<string>((resolve, reject) => {
-        sass.render(
-            {
-                file: src,
-                outputStyle: compress ? "compressed" : "expanded",
-            },
-            async (err: Error | undefined, result: Result) =>
-                !err ? resolve((await postcss([autoprefixer]).process(result.css.toString())).css) : reject(err)
-        );
-    });
+    const sassResult = await sass.compileAsync(src, { style: compress ? "compressed" : "expanded" });
+    const postCssResult = await postcss([autoprefixer]).process(sassResult.css);
+    return postCssResult.css;
 }
 
 async function buildStyle() {
