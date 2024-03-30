@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@0.39.0
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@0.40.0
     with:
       install-node: true
       build-commands: |
@@ -19,7 +19,7 @@ jobs:
       coverage-file: ./coverage/lcov.info
 
   docs:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@0.39.0
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@0.40.0
     with:
       install-node: true
       build-commands: |
@@ -27,7 +27,7 @@ jobs:
         npm run build:docs
 
   lint:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-lint.yml@0.39.0
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-lint.yml@0.40.0
     with:
       install-node: true
       lint-commands: |
