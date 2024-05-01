@@ -46,7 +46,7 @@
     "json-loader": "^0.5.7",
     "html-loader": "^0.5.5",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "tree-kill": "^1.2.1"
   },
   "scripts": {
