@@ -44,7 +44,7 @@
     "build:docs": "rimraf docs/out && npm run docs:api && npm run docs:docsify"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "11.1.6",
+    "@rollup/plugin-typescript": "12.1.2",
     "@types/autoprefixer": "10.2.4",
     "@types/jest": "29.5.14",
     "@types/ncp": "2.0.8",
