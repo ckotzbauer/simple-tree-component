@@ -13,7 +13,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup Node
-        uses: ckotzbauer/actions-toolkit/setup-nodejs@0.47.4
+        uses: ckotzbauer/actions-toolkit/setup-nodejs@0.48.0
 
       - name: Build
         run: |
