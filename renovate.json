@@ -6,16 +6,9 @@
   "ignorePaths": ["demo"],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "typedoc",
-        "typedoc-plugin-markdown"
-      ],
-      "reviewers": [
-        "ckotzbauer"
-      ],
-      "groupName": [
-        "Typedoc updates"
-      ]
+      "matchPackageNames": ["typedoc", "typedoc-plugin-markdown"],
+      "reviewers": ["ckotzbauer"],
+      "groupName": "Typedoc updates"
     }
   ]
 }
