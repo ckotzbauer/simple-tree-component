@@ -6,6 +6,10 @@ on:
       - '**'
   pull_request: {}
 
+permissions:
+  actions: read
+  contents: read
+
 jobs:
   build:
     uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@9e2a560f6c957fe29a2a78f8cbadabeea56a8c73 # 0.52.0
