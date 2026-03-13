@@ -3,6 +3,12 @@ name: deploy-docs
 on:
   workflow_dispatch: {}
 
+permissions:
+  actions: read
+  contents: read
+  id-token: write
+  pages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest

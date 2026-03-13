@@ -7,6 +7,12 @@ on:
         description: 'Version'
         required: true
 
+permissions:
+  actions: read
+  contents: write
+  id-token: write
+  packages: write
+
 jobs:
   release:
     uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-release-nodejs.yml@9e2a560f6c957fe29a2a78f8cbadabeea56a8c73 # 0.52.0
