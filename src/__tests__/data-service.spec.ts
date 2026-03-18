@@ -47,7 +47,7 @@ describe("simpleTree", () => {
 
         it("addNode - should not allow adding duplicate node", () => {
             const treeNode = createTreeNode("Parent 3", "parent3");
-            expect(() => dataService.addNode(treeNode)).toThrowError();
+            expect(() => dataService.addNode(treeNode)).toThrow();
             expect(dataService.getNodes().length).toEqual(3);
         });
 
@@ -70,7 +70,7 @@ describe("simpleTree", () => {
         it("addNode - node without label should fail", () => {
             const treeNode = createTreeNode("Parent 4", "parent4");
             treeNode.label = "";
-            expect(() => dataService.addNode(treeNode)).toThrowError();
+            expect(() => dataService.addNode(treeNode)).toThrow();
         });
 
         it("deleteNode - should remove specified root node from tree", () => {
@@ -191,7 +191,7 @@ describe("simpleTree", () => {
         });
 
         it("moveNode - should not crash for null value", () => {
-            expect(() => dataService.moveNode(null as any, "up")).not.toThrowError();
+            expect(() => dataService.moveNode(null as any, "up")).not.toThrow();
         });
 
         it("moveNode - should not move anything if node is the only one in list", () => {

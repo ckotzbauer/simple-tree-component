@@ -7,7 +7,7 @@
   "plugin": [
     "typedoc-plugin-markdown"
   ],
-  "exclude": "**/*+(.spec).ts",
+  "exclude": ["**/*+(.spec).ts"],
   "entryPoints": [
     "../src/types/instance.ts",
     "../src/types/options.ts",

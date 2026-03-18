@@ -2,11 +2,11 @@ import { InitTreeNode, TreeNode } from "./tree-node";
 /**
  * @ignore
  */
-export declare type ComponentMode = "tree" | "singleSelectDropdown" | "multiSelectDropdown";
+export type ComponentMode = "tree" | "singleSelectDropdown" | "multiSelectDropdown";
 /**
  * @ignore
  */
-export declare type SearchMode = "OnlyMatches" | "OnlyMatchesAndChilds";
+export type SearchMode = "OnlyMatches" | "OnlyMatchesAndChilds";
 /**
  * @ignore
  */
@@ -117,4 +117,4 @@ export declare const defaults: BaseOptions;
 /**
  * A partial representation of `BaseOptions`. All other values are set to its defaults.
  */
-export declare type Options = Partial<BaseOptions>;
+export type Options = Partial<BaseOptions>;

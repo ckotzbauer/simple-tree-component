@@ -53,7 +53,6 @@
             SimpleTreeNodeSelected: "simple-tree-node-selected",
             SimpleTreeNodeSelectable: "simple-tree-node-selectable",
             SimpleTreeNodeHovered: "simple-tree-node-hovered",
-            SimpleTreeNodeArrow: "simple-tree-node-arrow",
             SimpleTreeNodeWrapper: "simple-tree-node-wrapper",
             SimpleTreeParentNode: "simple-tree-parent-node",
             SimpleTreeNodeChevronContainer: "simple-tree-node-chevron-container",
@@ -72,9 +71,7 @@
             EscapePressed: "_escapePressed",
             HoverChanged: "_hoverChanged",
             FilterChanged: "_filterChanged",
-        },
-        nodeIdPrefix: "simple-tree-node",
-    };
+        }};
 
     class KeyEventHandler {
         constructor(eventManager, dataService, readOnly) {

@@ -7,7 +7,11 @@ export class DataService {
     public allNodes: TreeNode[] = [];
     private treeInstanceId: number;
 
-    constructor(nodes: InitTreeNode[], private checkboxesActive: boolean = false, private checkboxesRecursive: boolean = false) {
+    constructor(
+        nodes: InitTreeNode[],
+        private checkboxesActive: boolean = false,
+        private checkboxesRecursive: boolean = false
+    ) {
         this.treeInstanceId = Math.floor(1000 + Math.random() * 9000);
         this.allNodes = this.normalizeNodes(nodes);
     }

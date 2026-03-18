@@ -3,8 +3,8 @@ import { promisify } from "util";
 import { exec as execCommand } from "child_process";
 
 import { ncp } from "ncp";
-import terser from "terser";
-import chokidar from "chokidar";
+import { minify } from "terser";
+import chokidar, { FSWatcher } from "chokidar";
 import sass from "sass";
 import autoprefixer from "autoprefixer";
 import postcss from "postcss";
@@ -22,9 +22,9 @@ const paths = {
     style: "./src/style/index.scss",
 };
 
-const watchers: chokidar.FSWatcher[] = [];
+const watchers: FSWatcher[] = [];
 
-function logErr(e: Error | string) {
+function logErr(e: unknown) {
     console.error(e);
 }
 
@@ -34,12 +34,12 @@ async function readFileAsync(path: string): Promise<string> {
         return buf.toString();
     } catch (e) {
         logErr(e);
-        return e.toString();
+        return String(e);
     }
 }
 
 async function uglify(src: string) {
-    const minified = await terser.minify(src, {
+    const minified = await minify(src, {
         output: {
             preamble: version,
             comments: false,
@@ -51,7 +51,7 @@ async function uglify(src: string) {
 
 async function buildBundleJs() {
     const bundle = await rollup.rollup(rollupConfig);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
     return bundle.write(rollupConfig.output as rollup.OutputOptions);
 }
 
@@ -126,7 +126,6 @@ function watch(path: string, cb: (path: string) => void = (s: string) => s) {
 
 async function start() {
     if (DEV_MODE) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         (rollupConfig.output as rollup.OutputOptions).sourcemap = true;
         await promisify(copyFile)("./index.template.html", "./index.html");
         const write = (s: string) => process.stdout.write(`rollup: ${s}`);
@@ -146,10 +145,7 @@ async function start() {
         }
 
         function logEvent(e: RollupWatchEvent) {
-            write(
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                [e.code, e.input && `${e.input} -> ${e.output!}`, "\n"].filter((x) => x).join(" ")
-            );
+            write([e.code, e.input && `${e.input} -> ${e.output!}`, "\n"].filter((x) => x).join(" "));
         }
 
         //catches ctrl+c event

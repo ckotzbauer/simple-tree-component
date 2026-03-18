@@ -20,7 +20,10 @@ export abstract class CommonTreeLogic<K extends keyof TreeModeNameMap> implement
 
     protected subscriptions: Subscription[] = [];
 
-    constructor(protected element: Element, public options: BaseOptions) {
+    constructor(
+        protected element: Element,
+        public options: BaseOptions
+    ) {
         this.eventManager = new EventManager();
         this.dataService = new DataService(options.nodes, options.checkboxes.active, options.checkboxes.recursive);
     }

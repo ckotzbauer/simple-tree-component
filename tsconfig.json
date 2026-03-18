@@ -9,6 +9,7 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "skipLibCheck": true,
+    "isolatedModules": true,
     "lib": [
       "es2015",
       "dom",

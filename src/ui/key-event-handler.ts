@@ -7,7 +7,11 @@ export class KeyEventHandler {
     private boundKeyUp: (e: KeyboardEvent) => void;
     private hoveredNodeValue: string | null = null;
 
-    constructor(private eventManager: EventManager, private dataService: DataService, private readOnly: boolean) {
+    constructor(
+        private eventManager: EventManager,
+        private dataService: DataService,
+        private readOnly: boolean
+    ) {
         this.boundKeyUp = this.handleKeyUp.bind(this);
     }
 

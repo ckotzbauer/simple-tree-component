@@ -133,7 +133,7 @@ export interface TreeInstance<K extends keyof TreeModeNameMap> {
         newIndex: number;
     }, evt: string, e?: Event) => void): Subscription;
 }
-export declare type SimpleTree = TreeInstance<"singleSelectDropdown" | "multiSelectDropdown" | "tree">;
+export type SimpleTree = TreeInstance<"singleSelectDropdown" | "multiSelectDropdown" | "tree">;
 export interface SimpleTreeFn {
     <K extends keyof TreeModeNameMap>(selector: Node, mode: K, config?: Options): TreeInstance<K>;
     <K extends keyof TreeModeNameMap>(selector: ArrayLike<Node>, mode: K, config?: Options): TreeInstance<K>[];

@@ -11,7 +11,6 @@ export interface Context<K extends keyof TreeModeNameMap> {
     dataService: DataService | undefined;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function simulate(eventType: string, onElement: Node | Window, options?: unknown, type?: any): void {
     const eventOptions = Object.assign(options || {}, { bubbles: true });
     const evt = new (type || CustomEvent)(eventType, eventOptions);
@@ -42,7 +41,9 @@ export function beforeEachTest<K extends keyof TreeModeNameMap>(ctx: Context<K>)
     jest.runAllTimers();
     (document.activeElement as HTMLElement).blur();
 
-    ctx.stc && ctx.stc.destroy && ctx.stc.destroy();
+    if (ctx.stc && ctx.stc.destroy) {
+        ctx.stc.destroy();
+    }
 
     if (ctx.elem === undefined) {
         ctx.elem = document.createElement("input");
@@ -93,7 +94,6 @@ export function countTreeNodes(treeNodes: TreeNode[]): number {
     return count;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function expectObjectsInArray(array: any[], ...o: object[]): void {
     expect(array).toEqual(expect.arrayContaining(o.map((x) => expect.objectContaining(x))));
 }
