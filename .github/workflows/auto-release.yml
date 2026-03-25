@@ -13,6 +13,6 @@ jobs:
   auto-release:
     uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-auto-release.yml@127bf24eda432e06ca81296442031074473d58f4 # 0.55.9
     with:
-      release-workflow: create-release.yml
+      release-workflow: release.yml
     secrets:
       token: ${{ secrets.REPO_ACCESS_TOKEN }}
