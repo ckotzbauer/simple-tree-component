@@ -1,3 +1,12 @@
+## Version 1.4.1 (2026-04-07)
+
+### Dependency updates
+
+* [[`702e64c2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/702e64c2)] - **deps**: update dependency ts-jest to v29.4.9 (#2247)
+* [[`25dfacd1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/25dfacd1)] - **deps**: update dependency typescript-eslint to v8.58.0 (#2246)
+* [[`173f8112`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/173f8112)] - **deps**: update dependency rollup to v4.60.1 (#2245)
+
+
 ## Version 1.4.0 (2026-03-31)
 
 ### Features and improvements
