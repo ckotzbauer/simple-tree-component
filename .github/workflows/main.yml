@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@127bf24eda432e06ca81296442031074473d58f4 # 0.55.9
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@187b42cc2ca9bc9257d6e72bb1c1be730f1d0565 # 0.56.0
     with:
       install-node: true
       build-commands: |
@@ -23,7 +23,7 @@ jobs:
       coverage-file: ./coverage/lcov.info
 
   docs:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@127bf24eda432e06ca81296442031074473d58f4 # 0.55.9
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-build-test.yml@187b42cc2ca9bc9257d6e72bb1c1be730f1d0565 # 0.56.0
     with:
       install-node: true
       build-commands: |
@@ -31,7 +31,7 @@ jobs:
         npm run build:docs
 
   lint:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-lint.yml@127bf24eda432e06ca81296442031074473d58f4 # 0.55.9
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-lint.yml@187b42cc2ca9bc9257d6e72bb1c1be730f1d0565 # 0.56.0
     with:
       install-node: true
       lint-commands: |
