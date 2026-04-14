@@ -1,3 +1,18 @@
+## Version 1.4.2 (2026-04-14)
+
+### Build and testing
+
+* [[`90fec5da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/90fec5da)] - **build**: enable caching
+
+### Dependency updates
+
+* [[`66f3b2f0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/66f3b2f0)] - **deps**: update dependency typescript-eslint to v8.58.1 (#2253)
+* [[`07e32ca1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/07e32ca1)] - **deps**: update dependency sass to v1.99.0 (#2252)
+* [[`8def4d91`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8def4d91)] - **deps**: update dependency eslint to v10.2.0 (#2251)
+* [[`f69add16`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f69add16)] - **deps**: update dependency postcss to v8.5.9 (#2250)
+* [[`280cfa4a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/280cfa4a)] - **deps**: update dependency @types&#x2F;node to v24.12.2 (#2249)
+
+
 ## Version 1.4.1 (2026-04-07)
 
 ### Dependency updates
