@@ -26,14 +26,10 @@ jobs:
           npm i
           npm run build:docs
 
-      - name: Install SSH Client
-        uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
         with:
-          ssh-key: true
+          ssh-key: false
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/out # The folder the action should deploy.
