@@ -5,7 +5,7 @@ on:
 
 permissions:
   actions: read
-  contents: read
+  contents: write
   id-token: write
   pages: write
 
@@ -30,6 +30,6 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
         with:
-          ssh-key: false
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
           folder: docs/out # The folder the action should deploy.
