@@ -19,17 +19,17 @@
 
 - Types Documentation
   - Interfaces
-    - [SimpleTreeFn](instance.SimpleTreeFn.md)
-    - [TreeInstance](instance.TreeInstance.md)
-    - [TreeModeNameMap](instance.TreeModeNameMap.md)
-    - [BaseOptions](options.BaseOptions.md)
-    - [Rect](rects.Rect.md)
-    - [Subscription](subscription.Subscription.md)
-    - [InitTreeNode](tree_node.InitTreeNode.md)
-    - [TreeNode](tree_node.TreeNode.md)
-  - Modules
-    - [instance](instance.md)
-    - [options](options.md)
-    - [rects](rects.md)
-    - [subscription](subscription.md)
-    - [tree](tree_node.md)
+    - [SimpleTreeFn](instance/interfaces/SimpleTreeFn.md)
+    - [TreeInstance](instance/interfaces/TreeInstance.md)
+    - [TreeModeNameMap](instance/interfaces/TreeModeNameMap.md)
+    - [BaseOptions](options/interfaces/BaseOptions.md)
+    - [Rect](rects/interfaces/Rect.md)
+    - [Subscription](subscription/interfaces/Subscription.md)
+    - [InitTreeNode](tree-node/interfaces/InitTreeNode.md)
+    - [TreeNode](tree-node/interfaces/TreeNode.md)
+  - Type Aliases
+    - [SimpleTree](instance/type-aliases/SimpleTree.md)
+    - [Options](options/type-aliases/Options.md)
+  - Functions
+    - [calculate](rects/functions/calculate.md)
+    - [calculateOverlayPlacement](rects/functions/calculateOverlayPlacement.md)

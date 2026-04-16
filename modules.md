@@ -1,13 +1,13 @@
-[Simple Tree Component](README.md) / Modules
+[**Simple Tree Component**](README.md)
+
+***
 
 # Simple Tree Component
 
-## Table of contents
+## Modules
 
-### Modules
-
-- [instance](modules/instance.md)
-- [options](modules/options.md)
-- [rects](modules/rects.md)
-- [subscription](modules/subscription.md)
-- [tree-node](modules/tree_node.md)
+- [instance](instance/README.md)
+- [options](options/README.md)
+- [rects](rects/README.md)
+- [subscription](subscription/README.md)
+- [tree-node](tree-node/README.md)
