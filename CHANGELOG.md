@@ -1,3 +1,22 @@
+## Version 1.4.3 (2026-04-21)
+
+### Bug fixes
+
+* [[`aac03517`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/aac03517)] - **fix**: permissions for deployment
+
+### Dependency updates
+
+* [[`46844b90`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/46844b90)] - **deps**: update dependency postcss to v8.5.10 (#2259)
+* [[`96a72603`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/96a72603)] - **deps**: update dependency autoprefixer to v10.5.0 (#2258)
+* [[`ef31435d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ef31435d)] - **deps**: update dependency prettier to v3.8.3 (#2255)
+* [[`a20631de`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a20631de)] - **deps**: update dependency typescript-eslint to v8.58.2 (#2257)
+* [[`257d952a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/257d952a)] - **deps**: update dependency typedoc to v0.28.19 (#2256)
+
+### Common changes
+
+* [[`8cc765a0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8cc765a0)] - **ci**: use token for deploy-docs deployment
+
+
 ## Version 1.4.2 (2026-04-14)
 
 ### Build and testing
