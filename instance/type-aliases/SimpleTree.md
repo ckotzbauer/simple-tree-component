@@ -8,4 +8,4 @@
 
 > **SimpleTree** = [`TreeInstance`](../interfaces/TreeInstance.md)\<`"singleSelectDropdown"` \| `"multiSelectDropdown"` \| `"tree"`\>
 
-Defined in: [instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/cc77f16728dd75e8fdffaf4ada010c5b77f149a8/src/types/instance.ts#L158)
+Defined in: [instance.ts:158](https://github.com/ckotzbauer/simple-tree-component/blob/baddc1f43d7297f30d3a97c9c1312c11fa27364b/src/types/instance.ts#L158)
