@@ -1,3 +1,11 @@
+## Version 1.4.5 (2026-05-05)
+
+### Dependency updates
+
+* [[`3c5fdf42`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3c5fdf42)] - **deps**: update dependency typescript-eslint to v8.59.1 (#2266)
+* [[`376ecf23`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/376ecf23)] - **deps**: update dependency postcss to v8.5.12 (#2265)
+
+
 ## Version 1.4.4 (2026-04-28)
 
 ### Dependency updates
