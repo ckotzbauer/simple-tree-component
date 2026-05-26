@@ -1,3 +1,16 @@
+## Version 1.4.8 (2026-05-26)
+
+### Dependency updates
+
+* [[`937a6fdd`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/937a6fdd)] - **deps**: update dependency ts-jest to v29.4.11 (#2285)
+* [[`96925180`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/96925180)] - **deps**: update dependency npm-run-all2 to v9
+* [[`9a76c82f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a76c82f)] - **deps**: update dependency eslint to v10.4.0 (#2282)
+* [[`59135f96`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/59135f96)] - **deps**: update dependency typescript-eslint to v8.59.4 (#2281)
+* [[`e33209d3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e33209d3)] - **deps**: update dependency ts-jest to v29.4.10 (#2280)
+* [[`190ad071`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/190ad071)] - **deps**: update dependency rollup to v4.60.4 (#2277)
+* [[`4e8e382b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4e8e382b)] - **deps**: update dependency postcss to v8.5.15 (#2279)
+
+
 ## Version 1.4.7 (2026-05-19)
 
 ### Dependency updates
