@@ -1,3 +1,14 @@
+## Version 1.4.9 (2026-06-02)
+
+### Dependency updates
+
+* [[`dd14c508`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/dd14c508)] - **deps**: update dependency eslint-plugin-prettier to v5.5.6 (#2291)
+* [[`b786496e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b786496e)] - **deps**: update dependency terser to v5.48.0 (#2286)
+* [[`8774c904`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8774c904)] - **deps**: update dependency typescript-eslint to v8.60.0 (#2290)
+* [[`f67a18d1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f67a18d1)] - **deps**: update dependency sass to v1.100.0 (#2289)
+* [[`9a43fcbf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a43fcbf)] - **deps**: update dependency npm-run-all2 to v9.0.1 (#2288)
+
+
 ## Version 1.4.8 (2026-05-26)
 
 ### Dependency updates
