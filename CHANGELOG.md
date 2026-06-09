@@ -1,3 +1,15 @@
+## Version 1.4.10 (2026-06-09)
+
+### Dependency updates
+
+* [[`11340191`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/11340191)] - **deps**: update dependency @types&#x2F;node to v24.13.0 (#2299)
+* [[`a735b888`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a735b888)] - **deps**: update dependency rollup to v4.61.1 (#2298)
+* [[`77f5f6dc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/77f5f6dc)] - **deps**: update typedoc updates to v4.12.0 (#2297)
+* [[`320e3858`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/320e3858)] - **deps**: update dependency rollup to v4.61.0 (#2296)
+* [[`1d1dff9f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1d1dff9f)] - **deps**: update typescript-eslint monorepo to v8.60.1 (#2295)
+* [[`fcedaced`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fcedaced)] - **deps**: update eslint monorepo to v10.4.1 (#2294)
+
+
 ## Version 1.4.9 (2026-06-02)
 
 ### Dependency updates
