@@ -1,3 +1,14 @@
+## Version 1.4.12 (2026-06-23)
+
+### Dependency updates
+
+* [[`24f6cf77`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/24f6cf77)] - **deps**: update eslint monorepo to v10.5.0 (#2312)
+* [[`bb364666`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/bb364666)] - **deps**: update dependency rollup to v4.62.0 (#2311)
+* [[`0e9c15fa`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0e9c15fa)] - **deps**: update typescript-eslint monorepo to v8.61.1 (#2310)
+* [[`0fba7f7d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0fba7f7d)] - **deps**: update dependency npm-run-all2 to v9.0.2 (#2309)
+* [[`5429b544`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5429b544)] - **deps**: update dependency sass to v1.101.0 (#2306)
+
+
 ## Version 1.4.11 (2026-06-16)
 
 ### Dependency updates
