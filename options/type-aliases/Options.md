@@ -8,6 +8,6 @@
 
 > **Options** = `Partial`\<[`BaseOptions`](../interfaces/BaseOptions.md)\>
 
-Defined in: [options.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/394fe6b87b61736a1806c375549f3a5413015144/src/types/options.ts#L161)
+Defined in: [options.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/f38072802c00bc2246c4b378f2a2b787ac951b88/src/types/options.ts#L161)
 
 A partial representation of `BaseOptions`. All other values are set to its defaults.
