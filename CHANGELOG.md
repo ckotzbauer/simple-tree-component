@@ -1,3 +1,13 @@
+## Version 1.4.14 (2026-07-07)
+
+### Dependency updates
+
+* [[`7e310b87`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7e310b87)] - **deps**: update dependency prettier to v3.9.4 (#2321)
+* [[`a6e9ebf7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a6e9ebf7)] - **deps**: update dependency eslint to v10.6.0 (#2320)
+* [[`24009e41`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/24009e41)] - **deps**: update dependency typescript-eslint to v8.62.1 (#2319)
+* [[`a9ba707f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a9ba707f)] - **deps**: update dependency postcss to v8.5.16 (#2318)
+
+
 ## Version 1.4.13 (2026-06-30)
 
 ### Dependency updates
