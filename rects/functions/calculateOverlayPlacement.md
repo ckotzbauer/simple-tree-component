@@ -8,7 +8,7 @@
 
 > **calculateOverlayPlacement**(`overlay`, `element`, `maxHeight?`): `void`
 
-Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/f38072802c00bc2246c4b378f2a2b787ac951b88/src/types/rects.ts#L56)
+Defined in: [rects.ts:56](https://github.com/ckotzbauer/simple-tree-component/blob/bc0e993b6d853121dafeac57d997eaecce7c851d/src/types/rects.ts#L56)
 
 Calculates the position of the `overlay` relative to the `element` and sets the values accordingly.
 See the docs of the `calculate` function for more details.

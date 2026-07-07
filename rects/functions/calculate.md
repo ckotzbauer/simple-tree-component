@@ -8,7 +8,7 @@
 
 > **calculate**(`elementRect`, `availableHeight`, `overlayHeight`, `borderWith?`, `maxOverlayHeight?`): [`Rect`](../interfaces/Rect.md)
 
-Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/f38072802c00bc2246c4b378f2a2b787ac951b88/src/types/rects.ts#L40)
+Defined in: [rects.ts:40](https://github.com/ckotzbauer/simple-tree-component/blob/bc0e993b6d853121dafeac57d997eaecce7c851d/src/types/rects.ts#L40)
 
 Calculates a rectangle to display a overlay-flyout relative to the position of the given `elementRect`.
 The following strategy is used (in order):
