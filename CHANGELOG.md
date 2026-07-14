@@ -1,3 +1,13 @@
+## Version 1.4.15 (2026-07-14)
+
+### Dependency updates
+
+* [[`efef0e08`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/efef0e08)] - **deps**: update dependency terser to v5.49.0 (#2325)
+* [[`13e5bc8c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/13e5bc8c)] - **deps**: update dependency @types&#x2F;node to v24.13.3 (#2324)
+* [[`e9e20de9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e9e20de9)] - **deps**: update dependency typescript-eslint to v8.63.0 (#2323)
+* [[`27310822`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/27310822)] - **deps**: update dependency typedoc to v0.28.20 (#2322)
+
+
 ## Version 1.4.14 (2026-07-07)
 
 ### Dependency updates
