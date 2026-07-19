@@ -51,7 +51,7 @@
     "@types/node": "24.13.3",
     "@types/node-sass": "4.11.8",
     "@types/sass": "1.45.0",
-    "autoprefixer": "10.5.3",
+    "autoprefixer": "10.5.4",
     "chokidar": "5.0.0",
     "docsify-cli": "4.4.4",
     "eslint": "10.7.0",
