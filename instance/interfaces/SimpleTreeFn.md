@@ -6,13 +6,13 @@
 
 # Interface: SimpleTreeFn()
 
-Defined in: [instance.ts:160](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/instance.ts#L160)
+Defined in: [instance.ts:160](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/instance.ts#L160)
 
 ## Call Signature
 
 > **SimpleTreeFn**\<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](TreeInstance.md)\<`K`\>
 
-Defined in: [instance.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/instance.ts#L161)
+Defined in: [instance.ts:161](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/instance.ts#L161)
 
 ### Type Parameters
 
@@ -42,7 +42,7 @@ Defined in: [instance.ts:161](https://github.com/ckotzbauer/simple-tree-componen
 
 > **SimpleTreeFn**\<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](TreeInstance.md)\<`K`\>[]
 
-Defined in: [instance.ts:162](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/instance.ts#L162)
+Defined in: [instance.ts:162](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/instance.ts#L162)
 
 ### Type Parameters
 
@@ -72,7 +72,7 @@ Defined in: [instance.ts:162](https://github.com/ckotzbauer/simple-tree-componen
 
 > **SimpleTreeFn**\<`K`\>(`selector`, `mode`, `config?`): [`TreeInstance`](TreeInstance.md)\<`K`\> \| [`TreeInstance`](TreeInstance.md)\<`K`\>[]
 
-Defined in: [instance.ts:163](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/instance.ts#L163)
+Defined in: [instance.ts:163](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/instance.ts#L163)
 
 ### Type Parameters
 
@@ -104,4 +104,4 @@ Defined in: [instance.ts:163](https://github.com/ckotzbauer/simple-tree-componen
 
 > **defaultConfig**: `Partial`\<[`BaseOptions`](../../options/interfaces/BaseOptions.md)\>
 
-Defined in: [instance.ts:164](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/instance.ts#L164)
+Defined in: [instance.ts:164](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/instance.ts#L164)

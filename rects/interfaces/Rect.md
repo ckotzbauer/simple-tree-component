@@ -6,7 +6,7 @@
 
 # Interface: Rect
 
-Defined in: [rects.ts:4](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/rects.ts#L4)
+Defined in: [rects.ts:4](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/rects.ts#L4)
 
 A general rectangle object which is used from the `calculate` function.
 
@@ -16,7 +16,7 @@ A general rectangle object which is used from the `calculate` function.
 
 > **height**: `number`
 
-Defined in: [rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/rects.ts#L20)
+Defined in: [rects.ts:20](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/rects.ts#L20)
 
 Height of the rectangle.
 
@@ -26,7 +26,7 @@ Height of the rectangle.
 
 > **left**: `number`
 
-Defined in: [rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/rects.ts#L12)
+Defined in: [rects.ts:12](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/rects.ts#L12)
 
 Difference from the base-point in x-direction.
 
@@ -36,7 +36,7 @@ Difference from the base-point in x-direction.
 
 > **top**: `number`
 
-Defined in: [rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/rects.ts#L8)
+Defined in: [rects.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/rects.ts#L8)
 
 Difference from the base-point in y-direction.
 
@@ -46,6 +46,6 @@ Difference from the base-point in y-direction.
 
 > **width**: `number`
 
-Defined in: [rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/994f1ba8a9fb0016612d58ea92d8b1cac6c90769/src/types/rects.ts#L16)
+Defined in: [rects.ts:16](https://github.com/ckotzbauer/simple-tree-component/blob/7bf27ca75b8c275f0330da841c7bb22223607b9f/src/types/rects.ts#L16)
 
 Width of the rectangle.
