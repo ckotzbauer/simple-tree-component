@@ -53,7 +53,7 @@
     "@types/sass": "1.45.0",
     "autoprefixer": "10.5.4",
     "chokidar": "5.0.0",
-    "docsify-cli": "4.4.4",
+    "docsify-cli": "5.0.0",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",
