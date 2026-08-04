@@ -1,3 +1,14 @@
+## Version 1.4.18 (2026-08-04)
+
+### Dependency updates
+
+* [[`b8dca5a0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b8dca5a0)] - **deps**: update dependency sass to v1.102.0 (#2344)
+* [[`c2c8f17b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c2c8f17b)] - **deps**: update dependency postcss to v8.5.25 (#2341)
+* [[`656e642e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/656e642e)] - **deps**: update dependency eslint to v10.8.0 (#2343)
+* [[`6a27848e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6a27848e)] - **deps**: update dependency rollup to v4.62.3 (#2342)
+* [[`7b18cf7e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7b18cf7e)] - **deps**: update dependency npm-run-all2 to v9.0.3 (#2340)
+
+
 ## Version 1.4.17 (2026-07-28)
 
 ### Dependency updates
