@@ -1,3 +1,14 @@
+## Version 1.4.19 (2026-08-11)
+
+### Dependency updates
+
+* [[`3a8b319b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3a8b319b)] - **deps**: update dependency postcss to v8.5.26 (#2350)
+* [[`e8b7cdbb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e8b7cdbb)] - **deps**: update dependency terser to v5.49.2 (#2349)
+* [[`8c22925c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8c22925c)] - **deps**: update dependency typescript-eslint to v8.66.0 (#2348)
+* [[`3fc9a9e8`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3fc9a9e8)] - **deps**: update dependency terser to v5.49.1 (#2347)
+* [[`c172ac34`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c172ac34)] - **deps**: update dependency rollup to v4.62.4 (#2346)
+
+
 ## Version 1.4.18 (2026-08-04)
 
 ### Dependency updates
