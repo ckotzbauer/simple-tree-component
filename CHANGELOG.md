@@ -1,3 +1,13 @@
+## Version 1.4.20 (2026-08-18)
+
+### Dependency updates
+
+* [[`3e486826`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3e486826)] - **deps**: update jamesives&#x2F;github-pages-deploy-action action to v4.9.0 (#2354)
+* [[`2e24fd4a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2e24fd4a)] - **deps**: update dependency typescript-eslint to v8.67.0 (#2353)
+* [[`9a9b25f5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a9b25f5)] - **deps**: update dependency terser to v5.50.0 (#2352)
+* [[`96a6fb14`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/96a6fb14)] - **deps**: update dependency eslint to v10.8.1 (#2351)
+
+
 ## Version 1.4.19 (2026-08-11)
 
 ### Dependency updates
