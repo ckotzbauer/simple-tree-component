@@ -1,3 +1,12 @@
+## Version 1.4.21 (2026-08-25)
+
+### Dependency updates
+
+* [[`c1e9f6db`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c1e9f6db)] - **deps**: update dependency rollup to v4.62.5 (#2357)
+* [[`f846a6da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f846a6da)] - **deps**: update ckotzbauer&#x2F;actions-toolkit action to v0.57.0 (#2356)
+* [[`6ec37540`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6ec37540)] - **deps**: update dependency sass to v1.103.0 (#2355)
+
+
 ## Version 1.4.20 (2026-08-18)
 
 ### Dependency updates
