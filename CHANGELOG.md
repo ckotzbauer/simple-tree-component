@@ -1,3 +1,16 @@
+## Version 1.4.22 (2026-09-01)
+
+### Dependency updates
+
+* [[`1565222f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1565222f)] - **deps**: update dependency terser to v5.51.2 (#2364)
+* [[`159a3f17`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/159a3f17)] - **deps**: update dependency terser to v5.51.0 (#2363)
+* [[`36ed10f4`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/36ed10f4)] - **deps**: update dependency rollup to v4.63.0 (#2360)
+* [[`af2c47bb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/af2c47bb)] - **deps**: update dependency typescript-eslint to v8.68.0 (#2362)
+* [[`8ea65554`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ea65554)] - **deps**: update dependency typedoc-plugin-markdown to v4.13.0 (#2361)
+* [[`de42d2ba`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/de42d2ba)] - **deps**: update dependency eslint to v10.9.1 (#2359)
+* [[`3030234d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3030234d)] - **deps**: update dependency sass to v1.103.1 (#2358)
+
+
 ## Version 1.4.21 (2026-08-25)
 
 ### Dependency updates
