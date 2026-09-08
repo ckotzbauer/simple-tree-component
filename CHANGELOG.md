@@ -1,3 +1,13 @@
+## Version 1.4.23 (2026-09-08)
+
+### Dependency updates
+
+* [[`41ea2c04`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/41ea2c04)] - **deps**: update dependency postcss to v8.5.28 (#2368)
+* [[`85bef82d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/85bef82d)] - **deps**: update jest monorepo to v30.5.1 (#2367)
+* [[`f6f57b3a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f6f57b3a)] - **deps**: update dependency typescript-eslint to v8.69.0 (#2366)
+* [[`2854af64`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2854af64)] - **deps**: update dependency rollup to v4.63.1 (#2365)
+
+
 ## Version 1.4.22 (2026-09-01)
 
 ### Dependency updates
