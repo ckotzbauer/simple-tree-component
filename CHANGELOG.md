@@ -1,3 +1,15 @@
+## Version 1.4.24 (2026-09-15)
+
+### Dependency updates
+
+* [[`5ae2c15c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5ae2c15c)] - **deps**: update dependency autoprefixer to v10.5.6 (#2374)
+* [[`dc2f2d39`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/dc2f2d39)] - **deps**: update dependency @types&#x2F;node to v24.13.4 (#2373)
+* [[`12e31398`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/12e31398)] - **deps**: update dependency typescript-eslint to v8.70.0 (#2372)
+* [[`62f59990`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/62f59990)] - **deps**: update dependency sass to v1.104.0 (#2371)
+* [[`b988975f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b988975f)] - **deps**: update dependency eslint to v10.10.0 (#2370)
+* [[`8ca2651f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ca2651f)] - **deps**: update dependency autoprefixer to v10.5.5 (#2369)
+
+
 ## Version 1.4.23 (2026-09-08)
 
 ### Dependency updates
