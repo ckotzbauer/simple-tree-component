@@ -1,3 +1,14 @@
+## Version 1.4.25 (2026-09-22)
+
+### Dependency updates
+
+* [[`7e221158`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7e221158)] - **deps**: update dependency prettier to v3.9.7 (#2379)
+* [[`afca077e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/afca077e)] - **deps**: update dependency sass to v1.104.1 (#2377)
+* [[`3f91f896`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3f91f896)] - **deps**: update dependency autoprefixer to v10.6.1 (#2378)
+* [[`4e5901da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4e5901da)] - **deps**: update dependency rollup to v4.63.3 (#2376)
+* [[`ba727dd1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ba727dd1)] - **deps**: update dependency @types&#x2F;node to v24.13.5 (#2375)
+
+
 ## Version 1.4.24 (2026-09-15)
 
 ### Dependency updates
