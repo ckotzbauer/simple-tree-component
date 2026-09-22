@@ -6,7 +6,7 @@
 
 # Interface: Subscription
 
-Defined in: [subscription.ts:4](https://github.com/ckotzbauer/simple-tree-component/blob/e705bf0490a433ccf79ed380912fecd09c444947/src/types/subscription.ts#L4)
+Defined in: [subscription.ts:4](https://github.com/ckotzbauer/simple-tree-component/blob/433ccf45d456a2e4d3d2a3e8f94add18f10320f0/src/types/subscription.ts#L4)
 
 A subscription-object which is issued when `subscribe` or `subscribeOnce` is called on a tree-instance to receive different events.
 
@@ -16,7 +16,7 @@ A subscription-object which is issued when `subscribe` or `subscribeOnce` is cal
 
 > **dispose**(): `void`
 
-Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/e705bf0490a433ccf79ed380912fecd09c444947/src/types/subscription.ts#L8)
+Defined in: [subscription.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/433ccf45d456a2e4d3d2a3e8f94add18f10320f0/src/types/subscription.ts#L8)
 
 Ends the subscription. No further events (this subscription was linked to) where emitted.
 
