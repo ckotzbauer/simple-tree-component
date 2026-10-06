@@ -1,3 +1,46 @@
+## Version 1.4.27 (2026-10-06)
+
+### Dependency updates
+
+* [[`704b263d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/704b263d)] - **deps**: bump ws in &#x2F;demo (#2407)
+* [[`b7dc1a77`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b7dc1a77)] - **deps**: bump uuid and webpack-dev-server in &#x2F;demo (#2408)
+* [[`d586fda9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d586fda9)] - **deps**: bump brace-expansion from 1.1.11 to 1.1.21 in &#x2F;demo (#2413)
+* [[`0b3aba1e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0b3aba1e)] - **deps**: update dependency rollup to v4.63.6 (#2414)
+* [[`c3e406f5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c3e406f5)] - **deps**: update dependency typescript-eslint to v8.71.0 (#2412)
+* [[`f2db364b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f2db364b)] - **deps**: update dependency @types&#x2F;node to v24.19.0 (#2411)
+* [[`40bf0a49`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/40bf0a49)] - **deps**: update dependency ts-jest to v29.4.14 (#2410)
+* [[`86a6b63e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/86a6b63e)] - **deps**: update dependency sass to v1.105.1 (#2409)
+* [[`b9d917f1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b9d917f1)] - **deps**: bump ws (#2405)
+* [[`e8493bd6`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e8493bd6)] - **deps**: bump immutable from 5.1.5 to 5.1.9 (#2400)
+* [[`10c49eda`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/10c49eda)] - **deps**: bump markdown-it from 14.3.0 to 14.3.2 (#2392)
+* [[`73430a40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/73430a40)] - **deps**: bump brace-expansion (#2393)
+* [[`e2f20ceb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e2f20ceb)] - **deps**: bump lodash from 4.17.23 to 4.18.1 in &#x2F;demo (#2244)
+* [[`fdba1368`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fdba1368)] - **deps**: bump qs and express in &#x2F;demo (#2284)
+* [[`9ab06b68`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9ab06b68)] - **deps**: update actions&#x2F;checkout action to v7 (#2313)
+* [[`4fa5ee5a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4fa5ee5a)] - **deps**: update dependency docsify-cli to v5 (#2345)
+
+### Common changes
+
+* [[`76ce47a5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/76ce47a5)] - **deps-dev**: bump webpack-dev-server from 5.2.5 to 5.2.6 in &#x2F;demo (#2401)
+* [[`d8c8dc55`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d8c8dc55)] - **deps-dev**: bump @babel&#x2F;core from 7.29.0 to 7.29.7 (#2402)
+* [[`a4898b4d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a4898b4d)] - **deps-dev**: bump http-proxy-middleware in &#x2F;demo (#2403)
+* [[`711fb1dc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/711fb1dc)] - **deps-dev**: bump shell-quote from 1.8.4 to 1.11.0 in &#x2F;demo (#2404)
+* [[`58198bbe`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/58198bbe)] - **deps-dev**: bump websocket-driver from 0.7.4 to 0.7.5 in &#x2F;demo (#2406)
+* [[`d4b5ac50`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d4b5ac50)] - **deps-dev**: bump nanoid from 3.3.11 to 3.3.19 in &#x2F;demo (#2394)
+* [[`3cb5d964`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3cb5d964)] - **deps-dev**: bump browserslist from 4.28.1 to 4.29.3 in &#x2F;demo (#2397)
+* [[`88b7b12f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/88b7b12f)] - **deps-dev**: bump postcss from 8.5.10 to 8.5.28 in &#x2F;demo (#2398)
+* [[`5ae5cef2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5ae5cef2)] - **deps-dev**: bump shell-quote from 1.8.4 to 1.11.0 (#2399)
+* [[`7b75e5c8`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7b75e5c8)] - **deps-dev**: bump baseline-browser-mapping in &#x2F;demo (#2391)
+* [[`e5f585a7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e5f585a7)] - **deps-dev**: bump fast-uri from 3.1.0 to 3.1.8 in &#x2F;demo (#2395)
+* [[`177db6a3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/177db6a3)] - **deps-dev**: bump @humanfs&#x2F;node from 0.16.7 to 0.16.8 (#2396)
+* [[`2d44b96a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2d44b96a)] - **deps-dev**: bump follow-redirects from 1.15.6 to 1.16.0 in &#x2F;demo (#2254)
+* [[`f7ca81ac`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f7ca81ac)] - **deps-dev**: bump postcss from 8.4.31 to 8.5.10 in &#x2F;demo (#2260)
+* [[`cf1e708b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cf1e708b)] - **deps-dev**: bump launch-editor from 2.6.1 to 2.14.1 in &#x2F;demo (#2292)
+* [[`0d8e71fb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0d8e71fb)] - **deps-dev**: bump shell-quote from 1.8.1 to 1.8.4 in &#x2F;demo (#2300)
+* [[`2cb449ba`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2cb449ba)] - **deps-dev**: bump shell-quote from 1.8.3 to 1.8.4 (#2301)
+* [[`e7ce5804`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e7ce5804)] - **deps-dev**: bump webpack-dev-server from 5.0.4 to 5.2.5 in &#x2F;demo (#2308)
+
+
 ## Version 1.4.26 (2026-09-29)
 
 ### Dependency updates
