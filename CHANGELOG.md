@@ -1,3 +1,25 @@
+## Version 1.4.28 (2026-10-13)
+
+### Dependency updates
+
+* [[`d31652c0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d31652c0)] - **deps**: update benc-uk&#x2F;workflow-dispatch digest to d004979 (#2276)
+* [[`8ea91688`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ea91688)] - **deps**: update dependency rollup to v4.64.3 (#2425)
+* [[`2ac97ecf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2ac97ecf)] - **deps**: update dependency rollup to v4.64.2 (#2424)
+* [[`a78d4109`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a78d4109)] - **deps**: update dependency rollup to v4.64.1 (#2423)
+* [[`fbd90410`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fbd90410)] - **deps**: update dependency rollup to v4.64.0 (#2419)
+* [[`c24a555e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c24a555e)] - **deps**: update dependency eslint to v10.12.0 (#2418)
+* [[`e0aafa9c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e0aafa9c)] - **deps**: update dependency typescript-eslint to v8.71.1 (#2417)
+* [[`c54508f0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c54508f0)] - **deps**: bump postcss-selector-parser, postcss-modules-local-by-default and postcss-modules-scope (#2420)
+* [[`cac66890`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cac66890)] - **deps**: update dependency postcss to v8.5.29 (#2416)
+* [[`a07875dd`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a07875dd)] - **deps**: update dependency @types&#x2F;node to v24.19.1 (#2415)
+
+### Common changes
+
+* [[`a8a19adf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a8a19adf)] - **deps-dev**: bump source-map-js from 1.2.1 to 1.2.2 in &#x2F;demo (#2426)
+* [[`30711b08`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/30711b08)] - **deps-dev**: bump compression from 1.8.1 to 1.8.2 in &#x2F;demo (#2422)
+* [[`7916d2d7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7916d2d7)] - **deps-dev**: bump handlebars from 4.7.9 to 4.7.10 (#2421)
+
+
 ## Version 1.4.27 (2026-10-06)
 
 ### Dependency updates
