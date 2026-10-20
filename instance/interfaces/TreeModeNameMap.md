@@ -6,7 +6,7 @@
 
 # Interface: TreeModeNameMap
 
-Defined in: [instance.ts:5](https://github.com/ckotzbauer/simple-tree-component/blob/d36b094f285fc1a93cccef09f3e19e7450668cb4/src/types/instance.ts#L5)
+Defined in: [instance.ts:5](https://github.com/ckotzbauer/simple-tree-component/blob/ea0822e6c93eb52ee9a0c29c588a58830d144012/src/types/instance.ts#L5)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [instance.ts:5](https://github.com/ckotzbauer/simple-tree-component/
 
 > **multiSelectDropdown**: [`TreeNode`](../../tree-node/interfaces/TreeNode.md)[]
 
-Defined in: [instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/d36b094f285fc1a93cccef09f3e19e7450668cb4/src/types/instance.ts#L7)
+Defined in: [instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/blob/ea0822e6c93eb52ee9a0c29c588a58830d144012/src/types/instance.ts#L7)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [instance.ts:7](https://github.com/ckotzbauer/simple-tree-component/
 
 > **singleSelectDropdown**: [`TreeNode`](../../tree-node/interfaces/TreeNode.md) \| `null`
 
-Defined in: [instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/d36b094f285fc1a93cccef09f3e19e7450668cb4/src/types/instance.ts#L6)
+Defined in: [instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/blob/ea0822e6c93eb52ee9a0c29c588a58830d144012/src/types/instance.ts#L6)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [instance.ts:6](https://github.com/ckotzbauer/simple-tree-component/
 
 > **tree**: [`TreeNode`](../../tree-node/interfaces/TreeNode.md) \| [`TreeNode`](../../tree-node/interfaces/TreeNode.md)[] \| `null`
 
-Defined in: [instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/d36b094f285fc1a93cccef09f3e19e7450668cb4/src/types/instance.ts#L8)
+Defined in: [instance.ts:8](https://github.com/ckotzbauer/simple-tree-component/blob/ea0822e6c93eb52ee9a0c29c588a58830d144012/src/types/instance.ts#L8)
