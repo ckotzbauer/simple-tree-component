@@ -11,11 +11,12 @@ permissions:
   actions: read
   contents: write
   id-token: write
+  attestations: write
   packages: write
 
 jobs:
   release:
-    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-release-nodejs.yml@187b42cc2ca9bc9257d6e72bb1c1be730f1d0565 # 0.56.0
+    uses: ckotzbauer/actions-toolkit/.github/workflows/toolkit-release-nodejs.yml@70492262e47019908260a22d989ea8c55c549cdb # 0.58.1
     with:
       version: ${{ github.event.inputs.version }}
       build-commands: |
@@ -35,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy docs
-        uses: benc-uk/workflow-dispatch@7a027648b88c2413826b6ddd6c76114894dc5ec4 # v1.3
+        uses: benc-uk/workflow-dispatch@d004979be141727c7a17c28f603e2facc40d0855 # v1.3
         with:
           workflow: deploy-docs
           ref: main

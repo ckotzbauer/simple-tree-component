@@ -1,3 +1,286 @@
+## Version 1.4.29 (2026-10-20)
+
+### Dependency updates
+
+* [[`714c677c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/714c677c)] - **deps**: update dependency ts-jest to v29.4.15 (#2435)
+* [[`3ee00d7a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3ee00d7a)] - **deps**: update dependency rollup to v4.64.7 (#2434)
+* [[`6da46c5b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6da46c5b)] - **deps**: update dependency prettier to v3.9.10 (#2430)
+* [[`3179d5aa`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3179d5aa)] - **deps**: update dependency typedoc-plugin-markdown to v4.14.0 (#2433)
+* [[`e318ea6a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e318ea6a)] - **deps**: update dependency typescript-eslint to v8.71.2 (#2432)
+* [[`fbc2505e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fbc2505e)] - **deps**: update dependency rollup to v4.64.6 (#2431)
+* [[`173e163f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/173e163f)] - **deps**: update dependency postcss to v8.5.30 (#2429)
+* [[`30eb470a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/30eb470a)] - **deps**: update dependency eslint-plugin-prettier to v5.5.7 (#2428)
+* [[`51cd75a7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/51cd75a7)] - **deps**: update dependency @types&#x2F;node to v24.19.2 (#2427)
+
+
+## Version 1.4.28 (2026-10-13)
+
+### Dependency updates
+
+* [[`d31652c0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d31652c0)] - **deps**: update benc-uk&#x2F;workflow-dispatch digest to d004979 (#2276)
+* [[`8ea91688`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ea91688)] - **deps**: update dependency rollup to v4.64.3 (#2425)
+* [[`2ac97ecf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2ac97ecf)] - **deps**: update dependency rollup to v4.64.2 (#2424)
+* [[`a78d4109`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a78d4109)] - **deps**: update dependency rollup to v4.64.1 (#2423)
+* [[`fbd90410`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fbd90410)] - **deps**: update dependency rollup to v4.64.0 (#2419)
+* [[`c24a555e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c24a555e)] - **deps**: update dependency eslint to v10.12.0 (#2418)
+* [[`e0aafa9c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e0aafa9c)] - **deps**: update dependency typescript-eslint to v8.71.1 (#2417)
+* [[`c54508f0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c54508f0)] - **deps**: bump postcss-selector-parser, postcss-modules-local-by-default and postcss-modules-scope (#2420)
+* [[`cac66890`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cac66890)] - **deps**: update dependency postcss to v8.5.29 (#2416)
+* [[`a07875dd`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a07875dd)] - **deps**: update dependency @types&#x2F;node to v24.19.1 (#2415)
+
+### Common changes
+
+* [[`a8a19adf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a8a19adf)] - **deps-dev**: bump source-map-js from 1.2.1 to 1.2.2 in &#x2F;demo (#2426)
+* [[`30711b08`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/30711b08)] - **deps-dev**: bump compression from 1.8.1 to 1.8.2 in &#x2F;demo (#2422)
+* [[`7916d2d7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7916d2d7)] - **deps-dev**: bump handlebars from 4.7.9 to 4.7.10 (#2421)
+
+
+## Version 1.4.27 (2026-10-06)
+
+### Dependency updates
+
+* [[`704b263d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/704b263d)] - **deps**: bump ws in &#x2F;demo (#2407)
+* [[`b7dc1a77`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b7dc1a77)] - **deps**: bump uuid and webpack-dev-server in &#x2F;demo (#2408)
+* [[`d586fda9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d586fda9)] - **deps**: bump brace-expansion from 1.1.11 to 1.1.21 in &#x2F;demo (#2413)
+* [[`0b3aba1e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0b3aba1e)] - **deps**: update dependency rollup to v4.63.6 (#2414)
+* [[`c3e406f5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c3e406f5)] - **deps**: update dependency typescript-eslint to v8.71.0 (#2412)
+* [[`f2db364b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f2db364b)] - **deps**: update dependency @types&#x2F;node to v24.19.0 (#2411)
+* [[`40bf0a49`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/40bf0a49)] - **deps**: update dependency ts-jest to v29.4.14 (#2410)
+* [[`86a6b63e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/86a6b63e)] - **deps**: update dependency sass to v1.105.1 (#2409)
+* [[`b9d917f1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b9d917f1)] - **deps**: bump ws (#2405)
+* [[`e8493bd6`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e8493bd6)] - **deps**: bump immutable from 5.1.5 to 5.1.9 (#2400)
+* [[`10c49eda`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/10c49eda)] - **deps**: bump markdown-it from 14.3.0 to 14.3.2 (#2392)
+* [[`73430a40`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/73430a40)] - **deps**: bump brace-expansion (#2393)
+* [[`e2f20ceb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e2f20ceb)] - **deps**: bump lodash from 4.17.23 to 4.18.1 in &#x2F;demo (#2244)
+* [[`fdba1368`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fdba1368)] - **deps**: bump qs and express in &#x2F;demo (#2284)
+* [[`9ab06b68`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9ab06b68)] - **deps**: update actions&#x2F;checkout action to v7 (#2313)
+* [[`4fa5ee5a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4fa5ee5a)] - **deps**: update dependency docsify-cli to v5 (#2345)
+
+### Common changes
+
+* [[`76ce47a5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/76ce47a5)] - **deps-dev**: bump webpack-dev-server from 5.2.5 to 5.2.6 in &#x2F;demo (#2401)
+* [[`d8c8dc55`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d8c8dc55)] - **deps-dev**: bump @babel&#x2F;core from 7.29.0 to 7.29.7 (#2402)
+* [[`a4898b4d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a4898b4d)] - **deps-dev**: bump http-proxy-middleware in &#x2F;demo (#2403)
+* [[`711fb1dc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/711fb1dc)] - **deps-dev**: bump shell-quote from 1.8.4 to 1.11.0 in &#x2F;demo (#2404)
+* [[`58198bbe`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/58198bbe)] - **deps-dev**: bump websocket-driver from 0.7.4 to 0.7.5 in &#x2F;demo (#2406)
+* [[`d4b5ac50`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/d4b5ac50)] - **deps-dev**: bump nanoid from 3.3.11 to 3.3.19 in &#x2F;demo (#2394)
+* [[`3cb5d964`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3cb5d964)] - **deps-dev**: bump browserslist from 4.28.1 to 4.29.3 in &#x2F;demo (#2397)
+* [[`88b7b12f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/88b7b12f)] - **deps-dev**: bump postcss from 8.5.10 to 8.5.28 in &#x2F;demo (#2398)
+* [[`5ae5cef2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5ae5cef2)] - **deps-dev**: bump shell-quote from 1.8.4 to 1.11.0 (#2399)
+* [[`7b75e5c8`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7b75e5c8)] - **deps-dev**: bump baseline-browser-mapping in &#x2F;demo (#2391)
+* [[`e5f585a7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e5f585a7)] - **deps-dev**: bump fast-uri from 3.1.0 to 3.1.8 in &#x2F;demo (#2395)
+* [[`177db6a3`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/177db6a3)] - **deps-dev**: bump @humanfs&#x2F;node from 0.16.7 to 0.16.8 (#2396)
+* [[`2d44b96a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2d44b96a)] - **deps-dev**: bump follow-redirects from 1.15.6 to 1.16.0 in &#x2F;demo (#2254)
+* [[`f7ca81ac`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f7ca81ac)] - **deps-dev**: bump postcss from 8.4.31 to 8.5.10 in &#x2F;demo (#2260)
+* [[`cf1e708b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cf1e708b)] - **deps-dev**: bump launch-editor from 2.6.1 to 2.14.1 in &#x2F;demo (#2292)
+* [[`0d8e71fb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0d8e71fb)] - **deps-dev**: bump shell-quote from 1.8.1 to 1.8.4 in &#x2F;demo (#2300)
+* [[`2cb449ba`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2cb449ba)] - **deps-dev**: bump shell-quote from 1.8.3 to 1.8.4 (#2301)
+* [[`e7ce5804`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e7ce5804)] - **deps-dev**: bump webpack-dev-server from 5.0.4 to 5.2.5 in &#x2F;demo (#2308)
+
+
+## Version 1.4.26 (2026-09-29)
+
+### Dependency updates
+
+* [[`8e706133`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8e706133)] - **deps**: update dependency rollup to v4.63.5 (#2390)
+* [[`e333c964`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e333c964)] - **deps**: update dependency sass to v1.105.0 (#2387)
+* [[`b720fd16`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b720fd16)] - **deps**: update dependency eslint to v10.11.0 (#2386)
+* [[`ec1e72f7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ec1e72f7)] - **deps**: update jest monorepo to v30.5.2 (#2385)
+* [[`63801b56`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/63801b56)] - **deps**: update dependency typescript-eslint to v8.70.1 (#2384)
+* [[`23e1d4fd`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/23e1d4fd)] - **deps**: update dependency ts-jest to v29.4.13 (#2389)
+* [[`b5194e2e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b5194e2e)] - **deps**: update dependency prettier to v3.9.9 (#2388)
+* [[`1f1b9810`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1f1b9810)] - **deps**: update dependency typedoc-plugin-markdown to v4.13.1 (#2383)
+* [[`66407027`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/66407027)] - **deps**: update dependency rollup to v4.63.4 (#2382)
+* [[`e5ad76b8`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e5ad76b8)] - **deps**: update dependency prettier to v3.9.8 (#2381)
+* [[`ba74db5f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ba74db5f)] - **deps**: update dependency @types&#x2F;node to v24.13.6 (#2380)
+
+
+## Version 1.4.25 (2026-09-22)
+
+### Dependency updates
+
+* [[`7e221158`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7e221158)] - **deps**: update dependency prettier to v3.9.7 (#2379)
+* [[`afca077e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/afca077e)] - **deps**: update dependency sass to v1.104.1 (#2377)
+* [[`3f91f896`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3f91f896)] - **deps**: update dependency autoprefixer to v10.6.1 (#2378)
+* [[`4e5901da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/4e5901da)] - **deps**: update dependency rollup to v4.63.3 (#2376)
+* [[`ba727dd1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/ba727dd1)] - **deps**: update dependency @types&#x2F;node to v24.13.5 (#2375)
+
+
+## Version 1.4.24 (2026-09-15)
+
+### Dependency updates
+
+* [[`5ae2c15c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5ae2c15c)] - **deps**: update dependency autoprefixer to v10.5.6 (#2374)
+* [[`dc2f2d39`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/dc2f2d39)] - **deps**: update dependency @types&#x2F;node to v24.13.4 (#2373)
+* [[`12e31398`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/12e31398)] - **deps**: update dependency typescript-eslint to v8.70.0 (#2372)
+* [[`62f59990`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/62f59990)] - **deps**: update dependency sass to v1.104.0 (#2371)
+* [[`b988975f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b988975f)] - **deps**: update dependency eslint to v10.10.0 (#2370)
+* [[`8ca2651f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ca2651f)] - **deps**: update dependency autoprefixer to v10.5.5 (#2369)
+
+
+## Version 1.4.23 (2026-09-08)
+
+### Dependency updates
+
+* [[`41ea2c04`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/41ea2c04)] - **deps**: update dependency postcss to v8.5.28 (#2368)
+* [[`85bef82d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/85bef82d)] - **deps**: update jest monorepo to v30.5.1 (#2367)
+* [[`f6f57b3a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f6f57b3a)] - **deps**: update dependency typescript-eslint to v8.69.0 (#2366)
+* [[`2854af64`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2854af64)] - **deps**: update dependency rollup to v4.63.1 (#2365)
+
+
+## Version 1.4.22 (2026-09-01)
+
+### Dependency updates
+
+* [[`1565222f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1565222f)] - **deps**: update dependency terser to v5.51.2 (#2364)
+* [[`159a3f17`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/159a3f17)] - **deps**: update dependency terser to v5.51.0 (#2363)
+* [[`36ed10f4`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/36ed10f4)] - **deps**: update dependency rollup to v4.63.0 (#2360)
+* [[`af2c47bb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/af2c47bb)] - **deps**: update dependency typescript-eslint to v8.68.0 (#2362)
+* [[`8ea65554`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8ea65554)] - **deps**: update dependency typedoc-plugin-markdown to v4.13.0 (#2361)
+* [[`de42d2ba`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/de42d2ba)] - **deps**: update dependency eslint to v10.9.1 (#2359)
+* [[`3030234d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3030234d)] - **deps**: update dependency sass to v1.103.1 (#2358)
+
+
+## Version 1.4.21 (2026-08-25)
+
+### Dependency updates
+
+* [[`c1e9f6db`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c1e9f6db)] - **deps**: update dependency rollup to v4.62.5 (#2357)
+* [[`f846a6da`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f846a6da)] - **deps**: update ckotzbauer&#x2F;actions-toolkit action to v0.57.0 (#2356)
+* [[`6ec37540`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6ec37540)] - **deps**: update dependency sass to v1.103.0 (#2355)
+
+
+## Version 1.4.20 (2026-08-18)
+
+### Dependency updates
+
+* [[`3e486826`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3e486826)] - **deps**: update jamesives&#x2F;github-pages-deploy-action action to v4.9.0 (#2354)
+* [[`2e24fd4a`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2e24fd4a)] - **deps**: update dependency typescript-eslint to v8.67.0 (#2353)
+* [[`9a9b25f5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a9b25f5)] - **deps**: update dependency terser to v5.50.0 (#2352)
+* [[`96a6fb14`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/96a6fb14)] - **deps**: update dependency eslint to v10.8.1 (#2351)
+
+
+## Version 1.4.19 (2026-08-11)
+
+### Dependency updates
+
+* [[`3a8b319b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3a8b319b)] - **deps**: update dependency postcss to v8.5.26 (#2350)
+* [[`e8b7cdbb`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e8b7cdbb)] - **deps**: update dependency terser to v5.49.2 (#2349)
+* [[`8c22925c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8c22925c)] - **deps**: update dependency typescript-eslint to v8.66.0 (#2348)
+* [[`3fc9a9e8`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/3fc9a9e8)] - **deps**: update dependency terser to v5.49.1 (#2347)
+* [[`c172ac34`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c172ac34)] - **deps**: update dependency rollup to v4.62.4 (#2346)
+
+
+## Version 1.4.18 (2026-08-04)
+
+### Dependency updates
+
+* [[`b8dca5a0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b8dca5a0)] - **deps**: update dependency sass to v1.102.0 (#2344)
+* [[`c2c8f17b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c2c8f17b)] - **deps**: update dependency postcss to v8.5.25 (#2341)
+* [[`656e642e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/656e642e)] - **deps**: update dependency eslint to v10.8.0 (#2343)
+* [[`6a27848e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6a27848e)] - **deps**: update dependency rollup to v4.62.3 (#2342)
+* [[`7b18cf7e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7b18cf7e)] - **deps**: update dependency npm-run-all2 to v9.0.3 (#2340)
+
+
+## Version 1.4.17 (2026-07-28)
+
+### Dependency updates
+
+* [[`88766122`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/88766122)] - **deps**: update dependency sass to v1.101.6 (#2339)
+* [[`f428a32e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f428a32e)] - **deps**: update dependency ts-jest to v29.4.12 (#2338)
+* [[`26a2ac67`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/26a2ac67)] - **deps**: update dependency postcss to v8.5.22 (#2337)
+* [[`38ef0825`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/38ef0825)] - **deps**: update dependency typescript-eslint to v8.65.0 (#2336)
+* [[`937afd5f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/937afd5f)] - **deps**: update dependency prettier to v3.9.6 (#2334)
+* [[`45c77c4f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/45c77c4f)] - **deps**: update dependency sass to v1.101.3 (#2335)
+* [[`b307f1e9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b307f1e9)] - **deps**: update dependency postcss to v8.5.21 (#2333)
+
+
+## Version 1.4.16 (2026-07-21)
+
+### Dependency updates
+
+* [[`091c5603`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/091c5603)] - **deps**: update dependency autoprefixer to v10.5.4 (#2332)
+* [[`cbab6c5b`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/cbab6c5b)] - **deps**: update dependency prettier to v3.9.5 (#2327)
+* [[`66c3b538`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/66c3b538)] - **deps**: update dependency typescript-eslint to v8.64.0 (#2331)
+* [[`2906602e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/2906602e)] - **deps**: update dependency eslint to v10.7.0 (#2330)
+* [[`dcdb5681`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/dcdb5681)] - **deps**: update dependency postcss to v8.5.19 (#2329)
+* [[`f9944ee5`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f9944ee5)] - **deps**: update dependency autoprefixer to v10.5.3 (#2328)
+
+
+## Version 1.4.15 (2026-07-14)
+
+### Dependency updates
+
+* [[`efef0e08`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/efef0e08)] - **deps**: update dependency terser to v5.49.0 (#2325)
+* [[`13e5bc8c`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/13e5bc8c)] - **deps**: update dependency @types&#x2F;node to v24.13.3 (#2324)
+* [[`e9e20de9`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/e9e20de9)] - **deps**: update dependency typescript-eslint to v8.63.0 (#2323)
+* [[`27310822`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/27310822)] - **deps**: update dependency typedoc to v0.28.20 (#2322)
+
+
+## Version 1.4.14 (2026-07-07)
+
+### Dependency updates
+
+* [[`7e310b87`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/7e310b87)] - **deps**: update dependency prettier to v3.9.4 (#2321)
+* [[`a6e9ebf7`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a6e9ebf7)] - **deps**: update dependency eslint to v10.6.0 (#2320)
+* [[`24009e41`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/24009e41)] - **deps**: update dependency typescript-eslint to v8.62.1 (#2319)
+* [[`a9ba707f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a9ba707f)] - **deps**: update dependency postcss to v8.5.16 (#2318)
+
+
+## Version 1.4.13 (2026-06-30)
+
+### Dependency updates
+
+* [[`0d4a50d0`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0d4a50d0)] - **deps**: update dependency autoprefixer to v10.5.2 (#2317)
+* [[`eef5ab3d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/eef5ab3d)] - **deps**: update dependency typescript-eslint to v8.62.0 (#2316)
+* [[`c6b7c60f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c6b7c60f)] - **deps**: update dependency rollup to v4.62.2 (#2315)
+* [[`86f14d01`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/86f14d01)] - **deps**: update dependency autoprefixer to v10.5.1 (#2314)
+
+
+## Version 1.4.12 (2026-06-23)
+
+### Dependency updates
+
+* [[`24f6cf77`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/24f6cf77)] - **deps**: update eslint monorepo to v10.5.0 (#2312)
+* [[`bb364666`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/bb364666)] - **deps**: update dependency rollup to v4.62.0 (#2311)
+* [[`0e9c15fa`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0e9c15fa)] - **deps**: update typescript-eslint monorepo to v8.61.1 (#2310)
+* [[`0fba7f7d`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/0fba7f7d)] - **deps**: update dependency npm-run-all2 to v9.0.2 (#2309)
+* [[`5429b544`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/5429b544)] - **deps**: update dependency sass to v1.101.0 (#2306)
+
+
+## Version 1.4.11 (2026-06-16)
+
+### Dependency updates
+
+* [[`75dcd3aa`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/75dcd3aa)] - **deps**: update dependency @types&#x2F;node to v24.13.2 (#2305)
+* [[`6a6104d2`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/6a6104d2)] - **deps**: update typescript-eslint monorepo to v8.61.0 (#2304)
+* [[`594a1141`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/594a1141)] - **deps**: update dependency prettier to v3.8.4 (#2303)
+* [[`c5dc4420`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/c5dc4420)] - **deps**: update dependency @types&#x2F;node to v24.13.1 (#2302)
+
+
+## Version 1.4.10 (2026-06-09)
+
+### Dependency updates
+
+* [[`11340191`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/11340191)] - **deps**: update dependency @types&#x2F;node to v24.13.0 (#2299)
+* [[`a735b888`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/a735b888)] - **deps**: update dependency rollup to v4.61.1 (#2298)
+* [[`77f5f6dc`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/77f5f6dc)] - **deps**: update typedoc updates to v4.12.0 (#2297)
+* [[`320e3858`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/320e3858)] - **deps**: update dependency rollup to v4.61.0 (#2296)
+* [[`1d1dff9f`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/1d1dff9f)] - **deps**: update typescript-eslint monorepo to v8.60.1 (#2295)
+* [[`fcedaced`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/fcedaced)] - **deps**: update eslint monorepo to v10.4.1 (#2294)
+
+
+## Version 1.4.9 (2026-06-02)
+
+### Dependency updates
+
+* [[`dd14c508`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/dd14c508)] - **deps**: update dependency eslint-plugin-prettier to v5.5.6 (#2291)
+* [[`b786496e`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/b786496e)] - **deps**: update dependency terser to v5.48.0 (#2286)
+* [[`8774c904`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/8774c904)] - **deps**: update dependency typescript-eslint to v8.60.0 (#2290)
+* [[`f67a18d1`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/f67a18d1)] - **deps**: update dependency sass to v1.100.0 (#2289)
+* [[`9a43fcbf`](https://github.com/ckotzbauer&#x2F;simple-tree-component/commit/9a43fcbf)] - **deps**: update dependency npm-run-all2 to v9.0.1 (#2288)
+
+
 ## Version 1.4.8 (2026-05-26)
 
 ### Dependency updates

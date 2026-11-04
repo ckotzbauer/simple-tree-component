@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
       - name: Setup Node
-        uses: ckotzbauer/actions-toolkit/setup-nodejs@187b42cc2ca9bc9257d6e72bb1c1be730f1d0565 # 0.56.0
+        uses: ckotzbauer/actions-toolkit/setup-nodejs@70492262e47019908260a22d989ea8c55c549cdb # 0.58.1
 
       - name: Build
         run: |
@@ -28,7 +28,7 @@ jobs:
 
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
+        uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages # The branch the action should deploy to.
