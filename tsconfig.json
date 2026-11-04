@@ -19,7 +19,10 @@
     "baseUrl": "src",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["node", "jest"],
+    "ignoreDeprecations": "6.0",
+    "rootDir": "."
   },
   "exclude": [
     "demo",
