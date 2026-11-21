@@ -61,7 +61,7 @@
     "jest-environment-jsdom": "30.5.2",
     "ncp": "2.0.0",
     "npm-run-all2": "9.0.4",
-    "postcss": "8.5.32",
+    "postcss": "8.5.33",
     "prettier": "3.10.1",
     "rimraf": "6.1.4",
     "rollup": "4.68.2",
