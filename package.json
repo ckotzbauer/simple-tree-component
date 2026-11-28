@@ -60,7 +60,7 @@
     "jest": "30.5.2",
     "jest-environment-jsdom": "30.5.2",
     "ncp": "2.0.0",
-    "npm-run-all2": "9.0.4",
+    "npm-run-all2": "9.1.0",
     "postcss": "8.5.33",
     "prettier": "3.10.1",
     "rimraf": "6.1.4",
